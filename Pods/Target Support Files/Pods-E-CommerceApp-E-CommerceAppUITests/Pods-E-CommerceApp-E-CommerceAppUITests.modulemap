@@ -1,0 +1,6 @@
+framework module Pods_E_CommerceApp_E_CommerceAppUITests {
+  umbrella header "Pods-E-CommerceApp-E-CommerceAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
