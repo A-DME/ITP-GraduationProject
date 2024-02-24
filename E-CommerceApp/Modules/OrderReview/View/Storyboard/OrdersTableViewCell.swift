@@ -8,6 +8,9 @@
 import UIKit
 
 class OrdersTableViewCell: UITableViewCell {
+    static func nib()->UINib{
+        return UINib(nibName: "OrdersTableViewCell", bundle: nil)
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
