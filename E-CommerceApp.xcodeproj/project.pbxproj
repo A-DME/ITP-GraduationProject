@@ -53,6 +53,11 @@
 		1A5750182B86A2CC008BBE9E /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5750172B86A2CC008BBE9E /* AddressesViewController.swift */; };
 		1A57501A2B86A2DB008BBE9E /* Addresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5750192B86A2DB008BBE9E /* Addresses.storyboard */; };
 		5536EABB4BE0F54AE7B24E87 /* Pods_E_CommerceApp_E_CommerceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D894E4DA97BCF74A985EE56E /* Pods_E_CommerceApp_E_CommerceAppUITests.framework */; };
+		CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D42B8A2AF000AC9A59 /* AllReviewsViewController.swift */; };
+		CE6F85D72B8A2B0D00AC9A59 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D62B8A2B0D00AC9A59 /* AddReviewViewController.swift */; };
+		CE6F85D92B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D82B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift */; };
+		CE6F85DC2B8A8B5D00AC9A59 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85DA2B8A8B5D00AC9A59 /* ReviewTableViewCell.swift */; };
+		CE6F85DD2B8A8B5D00AC9A59 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6F85DB2B8A8B5D00AC9A59 /* ReviewTableViewCell.xib */; };
 		ED66DF6BFF3DAC522E732257 /* Pods_E_CommerceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227BBEC84DBD2B267D5B1E10 /* Pods_E_CommerceApp.framework */; };
 		F7DF4FBE3421F5575C8CB813 /* Pods_E_CommerceAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E95C526712648E821A2C2F /* Pods_E_CommerceAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +135,11 @@
 		65824ECDBC03188402A9727B /* Pods-E-CommerceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceAppTests.debug.xcconfig"; path = "Target Support Files/Pods-E-CommerceAppTests/Pods-E-CommerceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		764B8FD44346C47C98B07CA1 /* Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp-E-CommerceAppUITests/Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B6A8C5D2E5E9E441C99F3AE5 /* Pods-E-CommerceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp.release.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp/Pods-E-CommerceApp.release.xcconfig"; sourceTree = "<group>"; };
+		CE6F85D42B8A2AF000AC9A59 /* AllReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReviewsViewController.swift; sourceTree = "<group>"; };
+		CE6F85D62B8A2B0D00AC9A59 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		CE6F85D82B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPositionsCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE6F85DA2B8A8B5D00AC9A59 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		CE6F85DB2B8A8B5D00AC9A59 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		D894E4DA97BCF74A985EE56E /* Pods_E_CommerceApp_E_CommerceAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_CommerceApp_E_CommerceAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F751171D00F91D42C0126387 /* Pods-E-CommerceApp-E-CommerceAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp-E-CommerceAppUITests.release.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp-E-CommerceAppUITests/Pods-E-CommerceApp-E-CommerceAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F981F7C6A0228BC5A6FDA9DA /* Pods-E-CommerceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp.debug.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp/Pods-E-CommerceApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -545,6 +555,10 @@
 			isa = PBXGroup;
 			children = (
 				1A574FFB2B869B84008BBE9E /* ProductInfoViewController.swift */,
+				CE6F85D42B8A2AF000AC9A59 /* AllReviewsViewController.swift */,
+				CE6F85D62B8A2B0D00AC9A59 /* AddReviewViewController.swift */,
+				CE6F85D82B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift */,
+				CE6F85DE2B8A8D2A00AC9A59 /* ReviewNibCell */,
 				1A574FF82B869B4A008BBE9E /* Storyboard */,
 			);
 			path = View;
@@ -683,6 +697,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE6F85DE2B8A8D2A00AC9A59 /* ReviewNibCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE6F85DA2B8A8B5D00AC9A59 /* ReviewTableViewCell.swift */,
+				CE6F85DB2B8A8B5D00AC9A59 /* ReviewTableViewCell.xib */,
+			);
+			path = ReviewNibCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -795,6 +818,7 @@
 				1A574FFA2B869B6F008BBE9E /* ProductInfo.storyboard in Resources */,
 				1A5165A12B85FF8400DB8366 /* Authorization.storyboard in Resources */,
 				1A5750102B86A185008BBE9E /* AddressBook.storyboard in Resources */,
+				CE6F85DD2B8A8B5D00AC9A59 /* ReviewTableViewCell.xib in Resources */,
 				1A5165532B85E9F400DB8366 /* LaunchScreen.storyboard in Resources */,
 				1A57501A2B86A2DB008BBE9E /* Addresses.storyboard in Resources */,
 				1A5165502B85E9F400DB8366 /* Assets.xcassets in Resources */,
@@ -935,11 +959,13 @@
 				1A5165BC2B86102600DB8366 /* SignInViewController.swift in Sources */,
 				1A5165AC2B860F1500DB8366 /* NetworkManager.swift in Sources */,
 				1A5165AA2B860E1800DB8366 /* APIHandler.swift in Sources */,
+				CE6F85D72B8A2B0D00AC9A59 /* AddReviewViewController.swift in Sources */,
 				1A51658C2B85F13300DB8366 /* CartViewModel.swift in Sources */,
 				1A51654B2B85E9F100DB8366 /* ViewController.swift in Sources */,
 				1A5750142B86A299008BBE9E /* AddressesViewModel.swift in Sources */,
 				1A5750032B86A003008BBE9E /* OrderReviewViewController.swift in Sources */,
 				1A5165C62B86117500DB8366 /* CategoriesViewController.swift in Sources */,
+				CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */,
 				1A574FF72B869B3B008BBE9E /* ProductInfoViewModel.swift in Sources */,
 				1A5165BE2B86105400DB8366 /* HomeViewController.swift in Sources */,
 				1A5165BA2B86101000DB8366 /* SignInViewModel.swift in Sources */,
@@ -949,6 +975,7 @@
 				1A5165922B85F33500DB8366 /* CartViewController.swift in Sources */,
 				1A5165D72B86757E00DB8366 /* MeViewController.swift in Sources */,
 				1A5165C32B86114600DB8366 /* CategoriesViewModel.swift in Sources */,
+				CE6F85D92B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift in Sources */,
 				1A5165472B85E9F100DB8366 /* AppDelegate.swift in Sources */,
 				1A5750002B869FE7008BBE9E /* OrderReviewViewModel.swift in Sources */,
 				1A5165B62B860FC500DB8366 /* HomeViewModel.swift in Sources */,
@@ -957,6 +984,7 @@
 				1A5165DC2B867CC700DB8366 /* ReachabilityManager.swift in Sources */,
 				1A5165492B85E9F100DB8366 /* SceneDelegate.swift in Sources */,
 				1A5165AE2B860F3200DB8366 /* Product.swift in Sources */,
+				CE6F85DC2B8A8B5D00AC9A59 /* ReviewTableViewCell.swift in Sources */,
 				1A57500A2B86A0D0008BBE9E /* AddressBookViewModel.swift in Sources */,
 				1A5165842B85EFBA00DB8366 /* SettingsViewController.swift in Sources */,
 				1A5165892B85F09E00DB8366 /* SettingsViewModel.swift in Sources */,
