@@ -1082,6 +1082,7 @@
 				1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */,
 				CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */,
 				1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */,
+				CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */,
 				1A574FF72B869B3B008BBE9E /* ProductInfoViewModel.swift in Sources */,
 				1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */,
 				1A5165BE2B86105400DB8366 /* HomeViewController.swift in Sources */,
