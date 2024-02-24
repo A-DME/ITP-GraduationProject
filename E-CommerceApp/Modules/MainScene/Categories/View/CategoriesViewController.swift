@@ -31,11 +31,6 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     */
 
-    @IBAction func subFilterClicked(_ sender: Any) {
-
-       
-        
-    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         12
     }

@@ -29,6 +29,9 @@
                 <constraint firstItem="f4y-mn-VKf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rDz-Or-TAK"/>
             </constraints>
             <size key="customSize" width="151" height="151"/>
+            <connections>
+                <outlet property="img" destination="f4y-mn-VKf" id="54b-jv-fcm"/>
+            </connections>
             <point key="canvasLocation" x="206.87022900763358" y="24.295774647887324"/>
         </collectionViewCell>
     </objects>

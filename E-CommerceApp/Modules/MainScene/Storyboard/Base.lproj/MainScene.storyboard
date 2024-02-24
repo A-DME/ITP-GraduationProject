@@ -21,7 +21,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAj-SD-KbU">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
-                                    <navigationItem title="StageStyle" id="taJ-9Y-kWY">
+                                    <navigationItem title="StyleHub" id="taJ-9Y-kWY">
                                         <barButtonItem key="rightBarButtonItem" image="cart" id="fZV-3N-qga">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </barButtonItem>
@@ -77,6 +77,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <segue destination="Knx-bi-TXh" kind="show" identifier="Brands" id="vJ3-Qq-nJ1"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -122,6 +125,16 @@
             </objects>
             <point key="canvasLocation" x="983.96946564885491" y="715.49295774647896"/>
         </scene>
+        <!--OrderReview-->
+        <scene sceneID="lDq-iu-RKk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OrderReview" id="Knx-bi-TXh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vEP-oP-Haa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UAe-bc-C0a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2137" y="603"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -133,7 +146,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zd8-9S-RqO">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
-                                    <navigationItem title="StageStyle" id="zY9-Ck-ufA">
+                                    <navigationItem title="StyleHub" id="zY9-Ck-ufA">
                                         <barButtonItem key="leftBarButtonItem" image="search" id="EJ9-B4-av0">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </barButtonItem>
@@ -248,7 +261,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa9-KD-8WX">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
-                                    <navigationItem title="StageStyle" id="5Ga-0g-hhe">
+                                    <navigationItem title="StyleHub" id="5Ga-0g-hhe">
                                         <barButtonItem key="leftBarButtonItem" image="search" id="PNi-1u-LO8">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </barButtonItem>
@@ -403,7 +416,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

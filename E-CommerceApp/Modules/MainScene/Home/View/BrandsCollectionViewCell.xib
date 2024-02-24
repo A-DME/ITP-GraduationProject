@@ -17,30 +17,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="Adidas" translatesAutoresizingMaskIntoConstraints="NO" id="2uA-0B-FVb">
-                        <rect key="frame" x="0.0" y="0.0" width="325" height="274"/>
+                        <rect key="frame" x="8" y="8" width="309" height="279"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="adidas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epa-HI-WYH">
-                        <rect key="frame" x="0.0" y="274" width="325" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
-                <color key="backgroundColor" white="0.84393165225074407" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="epa-HI-WYH" firstAttribute="leading" secondItem="Qii-p3-Lg4" secondAttribute="leading" id="60g-eG-ueo"/>
-                    <constraint firstItem="2uA-0B-FVb" firstAttribute="top" secondItem="Qii-p3-Lg4" secondAttribute="top" id="976-6z-rsM"/>
-                    <constraint firstAttribute="trailing" secondItem="epa-HI-WYH" secondAttribute="trailing" id="F9J-qa-zHP"/>
-                    <constraint firstItem="2uA-0B-FVb" firstAttribute="leading" secondItem="Qii-p3-Lg4" secondAttribute="leading" id="Y2a-Ed-nFc"/>
-                    <constraint firstItem="epa-HI-WYH" firstAttribute="top" secondItem="2uA-0B-FVb" secondAttribute="bottom" id="ZID-P5-cAz"/>
-                    <constraint firstAttribute="trailing" secondItem="2uA-0B-FVb" secondAttribute="trailing" id="euv-qR-1oY"/>
-                    <constraint firstAttribute="bottom" secondItem="epa-HI-WYH" secondAttribute="bottom" id="oIp-uz-SeE"/>
+                    <constraint firstItem="2uA-0B-FVb" firstAttribute="leading" secondItem="Qii-p3-Lg4" secondAttribute="leading" constant="8" id="77M-Pp-NqX"/>
+                    <constraint firstAttribute="bottom" secondItem="2uA-0B-FVb" secondAttribute="bottom" constant="8" id="Lcb-Kh-wcQ"/>
+                    <constraint firstItem="2uA-0B-FVb" firstAttribute="top" secondItem="Qii-p3-Lg4" secondAttribute="top" constant="8" id="MNm-G8-Q1w"/>
+                    <constraint firstAttribute="trailing" secondItem="2uA-0B-FVb" secondAttribute="trailing" constant="8" id="i7g-xA-tBd"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="325" height="295"/>
             <connections>
                 <outlet property="brandImg" destination="2uA-0B-FVb" id="0iV-cT-ly8"/>
-                <outlet property="brandName" destination="epa-HI-WYH" id="CYH-i7-pkS"/>
             </connections>
             <point key="canvasLocation" x="-1423.6641221374045" y="449.64788732394368"/>
         </collectionViewCell>
