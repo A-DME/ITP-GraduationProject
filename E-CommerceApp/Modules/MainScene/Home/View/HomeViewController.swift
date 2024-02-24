@@ -6,31 +6,36 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
    
 
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var brandsCollection: UICollectionView!
-
+    var result : Collections?
+    var homeViewModel : HomeViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
+        homeViewModel = HomeViewModel()
+        homeViewModel?.loadData()
+        homeViewModel?.bindResultToViewController = { [weak self] in
+            DispatchQueue.main.async {
+                self?.display()
+                print(self?.result?.smartCollections[0].title ?? "no data")
+                self?.brandsCollection.reloadData()
+            }
+        }
 
-        // Do any additional setup after loading the view.
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical //.horizontal
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        brandsCollection.setCollectionViewLayout(layout, animated: true)
-        adsCollectionView.register(AdsCollectionViewCell.nib(), forCellWithReuseIdentifier: "AdCell")
-        brandsCollection.register(AdsCollectionViewCell.nib(), forCellWithReuseIdentifier: "BrandCell")
+       setupCollectionView()
+       registerCells()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == adsCollectionView{
             return 5
         } else{
-            return 12
+            return result?.smartCollections.count ?? 0
         }
        
     }
@@ -40,7 +45,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             let cell = adsCollectionView.dequeueReusableCell(withReuseIdentifier: "AdCell", for: indexPath) as! AdsCollectionViewCell
            return cell
         } else{
-            let cell = brandsCollection.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath) as! AdsCollectionViewCell
+            let cell = brandsCollection.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath) as! BrandsCollectionViewCell
+            let url = URL(string:result?.smartCollections[indexPath.row].image.src ?? "")
+            cell.brandImg.kf.setImage(with:url ,placeholder: UIImage(named: "ad"))
            return cell
         }
         
@@ -51,13 +58,14 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             return CGSize(width: (UIScreen.main.bounds.width) - 50, height: (adsCollectionView.frame.height) - 50)
         } else{
             let lay = collectionViewLayout as! UICollectionViewFlowLayout
-            let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-            
-            return CGSize(width:widthPerItem, height:100)
+            let widthPerItem = brandsCollection.frame.width / 2 - 20
+            return CGSize(width:widthPerItem, height:(brandsCollection.frame.height/2.5)-20)
         }
     }
     
-    
+    func display() {
+        result = homeViewModel?.getData()
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -68,26 +76,38 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "BrandsSegue", sender: self)
-    }
-    
-   /* func columnWidth(for collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout) -> CGFloat {
-        return (brandsCollection.frame.size.width / 2)-10
-    }
-    
-    func maximumNumberOfColumns(for collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout) -> Int {
         if collectionView == brandsCollection{
-            let numColumns: Int = Int(2.0)
-            return numColumns
-        }else{
-            return 2
+            performSegue(withIdentifier: "BrandsSegue", sender: self)
         }
-        
-    }*/
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)//here your custom value for spacing
+      
     }
-
     
-   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10.0, left: 9.0, bottom: 10.0, right: 9.0)
+    }
+    func registerCells(){
+        adsCollectionView.register(AdsCollectionViewCell.nib(), forCellWithReuseIdentifier: "AdCell")
+        brandsCollection.register(BrandsCollectionViewCell.nib(), forCellWithReuseIdentifier: "BrandCell")
+    }
+    func setupCollectionView(){
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
+        brandsCollection.setCollectionViewLayout(layout, animated: true)
+        
+    }
+    
+}
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
