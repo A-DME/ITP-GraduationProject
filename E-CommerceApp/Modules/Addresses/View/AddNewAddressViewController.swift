@@ -1,20 +1,22 @@
 //
-//  CartViewController.swift
+//  AddNewAddressViewController.swift
 //  E-CommerceApp
 //
-//  Created by Ahmed Abu-zeid on 21/02/2024.
+//  Created by Ahmed Abu-zeid on 24/02/2024.
 //
 
 import UIKit
 
-class CartViewController: UIViewController {
+class AddNewAddressViewController: UIViewController {
 
-    @IBOutlet weak var cartItems: UITableView!
+    @IBOutlet weak var nameField: UITextField!
     
-    @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var cityField: UITextField!
     
     
-    @IBOutlet weak var currency: UILabel!
+    @IBOutlet weak var phoneField: UITextField!
+    
+    @IBOutlet weak var addressField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +24,11 @@ class CartViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func purchaseButton(_ sender: Any) {
+
+    @IBAction func addAddressButton(_ sender: Any) {
+        
+        dismiss(animated: true)
     }
-    
     /*
     // MARK: - Navigation
 
@@ -35,7 +39,4 @@ class CartViewController: UIViewController {
     }
     */
 
-    @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true)
-    }
 }

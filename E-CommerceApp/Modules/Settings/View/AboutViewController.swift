@@ -1,30 +1,21 @@
 //
-//  CartViewController.swift
+//  AboutViewController.swift
 //  E-CommerceApp
 //
-//  Created by Ahmed Abu-zeid on 21/02/2024.
+//  Created by Ahmed Abu-zeid on 23/02/2024.
 //
 
 import UIKit
 
-class CartViewController: UIViewController {
+class AboutViewController: UIViewController {
 
-    @IBOutlet weak var cartItems: UITableView!
-    
-    @IBOutlet weak var subtotalLabel: UILabel!
-    
-    
-    @IBOutlet weak var currency: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func purchaseButton(_ sender: Any) {
-    }
-    
+
     /*
     // MARK: - Navigation
 
@@ -35,7 +26,4 @@ class CartViewController: UIViewController {
     }
     */
 
-    @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true)
-    }
 }

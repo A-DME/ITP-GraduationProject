@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A2472C02B89588000789105 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2472BF2B89588000789105 /* CurrencyViewModel.swift */; };
 		1A5165472B85E9F100DB8366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5165462B85E9F100DB8366 /* AppDelegate.swift */; };
 		1A5165492B85E9F100DB8366 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5165482B85E9F100DB8366 /* SceneDelegate.swift */; };
 		1A51654B2B85E9F100DB8366 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A51654A2B85E9F100DB8366 /* ViewController.swift */; };
@@ -62,6 +63,16 @@
 		4F7616772B889E730040DC5A /* ItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7616752B889E730040DC5A /* ItemsCollectionViewCell.xib */; };
 		4FA7A1722B8A9C7D00C3AF75 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA7A1702B8A9C7D00C3AF75 /* OrdersTableViewCell.swift */; };
 		4FA7A1732B8A9C7D00C3AF75 /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA7A1712B8A9C7D00C3AF75 /* OrdersTableViewCell.xib */; };
+		1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */; };
+		1A9A3B072B88CCAA005CA8B4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */; };
+		1A9A3B092B88F113005CA8B4 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */; };
+		1A9A3B0B2B88F4FD005CA8B4 /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B0A2B88F4FD005CA8B4 /* ApplePayViewController.swift */; };
+		1A9A3B0D2B891731005CA8B4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */; };
+		1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */; };
+		1AF9BC442B8A7180006A2E4D /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */; };
+		1AF9BC452B8A7180006A2E4D /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF9BC432B8A7180006A2E4D /* AddressTableViewCell.xib */; };
+		1AF9BC482B8AB36E006A2E4D /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC462B8AB36E006A2E4D /* CartTableViewCell.swift */; };
+		1AF9BC492B8AB36E006A2E4D /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF9BC472B8AB36E006A2E4D /* CartTableViewCell.xib */; };
 		5536EABB4BE0F54AE7B24E87 /* Pods_E_CommerceApp_E_CommerceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D894E4DA97BCF74A985EE56E /* Pods_E_CommerceApp_E_CommerceAppUITests.framework */; };
 		ED66DF6BFF3DAC522E732257 /* Pods_E_CommerceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227BBEC84DBD2B267D5B1E10 /* Pods_E_CommerceApp.framework */; };
 		F7DF4FBE3421F5575C8CB813 /* Pods_E_CommerceAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E95C526712648E821A2C2F /* Pods_E_CommerceAppTests.framework */; };
@@ -87,6 +98,7 @@
 /* Begin PBXFileReference section */
 		03E95C526712648E821A2C2F /* Pods_E_CommerceAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_CommerceAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2E2A6387C84F2B95752526 /* Pods-E-CommerceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceAppTests.release.xcconfig"; path = "Target Support Files/Pods-E-CommerceAppTests/Pods-E-CommerceAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		1A2472BF2B89588000789105 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		1A5165432B85E9F100DB8366 /* E-CommerceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-CommerceApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5165462B85E9F100DB8366 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A5165482B85E9F100DB8366 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +148,16 @@
 		1A5750132B86A299008BBE9E /* AddressesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewModel.swift; sourceTree = "<group>"; };
 		1A5750172B86A2CC008BBE9E /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
 		1A5750192B86A2DB008BBE9E /* Addresses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Addresses.storyboard; sourceTree = "<group>"; };
+		1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		1A9A3B0A2B88F4FD005CA8B4 /* ApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
+		1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewController.swift; sourceTree = "<group>"; };
+		1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		1AF9BC432B8A7180006A2E4D /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
+		1AF9BC462B8AB36E006A2E4D /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		1AF9BC472B8AB36E006A2E4D /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 		227BBEC84DBD2B267D5B1E10 /* Pods_E_CommerceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_CommerceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3418272B8A4D050066BBD2 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
 		4F4579E42B87C8D800302E78 /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -337,7 +359,12 @@
 			isa = PBXGroup;
 			children = (
 				1A5165832B85EFBA00DB8366 /* SettingsViewController.swift */,
+				1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */,
+				1A9A3B0A2B88F4FD005CA8B4 /* ApplePayViewController.swift */,
+				1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */,
 				1A5165822B85EF6F00DB8366 /* Storyboard */,
+				1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */,
+				1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -354,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				1A5165882B85F09E00DB8366 /* SettingsViewModel.swift */,
+				1A2472BF2B89588000789105 /* CurrencyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -371,6 +399,8 @@
 			children = (
 				1A5165912B85F33500DB8366 /* CartViewController.swift */,
 				1A51658E2B85F18700DB8366 /* Storyboard */,
+				1AF9BC462B8AB36E006A2E4D /* CartTableViewCell.swift */,
+				1AF9BC472B8AB36E006A2E4D /* CartTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -677,7 +707,10 @@
 			isa = PBXGroup;
 			children = (
 				1A5750172B86A2CC008BBE9E /* AddressesViewController.swift */,
+				1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */,
 				1A5750162B86A2AE008BBE9E /* Storyboard */,
+				1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */,
+				1AF9BC432B8A7180006A2E4D /* AddressTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -846,7 +879,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A9A3B072B88CCAA005CA8B4 /* SettingsTableViewCell.xib in Resources */,
+				1AF9BC452B8A7180006A2E4D /* AddressTableViewCell.xib in Resources */,
 				1A574FFA2B869B6F008BBE9E /* ProductInfo.storyboard in Resources */,
+				1AF9BC492B8AB36E006A2E4D /* CartTableViewCell.xib in Resources */,
 				1A5165A12B85FF8400DB8366 /* Authorization.storyboard in Resources */,
 				1A5750102B86A185008BBE9E /* AddressBook.storyboard in Resources */,
 				1A5165532B85E9F400DB8366 /* LaunchScreen.storyboard in Resources */,
@@ -992,24 +1028,31 @@
 			files = (
 				1A5165BC2B86102600DB8366 /* SignInViewController.swift in Sources */,
 				1A5165AC2B860F1500DB8366 /* NetworkManager.swift in Sources */,
+				1A9A3B092B88F113005CA8B4 /* CurrencyViewController.swift in Sources */,
 				1A5165AA2B860E1800DB8366 /* APIHandler.swift in Sources */,
 				4F3418282B8A4D050066BBD2 /* Collections.swift in Sources */,
 				1A51658C2B85F13300DB8366 /* CartViewModel.swift in Sources */,
 				1A51654B2B85E9F100DB8366 /* ViewController.swift in Sources */,
+				1AF9BC442B8A7180006A2E4D /* AddressTableViewCell.swift in Sources */,
 				1A5750142B86A299008BBE9E /* AddressesViewModel.swift in Sources */,
 				1A5750032B86A003008BBE9E /* OrderReviewViewController.swift in Sources */,
 				1A5165C62B86117500DB8366 /* CategoriesViewController.swift in Sources */,
+				1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */,
 				1A574FF72B869B3B008BBE9E /* ProductInfoViewModel.swift in Sources */,
+				1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */,
 				1A5165BE2B86105400DB8366 /* HomeViewController.swift in Sources */,
 				1A5165BA2B86101000DB8366 /* SignInViewModel.swift in Sources */,
 				4F4579EA2B87CABE00302E78 /* BrandsCollectionViewCell.swift in Sources */,
+				1A2472C02B89588000789105 /* CurrencyViewModel.swift in Sources */,
 				1A5165B22B860F7C00DB8366 /* WishlistViewModel.swift in Sources */,
 				1A574FFC2B869B84008BBE9E /* ProductInfoViewController.swift in Sources */,
 				4F5BA7E02B88946500F912C3 /* BrandsViewController.swift in Sources */,
 				1A57500E2B86A168008BBE9E /* AddressBookViewController.swift in Sources */,
 				1A5165922B85F33500DB8366 /* CartViewController.swift in Sources */,
+				1AF9BC482B8AB36E006A2E4D /* CartTableViewCell.swift in Sources */,
 				4F7616762B889E730040DC5A /* ItemsCollectionViewCell.swift in Sources */,
 				1A5165D72B86757E00DB8366 /* MeViewController.swift in Sources */,
+				1A9A3B0B2B88F4FD005CA8B4 /* ApplePayViewController.swift in Sources */,
 				1A5165C32B86114600DB8366 /* CategoriesViewModel.swift in Sources */,
 				1A5165472B85E9F100DB8366 /* AppDelegate.swift in Sources */,
 				1A5750002B869FE7008BBE9E /* OrderReviewViewModel.swift in Sources */,
@@ -1017,6 +1060,7 @@
 				1A5165B62B860FC500DB8366 /* HomeViewModel.swift in Sources */,
 				4F4579E62B87C8D800302E78 /* AdsCollectionViewCell.swift in Sources */,
 				1A5165D52B865CA400DB8366 /* MeViewModel.swift in Sources */,
+				1A9A3B0D2B891731005CA8B4 /* AboutViewController.swift in Sources */,
 				1A5165C82B8611E200DB8366 /* WishlistViewController.swift in Sources */,
 				1A5165DC2B867CC700DB8366 /* ReachabilityManager.swift in Sources */,
 				1A5165492B85E9F100DB8366 /* SceneDelegate.swift in Sources */,

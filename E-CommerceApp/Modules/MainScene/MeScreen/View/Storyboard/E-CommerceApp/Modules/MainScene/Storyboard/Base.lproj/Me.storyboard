@@ -25,9 +25,15 @@
                                         <rightBarButtonItems>
                                             <barButtonItem image="gearshape.fill" catalog="system" id="swp-ba-mC3">
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <segue destination="OkP-f7-KX2" kind="show" id="zNM-Eo-yOv"/>
+                                                </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Item" image="cart" id="7sh-p7-XOg">
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <segue destination="dMl-Mo-PDz" kind="presentation" modalPresentationStyle="fullScreen" id="yNz-gI-Ir3"/>
+                                                </connections>
                                             </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
@@ -164,6 +170,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ow9-Sx-h7s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="576.33587786259545" y="601.4084507042254"/>
+        </scene>
+        <!--Cart-->
+        <scene sceneID="D5N-wL-D2s">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cart" id="dMl-Mo-PDz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ihN-1h-1SM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1424" y="237"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="IWg-z2-RWk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="OkP-f7-KX2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gij-O3-Oc7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IF1-YN-QzO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1453" y="407"/>
         </scene>
     </scenes>
     <resources>
