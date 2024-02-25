@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sign In-->
+        <!--Sign In View Controller-->
         <scene sceneID="gnL-9t-7L8">
             <objects>
-                <viewController title="Sign In" modalPresentationStyle="fullScreen" id="DTU-Ug-QoG" customClass="SignInViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="DTU-Ug-QoG" customClass="SignInViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="of4-8Z-BzE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

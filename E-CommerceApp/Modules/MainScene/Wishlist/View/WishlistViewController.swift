@@ -13,14 +13,14 @@ class WishlistViewController: UIViewController,UICollectionViewDataSource,UIColl
     @IBOutlet weak var wishColletionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureTableView()
         // Do any additional setup after loading the view.
     }
-//    func configureTableView(){
-//        wishColletionView.dataSource = self
-//        wishColletionView.delegate = self
-//        wishColletionView.register(UINib(nibName: "ItemsCollectionViewCell", bundle: nil), forCellReuseIdentifier: "ReviewTableViewCell")
-//    }
+    func configureTableView(){
+        wishColletionView.dataSource = self
+        wishColletionView.delegate = self
+        wishColletionView.register(UINib(nibName: "ItemsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "wish")
+    }
 
     /*
     // MARK: - Navigation
@@ -43,19 +43,26 @@ class WishlistViewController: UIViewController,UICollectionViewDataSource,UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath) as! /*Items*/UICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wish", for: indexPath) as! ItemsCollectionViewCell
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width=(( UIScreen.main.bounds.size.width))*0.8
-        let height=(( UIScreen.main.bounds.size.width))*0.8
-        return CGSize(width: width, height: height)
-        
-    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+            let width = collectionView.frame.width / 3 - 1
+            return CGSize(width: width, height: width)
+        }
+
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 1.0
+        }
+
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 1.0
+        }
+    
+    
     
 }
 
