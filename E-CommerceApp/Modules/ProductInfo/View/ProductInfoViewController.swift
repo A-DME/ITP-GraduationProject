@@ -80,6 +80,7 @@ class ProductInfoViewController: UIViewController {
         reviewsTableView.delegate = self
         reviewsTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "ReviewTableViewCell")
     }
+    
 }
 
     // MARK: -
