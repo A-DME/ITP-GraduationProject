@@ -73,6 +73,16 @@
 		4F7616772B889E730040DC5A /* ItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7616752B889E730040DC5A /* ItemsCollectionViewCell.xib */; };
 		4FA7A1722B8A9C7D00C3AF75 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA7A1702B8A9C7D00C3AF75 /* OrdersTableViewCell.swift */; };
 		4FA7A1732B8A9C7D00C3AF75 /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA7A1712B8A9C7D00C3AF75 /* OrdersTableViewCell.xib */; };
+		1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */; };
+		1A9A3B072B88CCAA005CA8B4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */; };
+		1A9A3B092B88F113005CA8B4 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */; };
+		1A9A3B0B2B88F4FD005CA8B4 /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B0A2B88F4FD005CA8B4 /* ApplePayViewController.swift */; };
+		1A9A3B0D2B891731005CA8B4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */; };
+		1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */; };
+		1AF9BC442B8A7180006A2E4D /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */; };
+		1AF9BC452B8A7180006A2E4D /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF9BC432B8A7180006A2E4D /* AddressTableViewCell.xib */; };
+		1AF9BC482B8AB36E006A2E4D /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC462B8AB36E006A2E4D /* CartTableViewCell.swift */; };
+		1AF9BC492B8AB36E006A2E4D /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF9BC472B8AB36E006A2E4D /* CartTableViewCell.xib */; };
 		5536EABB4BE0F54AE7B24E87 /* Pods_E_CommerceApp_E_CommerceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D894E4DA97BCF74A985EE56E /* Pods_E_CommerceApp_E_CommerceAppUITests.framework */; };
 		CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D42B8A2AF000AC9A59 /* AllReviewsViewController.swift */; };
 		CE6F85D72B8A2B0D00AC9A59 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D62B8A2B0D00AC9A59 /* AddReviewViewController.swift */; };
@@ -1071,12 +1081,14 @@
 				1A5165C62B86117500DB8366 /* CategoriesViewController.swift in Sources */,
 				1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */,
 				CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */,
+				1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */,
 				1A574FF72B869B3B008BBE9E /* ProductInfoViewModel.swift in Sources */,
 				1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */,
 				1A5165BE2B86105400DB8366 /* HomeViewController.swift in Sources */,
 				1A5165BA2B86101000DB8366 /* SignInViewModel.swift in Sources */,
 				1A2472C02B89588000789105 /* CurrencyViewModel.swift in Sources */,
 				4F4579EA2B87CABE00302E78 /* BrandsCollectionViewCell.swift in Sources */,
+				1A2472C02B89588000789105 /* CurrencyViewModel.swift in Sources */,
 				1A5165B22B860F7C00DB8366 /* WishlistViewModel.swift in Sources */,
 				CE6F85E02B8B2EB100AC9A59 /* SignupViewController.swift in Sources */,
 				1A574FFC2B869B84008BBE9E /* ProductInfoViewController.swift in Sources */,

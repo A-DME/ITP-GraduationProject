@@ -14,6 +14,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var brandsCollection: UICollectionView!
     var result : Collections?
+    var indicator : UIActivityIndicatorView?
     var homeViewModel : HomeViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +22,11 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         homeViewModel?.loadData()
         homeViewModel?.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
+                self?.setIndicator()
                 self?.display()
                 print(self?.result?.smartCollections[0].title ?? "no data")
                 self?.brandsCollection.reloadData()
+                
             }
         }
 
@@ -64,7 +67,16 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     
     func display() {
+        indicator?.stopAnimating()
         result = homeViewModel?.getData()
+    }
+    func setIndicator(){
+        indicator = UIActivityIndicatorView(style: .large)
+        indicator?.color = .black
+        indicator?.center = self.view.center
+        indicator?.startAnimating()
+        self.view.addSubview(indicator!)
+        
     }
     // MARK: - Navigation
 
@@ -97,6 +109,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         layout.minimumInteritemSpacing = 5
         brandsCollection.setCollectionViewLayout(layout, animated: true)
         
+    }
+    @IBAction func CartTabbed(_ sender: Any) {
+        performSegue(withIdentifier: "CartSegue", sender: self)
     }
     
 }
