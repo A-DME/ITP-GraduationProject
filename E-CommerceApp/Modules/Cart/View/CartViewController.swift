@@ -34,7 +34,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! CartTableViewCell
-        cell.productImage.image = .aboutUs
+        cell.productImage.image = .ad
         cell.productTitle.text = "productName"
         cell.price.text = "$88"
         cell.quantity.text = "2"
@@ -42,7 +42,16 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 150
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // TODO: - add deletion functionality
+//            tableView.beginUpdates()
+//            tableView.deleteRows(at: [indexPath], with: .left)
+//            tableView.endUpdates()
+        }
     }
     
     @IBAction func purchaseButton(_ sender: Any) {
