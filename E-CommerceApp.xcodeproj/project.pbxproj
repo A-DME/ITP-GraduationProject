@@ -53,6 +53,8 @@
 		1A5750182B86A2CC008BBE9E /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5750172B86A2CC008BBE9E /* AddressesViewController.swift */; };
 		1A57501A2B86A2DB008BBE9E /* Addresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5750192B86A2DB008BBE9E /* Addresses.storyboard */; };
 		5536EABB4BE0F54AE7B24E87 /* Pods_E_CommerceApp_E_CommerceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D894E4DA97BCF74A985EE56E /* Pods_E_CommerceApp_E_CommerceAppUITests.framework */; };
+		CE6F85E02B8B2EB100AC9A59 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85DF2B8B2EB000AC9A59 /* SignupViewController.swift */; };
+		CE6F85E22B8B333800AC9A59 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6F85E12B8B333800AC9A59 /* SignIn.storyboard */; };
 		ED66DF6BFF3DAC522E732257 /* Pods_E_CommerceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227BBEC84DBD2B267D5B1E10 /* Pods_E_CommerceApp.framework */; };
 		F7DF4FBE3421F5575C8CB813 /* Pods_E_CommerceAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E95C526712648E821A2C2F /* Pods_E_CommerceAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +132,8 @@
 		65824ECDBC03188402A9727B /* Pods-E-CommerceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceAppTests.debug.xcconfig"; path = "Target Support Files/Pods-E-CommerceAppTests/Pods-E-CommerceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		764B8FD44346C47C98B07CA1 /* Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp-E-CommerceAppUITests/Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B6A8C5D2E5E9E441C99F3AE5 /* Pods-E-CommerceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp.release.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp/Pods-E-CommerceApp.release.xcconfig"; sourceTree = "<group>"; };
+		CE6F85DF2B8B2EB000AC9A59 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		CE6F85E12B8B333800AC9A59 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		D894E4DA97BCF74A985EE56E /* Pods_E_CommerceApp_E_CommerceAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_CommerceApp_E_CommerceAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F751171D00F91D42C0126387 /* Pods-E-CommerceApp-E-CommerceAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp-E-CommerceAppUITests.release.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp-E-CommerceAppUITests/Pods-E-CommerceApp-E-CommerceAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F981F7C6A0228BC5A6FDA9DA /* Pods-E-CommerceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp.debug.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp/Pods-E-CommerceApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				1A5165A02B85FF8400DB8366 /* Authorization.storyboard */,
+				CE6F85E12B8B333800AC9A59 /* SignIn.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 		1A5165B82B860FD900DB8366 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE6F85DF2B8B2EB000AC9A59 /* SignupViewController.swift */,
 				1A5165BB2B86102600DB8366 /* SignInViewController.swift */,
 				1A51659C2B85FEF400DB8366 /* Storyboard */,
 			);
@@ -804,6 +810,7 @@
 				1A51654E2B85E9F200DB8366 /* MainScene.storyboard in Resources */,
 				1A5165D92B86780A00DB8366 /* Main.storyboard in Resources */,
 				1A5165D32B86158D00DB8366 /* Me.storyboard in Resources */,
+				CE6F85E22B8B333800AC9A59 /* SignIn.storyboard in Resources */,
 				1A5165862B85EFF600DB8366 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -944,6 +951,7 @@
 				1A5165BE2B86105400DB8366 /* HomeViewController.swift in Sources */,
 				1A5165BA2B86101000DB8366 /* SignInViewModel.swift in Sources */,
 				1A5165B22B860F7C00DB8366 /* WishlistViewModel.swift in Sources */,
+				CE6F85E02B8B2EB100AC9A59 /* SignupViewController.swift in Sources */,
 				1A574FFC2B869B84008BBE9E /* ProductInfoViewController.swift in Sources */,
 				1A57500E2B86A168008BBE9E /* AddressBookViewController.swift in Sources */,
 				1A5165922B85F33500DB8366 /* CartViewController.swift in Sources */,
