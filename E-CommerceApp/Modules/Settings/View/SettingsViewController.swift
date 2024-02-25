@@ -42,6 +42,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
@@ -71,5 +75,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func unwindToSettings(unwindSegue: UIStoryboardSegue){}
     
-
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
 }
