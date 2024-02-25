@@ -8,20 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main-->
-        <scene sceneID="oPB-c1-VI6">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="M7x-Ub-lCN" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="4gS-HE-rIf"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GKo-Hd-QPp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1503" y="-208"/>
-        </scene>
         <!--Sign In-->
         <scene sceneID="gnL-9t-7L8">
             <objects>
-                <viewController title="Sign In" id="DTU-Ug-QoG" customClass="SignInViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign In" modalPresentationStyle="fullScreen" id="DTU-Ug-QoG" customClass="SignInViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="of4-8Z-BzE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +41,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="IS7-r8-HCX" kind="show" id="VE7-c0-viH"/>
+                                    <segue destination="IS7-r8-HCX" kind="presentation" modalPresentationStyle="fullScreen" id="VE7-c0-viH"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-pe-Oam">
@@ -78,7 +68,7 @@
                                     <navigationItem title="StyleHub" id="VRq-5O-m8p">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="iYc-0P-xPy">
                                             <connections>
-                                                <segue destination="M7x-Ub-lCN" kind="show" id="QfM-Yu-hs0"/>
+                                                <action selector="backButton:" destination="DTU-Ug-QoG" id="NIO-Mo-izq"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -145,10 +135,6 @@
                             <constraint firstItem="FXd-Rg-Ff4" firstAttribute="leading" secondItem="kAj-o7-rdF" secondAttribute="leading" constant="16" id="zSA-G2-8ZP"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="emailAddress" destination="nDp-Di-8P1" id="RBl-Fa-DcR"/>
-                        <outlet property="password" destination="C8x-xA-Kly" id="PpR-Qx-grR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEL-gD-QVo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

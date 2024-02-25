@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dhf-p2-deP">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -19,24 +19,10 @@
             <point key="canvasLocation" x="826.71755725190837" y="-27.464788732394368"/>
             <point key="canvasLocation" x="1659" y="-168"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="zxa-hG-9Qf">
-        <!--Main-->
-        <scene sceneID="MtS-HI-hfL">
-            <objects>
-                <viewController id="oXF-xk-4mO" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2yk-HF-xno">
-                <viewControllerPlaceholder storyboardName="Main" id="AuB-nO-3Vp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="3ky-hg-npj"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0a0-hD-GhC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1471" y="-231"/>
-        </scene>
         <!--Sign In-->
         <scene sceneID="zUf-nj-sZD">
             <objects>
-                <viewController title="Sign In" id="dhf-p2-deP" customClass="SignInViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign In" modalPresentationStyle="fullScreen" id="dhf-p2-deP" customClass="SignupViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMK-HC-xAf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +204,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="IS7-r8-HCX" kind="show" id="B29-aJ-ylO"/>
+                                    <segue destination="IS7-r8-HCX" kind="presentation" modalPresentationStyle="fullScreen" id="B29-aJ-ylO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AF0-NT-lUV">
@@ -271,7 +257,7 @@
                                     <navigationItem title="StyleHub" id="Onb-OR-kx2">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="Byy-eF-eqy">
                                             <connections>
-                                                <segue destination="AuB-nO-3Vp" kind="show" id="wzI-NL-ROA"/>
+                                                <action selector="backButton:" destination="dhf-p2-deP" id="7dD-L4-ZHE"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -350,12 +336,6 @@
                             <constraint firstItem="DbW-bt-uyH" firstAttribute="top" secondItem="8jN-zO-jHb" secondAttribute="bottom" constant="16" id="yD1-iS-lXf"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="emailAddress" destination="liC-66-s5l" id="OJx-O0-Cgi"/>
-                        <outlet property="firstName" destination="THF-U9-3EI" id="C2b-RK-oyZ"/>
-                        <outlet property="password" destination="JdZ-ca-Exs" id="aDw-Be-Kk2"/>
-                        <outlet property="secondName" destination="Fdf-IW-PWd" id="cSj-S5-q5V"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKD-Q0-nms" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

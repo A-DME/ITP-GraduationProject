@@ -29,16 +29,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWc-BJ-Rcq">
-                                <rect key="frame" x="16" y="444.66666666666669" width="361" height="39"/>
+                                <rect key="frame" x="16" y="444.66666666666669" width="361" height="34.333333333333314"/>
                                 <color key="tintColor" red="0.18431372549019609" green="0.34509803921568627" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign In"/>
                                 <connections>
-                                    <segue destination="qe3-Cc-M8v" kind="presentation" modalPresentationStyle="fullScreen" id="zNn-UC-uFI"/>
+                                    <segue destination="qe3-Cc-M8v" kind="show" id="fvU-ec-ybw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veS-af-LkL">
-                                <rect key="frame" x="155.66666666666666" y="643.66666666666663" width="81.666666666666657" height="47.666666666666629"/>
+                                <rect key="frame" x="155.66666666666666" y="634.33333333333337" width="81.666666666666657" height="47.666666666666629"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Skip" titleAlignment="center">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="28"/>
@@ -49,12 +49,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-0v-N47">
-                                <rect key="frame" x="16" y="504.66666666666674" width="361" height="39"/>
+                                <rect key="frame" x="16" y="499.99999999999994" width="361" height="34.333333333333314"/>
                                 <color key="tintColor" red="0.18431372549019609" green="0.34509803921568627" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="SignUp"/>
                                 <connections>
-                                    <segue destination="9pX-Gd-xTc" kind="presentation" modalPresentationStyle="fullScreen" id="ybZ-ky-eel"/>
+                                    <segue destination="9pX-Gd-xTc" kind="show" id="3lE-mQ-bNV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -99,7 +99,9 @@
         <!--SignIn-->
         <scene sceneID="zPK-Bb-NtM">
             <objects>
-                <viewControllerPlaceholder storyboardName="SignIn" id="qe3-Cc-M8v" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignIn" id="qe3-Cc-M8v" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jl0-5p-hRh"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWY-oe-qQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-54" y="-86"/>
