@@ -77,9 +77,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <connections>
-                                            <segue destination="Knx-bi-TXh" kind="show" identifier="Brands" id="vJ3-Qq-nJ1"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -124,16 +121,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xU0-3s-b1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="983.96946564885491" y="715.49295774647896"/>
-        </scene>
-        <!--OrderReview-->
-        <scene sceneID="lDq-iu-RKk">
-            <objects>
-                <viewControllerPlaceholder storyboardName="OrderReview" id="Knx-bi-TXh" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="vEP-oP-Haa"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UAe-bc-C0a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2137" y="603"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
