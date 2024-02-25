@@ -33,6 +33,9 @@
                                 <color key="tintColor" red="0.18431372549019609" green="0.34509803921568627" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign In"/>
+                                <connections>
+                                    <segue destination="qe3-Cc-M8v" kind="presentation" modalPresentationStyle="fullScreen" id="zNn-UC-uFI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veS-af-LkL">
                                 <rect key="frame" x="155.66666666666666" y="643.66666666666663" width="81.666666666666657" height="47.666666666666629"/>
@@ -50,6 +53,9 @@
                                 <color key="tintColor" red="0.18431372549019609" green="0.34509803921568627" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="SignUp"/>
+                                <connections>
+                                    <segue destination="9pX-Gd-xTc" kind="presentation" modalPresentationStyle="fullScreen" id="ybZ-ky-eel"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LuB-1z-0no"/>
@@ -89,6 +95,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBs-b6-2JA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-11" y="-149"/>
+        </scene>
+        <!--SignIn-->
+        <scene sceneID="zPK-Bb-NtM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignIn" id="qe3-Cc-M8v" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lWY-oe-qQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-54" y="-86"/>
         </scene>
         <!--MainScene-->
         <scene sceneID="2XJ-sP-DOX">
