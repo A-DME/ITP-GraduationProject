@@ -56,6 +56,7 @@
 		1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */; };
 		1A9A3B072B88CCAA005CA8B4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */; };
 		1A9A3B092B88F113005CA8B4 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */; };
+		1A9A3B0B2B88F4FD005CA8B4 /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B0A2B88F4FD005CA8B4 /* ApplePayViewController.swift */; };
 		1A9A3B0D2B891731005CA8B4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */; };
 		1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */; };
 		1AF9BC442B8A7180006A2E4D /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */; };
@@ -167,6 +168,7 @@
 		1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		1A9A3B0A2B88F4FD005CA8B4 /* ApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
 		1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewController.swift; sourceTree = "<group>"; };
 		1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 			children = (
 				1A5165832B85EFBA00DB8366 /* SettingsViewController.swift */,
 				1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */,
+				1A9A3B0A2B88F4FD005CA8B4 /* ApplePayViewController.swift */,
 				1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */,
 				1A5165822B85EF6F00DB8366 /* Storyboard */,
 				1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */,
@@ -1096,6 +1099,7 @@
 				1AF9BC482B8AB36E006A2E4D /* CartTableViewCell.swift in Sources */,
 				4F7616762B889E730040DC5A /* ItemsCollectionViewCell.swift in Sources */,
 				1A5165D72B86757E00DB8366 /* MeViewController.swift in Sources */,
+				1A9A3B0B2B88F4FD005CA8B4 /* ApplePayViewController.swift in Sources */,
 				1A5165C32B86114600DB8366 /* CategoriesViewModel.swift in Sources */,
 				CE6F85D92B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift in Sources */,
 				1A5165472B85E9F100DB8366 /* AppDelegate.swift in Sources */,

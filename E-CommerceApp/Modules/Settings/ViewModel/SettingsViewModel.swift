@@ -8,5 +8,5 @@
 import Foundation
 
 class SettingsViewModel{
-    let settingsList = ["Addresses", "Currency", "About Us"]
+    let settingsList = ["Addresses", "Currency", "Connect Apple Pay", "About Us"]
 }

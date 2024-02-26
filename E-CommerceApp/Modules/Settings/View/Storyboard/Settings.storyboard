@@ -58,9 +58,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Logout">
                                     <imageReference key="image" image="rectangle.portrait.and.arrow.forward" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="logoutButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AWj-49-Aw4"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -110,7 +107,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="Currency" id="ti3-Lq-xH2">
+                                    <navigationItem title="Title" id="ti3-Lq-xH2">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="6dt-2k-OkI">
                                             <imageReference key="image" image="arrow.left.circle.fill" catalog="system" renderingMode="hierarchical">
                                                 <hierarchicalColors>
@@ -163,10 +160,63 @@
             </objects>
             <point key="canvasLocation" x="912" y="-27"/>
         </scene>
+        <!--Apple Pay View Controller-->
+        <scene sceneID="Rwq-CV-VxY">
+            <objects>
+                <viewController storyboardIdentifier="applePay" modalPresentationStyle="fullScreen" id="qyC-AL-jvf" customClass="ApplePayViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CCo-ln-4D1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dL7-cP-OKZ">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="Title" id="9bM-sE-xJQ">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="VVG-JJ-mw3">
+                                            <imageReference key="image" image="arrow.left.circle.fill" catalog="system" renderingMode="hierarchical">
+                                                <hierarchicalColors>
+                                                    <color systemColor="labelColor"/>
+                                                    <color systemColor="secondaryLabelColor"/>
+                                                    <color systemColor="tertiaryLabelColor"/>
+                                                </hierarchicalColors>
+                                            </imageReference>
+                                            <connections>
+                                                <segue destination="E2K-9r-SKy" kind="unwind" unwindAction="unwindToSettingsWithUnwindSegue:" id="D9k-O6-SRs"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Apple Pay w Keda" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn0-mv-clw">
+                                <rect key="frame" x="108" y="213" width="177" height="233"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TVq-hD-yXe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dL7-cP-OKZ" secondAttribute="trailing" id="IYG-AJ-Siv"/>
+                            <constraint firstItem="dL7-cP-OKZ" firstAttribute="leading" secondItem="TVq-hD-yXe" secondAttribute="leading" id="Yfm-Pp-rEv"/>
+                            <constraint firstItem="dL7-cP-OKZ" firstAttribute="top" secondItem="TVq-hD-yXe" secondAttribute="top" id="z4b-dh-ilO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navItem" destination="9bM-sE-xJQ" id="nQT-Dd-mZf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t92-pY-Z8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="E2K-9r-SKy" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1696.9465648854962" y="-27.464788732394368"/>
+        </scene>
         <!--About View Controller-->
         <scene sceneID="X96-XF-MYw">
             <objects>
-                <viewController storyboardIdentifier="about" modalPresentationStyle="fullScreen" id="phn-Mv-Gw5" customClass="AboutViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="about" id="phn-Mv-Gw5" customClass="AboutViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tbl-Pl-FV9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +225,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="About" id="m0M-Sq-TWk">
+                                    <navigationItem title="Title" id="m0M-Sq-TWk">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="TYD-FA-io5">
                                             <imageReference key="image" image="arrow.left.circle.fill" catalog="system" renderingMode="hierarchical">
                                                 <hierarchicalColors>
@@ -211,7 +261,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za6-hn-7R3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="gsF-7D-jza" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1624" y="-27"/>
+            <point key="canvasLocation" x="2483" y="-27"/>
         </scene>
     </scenes>
     <resources>
@@ -221,16 +271,16 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
