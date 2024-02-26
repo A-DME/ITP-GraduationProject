@@ -28,6 +28,7 @@ class CartTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
         cellView.layer.cornerRadius = 16
         cellView.layer.masksToBounds = true
         productImage.layer.cornerRadius = 20
