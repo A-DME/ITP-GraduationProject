@@ -18,7 +18,7 @@ struct Collections: Codable {
     struct SmartCollection: Codable {
        
         let title: String
-        let image: Image
+        let image: cImage
 
         enum CodingKeys: String, CodingKey {
             case title
@@ -27,7 +27,7 @@ struct Collections: Codable {
     }
 
     // MARK: - Image
-    struct Image: Codable {
+    struct cImage: Codable {
     
         let src: String
 
