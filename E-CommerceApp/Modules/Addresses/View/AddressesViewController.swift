@@ -7,73 +7,15 @@
 
 import UIKit
 
-class AddressesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddressesViewController: UIViewController {
 
-    @IBOutlet weak var addresses: UITableView!
-    
-    var viewModel: AddressesViewModel?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        addresses.delegate = self
-        addresses.dataSource = self
-        addresses.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
-        
-        viewModel = AddressesViewModel()
+
         // Do any additional setup after loading the view.
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if viewModel?.addresses.count == 0{
-        tableView.setEmptyView(title: "No addresses added yet", message: "Go ahead an add an address!")
-        }
-        else {
-        tableView.restore()
-        }
-        
-        return (viewModel?.addresses.count) ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! AddressTableViewCell
-        cell.nameLabel.text = (viewModel?.addresses[indexPath.row].name)!
-        cell.cityLabel.text = (viewModel?.addresses[indexPath.row].city)!
-        cell.addressLabel.text = (viewModel?.addresses[indexPath.row].address)!
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setAddressAlert = UIAlertController(title: "Set Default", message: "Do you want to set this address as your default adderss?", preferredStyle: .alert)
-        let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
-            // TODO: save as default address
-            self.dismiss(animated: true)
-        }
-        let no = UIAlertAction(title: "No", style: .default)
-        
-        setAddressAlert.addAction(yes)
-        setAddressAlert.addAction(no)
-        present(setAddressAlert, animated: true)
-    }
-    
-    
-    @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true)
-    }
-    
-    @IBAction func addNewAddressButton(_ sender: Any) {
-        let addNew = self.storyboard?.instantiateViewController(withIdentifier: "addNew") as! AddNewAddressViewController
-        present(addNew, animated: true)
-    }
-    
+
     /*
     // MARK: - Navigation
 
@@ -83,44 +25,5 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func unwindToAddresses(unwingSegue: UIStoryboardSegue){}
 
-}
-
-// MARK: - Extention to UITableView
-// a help from the internet
-
-// reference: https://medium.com/@mtssonmez/handle-empty-tableview-in-swift-4-ios-11-23635d108409
-
-extension UITableView {
-    func setEmptyView(title: String, message: String) {
-        let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
-        let titleLabel = UILabel()
-        let messageLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        messageLabel.textColor = UIColor.lightGray
-        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
-        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 20).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -20).isActive = true
-        titleLabel.text = title
-        messageLabel.text = message
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        // The only tricky part is here:
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
-        }
-        func restore() {
-            self.backgroundView = nil
-            self.separatorStyle = .none
-        }
 }
