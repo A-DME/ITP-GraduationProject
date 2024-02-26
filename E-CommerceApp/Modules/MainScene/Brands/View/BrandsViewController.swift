@@ -47,7 +47,7 @@ extension BrandsViewController{
         flag = false
         result = Products(products: [])
     }
-    func registerCell{
+    func registerCell(){
         ItemsCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "ItemsCell")
     }
     
