@@ -7,4 +7,68 @@
 
 import Foundation
 
+class CategoriesViewModel{
+    var networkHandler:NetworkManager?
+    var bindResultToViewController : (()->()) = {}
+    var men :[Product]?
+    var women :[Product]?
+    var kid :[Product]?
+    var result : Products?{
+         didSet{
+             bindResultToViewController()
+         }
+     }
+     
+     init() {
+         self.networkHandler = NetworkManager()
+         men = []
+         women = []
+         kid = []
+         
+     }
+    
+     func loadData(){
+         let endpoint = APIHandler.EndPoints.products.rawValue
+         let shopURL = APIHandler.storeURL
+         let apiKey = APIHandler.apiKey
+         let accessToken = APIHandler.accessToken
 
+         let apiUrl = "https://\(apiKey):\(accessToken)@\(shopURL)/admin/api/2024-01/\(endpoint)"
+         networkHandler?.fetch(url: apiUrl, type: Products.self, complitionHandler: { data in
+             self.result = data
+             self.filterResult()
+       
+         })
+         
+         
+     }
+    private func filterResult(){
+        for item in result?.products ?? []{
+            let components = item.tags.components(separatedBy: ",")
+            if components.contains(" men"){
+                men?.append(item)
+            }else if components.contains(" women"){
+                women?.append(item)
+            }else if components.contains(" kid"){
+                kid?.append(item)
+            }
+        }
+    }
+    func getAllData()->[Product]{
+        
+        return result?.products ?? []
+     }
+    func getWomenData()->[Product]{
+        
+        return women ??  []
+     }
+    func getMenData()->[Product]{
+        
+        return men ?? []
+     }
+    func getKidsData()->[Product]{
+        
+        return kid ?? []
+     }
+
+}

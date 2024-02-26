@@ -281,7 +281,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uKQ-BG-Ke7">
                                 <rect key="frame" x="16" y="253" width="361" height="516"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mdK-AO-uPI">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mdK-AO-uPI">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -323,10 +323,9 @@
                                 <rect key="frame" x="0.0" y="198" width="393" height="32"/>
                                 <segments>
                                     <segment title="All"/>
-                                    <segment title="Shose"/>
+                                    <segment title="Shoes"/>
                                     <segment title="Accessories"/>
                                     <segment title="T-Shirts"/>
-                                    <segment title="Bags"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -354,7 +353,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Categories" image="squares.leading.rectangle.fill" catalog="system" id="Tzd-fK-UG3"/>
                     <connections>
+                        <outlet property="categorySeg" destination="nrp-A6-7wP" id="uuL-uD-shN"/>
                         <outlet property="itemsCollection" destination="uKQ-BG-Ke7" id="fAh-Ny-SXb"/>
+                        <outlet property="subCategorrySeg" destination="DuN-D4-mOE" id="xpy-kC-5FY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzZ-1m-tXs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -436,7 +437,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
