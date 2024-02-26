@@ -20,6 +20,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadData()
         setupCollectionView()
         registerCells()
