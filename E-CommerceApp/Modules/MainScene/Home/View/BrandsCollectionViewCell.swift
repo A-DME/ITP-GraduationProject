@@ -11,6 +11,7 @@ class BrandsCollectionViewCell: UICollectionViewCell {
 
    
     
+    @IBOutlet weak var vBackground: UIView!
     @IBOutlet weak var brandImg: UIImageView!
     static func nib()->UINib{
         return UINib(nibName: "BrandsCollectionViewCell", bundle: nil)
@@ -18,11 +19,11 @@ class BrandsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        brandImg.layer.borderWidth = 2
-        brandImg.layer.borderColor = UIColor.black.cgColor
-        brandImg.layer.masksToBounds = false
-        brandImg.layer.cornerRadius = (brandImg.frame.height)/12
-        brandImg.clipsToBounds = true
+        vBackground.layer.borderWidth = 2
+        vBackground.layer.borderColor = UIColor.black.cgColor
+        vBackground.layer.masksToBounds = false
+        vBackground.layer.cornerRadius = (vBackground.frame.height)/12
+        vBackground.clipsToBounds = true
     }
 
 }
