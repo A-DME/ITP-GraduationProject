@@ -25,6 +25,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         settings.register(UINib(nibName: "SettingsTableViewCell", bundle: nil), forCellReuseIdentifier: "settingCell")
         viewModel = SettingsViewModel()
         // Do any additional setup after loading the view.
+        
+        // TODO: - Logout button hide and show based on authorization status
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,10 +56,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let currency = self.storyboard?.instantiateViewController(identifier: "currency") as! CurrencyViewController
             present(currency, animated: true)
         case 2:
-            let applePay = self.storyboard?.instantiateViewController(identifier: "applePay") as! ApplePayViewController
-//            applePay.navItem.title = (viewModel?.settingsList[indexPath.row])!
-            present(applePay, animated: true)
-        case 3:
             let about = self.storyboard?.instantiateViewController(withIdentifier: "about") as! AboutViewController
             present(about, animated: true)
         default:
@@ -79,4 +77,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         dismiss(animated: true)
     }
     
+    @IBAction func logoutButton(_ sender: Any) {
+        // TODO: - Write here logout logic
+        dismiss(animated: true)
+    }
 }
