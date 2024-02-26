@@ -93,6 +93,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="customerImage" destination="RJ8-Tt-Xh9" id="72D-Zh-f79"/>
+                <outlet property="customerName" destination="efP-eS-gzn" id="8Ah-Xf-Zgt"/>
+                <outlet property="feedback" destination="QoZ-fH-Ttt" id="xMl-v3-dzm"/>
+                <outlet property="rating" destination="kuc-ZT-SJa" id="4Zy-Wa-cmz"/>
+            </connections>
             <point key="canvasLocation" x="143.5114503816794" y="55.985915492957751"/>
         </tableViewCell>
     </objects>

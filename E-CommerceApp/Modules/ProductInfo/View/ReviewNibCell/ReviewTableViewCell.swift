@@ -8,7 +8,13 @@
 import UIKit
 
 class ReviewTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var customerImage: UIImageView!
+    
+    @IBOutlet weak var customerName: UILabel!
+    
+    @IBOutlet weak var rating: UILabel!
+    
+    @IBOutlet weak var feedback: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
