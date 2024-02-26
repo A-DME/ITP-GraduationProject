@@ -16,7 +16,6 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
     var viewModel: CurrencyViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-        navItem.title = "Currencies"
         currencies.delegate = self
         currencies.dataSource = self
         viewModel = CurrencyViewModel()
@@ -35,6 +34,21 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell")!
         cell.textLabel?.text = (viewModel?.currencyList[indexPath.row])!
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let setCurrencyAlert = UIAlertController(title: "Confirm currency change", message: "Do you want to change the currency of the app to \((viewModel?.currencyList[indexPath.row])!) ?", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
+            
+            // MARK: - set application currency
+            
+            self.dismiss(animated: true)
+        }
+        let no = UIAlertAction(title: "No", style: .destructive)
+        
+        setCurrencyAlert.addAction(yes)
+        setCurrencyAlert.addAction(no)
+        present(setCurrencyAlert, animated: true)
     }
 
     /*
