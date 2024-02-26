@@ -19,11 +19,17 @@ class HomeViewModel{
     
     init() {
         self.networkHandler = NetworkManager()
+        
     }
    
     func loadData(){
-        
-        networkHandler?.fetch(url: "https://ea12d3c9a7ec864490ccdbb44084163a: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@q2-23-24-ios-sv-team2.myshopify.com/admin/api/2024-01/smart_collections.json", type: Collections.self, complitionHandler: { data in
+        //let endpoint = APIHandler.EndPoints.products.rawValue
+        let shopURL = APIHandler.storeURL
+        let apiKey = APIHandler.apiKey
+        let accessToken = APIHandler.accessToken
+
+        let apiUrl = "https://\(apiKey):\(accessToken)@\(shopURL)/admin/api/2024-01/smart_collections.json"
+        networkHandler?.fetch(url: apiUrl, type: Collections.self, complitionHandler: { data in
             self.result = data
         })
     }
