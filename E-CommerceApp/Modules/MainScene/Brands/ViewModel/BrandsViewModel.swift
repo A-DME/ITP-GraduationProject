@@ -8,8 +8,7 @@
 import Foundation
 class BrandsViewModel{
     var networkHandler:NetworkManager?
-    
-     var bindResultToViewController : (()->()) = {}
+    var bindResultToViewController : (()->()) = {}
     var brand :[Product]?
     var result : Products?{
          didSet{
