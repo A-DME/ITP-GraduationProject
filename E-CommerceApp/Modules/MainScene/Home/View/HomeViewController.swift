@@ -14,7 +14,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var brandsCollection: UICollectionView!
     
-    var result : Collections?
+    var brandsResult : Collections?
+    var adsResult : PriceRules?
+    var PriceRuleresult : Collections?
     var indicator : UIActivityIndicatorView?
     var homeViewModel : HomeViewModel?
     
@@ -85,34 +87,45 @@ extension HomeViewController{
 }
 // MARK: - Get Data
 extension HomeViewController{
-    func display() {
+    func displayBrands() {
         indicator?.stopAnimating()
-        result = homeViewModel?.getData()
+        brandsResult = homeViewModel?.getBrandsData()
     }
-    
+    func displayAdsData() {
+        indicator?.stopAnimating()
+        adsResult = homeViewModel?.getAdsData()
+    }
     func loadData(){
         setIndicator()
-        homeViewModel?.loadData()
-        homeViewModel?.bindResultToViewController = { [weak self] in
+        homeViewModel?.loadBrandCollectionData()
+        homeViewModel?.bindBrandsResultToViewController = { [weak self] in
             DispatchQueue.main.async {
-                
-                self?.display()
-                print(self?.result?.smartCollections[0].title ?? "no data")
+                self?.displayBrands()
                 self?.brandsCollection.reloadData()
                 
             }
+            
         }
+        homeViewModel?.loadAdsCollectionData()
+        homeViewModel?.bindAdsResultToViewController = { [weak self] in
+            DispatchQueue.main.async {
+                self?.displayAdsData()
+                self?.adsCollectionView.reloadData()
+                
+            }
+        }
+        
     }
-    
 }
 // MARK: - UICollectionView
 
 extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == adsCollectionView{
-            return 5
+            print(adsResult?.priceRules.count)
+            return adsResult?.priceRules.count ?? 0
         } else{
-            return result?.smartCollections.count ?? 0
+            return brandsResult?.smartCollections.count ?? 0
         }
         
     }
@@ -120,10 +133,11 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == adsCollectionView{
             let cell = adsCollectionView.dequeueReusableCell(withReuseIdentifier: "AdCell", for: indexPath) as! AdsCollectionViewCell
+            cell.img.image = UIImage(named: "Ad+\(indexPath.row)")
             return cell
         } else{
             let cell = brandsCollection.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath) as! BrandsCollectionViewCell
-            let url = URL(string:result?.smartCollections[indexPath.row].image.src ?? "")
+            let url = URL(string:brandsResult?.smartCollections[indexPath.row].image.src ?? "")
             cell.brandImg.kf.setImage(with:url ,placeholder: UIImage(named: "ad"))
             return cell
         }
@@ -142,8 +156,8 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brandsCollection{
             let brandsVC = storyboard?.instantiateViewController(identifier: "BrandsVC")as! BrandsViewController
-            brandsVC.vendor = result?.smartCollections[indexPath.row].title
-            brandsVC.brandImage = result?.smartCollections[indexPath.row].image.src
+            brandsVC.vendor = brandsResult?.smartCollections[indexPath.row].title
+            brandsVC.brandImage = brandsResult?.smartCollections[indexPath.row].image.src
             navigationController?.pushViewController(brandsVC, animated: true)
         }
         
