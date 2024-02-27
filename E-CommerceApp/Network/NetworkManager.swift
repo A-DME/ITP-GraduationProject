@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 class NetworkManager{
+    
     func fetch<T: Codable>(url: String, type: T.Type, complitionHandler: @escaping (T?)->Void) {
         let url = URL(string:url)
         guard let newURL = url else {
@@ -29,4 +30,12 @@ class NetworkManager{
             }
         }
     }
+   
+
+
+   
+
+    
+    
+    
 }
