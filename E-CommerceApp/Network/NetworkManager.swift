@@ -30,12 +30,34 @@ class NetworkManager{
             }
         }
     }
+    func PostToApi(url:String,parameters: Parameters){
+       
+                let headers: HTTPHeaders = [
+                   "Cookie": ""
+                ]
+                AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                    .response{ response in
+                        switch response.result {
+                        case .success:
+                            if let data = response.data {
+                                print("Success")
+                            }
+                        case .failure(let error):
+                            print("Error: \(error)")
+                            
+                            if let data = response.data {
+                                print("Response Data: \(String(data: data, encoding: .utf8) ?? "")")
+                            }
+                        }
+                    }
+            }
+        }
+
+
+
    
 
+    
+    
+    
 
-   
-
-    
-    
-    
-}

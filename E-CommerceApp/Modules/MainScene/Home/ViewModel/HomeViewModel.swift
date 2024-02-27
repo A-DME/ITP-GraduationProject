@@ -11,10 +11,16 @@ class HomeViewModel{
     var networkHandler:NetworkManager?
     let reachabilityHandler = ReachabilityManager()
    
-    var bindResultToViewController : (()->()) = {}
-    var result :Collections? {
+    var bindBrandsResultToViewController : (()->()) = {}
+    var Brandsresult :Collections? {
         didSet{
-            bindResultToViewController()
+            bindBrandsResultToViewController()
+        }
+    }
+    var bindAdsResultToViewController : (()->()) = {}
+    var Adsresult :PriceRules? {
+        didSet{
+            bindAdsResultToViewController()
         }
     }
     
@@ -23,21 +29,34 @@ class HomeViewModel{
         
     }
    
-    func loadData(){
-        //let endpoint = APIHandler.EndPoints.products.rawValue
+    func loadBrandCollectionData(){
+        //let endpoint = data
         let shopURL = APIHandler.storeURL
         let apiKey = APIHandler.apiKey
         let accessToken = APIHandler.accessToken
 
         let apiUrl = "https://\(apiKey):\(accessToken)@\(shopURL)/admin/api/2024-01/smart_collections.json"
         networkHandler?.fetch(url: apiUrl, type: Collections.self, complitionHandler: { data in
-            self.result = data
+            self.Brandsresult = data
         })
     }
-    func getData()->Collections{
-        return result ?? Collections(smartCollections: [])
+    func loadAdsCollectionData(){
+        //let endpoint = data
+        let shopURL = APIHandler.storeURL
+        let apiKey = APIHandler.apiKey
+        let accessToken = APIHandler.accessToken
+
+        let apiUrl = "https://\(apiKey):\(accessToken)@\(shopURL)/admin/api/2024-01/price_rules.json"
+        networkHandler?.fetch(url: apiUrl, type: PriceRules.self, complitionHandler: { data in
+            self.Adsresult = data
+        })
     }
-    
+    func getBrandsData()->Collections{
+        return Brandsresult ?? Collections(smartCollections: [])
+    }
+    func getAdsData()->PriceRules{
+        return Adsresult ?? PriceRules(priceRules: [])
+    }
 
   func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
       reachabilityHandler.checkNetworkReachability { isReachable in
