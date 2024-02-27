@@ -29,7 +29,7 @@ class CategoriesViewModel{
      }
     
      func loadData(){
-         let endpoint = APIHandler.EndPoints.products.rawValue
+         let endpoint = APIHandler.EndPoints.products.order
          let shopURL = APIHandler.storeURL
          let apiKey = APIHandler.apiKey
          let accessToken = APIHandler.accessToken

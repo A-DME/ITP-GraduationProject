@@ -17,6 +17,10 @@ class SignupViewController: UIViewController {
     
     @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var passwordConfirmation: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,17 +28,14 @@ class SignupViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func registerCustomer(firstName: String, lastName: String, email: String, password: String, completion: @escaping (Bool)->Void ) {
+        
     }
-    */
 
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true)
+    }
+    
+    @IBAction func signUpButton(_ sender: Any) {
     }
 }
