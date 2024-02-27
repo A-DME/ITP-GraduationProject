@@ -74,6 +74,8 @@
 		4F7616772B889E730040DC5A /* ItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7616752B889E730040DC5A /* ItemsCollectionViewCell.xib */; };
 		4FA7A1722B8A9C7D00C3AF75 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA7A1702B8A9C7D00C3AF75 /* OrdersTableViewCell.swift */; };
 		4FA7A1732B8A9C7D00C3AF75 /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA7A1712B8A9C7D00C3AF75 /* OrdersTableViewCell.xib */; };
+		4FCFA58D2B8D62E700B1FC16 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCFA58C2B8D62E700B1FC16 /* MainViewController.swift */; };
+		4FCFA58F2B8D630B00B1FC16 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCFA58E2B8D630B00B1FC16 /* MainViewModel.swift */; };
 		5536EABB4BE0F54AE7B24E87 /* Pods_E_CommerceApp_E_CommerceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D894E4DA97BCF74A985EE56E /* Pods_E_CommerceApp_E_CommerceAppUITests.framework */; };
 		CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D42B8A2AF000AC9A59 /* AllReviewsViewController.swift */; };
 		CE6F85D72B8A2B0D00AC9A59 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D62B8A2B0D00AC9A59 /* AddReviewViewController.swift */; };
@@ -178,6 +180,8 @@
 		4F7616752B889E730040DC5A /* ItemsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsCollectionViewCell.xib; sourceTree = "<group>"; };
 		4FA7A1702B8A9C7D00C3AF75 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		4FA7A1712B8A9C7D00C3AF75 /* OrdersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersTableViewCell.xib; sourceTree = "<group>"; };
+		4FCFA58C2B8D62E700B1FC16 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4FCFA58E2B8D630B00B1FC16 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		65824ECDBC03188402A9727B /* Pods-E-CommerceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceAppTests.debug.xcconfig"; path = "Target Support Files/Pods-E-CommerceAppTests/Pods-E-CommerceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		764B8FD44346C47C98B07CA1 /* Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp-E-CommerceAppUITests/Pods-E-CommerceApp-E-CommerceAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B6A8C5D2E5E9E441C99F3AE5 /* Pods-E-CommerceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp.release.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp/Pods-E-CommerceApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 			children = (
 				1A5165512B85E9F400DB8366 /* LaunchScreen.storyboard */,
 				1A5165D82B86780A00DB8366 /* Main.storyboard */,
+				4FCFA58C2B8D62E700B1FC16 /* MainViewController.swift */,
+				4FCFA58E2B8D630B00B1FC16 /* MainViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1077,6 +1083,7 @@
 				1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */,
 				CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */,
 				1A574FF72B869B3B008BBE9E /* ProductInfoViewModel.swift in Sources */,
+				4FCFA58F2B8D630B00B1FC16 /* MainViewModel.swift in Sources */,
 				1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */,
 				1A5165BE2B86105400DB8366 /* HomeViewController.swift in Sources */,
 				1A5165BA2B86101000DB8366 /* SignInViewModel.swift in Sources */,
@@ -1106,6 +1113,7 @@
 				1A5165C82B8611E200DB8366 /* WishlistViewController.swift in Sources */,
 				1A5165DC2B867CC700DB8366 /* ReachabilityManager.swift in Sources */,
 				1A5165492B85E9F100DB8366 /* SceneDelegate.swift in Sources */,
+				4FCFA58D2B8D62E700B1FC16 /* MainViewController.swift in Sources */,
 				1A5165AE2B860F3200DB8366 /* Product.swift in Sources */,
 				CE6F85DC2B8A8B5D00AC9A59 /* ReviewTableViewCell.swift in Sources */,
 				1A57500A2B86A0D0008BBE9E /* AddressBookViewModel.swift in Sources */,

@@ -8,7 +8,8 @@
 import Foundation
 class HomeViewModel{
     
-   var networkHandler:NetworkManager?
+    var networkHandler:NetworkManager?
+    let reachabilityHandler = ReachabilityManager()
    
     var bindResultToViewController : (()->()) = {}
     var result :Collections? {
@@ -36,4 +37,11 @@ class HomeViewModel{
     func getData()->Collections{
         return result ?? Collections(smartCollections: [])
     }
+    
+
+  func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
+      reachabilityHandler.checkNetworkReachability { isReachable in
+          completion(isReachable)
+      }
+  }
 }

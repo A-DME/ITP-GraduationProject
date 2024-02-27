@@ -25,13 +25,27 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
-        IntializeProperties()
-        loadData()
-        self.hideKeyboardWhenTappedAround()
+       
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        registerCell()
+        IntializeProperties()
+        self.hideKeyboardWhenTappedAround()
+        brandsViewModel = BrandsViewModel()
+        brandsViewModel?.checkNetworkReachability{ isReachable in
+            print(isReachable)
+            if isReachable {
+                self.setIndicator()
+                self.loadData()
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
+        }
+    }
+   
     @IBAction func sortList(_ sender: Any) {
         sortedProducts = result?.products.sorted {Double($0.variants.first?.price ?? "0.0") ?? 0.0  < Double($1.variants.first?.price ?? "0.0")  ?? 0.0 }
         flag = !(flag ?? false)
@@ -59,13 +73,23 @@ extension BrandsViewController{
         self.view.addSubview(indicator!)
         
     }
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - getData
 
 extension BrandsViewController{
     func loadData(){
-        setIndicator()
         brandsViewModel = BrandsViewModel()
         brandsViewModel?.loadData()
         brandsViewModel?.bindResultToViewController = { [weak self] in

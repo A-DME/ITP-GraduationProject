@@ -18,14 +18,26 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     var indicator : UIActivityIndicatorView?
     var homeViewModel : HomeViewModel?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadData()
-        setupCollectionView()
-        registerCells()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.setupCollectionView()
+        self.registerCells()
         self.hideKeyboardWhenTappedAround()
-        
+        homeViewModel = HomeViewModel()
+        homeViewModel?.checkNetworkReachability{ isReachable in
+            print(isReachable)
+            if isReachable {
+                self.loadData()
+                self.adsCollectionView.reloadData()
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
+        }
     }
     @IBAction func CartTabbed(_ sender: Any) {
         performSegue(withIdentifier: "CartSegue", sender: self)
@@ -55,6 +67,17 @@ extension HomeViewController{
         self.view.addSubview(indicator!)
         
     }
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 // MARK: - Get Data
 extension HomeViewController{
@@ -65,7 +88,6 @@ extension HomeViewController{
     
     func loadData(){
         setIndicator()
-        homeViewModel = HomeViewModel()
         homeViewModel?.loadData()
         homeViewModel?.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
