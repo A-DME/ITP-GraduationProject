@@ -10,6 +10,7 @@ class BrandsViewModel{
     var networkHandler:NetworkManager?
     var bindResultToViewController : (()->()) = {}
     var brand :[Product]?
+    let model = ReachabilityManager()
     var result : Products?{
          didSet{
              bindResultToViewController()
@@ -44,4 +45,9 @@ class BrandsViewModel{
       
          return brand ?? []
      }
+    func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
+        model.checkNetworkReachability { isReachable in
+            completion(isReachable)
+        }
+    }
 }

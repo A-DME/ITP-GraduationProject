@@ -13,6 +13,7 @@ class CategoriesViewModel{
     var men :[Product]?
     var women :[Product]?
     var kid :[Product]?
+    let model = ReachabilityManager()
     var result : Products?{
          didSet{
              bindResultToViewController()
@@ -70,5 +71,12 @@ class CategoriesViewModel{
         
         return kid ?? []
      }
+    
+
+  func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
+      model.checkNetworkReachability { isReachable in
+          completion(isReachable)
+      }
+  }
 
 }

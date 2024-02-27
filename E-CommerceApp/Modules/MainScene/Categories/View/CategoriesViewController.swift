@@ -20,15 +20,23 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     var indicator : UIActivityIndicatorView?
     var categoriesViewModel : CategoriesViewModel?
     var filteredResult : [Product]?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Customize the button appearance if needed
+   
+    override func viewWillAppear(_ animated: Bool) {
         registerCell()
         setupSegmentesControl()
-        loadData()
         self.hideKeyboardWhenTappedAround()
-        
+        categoriesViewModel = CategoriesViewModel()
+        categoriesViewModel?.checkNetworkReachability{ isReachable in
+            print(isReachable)
+            if isReachable {
+                self.setIndicator()
+                self.loadData()
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
+        }
     }
    
     /*
@@ -60,6 +68,17 @@ extension CategoriesViewController{
     func setupSegmentesControl(){
         categorySeg.addTarget(self, action: #selector(segmentedControlCategoryChanged(_:)), for: .valueChanged)
         subCategorrySeg.addTarget(self, action: #selector(segmentedControlSuCategoryChanged(_:)), for: .valueChanged)
+    }
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 // MARK: - UIcollectionView
@@ -98,8 +117,6 @@ extension CategoriesViewController{
 
 extension CategoriesViewController{
     func loadData(){
-        setIndicator()
-        categoriesViewModel = CategoriesViewModel()
         categoriesViewModel?.loadData()
         categoriesViewModel?.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
