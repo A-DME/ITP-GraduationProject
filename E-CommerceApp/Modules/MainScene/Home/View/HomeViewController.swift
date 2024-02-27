@@ -16,7 +16,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     var brandsResult : Collections?
     var adsResult : PriceRules?
-    var PriceRuleresult : Collections?
+    //var PriceRuleresult : Collections?
     var indicator : UIActivityIndicatorView?
     var homeViewModel : HomeViewModel?
     
@@ -34,6 +34,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             if isReachable {
                 self.loadData()
                 self.adsCollectionView.reloadData()
+                self.brandsCollection.reloadData()
             } else {
                 DispatchQueue.main.async {
                     self.showAlert()
@@ -122,7 +123,6 @@ extension HomeViewController{
 extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == adsCollectionView{
-            print(adsResult?.priceRules.count)
             return adsResult?.priceRules.count ?? 0
         } else{
             return brandsResult?.smartCollections.count ?? 0
@@ -133,7 +133,8 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == adsCollectionView{
             let cell = adsCollectionView.dequeueReusableCell(withReuseIdentifier: "AdCell", for: indexPath) as! AdsCollectionViewCell
-            cell.img.image = UIImage(named: "Ad+\(indexPath.row)")
+            cell.img.image = UIImage(named: "Ad\(indexPath.row)")
+            print(indexPath.row)
             return cell
         } else{
             let cell = brandsCollection.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath) as! BrandsCollectionViewCell

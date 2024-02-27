@@ -20,7 +20,7 @@ class HomeViewModel{
     var bindAdsResultToViewController : (()->()) = {}
     var Adsresult :PriceRules? {
         didSet{
-            bindBrandsResultToViewController()
+            bindAdsResultToViewController()
         }
     }
     
