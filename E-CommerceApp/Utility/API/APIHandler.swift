@@ -23,6 +23,7 @@ class APIHandler{
         case discountCode
         case CollectionID(id:String)
         case ProductDetails(id:String)
+        case SmartCollections
         var order:String{
             switch self{
             case .priceRule:
@@ -43,6 +44,9 @@ class APIHandler{
                 return "products.json?collection_id=\(collectionId)"
             case .ProductDetails(id: let productId):
                 return "products/\(productId).json"
+            case .SmartCollections:
+                return "smart_collections.json"
+                
             }
         }
     }

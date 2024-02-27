@@ -19,7 +19,7 @@ class SignupViewController: UIViewController {
     
     @IBOutlet weak var passwordConfirmation: UITextField!
     
-    var ref : NetworkManager
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
