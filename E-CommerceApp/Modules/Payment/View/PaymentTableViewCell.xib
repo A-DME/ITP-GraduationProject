@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="107" id="KGk-i7-Jjw" customClass="PaymentTableViewCell" customModule="E_CommerceApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="107"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="107"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQJ-tx-sAQ" customClass="ShadowView" customModule="E_CommerceApp" customModuleProvider="target">
+                        <rect key="frame" x="8" y="8" width="377" height="91"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kC1-7t-cbe">
+                        <rect key="frame" x="8" y="8" width="377" height="91"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPw-Kd-wif">
+                                <rect key="frame" x="8" y="8" width="60" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="2re-05-kuv"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxz-4c-11O">
+                                <rect key="frame" x="84" y="35" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQc-Ke-gLj">
+                                <rect key="frame" x="311.33333333333331" y="28.333333333333332" width="49.666666666666686" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="checkmark.circle.fill" catalog="system" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color systemColor="secondaryLabelColor"/>
+                                            <color systemColor="systemGreenColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DQc-Ke-gLj" secondAttribute="trailing" constant="16" id="5Pb-s7-FWt"/>
+                            <constraint firstItem="Nxz-4c-11O" firstAttribute="leading" secondItem="hPw-Kd-wif" secondAttribute="trailing" constant="16" id="5r3-1j-GA7"/>
+                            <constraint firstItem="DQc-Ke-gLj" firstAttribute="centerY" secondItem="Nxz-4c-11O" secondAttribute="centerY" id="9Ho-hd-BjA"/>
+                            <constraint firstAttribute="bottom" secondItem="hPw-Kd-wif" secondAttribute="bottom" constant="8" id="AhA-CE-zyK"/>
+                            <constraint firstItem="Nxz-4c-11O" firstAttribute="centerY" secondItem="hPw-Kd-wif" secondAttribute="centerY" id="EWb-gb-nSU"/>
+                            <constraint firstItem="hPw-Kd-wif" firstAttribute="leading" secondItem="kC1-7t-cbe" secondAttribute="leading" constant="8" id="Nag-gk-ZV5"/>
+                            <constraint firstItem="hPw-Kd-wif" firstAttribute="top" secondItem="kC1-7t-cbe" secondAttribute="top" constant="8" id="OU8-1L-S07"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sQJ-tx-sAQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="6uD-El-bvb"/>
+                    <constraint firstItem="kC1-7t-cbe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="DgU-a6-WKb"/>
+                    <constraint firstAttribute="trailing" secondItem="sQJ-tx-sAQ" secondAttribute="trailing" constant="8" id="JHh-Wo-duZ"/>
+                    <constraint firstAttribute="bottom" secondItem="kC1-7t-cbe" secondAttribute="bottom" constant="8" id="Oiy-lX-xBs"/>
+                    <constraint firstItem="sQJ-tx-sAQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="XRM-EE-jjd"/>
+                    <constraint firstAttribute="trailing" secondItem="kC1-7t-cbe" secondAttribute="trailing" constant="8" id="dNc-M3-2cS"/>
+                    <constraint firstAttribute="bottom" secondItem="sQJ-tx-sAQ" secondAttribute="bottom" constant="8" id="ihh-Cl-cLx"/>
+                    <constraint firstItem="kC1-7t-cbe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="waq-j3-MRm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellMainView" destination="kC1-7t-cbe" id="tac-Sg-FeX"/>
+                <outlet property="paymentImage" destination="hPw-Kd-wif" id="F76-2E-Psm"/>
+                <outlet property="paymentTitle" destination="Nxz-4c-11O" id="mSB-7E-2gg"/>
+                <outlet property="selectedState" destination="DQc-Ke-gLj" id="kbp-3z-SJp"/>
+                <outlet property="shadowLayer" destination="sQJ-tx-sAQ" id="FPN-Ef-B0j"/>
+            </connections>
+            <point key="canvasLocation" x="138.1679389312977" y="10.91549295774648"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

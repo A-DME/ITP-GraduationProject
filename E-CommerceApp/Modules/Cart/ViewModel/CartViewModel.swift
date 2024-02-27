@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 class CartViewModel{
     var bindResultToViewController: (()->()) = {}
     var totalPrice: Double? {

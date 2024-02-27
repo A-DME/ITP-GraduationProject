@@ -46,7 +46,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.decreaseButton.isHidden = true
         }
 //MARK: Todo: Func. of deleteButton
-//        cell.deleteButton.addTarget(cell, action: #selector(self.tableView(_:commit:forRowAt:)), for: .touchUpInside)
+        //        cell.deleteButton.addTarget(cell, action: #selector(self.tableView(_:commit:forRowAt:)), for: .touchUpInside)
         return cell
     }
     

@@ -9,9 +9,9 @@ import UIKit
 
 class CartTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var shadowLayer: ShadowView!
+    @IBOutlet weak var shadeBehind: ShadowView!
     
-    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var mainView: UIView!
     
     @IBOutlet weak var productImage: UIImageView!
     
@@ -28,8 +28,8 @@ class CartTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        cellView.layer.cornerRadius = 16
-        cellView.layer.masksToBounds = true
+        mainView.layer.cornerRadius = 16
+        mainView.layer.masksToBounds = true
         productImage.layer.cornerRadius = 20
     }
 
@@ -51,10 +51,6 @@ class CartTableViewCell: UITableViewCell {
         if Int(quantity.text!)! == 1 {
             decreaseButton.isHidden = true
         }
-        
-    }
-    
-    @IBAction func deleteCell(_ sender: Any) {
     }
 }
 

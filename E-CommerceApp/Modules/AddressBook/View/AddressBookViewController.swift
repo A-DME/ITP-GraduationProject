@@ -26,4 +26,10 @@ class AddressBookViewController: UIViewController {
     }
     */
 
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    @IBAction func proceedButton(_ sender: Any) {
+        performSegue(withIdentifier: "continueToPayment", sender: nil)
+    }
 }
