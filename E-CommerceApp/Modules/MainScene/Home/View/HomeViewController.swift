@@ -16,7 +16,6 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     var brandsResult : Collections?
     var adsResult : PriceRules?
-    //var PriceRuleresult : Collections?
     var indicator : UIActivityIndicatorView?
     var homeViewModel : HomeViewModel?
     
@@ -37,7 +36,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 self.brandsCollection.reloadData()
             } else {
                 DispatchQueue.main.async {
-                    self.showAlert()
+                    self.showConnectionAlert()
                 }
             }
         }
@@ -73,7 +72,7 @@ extension HomeViewController{
         self.view.addSubview(indicator!)
         
     }
-    func showAlert(){
+    func showConnectionAlert(){
         let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
         
         let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
@@ -81,6 +80,17 @@ extension HomeViewController{
         }
         
         alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    func showCoponeAlert(code:String){
+        let alertController = UIAlertController(title: "congratulations", message: "click Copy to get your copone", preferredStyle: .alert)
+        
+        let copyAction = UIAlertAction(title: "Copy", style: .cancel) { _ in
+            UIPasteboard.general.string = code
+        }
+        
+        alertController.addAction(copyAction)
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -134,7 +144,6 @@ extension HomeViewController{
         if collectionView == adsCollectionView{
             let cell = adsCollectionView.dequeueReusableCell(withReuseIdentifier: "AdCell", for: indexPath) as! AdsCollectionViewCell
             cell.img.image = UIImage(named: "Ad\(indexPath.row)")
-            print(indexPath.row)
             return cell
         } else{
             let cell = brandsCollection.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath) as! BrandsCollectionViewCell
@@ -160,6 +169,8 @@ extension HomeViewController{
             brandsVC.vendor = brandsResult?.smartCollections[indexPath.row].title
             brandsVC.brandImage = brandsResult?.smartCollections[indexPath.row].image.src
             navigationController?.pushViewController(brandsVC, animated: true)
+        }else{
+            showCoponeAlert(code: adsResult?.priceRules[indexPath.row].title ?? "")
         }
         
     }
