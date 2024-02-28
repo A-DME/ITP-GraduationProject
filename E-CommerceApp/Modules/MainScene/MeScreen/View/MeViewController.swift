@@ -20,17 +20,17 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
-        IntializeProperties()
+       
         // Do any additional setup after loading the view.
        
     }
     override func viewWillAppear(_ animated: Bool) {
-        
-        setIndicator()
+        registerCell()
+        IntializeProperties()
         meViewModel = MeViewModel()
         meViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
+                self.setIndicator()
                 self.loadData()
             } else {
                 DispatchQueue.main.async {
@@ -105,7 +105,7 @@ extension MeViewController{
     func setIndicator(){
         indicator = UIActivityIndicatorView(style: .large)
         indicator?.color = .black
-        indicator?.center = self.view.center
+        indicator?.center = self.ordersTable.center
         indicator?.startAnimating()
         self.view.addSubview(indicator!)
         
