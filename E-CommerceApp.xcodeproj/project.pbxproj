@@ -58,6 +58,7 @@
 		1A62EE3F2B8E22F800C6058D /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A62EE3E2B8E22F800C6058D /* Payment.storyboard */; };
 		1A67E4462B8E307E00492C7E /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A67E4442B8E307E00492C7E /* PaymentTableViewCell.swift */; };
 		1A67E4472B8E307E00492C7E /* PaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A67E4452B8E307E00492C7E /* PaymentTableViewCell.xib */; };
+		1A954D962B8FBE3D00DE071F /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A954D952B8FBE3D00DE071F /* NetworkManagerTests.swift */; };
 		1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */; };
 		1A9A3B072B88CCAA005CA8B4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */; };
 		1A9A3B092B88F113005CA8B4 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */; };
@@ -175,6 +176,7 @@
 		1A62EE3E2B8E22F800C6058D /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		1A67E4442B8E307E00492C7E /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		1A67E4452B8E307E00492C7E /* PaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTableViewCell.xib; sourceTree = "<group>"; };
+		1A954D952B8FBE3D00DE071F /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				1A51655D2B85E9F500DB8366 /* E_CommerceAppTests.swift */,
 				4F3CC8EC2B8F9F0C00C0F267 /* ReachabilityManagerTests.swift */,
+				1A954D952B8FBE3D00DE071F /* NetworkManagerTests.swift */,
 			);
 			path = "E-CommerceAppTests";
 			sourceTree = "<group>";
@@ -1206,6 +1209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A954D962B8FBE3D00DE071F /* NetworkManagerTests.swift in Sources */,
 				4F3CC8ED2B8F9F0C00C0F267 /* ReachabilityManagerTests.swift in Sources */,
 				1A51655E2B85E9F500DB8366 /* E_CommerceAppTests.swift in Sources */,
 			);
