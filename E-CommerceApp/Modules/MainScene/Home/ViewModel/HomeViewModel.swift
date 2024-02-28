@@ -30,12 +30,7 @@ class HomeViewModel{
     }
    
     func loadBrandCollectionData(){
-        //let endpoint = data
-        let shopURL = APIHandler.storeURL
-        let apiKey = APIHandler.apiKey
-        let accessToken = APIHandler.accessToken
-
-        let apiUrl = "https://\(apiKey):\(accessToken)@\(shopURL)/admin/api/2024-01/smart_collections.json"
+        let apiUrl = APIHandler.urlForGetting(.SmartCollections)
         networkHandler?.fetch(url: apiUrl, type: Collections.self, complitionHandler: { data in
             self.Brandsresult = data
         })

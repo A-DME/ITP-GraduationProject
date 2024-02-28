@@ -24,12 +24,7 @@ class MeViewModel{
      }
     
      func loadData(){
-         let endpoint = APIHandler.EndPoints.orders.order
-         let shopURL = APIHandler.storeURL
-         let apiKey = APIHandler.apiKey
-         let accessToken = APIHandler.accessToken
-
-         let apiUrl = "https://\(apiKey):\(accessToken)@\(shopURL)/admin/api/2024-01/\(endpoint)"
+         let apiUrl = APIHandler.urlForGetting(.orders)
          networkHandler?.fetch(url: apiUrl, type: Orders.self, complitionHandler: { data in
              self.result = data
        

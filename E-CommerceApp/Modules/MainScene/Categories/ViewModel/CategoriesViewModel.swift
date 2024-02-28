@@ -29,12 +29,7 @@ class CategoriesViewModel{
      }
     
      func loadData(){
-         let endpoint = APIHandler.EndPoints.products.order
-         let shopURL = APIHandler.storeURL
-         let apiKey = APIHandler.apiKey
-         let accessToken = APIHandler.accessToken
-
-         let apiUrl = "https://\(apiKey):\(accessToken)@\(shopURL)/admin/api/2024-01/\(endpoint)"
+         let apiUrl = APIHandler.urlForGetting(.products)
          networkHandler?.fetch(url: apiUrl, type: Products.self, complitionHandler: { data in
              self.result = data
              self.filterResult()
