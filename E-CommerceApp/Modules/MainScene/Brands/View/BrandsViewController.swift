@@ -88,6 +88,7 @@ extension BrandsViewController{
 // MARK: - getData
 
 extension BrandsViewController{
+    
     func loadData(){
         brandsViewModel = BrandsViewModel()
         brandsViewModel?.loadData()

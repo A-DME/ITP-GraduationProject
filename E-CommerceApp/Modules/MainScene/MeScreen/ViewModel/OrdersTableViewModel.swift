@@ -1,12 +1,12 @@
 //
-//  MeViewModel.swift
+//  OrdersTableViewModel.swift
 //  E-CommerceApp
 //
-//  Created by Ahmed Abu-zeid on 21/02/2024.
+//  Created by Basma on 28/02/2024.
 //
 
 import Foundation
-class MeViewModel{
+class OrdersTableViewModel{
     var networkHandler:NetworkManager?
     var bindResultToViewController : (()->()) = {}
     var customerItems :[Order]?

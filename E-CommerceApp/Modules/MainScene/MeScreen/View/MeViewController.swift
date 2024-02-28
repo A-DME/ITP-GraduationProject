@@ -12,12 +12,32 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
 
     @IBOutlet weak var wishlistCollection: UICollectionView!
     @IBOutlet weak var ordersTable: UITableView!
+    
+    var result : Orders?
+    var indicator : UIActivityIndicatorView?
+    var meViewModel : MeViewModel?
+    var customerId : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         // Do any additional setup after loading the view.
-        wishlistCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "favCell")
-        ordersTable.register(OrdersTableViewCell.nib(),forCellReuseIdentifier: "orderCell")
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        registerCell()
+        IntializeProperties()
+        meViewModel = MeViewModel()
+        meViewModel?.checkNetworkReachability{ isReachable in
+            if isReachable {
+                self.setIndicator()
+                self.loadData()
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
+        }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         4
@@ -29,11 +49,14 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        result?.orders.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ordersTable.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrdersTableViewCell
+        cell.orderNum.text = "Order No\(result?.orders[indexPath.row].id ?? 0 )"
+        cell.totalAmount.text = "\(result?.orders[indexPath.row].totalPrice ?? "")\(result?.orders[indexPath.row].currency ?? "")"
+        cell.CreatedDate.text = result?.orders[indexPath.row].createdAt.split(separator: "T").first.map(String.init)
        return cell
     }
     
@@ -67,4 +90,61 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }
+    
+}
+extension MeViewController{
+    func IntializeProperties(){
+        result = Orders(orders: [])
+        customerId = 7995440759099
+    }
+    func registerCell(){
+        wishlistCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "favCell")
+        ordersTable.register(OrdersTableViewCell.nib(),forCellReuseIdentifier: "orderCell")
+    }
+    
+    func setIndicator(){
+        indicator = UIActivityIndicatorView(style: .large)
+        indicator?.color = .black
+        indicator?.center = self.ordersTable.center
+        indicator?.startAnimating()
+        self.view.addSubview(indicator!)
+        
+    }
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Ok", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+extension MeViewController{
+    func loadData(){
+        meViewModel = MeViewModel()
+        meViewModel?.loadData()
+        meViewModel?.bindResultToViewController = { [weak self] in
+            DispatchQueue.main.async {
+                
+                self?.display()
+                self?.ordersTable.reloadData()
+            
+            }
+        }
+    }
+    func display() {
+        indicator?.stopAnimating()
+        result?.orders = meViewModel?.getAllData( customerId: customerId ?? 0) ?? []
+        if (result?.orders.count  == 0) {
+            ordersTable.setEmptyMessage("No Orders Yet ")
+        } else {
+            ordersTable.restor()
+        }
+        
+    }
+    
+    
 }
