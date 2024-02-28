@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THe-xl-DZw">
                         <rect key="frame" x="0.0" y="0.0" width="325" height="295"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="Adidas" translatesAutoresizingMaskIntoConstraints="NO" id="2uA-0B-FVb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2uA-0B-FVb">
                                 <rect key="frame" x="16" y="16" width="293" height="263"/>
                             </imageView>
                         </subviews>
@@ -49,7 +49,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Adidas" width="34" height="34"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

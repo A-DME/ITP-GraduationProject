@@ -25,7 +25,7 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        setIndicator()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -34,9 +34,7 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         self.hideKeyboardWhenTappedAround()
         brandsViewModel = BrandsViewModel()
         brandsViewModel?.checkNetworkReachability{ isReachable in
-            print(isReachable)
             if isReachable {
-                self.setIndicator()
                 self.loadData()
             } else {
                 DispatchQueue.main.async {
@@ -51,6 +49,7 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         flag = !(flag ?? false)
         ItemsCollection.reloadData()
     }
+    
     
     
 }
@@ -97,7 +96,7 @@ extension BrandsViewController{
                 
                 self?.display()
                 self?.ItemsCollection.reloadData()
-                self?.brandLogo.kf.setImage(with:URL(string: self?.brandImage ?? "") ,placeholder: UIImage(named: "Item"))
+                self?.brandLogo.kf.setImage(with:URL(string: self?.brandImage ?? "placeHolder") ,placeholder: UIImage(named: "placeHolder"))
                 self?.itemsCount.text = "\(self?.result?.products.count ?? 0) Items"
             }
         }
@@ -113,6 +112,7 @@ extension BrandsViewController{
         
     }
     
+    
 }
 
 // MARK: - UICollectionView
@@ -127,13 +127,13 @@ extension BrandsViewController{
         let cell = ItemsCollection.dequeueReusableCell(withReuseIdentifier: "ItemsCell", for: indexPath) as! ItemsCollectionViewCell
         if flag == false{
             let url = URL(string:result?.products[indexPath.row].image.src ?? "")
-            cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "Item"))
+            cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
             cell.productTitle.text = (result?.products[indexPath.row].title ?? "").split(separator: "|").dropFirst().first.map(String.init)
             cell.productSubTitle.text = result?.products[indexPath.row].vendor
             cell.productPrice.text = result?.products[indexPath.row].variants.first?.price
         } else {
             let url = URL(string:sortedProducts?[indexPath.row].image.src ?? "")
-            cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "Item"))
+            cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
             cell.productTitle.text = (sortedProducts?[indexPath.row].title ?? "").split(separator: "|").dropFirst().first.map(String.init)
             cell.productSubTitle.text = sortedProducts?[indexPath.row].vendor
             cell.productPrice.text = sortedProducts?[indexPath.row].variants.first?.price
