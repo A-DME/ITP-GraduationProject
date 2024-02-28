@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Brands View Controller-->
+        <!--StyleHub-->
         <scene sceneID="xYM-Mf-fer">
             <objects>
                 <viewController storyboardIdentifier="BrandsVC" id="PRP-nj-B4y" customClass="BrandsViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,21 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAj-SD-KbU">
-                                <rect key="frame" x="0.0" y="67" width="393" height="44"/>
-                                <items>
-                                    <navigationItem title="StyleHub" id="taJ-9Y-kWY">
-                                        <barButtonItem key="rightBarButtonItem" image="cart" id="fZV-3N-qga">
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <connections>
-                                                <segue destination="Arc-1O-LPQ" kind="presentation" modalPresentationStyle="fullScreen" id="01C-Sw-nwg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="dr9-pd-AJT">
-                                <rect key="frame" x="16" y="167" width="361" height="27"/>
+                                <rect key="frame" x="16" y="131" width="361" height="27"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEV-Cm-57A">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="27"/>
@@ -57,7 +44,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tUR-Ne-kHb">
-                                <rect key="frame" x="16" y="228" width="361" height="581"/>
+                                <rect key="frame" x="16" y="192" width="361" height="617"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uBm-UG-x14">
                                     <size key="itemSize" width="128" height="128"/>
@@ -81,13 +68,13 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available in stock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlG-2y-PmI">
-                                <rect key="frame" x="16" y="194" width="361" height="18"/>
+                                <rect key="frame" x="16" y="158" width="361" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kf3-nJ-4yx">
-                                <rect key="frame" x="0.0" y="111" width="393" height="56"/>
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="kf3-nJ-4yx">
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="PRP-nj-B4y" id="azl-rq-EaP"/>
@@ -100,22 +87,26 @@
                             <constraint firstItem="GTM-tI-5de" firstAttribute="bottom" secondItem="tUR-Ne-kHb" secondAttribute="bottom" constant="9" id="1eT-II-Z3k"/>
                             <constraint firstItem="kf3-nJ-4yx" firstAttribute="leading" secondItem="GTM-tI-5de" secondAttribute="leading" id="7eF-Fx-tF6"/>
                             <constraint firstItem="XlG-2y-PmI" firstAttribute="top" secondItem="dr9-pd-AJT" secondAttribute="bottom" id="8MW-Sg-BCz"/>
-                            <constraint firstItem="dr9-pd-AJT" firstAttribute="top" secondItem="kf3-nJ-4yx" secondAttribute="bottom" id="Cnw-Wu-2BN"/>
+                            <constraint firstItem="kf3-nJ-4yx" firstAttribute="top" secondItem="GTM-tI-5de" secondAttribute="top" id="ChJ-3G-iHj"/>
+                            <constraint firstItem="dr9-pd-AJT" firstAttribute="top" secondItem="kf3-nJ-4yx" secondAttribute="bottom" constant="16" id="Cnw-Wu-2BN"/>
                             <constraint firstItem="GTM-tI-5de" firstAttribute="trailing" secondItem="dr9-pd-AJT" secondAttribute="trailing" constant="16" id="Due-K8-WeP"/>
-                            <constraint firstItem="HAj-SD-KbU" firstAttribute="trailing" secondItem="GTM-tI-5de" secondAttribute="trailing" id="IfF-zO-3x0"/>
                             <constraint firstItem="dr9-pd-AJT" firstAttribute="leading" secondItem="GTM-tI-5de" secondAttribute="leading" constant="16" id="JvL-s0-2kP"/>
                             <constraint firstItem="XlG-2y-PmI" firstAttribute="leading" secondItem="GTM-tI-5de" secondAttribute="leading" constant="16" id="S0a-KG-796"/>
                             <constraint firstItem="GTM-tI-5de" firstAttribute="trailing" secondItem="kf3-nJ-4yx" secondAttribute="trailing" id="ZvO-rH-Apt"/>
                             <constraint firstItem="GTM-tI-5de" firstAttribute="trailing" secondItem="tUR-Ne-kHb" secondAttribute="trailing" constant="16" id="Zzm-xV-Mg9"/>
                             <constraint firstItem="GTM-tI-5de" firstAttribute="trailing" secondItem="XlG-2y-PmI" secondAttribute="trailing" constant="16" id="eeo-8W-FTk"/>
                             <constraint firstItem="tUR-Ne-kHb" firstAttribute="leading" secondItem="GTM-tI-5de" secondAttribute="leading" constant="16" id="hMk-jm-IbT"/>
-                            <constraint firstItem="HAj-SD-KbU" firstAttribute="leading" secondItem="GTM-tI-5de" secondAttribute="leading" id="hTz-pe-jnW"/>
-                            <constraint firstItem="HAj-SD-KbU" firstAttribute="top" secondItem="GTM-tI-5de" secondAttribute="top" constant="8" id="igv-oU-JAd"/>
                             <constraint firstItem="tUR-Ne-kHb" firstAttribute="top" secondItem="XlG-2y-PmI" secondAttribute="bottom" constant="16" id="k3U-tI-MPU"/>
-                            <constraint firstItem="kf3-nJ-4yx" firstAttribute="top" secondItem="HAj-SD-KbU" secondAttribute="bottom" id="xrS-g2-MNo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="QqZ-8O-Lnf"/>
+                    <navigationItem key="navigationItem" title="StyleHub" id="QqZ-8O-Lnf">
+                        <barButtonItem key="rightBarButtonItem" image="cart" id="fZV-3N-qga">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="Arc-1O-LPQ" kind="presentation" modalPresentationStyle="fullScreen" id="01C-Sw-nwg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ItemsCollection" destination="tUR-Ne-kHb" id="Gmm-7N-iKY"/>
                         <outlet property="brandLogo" destination="cCY-pg-bUC" id="oTw-DG-rJR"/>
@@ -134,7 +125,7 @@
             </objects>
             <point key="canvasLocation" x="2450" y="759"/>
         </scene>
-        <!--Home View Controller-->
+        <!--StyleHub-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -142,20 +133,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zd8-9S-RqO">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <items>
-                                    <navigationItem title="StyleHub" id="zY9-Ck-ufA">
-                                        <barButtonItem key="rightBarButtonItem" image="cart" id="1z7-GU-6WY">
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <connections>
-                                                <action selector="CartTabbed:" destination="BYZ-38-t0r" id="gDO-RN-VoK"/>
-                                                <segue destination="Arc-1O-LPQ" kind="presentation" identifier="CartSegue" modalPresentationStyle="fullScreen" id="c4r-U3-DC1"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mLd-uW-A6C">
                                 <rect key="frame" x="16" y="146" width="361" height="197"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -237,16 +214,21 @@
                             <constraint firstItem="XFs-MP-WCM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="N1i-Hs-bca"/>
                             <constraint firstItem="Ryx-MR-lbc" firstAttribute="top" secondItem="mLd-uW-A6C" secondAttribute="bottom" constant="8" id="NqE-ib-tlf"/>
                             <constraint firstItem="XFs-MP-WCM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="X57-se-Tbl"/>
-                            <constraint firstItem="Zd8-9S-RqO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aPt-TR-jBL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ryx-MR-lbc" secondAttribute="trailing" constant="16" id="c5B-Jm-bMo"/>
                             <constraint firstItem="i9g-m4-ngU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="chw-ze-Wes"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Zd8-9S-RqO" secondAttribute="top" constant="44" id="rOc-Gv-3r9"/>
-                            <constraint firstAttribute="trailing" secondItem="Zd8-9S-RqO" secondAttribute="trailing" id="ugb-Va-jX2"/>
-                            <constraint firstItem="XFs-MP-WCM" firstAttribute="top" secondItem="Zd8-9S-RqO" secondAttribute="bottom" id="x1Q-Yy-win"/>
+                            <constraint firstItem="XFs-MP-WCM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="iPe-3V-pIv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i9g-m4-ngU" secondAttribute="trailing" constant="16" id="yoj-sA-iVC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Gk6-Kb-7YQ"/>
+                    <navigationItem key="navigationItem" title="StyleHub" id="Gk6-Kb-7YQ">
+                        <barButtonItem key="rightBarButtonItem" image="cart" id="1z7-GU-6WY">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="CartTabbed:" destination="BYZ-38-t0r" id="gDO-RN-VoK"/>
+                                <segue destination="Arc-1O-LPQ" kind="presentation" identifier="" modalPresentationStyle="fullScreen" id="c4r-U3-DC1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="adsCollectionView" destination="mLd-uW-A6C" id="Bzp-ir-VTx"/>
@@ -426,7 +408,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eIo-nU-hDL"/>
+        <segue reference="c4r-U3-DC1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cart" width="24" height="24"/>

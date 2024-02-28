@@ -20,16 +20,18 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     var indicator : UIActivityIndicatorView?
     var categoriesViewModel : CategoriesViewModel?
     var filteredResult : [Product]?
-   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setIndicator()
+    }
     override func viewWillAppear(_ animated: Bool) {
         registerCell()
         setupSegmentesControl()
         self.hideKeyboardWhenTappedAround()
         categoriesViewModel = CategoriesViewModel()
         categoriesViewModel?.checkNetworkReachability{ isReachable in
-            print(isReachable)
+          
             if isReachable {
-                self.setIndicator()
                 self.loadData()
             } else {
                 DispatchQueue.main.async {
@@ -91,7 +93,7 @@ extension CategoriesViewController{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = itemsCollection.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemsCollectionViewCell
-        let url = URL(string:filteredResult?[indexPath.row].image.src ?? "")
+        let url = URL(string:filteredResult?[indexPath.row].image.src ?? "placeHolder")
         cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "Item"))
         cell.productTitle.text = (filteredResult?[indexPath.row].title ?? "").split(separator: "|").dropFirst().first.map(String.init)
         cell.productSubTitle.text = filteredResult?[indexPath.row].vendor

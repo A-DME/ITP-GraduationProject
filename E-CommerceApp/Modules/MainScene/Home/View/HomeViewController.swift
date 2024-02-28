@@ -22,6 +22,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setIndicator()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.setupCollectionView()
@@ -99,7 +100,6 @@ extension HomeViewController{
 // MARK: - Get Data
 extension HomeViewController{
     func displayBrands() {
-        indicator?.stopAnimating()
         brandsResult = homeViewModel?.getBrandsData()
     }
     func displayAdsData() {
@@ -107,7 +107,7 @@ extension HomeViewController{
         adsResult = homeViewModel?.getAdsData()
     }
     func loadData(){
-        setIndicator()
+       
         homeViewModel?.loadBrandCollectionData()
         homeViewModel?.bindBrandsResultToViewController = { [weak self] in
             DispatchQueue.main.async {
@@ -147,8 +147,8 @@ extension HomeViewController{
             return cell
         } else{
             let cell = brandsCollection.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath) as! BrandsCollectionViewCell
-            let url = URL(string:brandsResult?.smartCollections[indexPath.row].image.src ?? "")
-            cell.brandImg.kf.setImage(with:url ,placeholder: UIImage(named: "ad"))
+            let url = URL(string:brandsResult?.smartCollections[indexPath.row].image.src ?? "placeHolder")
+            cell.brandImg.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
             return cell
         }
         

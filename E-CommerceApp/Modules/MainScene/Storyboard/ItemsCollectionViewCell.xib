@@ -19,7 +19,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6T-Lm-yey">
                         <rect key="frame" x="0.0" y="0.0" width="246" height="314"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Item" translatesAutoresizingMaskIntoConstraints="NO" id="NYb-vS-2Gx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="NYb-vS-2Gx">
                                 <rect key="frame" x="8" y="8" width="230" height="221.66666666666666"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="SportWear" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKv-MG-eOF">
@@ -40,11 +40,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tph-NW-VDJ">
-                                <rect key="frame" x="187" y="16" width="51" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title=""/>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AKv-MG-eOF" secondAttribute="trailing" constant="8" id="0BA-Kw-sdJ"/>
@@ -62,9 +57,7 @@
                             <constraint firstItem="NYb-vS-2Gx" firstAttribute="top" secondItem="x6T-Lm-yey" secondAttribute="top" constant="8" id="hfh-6Q-uvQ"/>
                             <constraint firstItem="6IH-ln-seN" firstAttribute="leading" secondItem="x6T-Lm-yey" secondAttribute="leading" constant="8" id="hm8-hu-KYz"/>
                             <constraint firstItem="1Zo-nx-zni" firstAttribute="leading" secondItem="x6T-Lm-yey" secondAttribute="leading" constant="8" id="joA-hR-OdX"/>
-                            <constraint firstItem="Tph-NW-VDJ" firstAttribute="top" secondItem="x6T-Lm-yey" secondAttribute="top" constant="16" id="lRt-Ln-7SH"/>
                             <constraint firstItem="AKv-MG-eOF" firstAttribute="leading" secondItem="x6T-Lm-yey" secondAttribute="leading" constant="8" id="qJ9-Py-wSs"/>
-                            <constraint firstAttribute="trailing" secondItem="Tph-NW-VDJ" secondAttribute="trailing" constant="8" id="ziN-U9-5Cy"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -87,8 +80,4 @@
             <point key="canvasLocation" x="239.69465648854961" y="71.126760563380287"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="Item" width="160" height="203"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
-    </resources>
 </document>
