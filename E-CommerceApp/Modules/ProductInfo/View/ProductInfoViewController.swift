@@ -32,6 +32,7 @@ class ProductInfoViewController: UIViewController {
         super.viewDidLoad()
         setIndicator()
         dummy()
+        configureReviewsTableView()
 
         // Do any additional setup after loading the view.
     }
@@ -78,7 +79,7 @@ class ProductInfoViewController: UIViewController {
     func configureReviewsTableView(){
         reviewsTableView.dataSource = self
         reviewsTableView.delegate = self
-        reviewsTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "ReviewTableViewCell")
+        reviewsTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewCell")
     }
     
 }
@@ -130,13 +131,13 @@ extension ProductInfoViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as! ReviewTableViewCell
-        cell.configureCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! ReviewTableViewCell
+        //cell.configureCell()
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 130
     }
     
     
