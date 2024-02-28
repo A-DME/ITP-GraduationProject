@@ -12,6 +12,8 @@ class OrdersTableViewCell: UITableViewCell {
         return UINib(nibName: "OrdersTableViewCell", bundle: nil)
     }
 
+    @IBOutlet weak var QuantityLabel: UILabel!
+    @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var CreatedDate: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
     @IBOutlet weak var orderNum: UILabel!

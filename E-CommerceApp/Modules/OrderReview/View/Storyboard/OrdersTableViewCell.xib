@@ -21,14 +21,14 @@
                         <rect key="frame" x="8" y="8" width="304" height="97"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order No19584" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPE-nr-TM8">
-                                <rect key="frame" x="16" y="8" width="272" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <rect key="frame" x="0.0" y="8" width="304" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIX-Rp-32w">
-                                <rect key="frame" x="16" y="39" width="101" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="47" width="101" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -37,7 +37,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3dm-JN-ROs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -46,26 +46,26 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="TsH-DI-6ZE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created at" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFA-a3-47m">
-                                <rect key="frame" x="16" y="68" width="80" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="72" width="80" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pPE-nr-TM8" secondAttribute="trailing" constant="16" id="3ho-Td-bV3"/>
                             <constraint firstItem="ibx-oP-Ugq" firstAttribute="leading" secondItem="w0l-q9-tSK" secondAttribute="leading" constant="165" id="3xa-TN-o7p"/>
                             <constraint firstAttribute="trailing" secondItem="u5k-jA-0Dh" secondAttribute="trailing" constant="16" id="79e-in-4rr"/>
                             <constraint firstItem="u5k-jA-0Dh" firstAttribute="top" secondItem="ibx-oP-Ugq" secondAttribute="bottom" constant="8" id="BlV-v6-OPC"/>
                             <constraint firstAttribute="trailing" secondItem="VFA-a3-47m" secondAttribute="trailing" constant="208" id="BrN-jd-Pgl"/>
-                            <constraint firstItem="pPE-nr-TM8" firstAttribute="leading" secondItem="w0l-q9-tSK" secondAttribute="leading" constant="16" id="Cux-zc-BN9"/>
                             <constraint firstAttribute="trailing" secondItem="ibx-oP-Ugq" secondAttribute="trailing" constant="16" id="LE9-AL-XCU"/>
+                            <constraint firstItem="pPE-nr-TM8" firstAttribute="leading" secondItem="w0l-q9-tSK" secondAttribute="leading" id="PwX-Ck-ym0"/>
+                            <constraint firstAttribute="trailing" secondItem="pPE-nr-TM8" secondAttribute="trailing" id="QNA-Zm-MDA"/>
                             <constraint firstItem="pPE-nr-TM8" firstAttribute="top" secondItem="w0l-q9-tSK" secondAttribute="top" constant="8" id="RYz-0O-X2A"/>
                             <constraint firstItem="ibx-oP-Ugq" firstAttribute="top" secondItem="pPE-nr-TM8" secondAttribute="bottom" constant="1" id="SJT-sV-Uia"/>
                             <constraint firstItem="u5k-jA-0Dh" firstAttribute="leading" secondItem="w0l-q9-tSK" secondAttribute="leading" constant="165" id="VbQ-iz-Np3"/>
@@ -88,8 +88,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="CreatedDate" destination="u5k-jA-0Dh" id="2Fd-GJ-qhv"/>
+                <outlet property="QuantityLabel" destination="VFA-a3-47m" id="8rS-Ni-wEi"/>
                 <outlet property="orderNum" destination="pPE-nr-TM8" id="aFK-8T-LD4"/>
                 <outlet property="totalAmount" destination="ibx-oP-Ugq" id="kQS-Mm-O5R"/>
+                <outlet property="totalAmountLabel" destination="bIX-Rp-32w" id="vYX-OO-xgD"/>
                 <outlet property="vBackground" destination="w0l-q9-tSK" id="zgq-QM-qVu"/>
             </connections>
             <point key="canvasLocation" x="120.61068702290076" y="-22.887323943661972"/>
