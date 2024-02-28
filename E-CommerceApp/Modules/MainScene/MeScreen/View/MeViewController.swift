@@ -37,6 +37,11 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
        return cell
     }
     
+    @IBAction func navigateToWishlist(_ sender: Any) {
+        if let tabBarController = self.tabBarController{
+            tabBarController.selectedIndex = 2
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
             let width = wishlistCollection.frame.width / 3 - 1
