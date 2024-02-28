@@ -26,6 +26,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="KvM-54-fx7" kind="show" identifier="detailsSegue" id="P6r-Ds-PFY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -37,7 +40,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Nl-wP-HDD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-153" y="980"/>
+            <point key="canvasLocation" x="-77" y="1348"/>
         </scene>
         <!--Me-->
         <scene sceneID="ob0-Xj-vF7">
@@ -91,6 +94,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="47.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="KvM-54-fx7" kind="showDetail" identifier="detailsSegue" id="XqY-bZ-SnF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -277,7 +283,39 @@
             </objects>
             <point key="canvasLocation" x="1383" y="835"/>
         </scene>
+        <!--Order Details Table View Controller-->
+        <scene sceneID="fqQ-Te-isg">
+            <objects>
+                <tableViewController id="KvM-54-fx7" customClass="OrderDetailsTableViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="pQw-pU-2C0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" id="040-g1-71E" customClass="OrdersTableViewCell" customModule="E_CommerceApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="040-g1-71E" id="gzu-TC-kym">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KvM-54-fx7" id="2yg-5f-fCl"/>
+                            <outlet property="delegate" destination="KvM-54-fx7" id="s1y-L2-Y3s"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="mdQ-X5-wTI"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMs-VB-Tq9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="1348"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XqY-bZ-SnF"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="cart" width="24" height="24"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>

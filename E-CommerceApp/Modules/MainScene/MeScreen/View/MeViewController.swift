@@ -59,6 +59,21 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         cell.CreatedDate.text = result?.orders[indexPath.row].createdAt.split(separator: "T").first.map(String.init)
        return cell
     }
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailsSegue", sender: self)
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "detailsSegue"{
+            let vc = segue.destination as! OrderDetailsTableViewController
+            vc.result = result?.orders[ordersTable.indexPathForSelectedRow!.row]
+        }
+    }
     
     @IBAction func navigateToWishlist(_ sender: Any) {
         if let tabBarController = self.tabBarController{

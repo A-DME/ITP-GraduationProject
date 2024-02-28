@@ -58,7 +58,9 @@ class OrdersTableViewController: UITableViewController {
         return cell
     }
     
-
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "All orders"
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -93,16 +95,20 @@ class OrdersTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailsSegue", sender: self)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let vc = segue.destination as! OrderDetailsTableViewController
+        vc.result = result?.orders[tableView.indexPathForSelectedRow!.row]
     }
-    */
+
 
 }
 extension OrdersTableViewController{
@@ -150,6 +156,7 @@ extension OrdersTableViewController{
     func display() {
         indicator?.stopAnimating()
         result?.orders = ordersViewModel?.getAllData( customerId: customerId ?? 0) ?? []
+     
         if (result?.orders.count  == 0) {
             tableView.setEmptyMessage("No Orders Yet ")
         } else {
