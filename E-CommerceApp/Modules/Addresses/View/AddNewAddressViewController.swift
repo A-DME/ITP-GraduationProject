@@ -13,7 +13,6 @@ class AddNewAddressViewController: UIViewController {
     
     @IBOutlet weak var cityField: UITextField!
     
-    
     @IBOutlet weak var phoneField: UITextField!
     
     @IBOutlet weak var addressField: UITextField!

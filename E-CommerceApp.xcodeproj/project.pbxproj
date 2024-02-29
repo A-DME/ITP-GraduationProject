@@ -63,6 +63,7 @@
 		1A9A3B072B88CCAA005CA8B4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */; };
 		1A9A3B092B88F113005CA8B4 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */; };
 		1A9A3B0D2B891731005CA8B4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */; };
+		1ACB24942B9059B500A841FB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB24932B9059B500A841FB /* Address.swift */; };
 		1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */; };
 		1AF9BC442B8A7180006A2E4D /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */; };
 		1AF9BC452B8A7180006A2E4D /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF9BC432B8A7180006A2E4D /* AddressTableViewCell.xib */; };
@@ -184,6 +185,7 @@
 		1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		1ACB24932B9059B500A841FB /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewController.swift; sourceTree = "<group>"; };
 		1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		1AF9BC432B8A7180006A2E4D /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
@@ -761,6 +763,7 @@
 		1A5750112B86A26F008BBE9E /* Addresses */ = {
 			isa = PBXGroup;
 			children = (
+				1ACB24922B90599800A841FB /* Model */,
 				1A5750152B86A2A0008BBE9E /* View */,
 				1A5750122B86A287008BBE9E /* ViewModel */,
 			);
@@ -829,6 +832,14 @@
 				1A62EE3E2B8E22F800C6058D /* Payment.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		1ACB24922B90599800A841FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1ACB24932B9059B500A841FB /* Address.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4F5BA7DC2B88940700F912C3 /* Brands */ = {
@@ -1211,6 +1222,7 @@
 				1A5165D52B865CA400DB8366 /* MeViewModel.swift in Sources */,
 				1A9A3B0D2B891731005CA8B4 /* AboutViewController.swift in Sources */,
 				1A5165C82B8611E200DB8366 /* WishlistViewController.swift in Sources */,
+				1ACB24942B9059B500A841FB /* Address.swift in Sources */,
 				1A5165DC2B867CC700DB8366 /* ReachabilityManager.swift in Sources */,
 				CE4EE1132B8F83B900C358C6 /* UserDefaults.swift in Sources */,
 				1A5165492B85E9F100DB8366 /* SceneDelegate.swift in Sources */,
