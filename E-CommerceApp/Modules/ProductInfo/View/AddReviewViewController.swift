@@ -16,6 +16,9 @@ class AddReviewViewController: UIViewController {
     }
     
 
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
     /*
     // MARK: - Navigation
 

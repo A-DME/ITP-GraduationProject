@@ -13,7 +13,7 @@
         <!--Product Info View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="prodInfo" id="Y6W-OH-hqX" customClass="ProductInfoViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="prodInfo" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="ProductInfoViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,9 +31,15 @@
                                                 </hierarchicalColors>
                                             </imageReference>
                                             <color key="tintColor" red="0.066996686160564423" green="0.24146991968154907" blue="0.14529058337211609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="backButton:" destination="Y6W-OH-hqX" id="XUg-0a-ztx"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" image="cart" id="EHO-71-scn">
                                             <color key="tintColor" red="0.066996686160564423" green="0.24146991968154907" blue="0.14529058337211609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <segue destination="Tu1-S8-SU0" kind="show" id="3D5-ZN-7hH"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -50,6 +56,9 @@
                                         <color key="tintColor" red="0.066996686160564423" green="0.24146991968154907" blue="0.14529058337211609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Add To Cart"/>
+                                        <connections>
+                                            <action selector="addToCart:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eOy-Eu-abp"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjc-o0-Agq">
                                         <rect key="frame" x="40" y="-2" width="51" height="34.333333333333336"/>
@@ -58,6 +67,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system" title="">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addTowishList:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LH5-Xc-L0b"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -245,6 +257,9 @@
                                                         <color key="tintColor" red="0.066996686160564423" green="0.24146991968154907" blue="0.14529058337211609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="View all reviews"/>
+                                                        <connections>
+                                                            <action selector="viewAllReviews:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lnJ-Ne-PrK"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -331,8 +346,15 @@
                     </view>
                     <size key="freeformSize" width="393" height="1000"/>
                     <connections>
+                        <outlet property="color" destination="nnf-Nh-vdg" id="DWb-dQ-prK"/>
+                        <outlet property="descriptionText" destination="V57-nH-Qwk" id="Chb-eh-435"/>
                         <outlet property="myCollectionView" destination="nxg-Ra-Ria" id="odu-j8-Q4a"/>
+                        <outlet property="productCurrencyText" destination="5Lq-48-JVW" id="FfU-sl-o6D"/>
+                        <outlet property="productNameText" destination="tGQ-gz-uKK" id="iH5-aU-Iq6"/>
+                        <outlet property="productPriceText" destination="xo8-cW-GSc" id="Lo8-rI-dcL"/>
+                        <outlet property="productRateText" destination="1zD-CH-if5" id="h8X-hX-2bc"/>
                         <outlet property="reviewsTableView" destination="M7h-gM-zk8" id="faR-EN-hs0"/>
+                        <outlet property="size" destination="52H-j0-Jeu" id="dVw-5k-YR7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -359,8 +381,15 @@
                                                     <color systemColor="tertiaryLabelColor"/>
                                                 </hierarchicalColors>
                                             </imageReference>
+                                            <connections>
+                                                <action selector="backButton:" destination="OpN-Bo-UPt" id="NfY-e4-vXU"/>
+                                            </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" landscapeImage="cart.fill" catalog="system" id="aUO-Y5-yoO"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" landscapeImage="cart" id="aUO-Y5-yoO">
+                                            <connections>
+                                                <segue destination="Tu1-S8-SU0" kind="show" id="AoM-xp-yJf"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -372,6 +401,9 @@
                                 <color key="tintColor" red="0.066996686160564423" green="0.24146991968154907" blue="0.14529058337211609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add Review"/>
+                                <connections>
+                                    <action selector="addReviewButton:" destination="OpN-Bo-UPt" eventType="touchUpInside" id="rNk-jZ-NSS"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RS2-N7-sjg">
                                 <rect key="frame" x="8" y="156.66666666666669" width="377" height="544.33333333333326"/>
@@ -475,8 +507,15 @@
                                                     <color systemColor="tertiaryLabelColor"/>
                                                 </hierarchicalColors>
                                             </imageReference>
+                                            <connections>
+                                                <action selector="backButton:" destination="Qd5-WX-T4Q" id="Wya-fZ-Uvb"/>
+                                            </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" landscapeImage="cart.fill" catalog="system" id="so7-Uw-4zw"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" landscapeImage="cart.fill" catalog="system" id="so7-Uw-4zw">
+                                            <connections>
+                                                <segue destination="Tu1-S8-SU0" kind="show" id="mM5-gx-NBk"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -516,7 +555,20 @@
             </objects>
             <point key="canvasLocation" x="1549" y="-35"/>
         </scene>
+        <!--Cart-->
+        <scene sceneID="Oun-PF-Iij">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cart" id="Tu1-S8-SU0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gzE-xs-dDS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wJH-5z-9Di" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2158" y="-313"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3D5-ZN-7hH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="cart" width="24" height="24"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>

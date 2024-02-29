@@ -155,6 +155,17 @@ extension BrandsViewController{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1.0
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "ProductInfo", bundle:nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier:"prodInfo" ) as! ProductInfoViewController
+        if flag == false{
+            nextVC.productId = result?.products[indexPath.row].id
+        }else{
+            nextVC.productId = sortedProducts?[indexPath.row].id
+        }
+        print( nextVC.productId ?? 0)
+        self.present(nextVC, animated: true)
+    }
     
 }
 

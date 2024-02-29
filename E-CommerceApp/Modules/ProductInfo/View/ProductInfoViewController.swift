@@ -6,22 +6,35 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProductInfoViewController: UIViewController {
-
+    
     var url:[URL] = []
+    var productId : Int?
+    var productInfoViewModel : ProductInfoViewModel?
     var indicator : UIActivityIndicatorView?
+    
     @IBOutlet weak var myCollectionView: UICollectionView!
     
     @IBOutlet weak var reviewsTableView: UITableView!
     
+    @IBOutlet weak var productNameText: UITextView!
     
+    @IBOutlet weak var productRateText: UILabel!
     
+    @IBOutlet weak var productPriceText: UILabel!
     
+    @IBOutlet weak var productCurrencyText: UILabel!
     
+    @IBOutlet weak var size: UISegmentedControl!
     
+    @IBOutlet weak var color: UISegmentedControl!
     
+    @IBOutlet weak var descriptionText: UITextView!
     
+    @IBAction func viewAllReviews(_ sender: Any) {
+    }
     
     
     
@@ -30,24 +43,25 @@ class ProductInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setIndicator()
-        dummy()
+        
         configureReviewsTableView()
-
+        configureCollectionView()
+        
+        //configureLoadingData()
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        configureLoadingData()
+    }
+    @IBAction func addToCart(_ sender: Any) {
+        
+    }
     
-    func dummy(){
-        let url1 = URL(string: "https://www.pngitem.com/pimgs/m/49-491826_of-course-developing-your-employee-%20engagement-offering-business.png")
-        let url2 = URL(string: "https://images.pexels.com/photos/39853/woman-girl-freedom-happy-39853.jpeg?auto=compress&cs=tinysrgb&w=600")
-        let url3 = URL(string: "https://www.pngitem.com/pimgs/m/49-491826_of-course-developing-your-employee-%20engagement-offering-business.png")
-        let url4 = URL(string: "https://www.pngitem.com/pimgs/m/49-491826_of-course-developing-your-employee-%20engagement-offering-business.png")
-        let url5 = URL(string: "https://images.pexels.com/photos/1462011/pexels-photo-1462011.jpeg?auto=compress&cs=tinysrgb&w=600")
-        url.append(url1!)
-        url.append(url2!)
-        url.append(url3!)
-        url.append(url4!)
-        url.append(url5!)
+    @IBAction func addTowishList(_ sender: Any) {
+        
+    }
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true)
     }
     //MARK: - Indicator initializing
     func setIndicator(){
@@ -58,21 +72,24 @@ class ProductInfoViewController: UIViewController {
     
     }
     
-    // MARK: - Navigation
+    
+    //MARK: - Configure data loading
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        
-        if segue.identifier == "showReviews"{
-            let destination = storyboard?.instantiateViewController(withIdentifier: "allReviews") as? AllReviewsViewController
-            // Pass the selected object to the new view controller.
+    func configureLoadingData(){
+        productInfoViewModel?.loadData(productId: self.productId!)
+        productInfoViewModel?.bindResultToViewController = {
+            [weak self] in
+            DispatchQueue.main.async {
+                self?.indicator?.stopAnimating()
+                self?.productNameText.text = (self?.productInfoViewModel?.getProductDetails()?.title ?? "").split(separator: "|").dropFirst().first.map(String.init)
+                self?.productPriceText.text = self?.productInfoViewModel?.getProductDetails()?.variants.first?.price
+                }
         }
         
-        
-        
+       
+
+       
     }
-//prodInfo
-//allrReviews
     
     
     //MARK: - Configure the TableView (source,delegate,nib cell)
@@ -81,9 +98,17 @@ class ProductInfoViewController: UIViewController {
         reviewsTableView.delegate = self
         reviewsTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewCell")
     }
+    //MARK: - Configure the CollectionView (source,delegate,nib cell)
+    func configureCollectionView(){
+        myCollectionView.dataSource = self
+        myCollectionView.delegate = self
+        
+    }
     
+    
+    // MARK: - Rendering Data
+   
 }
-
     // MARK: -
 extension ProductInfoViewController: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate {
     
@@ -93,16 +118,13 @@ extension ProductInfoViewController: UICollectionViewDataSource,UICollectionView
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return productInfoViewModel?.getProductDetails()?.images.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myDetCell", for: indexPath) as! ProductPositionsCollectionViewCell
-                do{
-                    let data = try Data(contentsOf : url[indexPath.row])
-                    cell.productPositionImage.image = UIImage(data: data)
-                }catch{
-                }
+        cell.productPositionImage.kf.setImage(with: URL(string: (productInfoViewModel?.getProductDetails()?.images[indexPath.row].src as! String) ))
+        
         return cell
     }
     
