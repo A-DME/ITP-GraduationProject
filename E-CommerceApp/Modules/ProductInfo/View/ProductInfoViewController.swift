@@ -77,12 +77,15 @@ class ProductInfoViewController: UIViewController {
 
     func configureLoadingData(){
         productInfoViewModel?.loadData(productId: self.productId!)
+        print("productId\(productId)")
         productInfoViewModel?.bindResultToViewController = {
             [weak self] in
             DispatchQueue.main.async {
                 self?.indicator?.stopAnimating()
+                print(self?.productInfoViewModel?.getProductDetails())
                 self?.productNameText.text = (self?.productInfoViewModel?.getProductDetails()?.title ?? "").split(separator: "|").dropFirst().first.map(String.init)
                 self?.productPriceText.text = self?.productInfoViewModel?.getProductDetails()?.variants.first?.price
+                
                 }
         }
         
