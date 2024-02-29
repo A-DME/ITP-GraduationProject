@@ -38,7 +38,7 @@ class APIHandler{
             case .Customer(id: let id):
                 return "customers/\(id).json"
             case .allAddressesOf(customer_id: let customer_id):
-                return "customers/\(customer_id)/addresses.json?limit=1"
+                return "customers/\(customer_id)/addresses.json"
             case .address(customer_id: let customer_id, address_id: let address_id):
                 return "customers/\(customer_id)/addresses/\(address_id).json"
             case .orders:
