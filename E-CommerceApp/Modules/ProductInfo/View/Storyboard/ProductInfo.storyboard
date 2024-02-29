@@ -15,7 +15,7 @@
             <objects>
                 <viewController storyboardIdentifier="prodInfo" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="ProductInfoViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sp-HS-shs">
@@ -511,7 +511,7 @@
                                                 <action selector="backButton:" destination="Qd5-WX-T4Q" id="Wya-fZ-Uvb"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" landscapeImage="cart.fill" catalog="system" id="so7-Uw-4zw">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart" catalog="system" landscapeImage="cart.fill" id="so7-Uw-4zw">
                                             <connections>
                                                 <segue destination="Tu1-S8-SU0" kind="show" id="mM5-gx-NBk"/>
                                             </connections>
@@ -571,9 +571,10 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cart" width="24" height="24"/>
-        <image name="cart.fill" catalog="system" width="128" height="102"/>
-        <image name="chevron.left.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="cart" catalog="system" width="32" height="32"/>
+        <image name="cart.fill" catalog="system" width="32" height="32"/>
+        <image name="chevron.left.circle.fill" catalog="system" width="32" height="32"/>
+        <image name="heart.fill" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
