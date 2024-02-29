@@ -67,7 +67,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="signUpButton:" destination="dhf-p2-deP" eventType="touchUpInside" id="olF-pj-Vnk"/>
-                                    <segue destination="IS7-r8-HCX" kind="presentation" modalPresentationStyle="fullScreen" id="B29-aJ-ylO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AF0-NT-lUV">
@@ -148,6 +147,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bJ-E4-fIC">
+                                <rect key="frame" x="16" y="633" width="361" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4S8-w7-v82"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -162,6 +167,7 @@
                             <constraint firstItem="4S8-w7-v82" firstAttribute="trailing" secondItem="LXj-gR-M6m" secondAttribute="trailing" constant="16" id="ASF-zd-t7U"/>
                             <constraint firstItem="4S8-w7-v82" firstAttribute="trailing" secondItem="YLH-m0-lNB" secondAttribute="trailing" constant="16" id="Ca8-Kt-7cf"/>
                             <constraint firstItem="33E-Ra-wZF" firstAttribute="top" secondItem="Fdf-IW-PWd" secondAttribute="bottom" constant="8" id="DQi-eQ-QCa"/>
+                            <constraint firstItem="4S8-w7-v82" firstAttribute="trailing" secondItem="2bJ-E4-fIC" secondAttribute="trailing" constant="16" id="G7g-LT-cZ2"/>
                             <constraint firstItem="YMp-tF-wwB" firstAttribute="top" secondItem="liC-66-s5l" secondAttribute="bottom" constant="8" id="Gtt-Q7-ck7"/>
                             <constraint firstItem="YLH-m0-lNB" firstAttribute="leading" secondItem="4S8-w7-v82" secondAttribute="leading" constant="16" id="I44-Rv-E9F"/>
                             <constraint firstItem="AF0-NT-lUV" firstAttribute="leading" secondItem="4S8-w7-v82" secondAttribute="leading" constant="16" id="Irf-fN-NoB"/>
@@ -177,6 +183,7 @@
                             <constraint firstItem="LXj-gR-M6m" firstAttribute="leading" secondItem="4S8-w7-v82" secondAttribute="leading" constant="16" id="ctI-Rk-SJS"/>
                             <constraint firstItem="1Z9-Z8-Qqy" firstAttribute="top" secondItem="JdZ-ca-Exs" secondAttribute="bottom" constant="8" id="dNs-UX-UVB"/>
                             <constraint firstItem="4S8-w7-v82" firstAttribute="trailing" secondItem="miN-a1-clt" secondAttribute="trailing" constant="16" id="dUo-U9-vlu"/>
+                            <constraint firstItem="2bJ-E4-fIC" firstAttribute="leading" secondItem="4S8-w7-v82" secondAttribute="leading" constant="16" id="dXh-pm-JEr"/>
                             <constraint firstItem="LCB-51-2al" firstAttribute="top" secondItem="4S8-w7-v82" secondAttribute="top" id="dbh-Y2-pat"/>
                             <constraint firstItem="33E-Ra-wZF" firstAttribute="leading" secondItem="4S8-w7-v82" secondAttribute="leading" constant="16" id="dhz-RX-sxR"/>
                             <constraint firstItem="2KZ-eQ-RfW" firstAttribute="top" secondItem="miN-a1-clt" secondAttribute="bottom" constant="8" id="f5Q-iI-eeM"/>
@@ -192,6 +199,7 @@
                             <constraint firstItem="YLH-m0-lNB" firstAttribute="top" secondItem="LXj-gR-M6m" secondAttribute="bottom" constant="20" id="qDB-ql-W3U"/>
                             <constraint firstItem="ay9-i2-j2X" firstAttribute="top" secondItem="YLH-m0-lNB" secondAttribute="bottom" constant="36" id="r0W-H9-DR6"/>
                             <constraint firstItem="4S8-w7-v82" firstAttribute="trailing" secondItem="Fdf-IW-PWd" secondAttribute="trailing" constant="16" id="seh-9v-R2j"/>
+                            <constraint firstItem="2bJ-E4-fIC" firstAttribute="top" secondItem="YLH-m0-lNB" secondAttribute="bottom" constant="8" id="tUz-01-kJ1"/>
                             <constraint firstItem="4S8-w7-v82" firstAttribute="trailing" secondItem="2KZ-eQ-RfW" secondAttribute="trailing" constant="16" id="uGz-WD-XaD"/>
                             <constraint firstItem="miN-a1-clt" firstAttribute="top" secondItem="33E-Ra-wZF" secondAttribute="bottom" id="ukw-av-5sf"/>
                         </constraints>
@@ -199,9 +207,11 @@
                     <connections>
                         <outlet property="emailAddress" destination="liC-66-s5l" id="39Z-zb-gLO"/>
                         <outlet property="firstName" destination="Fdf-IW-PWd" id="5if-yr-WGw"/>
+                        <outlet property="lblValidation" destination="2bJ-E4-fIC" id="E0R-Ht-iuf"/>
                         <outlet property="password" destination="JdZ-ca-Exs" id="w1L-8d-vhy"/>
                         <outlet property="passwordConfirmation" destination="LXj-gR-M6m" id="Lla-lj-zj3"/>
                         <outlet property="secondName" destination="miN-a1-clt" id="RGZ-jn-fcr"/>
+                        <segue destination="IS7-r8-HCX" kind="show" identifier="toHome" id="xGf-dj-Zar"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LGB-7X-hCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

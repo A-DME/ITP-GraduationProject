@@ -91,6 +91,8 @@
 		5536EABB4BE0F54AE7B24E87 /* Pods_E_CommerceApp_E_CommerceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D894E4DA97BCF74A985EE56E /* Pods_E_CommerceApp_E_CommerceAppUITests.framework */; };
 		CE4EE10C2B8DF98000C358C6 /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4EE10B2B8DF98000C358C6 /* Methods.swift */; };
 		CE4EE10E2B8E44E000C358C6 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4EE10D2B8E44E000C358C6 /* Customer.swift */; };
+		CE4EE1102B8ED06F00C358C6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4EE10F2B8ED06F00C358C6 /* SignUpViewModel.swift */; };
+		CE4EE1132B8F83B900C358C6 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4EE1122B8F83B900C358C6 /* UserDefaults.swift */; };
 		CE6F85D52B8A2AF000AC9A59 /* AllReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D42B8A2AF000AC9A59 /* AllReviewsViewController.swift */; };
 		CE6F85D72B8A2B0D00AC9A59 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D62B8A2B0D00AC9A59 /* AddReviewViewController.swift */; };
 		CE6F85D92B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F85D82B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift */; };
@@ -213,6 +215,8 @@
 		B6A8C5D2E5E9E441C99F3AE5 /* Pods-E-CommerceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-CommerceApp.release.xcconfig"; path = "Target Support Files/Pods-E-CommerceApp/Pods-E-CommerceApp.release.xcconfig"; sourceTree = "<group>"; };
 		CE4EE10B2B8DF98000C358C6 /* Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
 		CE4EE10D2B8E44E000C358C6 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		CE4EE10F2B8ED06F00C358C6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		CE4EE1122B8F83B900C358C6 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		CE6F85D42B8A2AF000AC9A59 /* AllReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReviewsViewController.swift; sourceTree = "<group>"; };
 		CE6F85D62B8A2B0D00AC9A59 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		CE6F85D82B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPositionsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 		1A5165772B85EA3900DB8366 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				CE4EE1112B8F835F00C358C6 /* UserDefaults */,
 				1A5165DA2B867CA300DB8366 /* Reachability */,
 				1A5165A82B860DF600DB8366 /* API */,
 			);
@@ -564,6 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				1A5165B92B86101000DB8366 /* SignInViewModel.swift */,
+				CE4EE10F2B8ED06F00C358C6 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -873,6 +879,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE4EE1112B8F835F00C358C6 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				CE4EE1122B8F83B900C358C6 /* UserDefaults.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		CE6F85DE2B8A8D2A00AC9A59 /* ReviewNibCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1177,6 +1191,7 @@
 				1A574FFC2B869B84008BBE9E /* ProductInfoViewController.swift in Sources */,
 				4F5BA7E02B88946500F912C3 /* BrandsViewController.swift in Sources */,
 				1A57500E2B86A168008BBE9E /* AddressBookViewController.swift in Sources */,
+				CE4EE1102B8ED06F00C358C6 /* SignUpViewModel.swift in Sources */,
 				1A5165922B85F33500DB8366 /* CartViewController.swift in Sources */,
 				1AF9BC482B8AB36E006A2E4D /* CartTableViewCell.swift in Sources */,
 				4F7616762B889E730040DC5A /* ItemsCollectionViewCell.swift in Sources */,
@@ -1197,6 +1212,7 @@
 				1A9A3B0D2B891731005CA8B4 /* AboutViewController.swift in Sources */,
 				1A5165C82B8611E200DB8366 /* WishlistViewController.swift in Sources */,
 				1A5165DC2B867CC700DB8366 /* ReachabilityManager.swift in Sources */,
+				CE4EE1132B8F83B900C358C6 /* UserDefaults.swift in Sources */,
 				1A5165492B85E9F100DB8366 /* SceneDelegate.swift in Sources */,
 				4FCFA58D2B8D62E700B1FC16 /* MainViewController.swift in Sources */,
 				1A67E4462B8E307E00492C7E /* PaymentTableViewCell.swift in Sources */,
