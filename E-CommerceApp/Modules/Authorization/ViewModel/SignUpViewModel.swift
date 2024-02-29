@@ -99,7 +99,7 @@ class SignUpViewModel{
             )
             
             let newCustomer = Customer(customer: customer)
-            self.registerNewCustomer(customer: newCustomer) { result in
+         /*   self.registerNewCustomer(customer: newCustomer) { result in
                 switch result {
                 case true:
                     completion(true)
@@ -108,7 +108,7 @@ class SignUpViewModel{
                     completion(false)
                     self.navigate = false
                 }
-            }
+            }*/
         } else {
             self.navigate = false
             completion(false)
@@ -118,7 +118,7 @@ class SignUpViewModel{
 
 
 
-    func registerNewCustomer(customer: Customer, completion: @escaping (Bool)->Void ){
+/*func registerNewCustomer(customer: Customer, completion: @escaping (Bool)->Void ){
         networkHandler?.registerCustomer(newCustomer: customer) {[weak self] (data, response, error )in
             if error != nil{
                 print(error!)
@@ -153,7 +153,7 @@ class SignUpViewModel{
                 }
             }
         }
-    }
+    }*/
     
     
 }
