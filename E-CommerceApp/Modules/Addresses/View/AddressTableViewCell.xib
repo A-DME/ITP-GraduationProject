@@ -17,25 +17,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Addresses" translatesAutoresizingMaskIntoConstraints="NO" id="PAr-GK-RTf">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="150"/>
+                        <rect key="frame" x="16" y="0.0" width="50" height="150"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="ngV-ea-eGo"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lca-Ig-27e">
-                        <rect key="frame" x="66" y="7.9999999999999982" width="41.333333333333343" height="20.333333333333329"/>
+                        <rect key="frame" x="82" y="7.9999999999999982" width="41.333333333333343" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzq-tB-qfl">
-                        <rect key="frame" x="66" y="65" width="41.333333333333343" height="20.333333333333329"/>
+                        <rect key="frame" x="82" y="65" width="41.333333333333343" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcj-YC-HFA">
-                        <rect key="frame" x="66" y="121.66666666666667" width="41.333333333333343" height="20.333333333333329"/>
+                        <rect key="frame" x="82" y="121.66666666666667" width="41.333333333333343" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                     <constraint firstItem="xzq-tB-qfl" firstAttribute="centerY" secondItem="PAr-GK-RTf" secondAttribute="centerY" id="3c8-j2-hfi"/>
                     <constraint firstAttribute="bottom" secondItem="PAr-GK-RTf" secondAttribute="bottom" id="7FL-q6-qDd"/>
                     <constraint firstItem="PAr-GK-RTf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DDL-Zn-Vbt"/>
-                    <constraint firstItem="PAr-GK-RTf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Oja-YL-Uz0"/>
+                    <constraint firstItem="PAr-GK-RTf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Oja-YL-Uz0"/>
                     <constraint firstItem="qcj-YC-HFA" firstAttribute="leading" secondItem="PAr-GK-RTf" secondAttribute="trailing" constant="16" id="PU7-0U-0JY"/>
                     <constraint firstItem="lca-Ig-27e" firstAttribute="leading" secondItem="PAr-GK-RTf" secondAttribute="trailing" constant="16" id="Tji-ih-QXE"/>
                     <constraint firstAttribute="bottom" secondItem="qcj-YC-HFA" secondAttribute="bottom" constant="8" id="cqg-Af-KfW"/>

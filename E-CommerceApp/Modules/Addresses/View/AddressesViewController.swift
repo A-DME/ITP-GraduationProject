@@ -12,14 +12,27 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var addresses: UITableView!
     
     var viewModel: AddressesViewModel?
-    
+    var addressesList: [Address]?
+    var indicator : UIActivityIndicatorView?
     override func viewDidLoad() {
         super.viewDidLoad()
         addresses.delegate = self
         addresses.dataSource = self
         addresses.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
-        
+        indicator = UIActivityIndicatorView(style: .large)
+        indicator?.center = self.view.center
+        indicator?.startAnimating()
+        self.view.addSubview(indicator!)
         viewModel = AddressesViewModel()
+        viewModel?.loadData()
+        viewModel?.bindResultToViewController = { [weak self] in
+            self?.addressesList = self?.viewModel?.addresses
+            DispatchQueue.main.async {
+                self?.indicator?.stopAnimating()
+                self?.addresses.reloadData()
+            }
+            
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -29,21 +42,21 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if viewModel?.addresses.count == 0{
-        tableView.setEmptyView(title: "No addresses added yet", message: "Go ahead an add an address!")
-        }
-        else {
-        tableView.restore()
-        }
+//        if addressesList?.count == 0{
+//        tableView.setEmptyView(title: "No addresses added yet", message: "Go ahead an add an address!")
+//        }
+//        else {
+//        tableView.restore()
+//        }
         
-        return (viewModel?.addresses.count) ?? 0
+        return (addressesList?.count) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! AddressTableViewCell
-        cell.nameLabel.text = (viewModel?.addresses[indexPath.row].name)!
-        cell.cityLabel.text = (viewModel?.addresses[indexPath.row].city)!
-        cell.addressLabel.text = (viewModel?.addresses[indexPath.row].address)!
+        cell.nameLabel.text = addressesList?[indexPath.row].name
+        cell.cityLabel.text = addressesList?[indexPath.row].city
+        cell.addressLabel.text = addressesList?[indexPath.row].address1
         return cell
     }
     
@@ -54,7 +67,7 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let setAddressAlert = UIAlertController(title: "Set Default", message: "Do you want to set this address as your default adderss?", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
-            // TODO: save as default address
+//MARK: - TODO: save as default address
             self.dismiss(animated: true)
         }
         let no = UIAlertAction(title: "No", style: .default)
