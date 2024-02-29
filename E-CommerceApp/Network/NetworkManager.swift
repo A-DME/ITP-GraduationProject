@@ -32,7 +32,7 @@ class NetworkManager{
     }
     
     
-    
+  /*
     func registerCustomer(newCustomer: Customer, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         print("in register")
         let endpoint = APIHandler.EndPoints.customers.order
@@ -51,30 +51,34 @@ class NetworkManager{
             print("error in transforming customer into dictionary")
             print(error.localizedDescription)
         }
-    }
+    }*/
     
     func PostToApi(url:String,parameters: Parameters){
-        
-        let headers: HTTPHeaders = [
-            "Cookie": ""
-        ]
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .response{ response in
-                switch response.result {
-                case .success:
-                    if let data = response.data {
-                        print("Success")
-                    }
-                case .failure(let error):
-                    print("Error: \(error)")
-                    
-                    if let data = response.data {
-                        print("Response Data: \(String(data: data, encoding: .utf8) ?? "")")
+            
+            let headers: HTTPHeaders = [
+                "Cookie":""
+            ]
+         
+            let url = URL(string:url)
+            guard let newURL = url else {
+                return
+            }
+            AF.request(newURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .response{ response in
+                    switch response.result {
+                    case .success:
+                        if let data = response.data {
+                            print("Success: \(String(data: data, encoding: .utf8) ?? "")")
+                        }
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        
+                        if let data = response.data {
+                            print("Response Data: \(String(data: data, encoding: .utf8) ?? "")")
+                        }
                     }
                 }
-            }
-    }
-    
+        }
 }
 
 
