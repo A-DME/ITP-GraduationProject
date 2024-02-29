@@ -63,6 +63,7 @@
 		1A9A3B072B88CCAA005CA8B4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */; };
 		1A9A3B092B88F113005CA8B4 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */; };
 		1A9A3B0D2B891731005CA8B4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */; };
+		1ABD70B72B90C56F00397F72 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABD70B62B90C56F00397F72 /* Shop.swift */; };
 		1ACB24942B9059B500A841FB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB24932B9059B500A841FB /* Address.swift */; };
 		1AF9BC3F2B8A7057006A2E4D /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */; };
 		1AF9BC442B8A7180006A2E4D /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */; };
@@ -185,6 +186,7 @@
 		1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		1A9A3B082B88F113005CA8B4 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		1A9A3B0C2B891731005CA8B4 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		1ABD70B62B90C56F00397F72 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		1ACB24932B9059B500A841FB /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		1AF9BC3E2B8A7057006A2E4D /* AddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewController.swift; sourceTree = "<group>"; };
 		1AF9BC422B8A7180006A2E4D /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				CE4EE10D2B8E44E000C358C6 /* Customer.swift */,
 				4F3418272B8A4D050066BBD2 /* Collections.swift */,
 				4F401D5C2B8E80D000A074EB /* PriceRules.swift */,
+				1ABD70B62B90C56F00397F72 /* Shop.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1210,6 +1213,7 @@
 				1A5165C32B86114600DB8366 /* CategoriesViewModel.swift in Sources */,
 				1A62EE3D2B8E22E800C6058D /* PaymentViewController.swift in Sources */,
 				CE6F85D92B8A71AA00AC9A59 /* ProductPositionsCollectionViewCell.swift in Sources */,
+				1ABD70B72B90C56F00397F72 /* Shop.swift in Sources */,
 				4F401D5D2B8E80D000A074EB /* PriceRules.swift in Sources */,
 				4F68C59D2B8BD74000B87595 /* Products.swift in Sources */,
 				1A5165472B85E9F100DB8366 /* AppDelegate.swift in Sources */,
