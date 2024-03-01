@@ -19,9 +19,13 @@ class CartTableViewCell: UITableViewCell {
     
     @IBOutlet weak var price: UILabel!
     
-    @IBOutlet weak var quantity: UILabel!
+    @IBOutlet weak var availableQuantity: UILabel!
+    
+    @IBOutlet weak var orderQuantity: UILabel!
     
     @IBOutlet weak var decreaseButton: UIButton!
+    
+    @IBOutlet weak var increaseButton: UIButton!
     
     @IBOutlet weak var deleteButton: UIButton!
     
@@ -40,16 +44,26 @@ class CartTableViewCell: UITableViewCell {
     }
     
     @IBAction func increaseQuantity(_ sender: Any) {
-        quantity.text = String((Int(quantity.text!))! + 1)
-        if Int(quantity.text!)! > 1 {
-            decreaseButton.isHidden = false
+        orderQuantity.text = String((Int(orderQuantity.text!))! + 1)
+        if Int(orderQuantity.text!)! > 1 {
+            decreaseButton.isEnabled = true
+            decreaseButton.alpha = 1.0
+        }
+        if Int(orderQuantity.text!)! == Int(availableQuantity.text!)! {
+            increaseButton.isEnabled = false
+            increaseButton.alpha = 0.25
         }
     }
     
     @IBAction func decreaseQuantity(_ sender: Any) {
-        quantity.text = String((Int(quantity.text!))! - 1)
-        if Int(quantity.text!)! == 1 {
-            decreaseButton.isHidden = true
+        orderQuantity.text = String((Int(orderQuantity.text!))! - 1)
+        if Int(orderQuantity.text!)! == 1 {
+            decreaseButton.isEnabled = false
+            decreaseButton.alpha = 0.25
+        }
+        if Int(orderQuantity.text!)! < Int(availableQuantity.text!)! {
+            increaseButton.isEnabled = true
+            increaseButton.alpha = 1.0
         }
     }
 }
