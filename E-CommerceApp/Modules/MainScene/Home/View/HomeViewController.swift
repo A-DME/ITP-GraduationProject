@@ -8,7 +8,9 @@
 import UIKit
 import Kingfisher
 
-class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+    var searchWord : String = ""
+    @IBOutlet weak var searchBar: UISearchBar!
     
    
     @IBOutlet weak var adsCollectionView: UICollectionView!
@@ -22,6 +24,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         setIndicator()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +50,15 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue){
         
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchWord = searchBar.text ?? ""
+        print("Search text: \(searchWord)")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchWord = searchBar.text ?? ""
+        print("Search text: \(searchWord)")
     }
     
 }

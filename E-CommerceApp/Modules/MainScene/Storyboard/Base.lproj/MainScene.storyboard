@@ -111,6 +111,7 @@
                         <outlet property="ItemsCollection" destination="tUR-Ne-kHb" id="Gmm-7N-iKY"/>
                         <outlet property="brandLogo" destination="cCY-pg-bUC" id="oTw-DG-rJR"/>
                         <outlet property="itemsCount" destination="DEV-Cm-57A" id="kxl-jO-YY3"/>
+                        <outlet property="searchBar" destination="kf3-nJ-4yx" id="NzU-PS-HVu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xU0-3s-b1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -233,6 +234,7 @@
                     <connections>
                         <outlet property="adsCollectionView" destination="mLd-uW-A6C" id="Bzp-ir-VTx"/>
                         <outlet property="brandsCollection" destination="i9g-m4-ngU" id="xPI-Cv-Pm3"/>
+                        <outlet property="searchBar" destination="XFs-MP-WCM" id="JPG-J0-VzS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -336,6 +338,7 @@
                     <connections>
                         <outlet property="categorySeg" destination="nrp-A6-7wP" id="uuL-uD-shN"/>
                         <outlet property="itemsCollection" destination="uKQ-BG-Ke7" id="fAh-Ny-SXb"/>
+                        <outlet property="searchBar" destination="fZR-20-Bnu" id="uya-8P-8dy"/>
                         <outlet property="subCategorrySeg" destination="DuN-D4-mOE" id="xpy-kC-5FY"/>
                     </connections>
                 </viewController>
@@ -412,8 +415,8 @@
     <resources>
         <image name="cart" width="24" height="24"/>
         <image name="homekit" catalog="system" width="128" height="104"/>
-        <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="squares.leading.rectangle.fill" catalog="system" width="128" height="83"/>
+        <image name="list.dash" catalog="system" width="32" height="32"/>
+        <image name="squares.leading.rectangle.fill" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

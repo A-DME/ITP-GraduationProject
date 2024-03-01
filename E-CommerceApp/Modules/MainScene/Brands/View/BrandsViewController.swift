@@ -7,9 +7,11 @@
 
 import UIKit
 
-class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    
-    
+
+class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+    var searchWord : String = ""
+    var searching : Bool = false
+    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var ItemsCollection: UICollectionView!
     @IBOutlet weak var brandLogo: UIImageView!
@@ -26,7 +28,7 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndicator()
-        
+        searchBar.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         registerCell()
@@ -49,7 +51,6 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         flag = !(flag ?? false)
         ItemsCollection.reloadData()
     }
-    
     
     
 }
@@ -102,6 +103,37 @@ extension BrandsViewController{
             }
         }
     }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searching = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchWord = searchBar.text ?? ""
+        print("Search text: \(searchWord)")
+        
+    }
+    
+    
+    func searchingResult(){
+        if searching == false{
+            result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ") ?? []
+        }else{
+            if searchWord.isEmpty{
+                result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ") ?? []
+            }else{
+                result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ").filter{
+                    $0.title.lowercased().contains(searchWord.lowercased())
+                } ?? []
+            }
+        }
+        
+        ItemsCollection.reloadData()
+    }
+    
     func display() {
         indicator?.stopAnimating()
         result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ") ?? []
