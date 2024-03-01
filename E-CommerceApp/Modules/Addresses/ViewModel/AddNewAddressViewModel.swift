@@ -15,7 +15,7 @@ class AddNewAddressViewModel{
         self.helper = HelperFunctions()
     }
     
-    func postAddressToApi(customer_id: Int,name: String, phone: String, city: String, address: String){
-        networkManager?.PostToApi(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: String(customer_id))), parameters: ["address":["name":name,"phone":phone, "address1": address, "city": city]])
+    func postAddressToApi(customer_id: Int,name: String, phone: String, city: String, address: String, setDefault: Bool){
+        networkManager?.PostToApi(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: String(customer_id))), parameters: ["address":["name":name,"phone":phone, "address1": address, "city": city, "default": setDefault]])
     }
 }

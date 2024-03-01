@@ -20,7 +20,6 @@ class AddressTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        isDefault.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

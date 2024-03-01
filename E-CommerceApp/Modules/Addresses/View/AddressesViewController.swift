@@ -31,11 +31,14 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        addressesList = []
+        addresses.reloadData()
         indicator.startAnimating()
 //        MARK: - ADD CUSTOMER'S ID
         viewModel?.loadData()
         viewModel?.bindResultToViewController = { [weak self] in
             self?.addressesList = self?.viewModel?.addresses
+            print(self?.addressesList)
             self?.indicator.stopAnimating()
             self?.addresses.reloadData()
             
@@ -65,6 +68,8 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.addressLabel.text = addressesList?[indexPath.row].address1
         if addressesList?[indexPath.row].addressDefault == true {
             cell.isDefault.isHidden = false
+        } else {
+            cell.isDefault.isHidden = true
         }
         return cell
     }
@@ -76,7 +81,7 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! AddressTableViewCell
         if cell.isDefault.isHidden {
-            let setAddressAlert = UIAlertController(title: "Set Default", message: "Do you want to set this address as your default adderss?", preferredStyle: .alert)
+            let setAddressAlert = UIAlertController(title: "Set Primary", message: "Do you want to set this address as your primary adderss?", preferredStyle: .alert)
             let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
                 //MARK: - TODO: save as default address (PUT)
                 self.indicator.startAnimating()
@@ -95,19 +100,27 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let setAddressAlert = UIAlertController(title: "Delete Address", message: "Do you want to delete this address?", preferredStyle: .alert)
-            let yes = UIAlertAction(title: "Yes", style: .destructive) { UIAlertAction in
-                self.addressesList?.remove(at: indexPath.row)
-                self.viewModel?.deleteAddress(indexPath.row)
-                tableView.beginUpdates()
-                tableView.deleteRows(at: [indexPath], with: .left)
-                tableView.endUpdates()
+            let cell = tableView.cellForRow(at: indexPath) as! AddressTableViewCell
+            if cell.isDefault.isHidden {
+                let setAddressAlert = UIAlertController(title: "Delete Address", message: "Do you want to delete this address?", preferredStyle: .alert)
+                let yes = UIAlertAction(title: "Yes", style: .destructive) { UIAlertAction in
+                    self.addressesList?.remove(at: indexPath.row)
+                    self.viewModel?.deleteAddress(indexPath.row)
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: [indexPath], with: .left)
+                    tableView.endUpdates()
+                }
+                let no = UIAlertAction(title: "No", style: .cancel)
+                
+                setAddressAlert.addAction(yes)
+                setAddressAlert.addAction(no)
+                present(setAddressAlert, animated: true)
+            } else {
+                let defaultAddressAlert = UIAlertController(title: "Invalid Operation", message: "Cannot delete the primary address", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .cancel)
+                defaultAddressAlert.addAction(ok)
+                present(defaultAddressAlert, animated: true)
             }
-            let no = UIAlertAction(title: "No", style: .cancel)
-            
-            setAddressAlert.addAction(yes)
-            setAddressAlert.addAction(no)
-            present(setAddressAlert, animated: true)
         }
     }
     
