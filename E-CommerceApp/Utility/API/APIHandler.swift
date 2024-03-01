@@ -16,6 +16,7 @@ class APIHandler{
     
     enum EndPoints {
         case priceRule
+        case priceRules(id: String)
         case customers
         case Customer(id: String)
         case allAddressesOf(customer_id: String)
@@ -36,6 +37,8 @@ class APIHandler{
             switch self{
             case .priceRule:
                 return "price_rules.json"
+            case .priceRules(id: let id):
+                return "price_rules/\(id).json"
             case .customers:
                 return"customers.json "
             case .Customer(id: let id):
