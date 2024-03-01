@@ -29,6 +29,7 @@ class APIHandler{
         case discountCode
         case CollectionID(id:String)
         case ProductDetails(id:String)
+        case ProductReviews(id:String)
         case SmartCollections
         case shopConfiguration
         var order:String{
@@ -61,6 +62,8 @@ class APIHandler{
                 return "products.json?collection_id=\(collectionId)"
             case .ProductDetails(id: let productId):
                 return "products/\(productId).json"
+            case .ProductReviews(id: let productId):
+                return "products/\(productId)/resource_feedback.json"
             case .SmartCollections:
                 return "smart_collections.json"
             case .shopConfiguration:
