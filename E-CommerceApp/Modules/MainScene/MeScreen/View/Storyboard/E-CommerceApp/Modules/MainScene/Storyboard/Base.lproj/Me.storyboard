@@ -247,6 +247,8 @@
                         <imageReference key="selectedImage" image="person.circle.fill" catalog="system" renderingMode="original"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="NotLoggedView" destination="at3-iK-BPn" id="CRf-nY-KM1"/>
+                        <outlet property="greeting" destination="alQ-dt-gI8" id="Cqg-9C-Ml6"/>
                         <outlet property="ordersTable" destination="Bcd-kp-Oxa" id="JNY-5b-GWn"/>
                         <outlet property="wishlistCollection" destination="IvR-yd-cWD" id="1Uc-t2-nz8"/>
                     </connections>
@@ -287,7 +289,7 @@
         <scene sceneID="fqQ-Te-isg">
             <objects>
                 <tableViewController id="KvM-54-fx7" customClass="OrderDetailsTableViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="pQw-pU-2C0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="pQw-pU-2C0">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -314,7 +316,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XqY-bZ-SnF"/>
+        <segue reference="P6r-Ds-PFY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cart" width="24" height="24"/>
