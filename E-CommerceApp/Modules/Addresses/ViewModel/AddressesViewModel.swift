@@ -31,6 +31,10 @@ class AddressesViewModel{
         })
     }
     
+    func deleteAddress(_ index: Int){
+        networkManager?.deleteFromApi(url: APIHandler.urlForGetting(.address(customer_id: String(customerID), address_id: String(addresses![index].id))))
+    }
+    
     func makeDefault(addressId: Int){
 //        networkManager.putInApi(url:, parameters)
         

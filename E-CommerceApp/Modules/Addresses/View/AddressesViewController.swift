@@ -29,6 +29,7 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         indicator.startAnimating()
 //        MARK: - ADD CUSTOMER'S ID
@@ -40,6 +41,7 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
             
         }
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -79,6 +81,24 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         setAddressAlert.addAction(yes)
         setAddressAlert.addAction(no)
         present(setAddressAlert, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let setAddressAlert = UIAlertController(title: "Delete Address", message: "Do you want to delete this address?", preferredStyle: .alert)
+            let yes = UIAlertAction(title: "Yes", style: .destructive) { UIAlertAction in
+                self.addressesList?.remove(at: indexPath.row)
+                self.viewModel?.deleteAddress(indexPath.row)
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .left)
+                tableView.endUpdates()
+            }
+            let no = UIAlertAction(title: "No", style: .cancel)
+            
+            setAddressAlert.addAction(yes)
+            setAddressAlert.addAction(no)
+            present(setAddressAlert, animated: true)
+        }
     }
     
     
