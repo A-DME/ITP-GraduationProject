@@ -20,6 +20,7 @@ class APIHandler{
         case Customer(id: String)
         case allAddressesOf(customer_id: String)
         case address(customer_id: String, address_id: String)
+        case makeDefaultAddress(customer_id: String, address_id: String)
         case orders
         case order(id: String)
         case products
@@ -42,6 +43,8 @@ class APIHandler{
                 return "customers/\(customer_id)/addresses.json"
             case .address(customer_id: let customer_id, address_id: let address_id):
                 return "customers/\(customer_id)/addresses/\(address_id).json"
+            case .makeDefaultAddress(customer_id: let customer_id, address_id: let address_id):
+                return "customers/\(customer_id)/addresses/\(address_id)/default.json"
             case .orders:
                 return "orders.json"
             case .order(id: let id):
