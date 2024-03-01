@@ -10,7 +10,7 @@ class HomeViewModel{
     
     var networkHandler:NetworkManager?
     let reachabilityHandler = ReachabilityManager()
-   
+    
     var bindBrandsResultToViewController : (()->()) = {}
     var Brandsresult :Collections? {
         didSet{
@@ -36,18 +36,13 @@ class HomeViewModel{
         })
     }
     func loadAdsCollectionData(){
-        //let endpoint = data
-        let shopURL = APIHandler.storeURL
-        let apiKey = APIHandler.apiKey
-        let accessToken = APIHandler.accessToken
-
-        let apiUrl = "https://\(apiKey):\(accessToken)@\(shopURL)/admin/api/2024-01/price_rules.json"
+        let apiUrl = APIHandler.urlForGetting(.priceRule)
         networkHandler?.fetch(url: apiUrl, type: PriceRules.self, complitionHandler: { data in
             self.Adsresult = data
         })
     }
-    func getBrandsData()->Collections{
-        return Brandsresult ?? Collections(smartCollections: [])
+    func getBrandsData()-> [SmartCollection]{
+        return Brandsresult?.smartCollections ?? []
     }
     func getAdsData()->PriceRules{
         return Adsresult ?? PriceRules(priceRules: [])

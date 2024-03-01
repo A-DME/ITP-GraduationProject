@@ -114,16 +114,16 @@ extension BrandsViewController{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchWord = searchBar.text ?? ""
         print("Search text: \(searchWord)")
-        
+        searchingResult()
     }
     
     
     func searchingResult(){
         if searching == false{
-            result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ") ?? []
+            display()
         }else{
             if searchWord.isEmpty{
-                result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ") ?? []
+                display()
             }else{
                 result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ").filter{
                     $0.title.lowercased().contains(searchWord.lowercased())
