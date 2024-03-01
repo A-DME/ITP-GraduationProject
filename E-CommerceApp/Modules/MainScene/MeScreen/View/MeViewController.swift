@@ -103,14 +103,14 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     }
     */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        (ordersTable.frame.height/2)
     }
     
 }
 extension MeViewController{
     func IntializeProperties(){
         result = Orders(orders: [])
-        customerId = 7995440759099
+        customerId = 7440718463221
     }
     func registerCell(){
         wishlistCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "favCell")
