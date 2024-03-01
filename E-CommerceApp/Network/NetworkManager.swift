@@ -80,6 +80,33 @@ class NetworkManager{
             }
     }
     
+    func putInApi(url:String, parameters: Parameters = [:]){
+        
+        let headers: HTTPHeaders = [
+            "Cookie":""
+        ]
+        
+        let url = URL(string:url)
+        guard let newURL = url else {
+            return
+        }
+        AF.request(newURL, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .response{ response in
+                switch response.result {
+                case .success:
+                    if let data = response.data {
+                        print("Success: \(String(data: data, encoding: .utf8) ?? "")")
+                    }
+                case .failure(let error):
+                    print("Error: \(error)")
+                    
+                    if let data = response.data {
+                        print("Response Data: \(String(data: data, encoding: .utf8) ?? "")")
+                    }
+                }
+            }
+    }
+    
     func deleteFromApi(url:String){
         let headers: HTTPHeaders = [
             "Cookie":""
