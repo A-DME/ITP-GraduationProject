@@ -9,14 +9,17 @@ import UIKit
 import Kingfisher
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+    
     var searchWord : String = ""
+    var searching : Bool = false
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
    
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var brandsCollection: UICollectionView!
     
-    var brandsResult : Collections?
+    var brandsResult : [SmartCollection]?
     var adsResult : PriceRules?
     var indicator : UIActivityIndicatorView?
     var homeViewModel : HomeViewModel?
@@ -51,14 +54,43 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue){
         
     }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searching = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
+    }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchWord = searchBar.text ?? ""
         print("Search text: \(searchWord)")
+        searchingResult()
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchWord = searchBar.text ?? ""
-        print("Search text: \(searchWord)")
+    
+    func searchingResult(){
+        if searching == false{
+            displayBrands()
+        }else{
+            if searchWord.isEmpty{
+               displayBrands()
+            }else{
+                brandsResult = brandsResult?.filter{
+                    $0.title.lowercased().contains(searchWord.lowercased())
+                } ?? []
+            }
+        }
+        
+        checkIfNoItems()
+        brandsCollection.reloadData()
+    }
+    func checkIfNoItems(){
+        if (brandsResult?.count  == 0) {
+            brandsCollection.setEmptyMessage("No Items Found")
+        } else {
+            brandsCollection.restore()
+        }
     }
     
 }
@@ -147,7 +179,7 @@ extension HomeViewController{
         if collectionView == adsCollectionView{
             return adsResult?.priceRules.count ?? 0
         } else{
-            return brandsResult?.smartCollections.count ?? 0
+            return brandsResult?.count ?? 0
         }
         
     }
@@ -159,7 +191,7 @@ extension HomeViewController{
             return cell
         } else{
             let cell = brandsCollection.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath) as! BrandsCollectionViewCell
-            let url = URL(string:brandsResult?.smartCollections[indexPath.row].image.src ?? "placeHolder")
+            let url = URL(string:brandsResult?[indexPath.row].image.src ?? "placeHolder")
             cell.brandImg.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
             return cell
         }
@@ -178,8 +210,8 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brandsCollection{
             let brandsVC = storyboard?.instantiateViewController(identifier: "BrandsVC")as! BrandsViewController
-            brandsVC.vendor = brandsResult?.smartCollections[indexPath.row].title
-            brandsVC.brandImage = brandsResult?.smartCollections[indexPath.row].image.src
+            brandsVC.vendor = brandsResult?[indexPath.row].title
+            brandsVC.brandImage = brandsResult?[indexPath.row].image.src
             navigationController?.pushViewController(brandsVC, animated: true)
         }else{
             showCoponeAlert(code: adsResult?.priceRules[indexPath.row].title ?? "")

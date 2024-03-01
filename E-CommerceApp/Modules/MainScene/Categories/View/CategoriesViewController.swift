@@ -8,9 +8,10 @@
 import UIKit
 
 class CategoriesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
-    var searchWord : String = ""
-   
     
+    var searchWord : String = ""
+    var searching : Bool = false
+   
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var itemsCollection: UICollectionView!
     @IBOutlet weak var subCategorrySeg: UISegmentedControl!
@@ -150,62 +151,60 @@ extension CategoriesViewController{
         subCategory = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "All"
         filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
     }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searching = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
+    }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchWord = searchBar.text ?? ""
         print("Search text: \(searchWord)")
+        searchingResult()
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchWord = searchBar.text ?? ""
-        print("Search text: \(searchWord)")
+    
+    func searchingResult(){
+        if searching == false{
+            filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
+        }else{
+            if searchWord.isEmpty{
+                filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
+                
+            }else{
+                filteredResult = filteredResult?.filter{
+                    $0.title.lowercased().contains(searchWord.lowercased())
+                } ?? []
+            }
+        }
+        
+        checkIfNoItems()
+        itemsCollection.reloadData()
     }
 
     func filterResults(category:String = "All",subCategory: String = "All"){
         indicator?.stopAnimating()
         
         if category == "Women"{
-            if searchWord.isEmpty{
-                filteredResult = categoriesViewModel?.getWomenData()
-            }else{
-                filteredResult = categoriesViewModel?.getWomenData().filter{
-                    $0.title.lowercased().contains(searchWord.lowercased())
-                } ?? []
-            }
+            filteredResult = categoriesViewModel?.getWomenData()
+           
         }else if category == "Men"{
-            if searchWord.isEmpty{
-                filteredResult = categoriesViewModel?.getMenData()
-            }else{
-                filteredResult = categoriesViewModel?.getMenData().filter{
-                    $0.title.lowercased().contains(searchWord.lowercased())
-                } ?? []
-            }
+            filteredResult = categoriesViewModel?.getMenData()
+            
         }else if category == "Kids"{
-            if searchWord.isEmpty{
-                filteredResult = categoriesViewModel?.getKidsData()
-            }else{
-                filteredResult = categoriesViewModel?.getKidsData().filter{
-                    $0.title.lowercased().contains(searchWord.lowercased())
-                } ?? []
-            }
+            filteredResult = categoriesViewModel?.getKidsData()
+            
         }else if category == "All"{
-            if searchWord.isEmpty{
-                filteredResult = categoriesViewModel?.getAllData()
-            }else{
-                filteredResult = categoriesViewModel?.getAllData().filter{
-                    $0.title.lowercased().contains(searchWord.lowercased())
-                } ?? []
-            }
+            filteredResult = categoriesViewModel?.getAllData()
+            
         }
         if subCategory != "All"{
-            if searchWord.isEmpty{
+            
                 filteredResult = filteredResult?.filter{
                     $0.productType.rawValue == subCategory.uppercased()
                 } ?? []
-            }else{
-                filteredResult = filteredResult?.filter{
-                    $0.title.lowercased().contains(searchWord.lowercased())
-                } ?? []
-            }
         }
         checkIfNoItems()
         itemsCollection.reloadData()
