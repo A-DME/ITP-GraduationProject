@@ -7,7 +7,9 @@
 
 import Foundation
 class MeViewModel{
+    
     var networkHandler:NetworkManager?
+    var userDefult : Utilities?
     var bindResultToViewController : (()->()) = {}
     var customerItems :[Order]?
     let model = ReachabilityManager()
@@ -19,6 +21,7 @@ class MeViewModel{
      
      init() {
          self.networkHandler = NetworkManager()
+         self.userDefult = Utilities()
          customerItems = []
          
      }
@@ -45,4 +48,16 @@ class MeViewModel{
             completion(isReachable)
         }
     }
+    func getCustomerId()-> Int{
+        return userDefult?.getCustomerId() ?? 0
+        
+    }
+    func getCustomerName()-> String{
+        return userDefult?.getCustomerName() ?? ""
+        
+    }
+    func isLoggedIn()->Bool{
+        return userDefult?.isLoggedIn() ?? false
+    }
+    
 }
