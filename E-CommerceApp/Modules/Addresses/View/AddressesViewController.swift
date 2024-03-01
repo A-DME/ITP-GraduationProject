@@ -12,30 +12,34 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var addresses: UITableView!
     
     var viewModel: AddressesViewModel?
+    
     var addressesList: [Address]?
-    var indicator : UIActivityIndicatorView?
+    
+    var indicator : UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addresses.delegate = self
         addresses.dataSource = self
         addresses.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
         indicator = UIActivityIndicatorView(style: .large)
-        indicator?.center = self.view.center
-        indicator?.startAnimating()
+        indicator.center = self.view.center
         self.view.addSubview(indicator!)
         viewModel = AddressesViewModel()
+        
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        indicator.startAnimating()
+//        MARK: - ADD CUSTOMER'S ID
         viewModel?.loadData()
         viewModel?.bindResultToViewController = { [weak self] in
             self?.addressesList = self?.viewModel?.addresses
-            DispatchQueue.main.async {
-                self?.indicator?.stopAnimating()
-                self?.addresses.reloadData()
-            }
+            self?.indicator.stopAnimating()
+            self?.addresses.reloadData()
             
         }
-        // Do any additional setup after loading the view.
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -67,7 +71,7 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let setAddressAlert = UIAlertController(title: "Set Default", message: "Do you want to set this address as your default adderss?", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
-//MARK: - TODO: save as default address
+//MARK: - TODO: save as default address (PUT)
             self.dismiss(animated: true)
         }
         let no = UIAlertAction(title: "No", style: .default)
@@ -78,12 +82,16 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
+    
+    
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true)
     }
     
     @IBAction func addNewAddressButton(_ sender: Any) {
         let addNew = self.storyboard?.instantiateViewController(withIdentifier: "addNew") as! AddNewAddressViewController
+//MARK: -todo: pass current customer id -- (Done..ish)
+        addNew.customerId = viewModel?.customerID
         present(addNew, animated: true)
     }
     
