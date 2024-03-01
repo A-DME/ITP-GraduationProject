@@ -22,6 +22,7 @@ class AddNewAddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = AddNewAddressViewModel()
+        hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
