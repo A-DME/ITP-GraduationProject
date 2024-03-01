@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="143" id="KGk-i7-Jjw" customClass="CartTableViewCell" customModule="E_CommerceApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="143"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="180" id="KGk-i7-Jjw" customClass="CartTableViewCell" customModule="E_CommerceApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="583" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="143"/>
+                <rect key="frame" x="0.0" y="0.0" width="583" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sRH-QY-f2a" customClass="ShadowView" customModule="E_CommerceApp" customModuleProvider="target">
@@ -24,10 +24,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HdV-Gf-C0g">
-                        <rect key="frame" x="8" y="8" width="374" height="127"/>
+                        <rect key="frame" x="8" y="8" width="567" height="164"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="scW-ud-91E">
-                                <rect key="frame" x="8" y="8" width="160" height="111"/>
+                                <rect key="frame" x="8" y="8" width="160" height="148"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="z6y-jn-6iC"/>
                                 </constraints>
@@ -39,20 +39,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzJ-bC-nnb">
-                                <rect key="frame" x="218" y="91.333333333333329" width="8" height="21"/>
+                                <rect key="frame" x="217.66666666666666" y="128.33333333333334" width="8" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHf-xY-MqG">
-                                <rect key="frame" x="226" y="84.333333333333329" width="50" height="35"/>
+                                <rect key="frame" x="225.66666666666666" y="121.33333333333334" width="49.666666666666657" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="chevron.up.circle" catalog="system" renderingMode="hierarchical">
+                                    <imageReference key="image" image="plus.circle.fill" catalog="system" renderingMode="hierarchical">
                                         <hierarchicalColors>
-                                            <color systemColor="systemGrayColor"/>
+                                            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color systemColor="secondaryLabelColor"/>
-                                            <color systemColor="tertiaryLabelColor"/>
+                                            <color red="0.23529411759999999" green="0.41960784309999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </hierarchicalColors>
                                     </imageReference>
                                 </buttonConfiguration>
@@ -61,14 +61,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dd-9U-yop">
-                                <rect key="frame" x="168" y="84.666666666666671" width="50" height="34.333333333333329"/>
+                                <rect key="frame" x="168" y="121.66666666666664" width="49.666666666666657" height="34.333333333333329"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="chevron.down.circle" catalog="system" renderingMode="hierarchical">
+                                    <imageReference key="image" image="minus.circle.fill" catalog="system" renderingMode="hierarchical">
                                         <hierarchicalColors>
-                                            <color systemColor="systemGrayColor"/>
+                                            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color systemColor="secondaryLabelColor"/>
-                                            <color systemColor="tertiaryLabelColor"/>
+                                            <color red="0.23529411759999999" green="0.41960784309999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </hierarchicalColors>
                                     </imageReference>
                                 </buttonConfiguration>
@@ -83,10 +83,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYy-hh-8bC">
-                                <rect key="frame" x="311" y="84.333333333333329" width="55" height="35"/>
+                                <rect key="frame" x="504" y="121.33333333333334" width="55" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="bin.xmark.fill" catalog="system" renderingMode="hierarchical">
+                                    <imageReference key="image" image="xmark.bin.fill" catalog="system" renderingMode="hierarchical">
                                         <hierarchicalColors>
                                             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color systemColor="secondaryLabelColor"/>
@@ -95,6 +95,18 @@
                                     </imageReference>
                                 </buttonConfiguration>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbJ-5g-CTq">
+                                <rect key="frame" x="501" y="55.333333333333343" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcI-ow-WL0">
+                                <rect key="frame" x="425" y="55.333333333333343" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -105,14 +117,18 @@
                             <constraint firstItem="scW-ud-91E" firstAttribute="top" secondItem="HdV-Gf-C0g" secondAttribute="top" constant="8" id="C78-6n-DOS"/>
                             <constraint firstItem="xsI-6B-OrE" firstAttribute="top" secondItem="3Js-QR-2SN" secondAttribute="bottom" constant="8" id="Css-8N-pYL"/>
                             <constraint firstItem="3Js-QR-2SN" firstAttribute="leading" secondItem="scW-ud-91E" secondAttribute="trailing" constant="8" id="DHd-by-qPR"/>
+                            <constraint firstItem="fbJ-5g-CTq" firstAttribute="leading" secondItem="qcI-ow-WL0" secondAttribute="trailing" id="EE2-oV-0Zq"/>
                             <constraint firstItem="xsI-6B-OrE" firstAttribute="leading" secondItem="3Js-QR-2SN" secondAttribute="leading" id="ITH-dI-q1f"/>
                             <constraint firstItem="3Js-QR-2SN" firstAttribute="top" secondItem="scW-ud-91E" secondAttribute="top" id="RHl-kd-PlF"/>
+                            <constraint firstAttribute="trailing" secondItem="fbJ-5g-CTq" secondAttribute="trailing" constant="24" id="TFt-O9-yfz"/>
                             <constraint firstItem="scW-ud-91E" firstAttribute="leading" secondItem="HdV-Gf-C0g" secondAttribute="leading" constant="8" id="WYg-w3-0KV"/>
                             <constraint firstAttribute="bottom" secondItem="scW-ud-91E" secondAttribute="bottom" constant="8" id="d2X-zq-7Gt"/>
                             <constraint firstItem="uzJ-bC-nnb" firstAttribute="centerY" secondItem="7dd-9U-yop" secondAttribute="centerY" id="fzJ-SP-uQE"/>
                             <constraint firstItem="7dd-9U-yop" firstAttribute="leading" secondItem="scW-ud-91E" secondAttribute="trailing" id="le2-Tc-iN5"/>
                             <constraint firstItem="gYy-hh-8bC" firstAttribute="centerY" secondItem="OHf-xY-MqG" secondAttribute="centerY" id="nxF-zB-vWB"/>
+                            <constraint firstItem="qcI-ow-WL0" firstAttribute="centerY" secondItem="fbJ-5g-CTq" secondAttribute="centerY" id="smh-oX-sZG"/>
                             <constraint firstAttribute="trailing" secondItem="gYy-hh-8bC" secondAttribute="trailing" constant="8" id="vDK-c4-w6g"/>
+                            <constraint firstItem="fbJ-5g-CTq" firstAttribute="centerY" secondItem="xsI-6B-OrE" secondAttribute="bottom" constant="8" id="yeq-c7-ShV"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -125,36 +141,32 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="availableQuantity" destination="fbJ-5g-CTq" id="6KD-IV-3zp"/>
                 <outlet property="decreaseButton" destination="7dd-9U-yop" id="SZo-NV-JAn"/>
                 <outlet property="deleteButton" destination="gYy-hh-8bC" id="CfS-4v-KbN"/>
+                <outlet property="increaseButton" destination="OHf-xY-MqG" id="D0M-sw-O5d"/>
                 <outlet property="mainView" destination="HdV-Gf-C0g" id="QWb-px-Tx7"/>
+                <outlet property="orderQuantity" destination="uzJ-bC-nnb" id="UlH-GI-p0A"/>
                 <outlet property="price" destination="xsI-6B-OrE" id="kJG-7c-7yz"/>
                 <outlet property="productImage" destination="scW-ud-91E" id="Ist-Vy-Asp"/>
                 <outlet property="productTitle" destination="3Js-QR-2SN" id="KwR-Vu-1Km"/>
-                <outlet property="quantity" destination="uzJ-bC-nnb" id="UlH-GI-p0A"/>
                 <outlet property="shadeBehind" destination="sRH-QY-f2a" id="OIV-1g-OJS"/>
             </connections>
-            <point key="canvasLocation" x="137.40458015267174" y="23.591549295774648"/>
+            <point key="canvasLocation" x="284.73282442748092" y="36.619718309859159"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bin.xmark.fill" catalog="system" width="128" height="92"/>
-        <image name="chevron.down.circle" catalog="system" width="128" height="123"/>
-        <image name="chevron.up.circle" catalog="system" width="128" height="123"/>
+        <image name="minus.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="xmark.bin.fill" catalog="system" width="128" height="92"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
