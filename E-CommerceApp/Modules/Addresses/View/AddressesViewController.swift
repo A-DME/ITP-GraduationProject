@@ -74,7 +74,11 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         let setAddressAlert = UIAlertController(title: "Set Default", message: "Do you want to set this address as your default adderss?", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
 //MARK: - TODO: save as default address (PUT)
-            self.dismiss(animated: true)
+            self.indicator.startAnimating()
+            self.viewModel?.makeDefault(index: indexPath.row)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                self.dismiss(animated: true)
+            }
         }
         let no = UIAlertAction(title: "No", style: .default)
         
