@@ -9,10 +9,10 @@ import Foundation
 
 class APIHandler{
     static let ssl = "https://"
-    static let storeURL = "q2-23-24-ios-sv-team2.myshopify.com"
-    static let accessToken = "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"
-    static let apiKey = "ea12d3c9a7ec864490ccdbb44084163a"
-    static let apiSecretKey = "55023354775ac02849fce13991ff2184"
+    static let storeURL = "q2-24-team2.myshopify.com"
+    static let accessToken = "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"
+    static let apiKey = "a73c5fc1c095fd186d957dd2093e9006"
+    static let apiSecretKey = "dfd0e137695430eb82bc3bc3edbc3a30"
     
     enum EndPoints {
         case priceRule

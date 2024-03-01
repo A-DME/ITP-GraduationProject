@@ -7,30 +7,32 @@
 
 import Foundation
 class CartViewModel{
+    var networkManager: NetworkManager?
     var bindResultToViewController: (()->()) = {}
-    var totalPrice: Double? {
-        didSet{
-            bindResultToViewController()
-        }
-    }
+//    var cart: [CartProduct]? {
+//        didSet{
+//            bindResultToViewController()
+//        }
+//    }
     
-    var cart = [CartProduct(name: "productName 1", price: 46, quantity: 1, img: "ad"),
-                CartProduct(name: "productName 2", price: 88, quantity: 2, img: "ad")]
+    var cart = [CartProduct(name: "productName 1", price: 46, quantity: 4, availableQuantity: 5, img: "ad"),
+                CartProduct(name: "productName 2", price: 88, quantity: 2, availableQuantity: 3, img: "ad")]
     init(){
-        calculateTotalPrice()
+        networkManager = NetworkManager()
     }
     
-    func calculateTotalPrice(){
-        totalPrice = 0
-        for product in cart{
-            totalPrice! += product.price * Double(product.quantity)
-        }
+    func loadData(){
+//        networkManager?.fetch(url: APIHandler.urlForGetting(.draftOrder(id: "dummyID")), type: DraftOrderContainer.self, complitionHandler: { container in
+//            self.cart = container.draftOrder.lineItems
+//        })
     }
+    
 }
 
 struct CartProduct{
     var name: String
     var price: Double
     var quantity: Int
+    var availableQuantity: Int
     var img: String
 }

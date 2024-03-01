@@ -38,7 +38,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0pQ-bN-9x8">
-                                <rect key="frame" x="0.0" y="103" width="393" height="607"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="578.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartCell" id="Uqg-HL-fJG" customClass="CartTableViewCell" customModule="E_CommerceApp" customModuleProvider="target">
@@ -52,15 +52,15 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iB-XY-E6p">
-                                <rect key="frame" x="0.0" y="710" width="393" height="142"/>
+                                <rect key="frame" x="0.0" y="681.66666666666663" width="393" height="170.33333333333337"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpA-x3-ouq">
-                                        <rect key="frame" x="24" y="68" width="345" height="50"/>
+                                        <rect key="frame" x="24" y="88.333333333333371" width="345" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="caZ-H5-nOj"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="arrowshape.turn.up.right.fill" catalog="system" title=" Purchase" cornerStyle="large">
+                                        <buttonConfiguration key="configuration" style="filled" title=" Proceed to Order Review" cornerStyle="large">
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="23"/>
                                             <color key="baseBackgroundColor" red="0.1843137255" green="0.34509803919999998" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
@@ -75,14 +75,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd8-I3-gSU">
-                                        <rect key="frame" x="334" y="27" width="35" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EGP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd8-I3-gSU">
+                                        <rect key="frame" x="336.66666666666669" y="27" width="32.333333333333314" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mo-11-qFr">
-                                        <rect key="frame" x="252" y="19" width="74" height="37"/>
+                                        <rect key="frame" x="254.66666666666663" y="19" width="74" height="37"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -90,7 +90,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="JpA-x3-ouq" secondAttribute="bottom" constant="24" id="4j3-u3-Rvx"/>
+                                    <constraint firstAttribute="bottom" secondItem="JpA-x3-ouq" secondAttribute="bottom" constant="32" id="4j3-u3-Rvx"/>
                                     <constraint firstAttribute="trailing" secondItem="Wd8-I3-gSU" secondAttribute="trailing" constant="24" id="D68-r0-91e"/>
                                     <constraint firstItem="2mo-11-qFr" firstAttribute="bottom" secondItem="rB6-lf-OFT" secondAttribute="bottom" constant="8" id="FkA-TH-JsR"/>
                                     <constraint firstItem="rB6-lf-OFT" firstAttribute="leading" secondItem="9iB-XY-E6p" secondAttribute="leading" constant="24" id="SGB-12-LsA"/>
@@ -107,7 +107,7 @@
                         <constraints>
                             <constraint firstItem="wzn-bW-rWU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="10f-Vd-zdX"/>
                             <constraint firstItem="0pQ-bN-9x8" firstAttribute="top" secondItem="wzn-bW-rWU" secondAttribute="bottom" id="3ke-8U-91v"/>
-                            <constraint firstItem="9iB-XY-E6p" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="1:6" id="4dW-CV-VDX"/>
+                            <constraint firstItem="9iB-XY-E6p" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="1:5" id="4dW-CV-VDX"/>
                             <constraint firstItem="9iB-XY-E6p" firstAttribute="top" secondItem="0pQ-bN-9x8" secondAttribute="bottom" id="OQ7-Jt-h2q"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0pQ-bN-9x8" secondAttribute="trailing" id="RYs-ip-d9A"/>
                             <constraint firstAttribute="bottom" secondItem="9iB-XY-E6p" secondAttribute="bottom" id="YVc-gs-d8r"/>
@@ -121,7 +121,7 @@
                     <connections>
                         <outlet property="cartItems" destination="0pQ-bN-9x8" id="pga-xd-EWw"/>
                         <outlet property="currency" destination="Wd8-I3-gSU" id="2le-cw-3cQ"/>
-                        <outlet property="subtotalLabel" destination="2mo-11-qFr" id="Bui-pc-t4m"/>
+                        <outlet property="subtotal" destination="2mo-11-qFr" id="Bui-pc-t4m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -141,7 +141,6 @@
     </scenes>
     <resources>
         <image name="arrow.left.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
