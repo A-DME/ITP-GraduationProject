@@ -31,8 +31,11 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-Ny-W4z">
                                         <rect key="frame" x="284" y="0.0" width="77" height="27"/>
+                                        <color key="tintColor" red="0.1843137255" green="0.34509803919999998" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="list.dash" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Sort by Price">
+                                            <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="sortList:" destination="PRP-nj-B4y" eventType="touchUpInside" id="mIw-0D-U5K"/>
                                         </connections>
@@ -410,18 +413,17 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eIo-nU-hDL"/>
+        <segue reference="01C-Sw-nwg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cart" width="24" height="24"/>
         <image name="homekit" catalog="system" width="128" height="104"/>
-        <image name="list.dash" catalog="system" width="32" height="32"/>
-        <image name="squares.leading.rectangle.fill" catalog="system" width="32" height="32"/>
+        <image name="squares.leading.rectangle.fill" catalog="system" width="128" height="83"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

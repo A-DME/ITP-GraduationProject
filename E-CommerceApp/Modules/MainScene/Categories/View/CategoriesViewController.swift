@@ -9,8 +9,7 @@ import UIKit
 
 class CategoriesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
     
-    var searchWord : String = ""
-    var searching : Bool = false
+    
    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var itemsCollection: UICollectionView!
@@ -23,6 +22,9 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     var categoriesViewModel : CategoriesViewModel?
     var filteredResult : [Product]?
     var searchFlag : Bool = false
+    var searchWord : String = ""
+    var searching : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndicator()
@@ -36,6 +38,9 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
           
             if isReachable {
                 self.loadData()
+                self.categorySeg .selectedSegmentIndex = 0
+                self.subCategorrySeg.selectedSegmentIndex = 0
+                
             } else {
                 DispatchQueue.main.async {
                     self.showAlert()
@@ -43,17 +48,6 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
             }
         }
     }
-   
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-  
    
 }
 // MARK: - UISetUp
@@ -97,7 +91,7 @@ extension CategoriesViewController{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = itemsCollection.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemsCollectionViewCell
         let url = URL(string:filteredResult?[indexPath.row].image.src ?? "placeHolder")
-        cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "Item"))
+        cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
         cell.productTitle.text = (filteredResult?[indexPath.row].title ?? "").split(separator: "|").dropFirst().first.map(String.init)
         cell.productSubTitle.text = filteredResult?[indexPath.row].vendor
         cell.productPrice.text = filteredResult?[indexPath.row].variants.first?.price
@@ -151,38 +145,6 @@ extension CategoriesViewController{
         subCategory = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "All"
         filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
     }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searching = true
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searching = false
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchWord = searchBar.text ?? ""
-        print("Search text: \(searchWord)")
-        searchingResult()
-    }
-    
-    
-    func searchingResult(){
-        if searching == false{
-            filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
-        }else{
-            if searchWord.isEmpty{
-                filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
-                
-            }else{
-                filteredResult = filteredResult?.filter{
-                    $0.title.lowercased().contains(searchWord.lowercased())
-                } ?? []
-            }
-        }
-        
-        checkIfNoItems()
-        itemsCollection.reloadData()
-    }
 
     func filterResults(category:String = "All",subCategory: String = "All"){
         indicator?.stopAnimating()
@@ -216,5 +178,41 @@ extension CategoriesViewController{
         } else {
             itemsCollection.restore()
         }
+    }
+}
+// MARK: - Search
+
+extension CategoriesViewController{
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searching = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchWord = searchBar.text ?? ""
+        print("Search text: \(searchWord)")
+        searchingResult()
+    }
+    
+    
+    func searchingResult(){
+        if searching == false{
+            filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
+        }else{
+            if searchWord.isEmpty{
+                filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
+                
+            }else{
+                filteredResult = filteredResult?.filter{
+                    $0.title.lowercased().contains(searchWord.lowercased())
+                } ?? []
+            }
+        }
+        
+        checkIfNoItems()
+        itemsCollection.reloadData()
     }
 }
