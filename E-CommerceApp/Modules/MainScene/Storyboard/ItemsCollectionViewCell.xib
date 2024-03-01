@@ -19,15 +19,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6T-Lm-yey">
                         <rect key="frame" x="0.0" y="0.0" width="246" height="314"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="NYb-vS-2Gx">
-                                <rect key="frame" x="8" y="8" width="230" height="221.66666666666666"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="NYb-vS-2Gx">
+                                <rect key="frame" x="8" y="8" width="230" height="195"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="SportWear" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKv-MG-eOF">
-                                <rect key="frame" x="8" y="237.66666666666666" width="230" height="14.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IH-ln-seN">
                                 <rect key="frame" x="8" y="260" width="230" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -40,18 +35,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="SportWear" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKv-MG-eOF">
+                                <rect key="frame" x="8" y="235" width="230" height="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AKv-MG-eOF" secondAttribute="trailing" constant="8" id="0BA-Kw-sdJ"/>
                             <constraint firstItem="1Zo-nx-zni" firstAttribute="top" secondItem="6IH-ln-seN" secondAttribute="bottom" constant="8" id="2UG-hh-2f2"/>
                             <constraint firstAttribute="bottom" secondItem="1Zo-nx-zni" secondAttribute="bottom" constant="8" id="7DU-PD-QyZ"/>
                             <constraint firstAttribute="trailing" secondItem="1Zo-nx-zni" secondAttribute="trailing" constant="8" id="9n0-kL-YYz"/>
+                            <constraint firstAttribute="bottom" secondItem="NYb-vS-2Gx" secondAttribute="bottom" constant="111" id="Gau-aq-bR6"/>
                             <constraint firstAttribute="trailing" secondItem="6IH-ln-seN" secondAttribute="trailing" constant="8" id="JYt-9x-HjE"/>
                             <constraint firstItem="1Zo-nx-zni" firstAttribute="top" secondItem="6IH-ln-seN" secondAttribute="bottom" constant="8" id="LWh-FD-yHW"/>
                             <constraint firstItem="6IH-ln-seN" firstAttribute="top" secondItem="AKv-MG-eOF" secondAttribute="bottom" constant="8" id="NsR-tC-6i7"/>
                             <constraint firstItem="NYb-vS-2Gx" firstAttribute="leading" secondItem="x6T-Lm-yey" secondAttribute="leading" constant="8" id="PH3-NR-yOI"/>
-                            <constraint firstItem="AKv-MG-eOF" firstAttribute="top" secondItem="NYb-vS-2Gx" secondAttribute="bottom" constant="8" id="YK0-bs-TYv"/>
-                            <constraint firstItem="AKv-MG-eOF" firstAttribute="top" secondItem="NYb-vS-2Gx" secondAttribute="bottom" constant="8" id="ZXJ-53-nWi"/>
                             <constraint firstAttribute="trailing" secondItem="NYb-vS-2Gx" secondAttribute="trailing" constant="8" id="Zpo-I0-yS1"/>
                             <constraint firstItem="6IH-ln-seN" firstAttribute="top" secondItem="AKv-MG-eOF" secondAttribute="bottom" constant="8" id="dsR-cs-3FP"/>
                             <constraint firstItem="NYb-vS-2Gx" firstAttribute="top" secondItem="x6T-Lm-yey" secondAttribute="top" constant="8" id="hfh-6Q-uvQ"/>
