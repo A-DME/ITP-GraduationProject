@@ -15,9 +15,12 @@ class AddressTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
     
+    @IBOutlet weak var isDefault: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        isDefault.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

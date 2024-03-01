@@ -63,6 +63,9 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.nameLabel.text = addressesList?[indexPath.row].name
         cell.cityLabel.text = addressesList?[indexPath.row].city
         cell.addressLabel.text = addressesList?[indexPath.row].address1
+        if addressesList?[indexPath.row].addressDefault == true {
+            cell.isDefault.isHidden = false
+        }
         return cell
     }
     
@@ -71,20 +74,23 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setAddressAlert = UIAlertController(title: "Set Default", message: "Do you want to set this address as your default adderss?", preferredStyle: .alert)
-        let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
-//MARK: - TODO: save as default address (PUT)
-            self.indicator.startAnimating()
-            self.viewModel?.makeDefault(index: indexPath.row)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                self.dismiss(animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! AddressTableViewCell
+        if cell.isDefault.isHidden {
+            let setAddressAlert = UIAlertController(title: "Set Default", message: "Do you want to set this address as your default adderss?", preferredStyle: .alert)
+            let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
+                //MARK: - TODO: save as default address (PUT)
+                self.indicator.startAnimating()
+                self.viewModel?.makeDefault(index: indexPath.row)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    self.dismiss(animated: true)
+                }
             }
+            let no = UIAlertAction(title: "No", style: .default)
+            
+            setAddressAlert.addAction(yes)
+            setAddressAlert.addAction(no)
+            present(setAddressAlert, animated: true)
         }
-        let no = UIAlertAction(title: "No", style: .default)
-        
-        setAddressAlert.addAction(yes)
-        setAddressAlert.addAction(no)
-        present(setAddressAlert, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
