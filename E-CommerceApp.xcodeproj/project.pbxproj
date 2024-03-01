@@ -58,6 +58,7 @@
 		1A62EE3F2B8E22F800C6058D /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A62EE3E2B8E22F800C6058D /* Payment.storyboard */; };
 		1A67E4462B8E307E00492C7E /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A67E4442B8E307E00492C7E /* PaymentTableViewCell.swift */; };
 		1A67E4472B8E307E00492C7E /* PaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A67E4452B8E307E00492C7E /* PaymentTableViewCell.xib */; };
+		1A7E5EBD2B923B2100C0EEC3 /* AddNewAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7E5EBC2B923B2100C0EEC3 /* AddNewAddressViewModel.swift */; };
 		1A954D962B8FBE3D00DE071F /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A954D952B8FBE3D00DE071F /* NetworkManagerTests.swift */; };
 		1A9A3B062B88CCAA005CA8B4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */; };
 		1A9A3B072B88CCAA005CA8B4 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */; };
@@ -182,6 +183,7 @@
 		1A62EE3E2B8E22F800C6058D /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		1A67E4442B8E307E00492C7E /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		1A67E4452B8E307E00492C7E /* PaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTableViewCell.xib; sourceTree = "<group>"; };
+		1A7E5EBC2B923B2100C0EEC3 /* AddNewAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewModel.swift; sourceTree = "<group>"; };
 		1A954D952B8FBE3D00DE071F /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 			isa = PBXGroup;
 			children = (
 				1A5750132B86A299008BBE9E /* AddressesViewModel.swift */,
+				1A7E5EBC2B923B2100C0EEC3 /* AddNewAddressViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1209,6 +1212,7 @@
 				1A62EE392B8E226300C6058D /* PaymentViewModel.swift in Sources */,
 				1A2472C02B89588000789105 /* CurrencyViewModel.swift in Sources */,
 				4F4579EA2B87CABE00302E78 /* BrandsCollectionViewCell.swift in Sources */,
+				1A7E5EBD2B923B2100C0EEC3 /* AddNewAddressViewModel.swift in Sources */,
 				1A2472C02B89588000789105 /* CurrencyViewModel.swift in Sources */,
 				1A5165B22B860F7C00DB8366 /* WishlistViewModel.swift in Sources */,
 				CE4EE10C2B8DF98000C358C6 /* Methods.swift in Sources */,
