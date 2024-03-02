@@ -12,6 +12,9 @@ import Foundation
 struct Products: Codable {
     var products: [Product]
 }
+struct ProductContainer: Codable {
+    var product: Product
+}
 
 // MARK: - Product
 struct Product: Codable {

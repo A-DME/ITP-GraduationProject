@@ -25,7 +25,7 @@ class NetworkManager{
                 complitionHandler(result)
             }catch let error{
                 print("the error is in the decoding proccess")
-                print(error.localizedDescription)
+                print(error)
                 complitionHandler(nil)
             }
         }
