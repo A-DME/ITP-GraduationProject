@@ -11,7 +11,7 @@ class AddressesViewModel{
     var networkManager:NetworkManager?
     var customer_id: Int? // TODO: recieve customer id from previous screen
     var bindResultToViewController : (()->()) = {}
-    let model = ReachabilityManager()
+    var customerID = 7440718856437
     var addresses : [Address]? {
         didSet{
             bindResultToViewController()
@@ -26,9 +26,18 @@ class AddressesViewModel{
     
     func loadData(){
 // MARK: - Todo: Put current customer's id
-        networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: String(8023534698811))), type: Addresses.self, complitionHandler: { result in
+        networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: String(customerID))), type: Addresses.self, complitionHandler: { result in
             self.addresses = result?.addresses
         })
+    }
+    
+    func deleteAddress(_ index: Int){
+        networkManager?.deleteFromApi(url: APIHandler.urlForGetting(.address(customer_id: String(customerID), address_id: String(addresses![index].id))))
+    }
+    
+    func makeDefault(index: Int){
+        networkManager?.putInApi(url: APIHandler.urlForGetting(.makeDefaultAddress(customer_id: String(customerID), address_id: String(addresses![index].id))))
+        
     }
     
     func getAddresses() -> [Address]{

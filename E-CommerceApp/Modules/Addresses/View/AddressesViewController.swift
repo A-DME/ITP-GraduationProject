@@ -12,28 +12,37 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var addresses: UITableView!
     
     var viewModel: AddressesViewModel?
+    
     var addressesList: [Address]?
-    var indicator : UIActivityIndicatorView?
+    
+    var indicator : UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addresses.delegate = self
         addresses.dataSource = self
         addresses.register(UINib(nibName: "AddressTableViewCell", bundle: nil), forCellReuseIdentifier: "addressCell")
         indicator = UIActivityIndicatorView(style: .large)
-        indicator?.center = self.view.center
-        indicator?.startAnimating()
+        indicator.center = self.view.center
         self.view.addSubview(indicator!)
         viewModel = AddressesViewModel()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        addressesList = []
+        addresses.reloadData()
+        indicator.startAnimating()
+//        MARK: - ADD CUSTOMER'S ID
         viewModel?.loadData()
         viewModel?.bindResultToViewController = { [weak self] in
             self?.addressesList = self?.viewModel?.addresses
-            DispatchQueue.main.async {
-                self?.indicator?.stopAnimating()
-                self?.addresses.reloadData()
-            }
+            print(self?.addressesList)
+            self?.indicator.stopAnimating()
+            self?.addresses.reloadData()
             
         }
-        // Do any additional setup after loading the view.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,6 +66,11 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.nameLabel.text = addressesList?[indexPath.row].name
         cell.cityLabel.text = addressesList?[indexPath.row].city
         cell.addressLabel.text = addressesList?[indexPath.row].address1
+        if addressesList?[indexPath.row].addressDefault == true {
+            cell.isDefault.isHidden = false
+        } else {
+            cell.isDefault.isHidden = true
+        }
         return cell
     }
     
@@ -65,17 +79,52 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setAddressAlert = UIAlertController(title: "Set Default", message: "Do you want to set this address as your default adderss?", preferredStyle: .alert)
-        let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
-//MARK: - TODO: save as default address
-            self.dismiss(animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! AddressTableViewCell
+        if cell.isDefault.isHidden {
+            let setAddressAlert = UIAlertController(title: "Set Primary", message: "Do you want to set this address as your primary adderss?", preferredStyle: .alert)
+            let yes = UIAlertAction(title: "Yes", style: .cancel) { UIAlertAction in
+                //MARK: - TODO: save as default address (PUT)
+                self.indicator.startAnimating()
+                self.viewModel?.makeDefault(index: indexPath.row)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    self.dismiss(animated: true)
+                }
+            }
+            let no = UIAlertAction(title: "No", style: .default)
+            
+            setAddressAlert.addAction(yes)
+            setAddressAlert.addAction(no)
+            present(setAddressAlert, animated: true)
         }
-        let no = UIAlertAction(title: "No", style: .default)
-        
-        setAddressAlert.addAction(yes)
-        setAddressAlert.addAction(no)
-        present(setAddressAlert, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let cell = tableView.cellForRow(at: indexPath) as! AddressTableViewCell
+            if cell.isDefault.isHidden {
+                let setAddressAlert = UIAlertController(title: "Delete Address", message: "Do you want to delete this address?", preferredStyle: .alert)
+                let yes = UIAlertAction(title: "Yes", style: .destructive) { UIAlertAction in
+                    self.addressesList?.remove(at: indexPath.row)
+                    self.viewModel?.deleteAddress(indexPath.row)
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: [indexPath], with: .left)
+                    tableView.endUpdates()
+                }
+                let no = UIAlertAction(title: "No", style: .cancel)
+                
+                setAddressAlert.addAction(yes)
+                setAddressAlert.addAction(no)
+                present(setAddressAlert, animated: true)
+            } else {
+                let defaultAddressAlert = UIAlertController(title: "Invalid Operation", message: "Cannot delete the primary address", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .cancel)
+                defaultAddressAlert.addAction(ok)
+                present(defaultAddressAlert, animated: true)
+            }
+        }
+    }
+    
+    
     
     
     @IBAction func backButton(_ sender: Any) {
@@ -84,6 +133,8 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func addNewAddressButton(_ sender: Any) {
         let addNew = self.storyboard?.instantiateViewController(withIdentifier: "addNew") as! AddNewAddressViewController
+//MARK: -todo: pass current customer id -- (Done..ish)
+        addNew.customerId = viewModel?.customerID
         present(addNew, animated: true)
     }
     

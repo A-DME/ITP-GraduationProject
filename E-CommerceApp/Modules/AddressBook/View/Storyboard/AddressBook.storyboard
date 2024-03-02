@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="Address Book" id="lrw-cg-QMw">
+                                    <navigationItem title="Address" id="lrw-cg-QMw">
                                         <barButtonItem key="leftBarButtonItem" id="jhf-xa-ISS">
                                             <imageReference key="image" image="chevron.left.circle.fill" catalog="system" renderingMode="hierarchical">
                                                 <hierarchicalColors>
@@ -37,7 +37,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lf7-Hr-rVJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lf7-Hr-rVJ">
                                 <rect key="frame" x="0.0" y="103" width="393" height="381"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -150,6 +150,7 @@ Cg
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="defaultAddress" destination="lf7-Hr-rVJ" id="0qj-GX-cYt"/>
                         <segue destination="6ZQ-dS-m5B" kind="show" identifier="continueToPayment" id="UTj-8u-b5j"/>
                     </connections>
                 </viewController>

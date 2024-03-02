@@ -15,6 +15,8 @@ class AddressTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
     
+    @IBOutlet weak var isDefault: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

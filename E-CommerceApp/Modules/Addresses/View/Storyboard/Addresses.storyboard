@@ -191,13 +191,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFS-b2-ViB">
+                                <rect key="frame" x="320" y="467" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save as primary address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2s-yX-KNT">
+                                <rect key="frame" x="24" y="472" width="186.33333333333334" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NnJ-0k-NJe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YdY-DK-vp3" firstAttribute="leading" secondItem="O6H-OX-DvS" secondAttribute="leading" id="4Q1-tI-Gfh"/>
                             <constraint firstItem="YdY-DK-vp3" firstAttribute="trailing" secondItem="CwI-Ip-1XS" secondAttribute="leading" constant="-8" id="50f-yO-uYZ"/>
+                            <constraint firstItem="sFS-b2-ViB" firstAttribute="top" secondItem="vbh-EA-FFA" secondAttribute="bottom" constant="40" id="5UX-Qo-iNe"/>
                             <constraint firstItem="n9q-Jo-t77" firstAttribute="leading" secondItem="NnJ-0k-NJe" secondAttribute="leading" constant="24" id="CYz-8z-dxl"/>
+                            <constraint firstItem="Y2s-yX-KNT" firstAttribute="leading" secondItem="vbh-EA-FFA" secondAttribute="leading" id="F8W-Ja-Q26"/>
                             <constraint firstItem="hUO-fl-5ok" firstAttribute="top" secondItem="CwI-Ip-1XS" secondAttribute="bottom" constant="8" id="FRc-RO-Sug"/>
                             <constraint firstItem="CwI-Ip-1XS" firstAttribute="leading" secondItem="znD-XD-UZx" secondAttribute="centerX" id="Gdd-2J-7pu"/>
                             <constraint firstItem="hUO-fl-5ok" firstAttribute="leading" secondItem="CwI-Ip-1XS" secondAttribute="leading" id="Gs2-zA-X60"/>
@@ -207,7 +218,9 @@
                             <constraint firstItem="NnJ-0k-NJe" firstAttribute="trailing" secondItem="vbh-EA-FFA" secondAttribute="trailing" constant="24" id="PxI-D5-nJ8"/>
                             <constraint firstItem="NnJ-0k-NJe" firstAttribute="trailing" secondItem="hUO-fl-5ok" secondAttribute="trailing" constant="24" id="VEH-JA-A1B"/>
                             <constraint firstItem="JXA-gu-8dN" firstAttribute="top" secondItem="NnJ-0k-NJe" secondAttribute="top" id="XkA-9R-To6"/>
+                            <constraint firstItem="sFS-b2-ViB" firstAttribute="trailing" secondItem="vbh-EA-FFA" secondAttribute="trailing" id="a40-rB-QL4"/>
                             <constraint firstItem="vbh-EA-FFA" firstAttribute="top" secondItem="n9q-Jo-t77" secondAttribute="bottom" constant="8" id="aL4-4o-1C1"/>
+                            <constraint firstItem="Y2s-yX-KNT" firstAttribute="centerY" secondItem="sFS-b2-ViB" secondAttribute="centerY" id="agE-oD-qGF"/>
                             <constraint firstItem="vbh-EA-FFA" firstAttribute="leading" secondItem="NnJ-0k-NJe" secondAttribute="leading" constant="24" id="bBT-cq-Szb"/>
                             <constraint firstItem="buZ-ad-SPB" firstAttribute="leading" secondItem="NnJ-0k-NJe" secondAttribute="leading" constant="24" id="dDg-2s-c2J"/>
                             <constraint firstItem="NnJ-0k-NJe" firstAttribute="trailing" secondItem="Os8-nh-93O" secondAttribute="trailing" constant="24" id="gal-Si-WeU"/>
@@ -228,6 +241,7 @@
                         <outlet property="cityField" destination="YdY-DK-vp3" id="I2W-it-Vzi"/>
                         <outlet property="nameField" destination="znD-XD-UZx" id="khC-fk-he8"/>
                         <outlet property="phoneField" destination="hUO-fl-5ok" id="E9K-gd-BG7"/>
+                        <outlet property="setDefault" destination="sFS-b2-ViB" id="JLT-O4-GIi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2de-m7-FRK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -242,16 +256,16 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -9,10 +9,8 @@ import UIKit
 
 
 class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
-    var searchWord : String = ""
-    var searching : Bool = false
-    @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ItemsCollection: UICollectionView!
     @IBOutlet weak var brandLogo: UIImageView!
     @IBOutlet weak var itemsCount: UILabel!
@@ -24,6 +22,8 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     var vendor : String?
     var brandImage : String?
     var flag :Bool?
+    var searchWord : String = ""
+    var searching : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,8 @@ extension BrandsViewController{
     func IntializeProperties(){
         flag = false
         result = Products(products: [])
+        searchWord = ""
+         searching = false
     }
     func registerCell(){
         ItemsCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "ItemsCell")
@@ -103,36 +105,6 @@ extension BrandsViewController{
             }
         }
     }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searching = true
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searching = false
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchWord = searchBar.text ?? ""
-        print("Search text: \(searchWord)")
-        searchingResult()
-    }
-    
-    
-    func searchingResult(){
-        if searching == false{
-            display()
-        }else{
-            if searchWord.isEmpty{
-                display()
-            }else{
-                result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ").filter{
-                    $0.title.lowercased().contains(searchWord.lowercased())
-                } ?? []
-            }
-        }
-        
-        ItemsCollection.reloadData()
-    }
     
     func display() {
         indicator?.stopAnimating()
@@ -152,8 +124,12 @@ extension BrandsViewController{
 
 extension BrandsViewController{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return result?.products.count ?? 0
+        if flag == false{
+            return result?.products.count ?? 0
+        }else{
+            return sortedProducts?.count ?? 0
+        }
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -219,5 +195,46 @@ extension UICollectionView {
     
     func restore() {
         self.backgroundView = nil
+    }
+}
+
+// MARK: - Search
+
+extension BrandsViewController {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searching = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchWord = searchBar.text ?? ""
+        print("Search text: \(searchWord)")
+        searchingResult()
+    }
+    
+    
+    func searchingResult(){
+        if searching == false{
+            display()
+        }else{
+            if searchWord.isEmpty{
+                display()
+            }else{
+                if flag == false{
+                    result?.products = brandsViewModel?.getAllData(vendor: vendor ?? " ").filter{
+                        $0.title.lowercased().contains(searchWord.lowercased())
+                    } ?? []
+                }else{
+                    sortedProducts = sortedProducts?.filter{
+                        $0.title.lowercased().contains(searchWord.lowercased())
+                    } ?? []
+                }
+            }
+        }
+        
+        ItemsCollection.reloadData()
     }
 }

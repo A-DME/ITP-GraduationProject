@@ -16,10 +16,12 @@ class APIHandler{
     
     enum EndPoints {
         case priceRule
+        case priceRules(id: String)
         case customers
         case Customer(id: String)
         case allAddressesOf(customer_id: String)
         case address(customer_id: String, address_id: String)
+        case makeDefaultAddress(customer_id: String, address_id: String)
         case orders
         case order(id: String)
         case products
@@ -28,12 +30,15 @@ class APIHandler{
         case discountCode
         case CollectionID(id:String)
         case ProductDetails(id:String)
+        case ProductReviews(id:String)
         case SmartCollections
         case shopConfiguration
         var order:String{
             switch self{
             case .priceRule:
                 return "price_rules.json"
+            case .priceRules(id: let id):
+                return "price_rules/\(id).json"
             case .customers:
                 return"customers.json "
             case .Customer(id: let id):
@@ -42,6 +47,8 @@ class APIHandler{
                 return "customers/\(customer_id)/addresses.json"
             case .address(customer_id: let customer_id, address_id: let address_id):
                 return "customers/\(customer_id)/addresses/\(address_id).json"
+            case .makeDefaultAddress(customer_id: let customer_id, address_id: let address_id):
+                return "customers/\(customer_id)/addresses/\(address_id)/default.json"
             case .orders:
                 return "orders.json"
             case .order(id: let id):
@@ -58,6 +65,8 @@ class APIHandler{
                 return "products.json?collection_id=\(collectionId)"
             case .ProductDetails(id: let productId):
                 return "products/\(productId).json"
+            case .ProductReviews(id: let productId):
+                return "products/\(productId)/resource_feedback.json"
             case .SmartCollections:
                 return "smart_collections.json"
             case .shopConfiguration:

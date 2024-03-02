@@ -3,7 +3,9 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,6 +42,19 @@
                         <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUa-V6-WfQ">
+                        <rect key="frame" x="490.33333333333331" y="58" width="49.666666666666686" height="34.333333333333343"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain">
+                            <imageReference key="image" image="checkmark.circle.fill" catalog="system" renderingMode="hierarchical">
+                                <hierarchicalColors>
+                                    <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color systemColor="secondaryLabelColor"/>
+                                    <color systemColor="systemGreenColor"/>
+                                </hierarchicalColors>
+                            </imageReference>
+                        </buttonConfiguration>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xzq-tB-qfl" firstAttribute="centerY" secondItem="PAr-GK-RTf" secondAttribute="centerY" id="3c8-j2-hfi"/>
@@ -47,16 +62,19 @@
                     <constraint firstItem="PAr-GK-RTf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DDL-Zn-Vbt"/>
                     <constraint firstItem="PAr-GK-RTf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Oja-YL-Uz0"/>
                     <constraint firstItem="qcj-YC-HFA" firstAttribute="leading" secondItem="PAr-GK-RTf" secondAttribute="trailing" constant="16" id="PU7-0U-0JY"/>
+                    <constraint firstAttribute="trailing" secondItem="WUa-V6-WfQ" secondAttribute="trailing" constant="24" id="Tax-fy-hZW"/>
                     <constraint firstItem="lca-Ig-27e" firstAttribute="leading" secondItem="PAr-GK-RTf" secondAttribute="trailing" constant="16" id="Tji-ih-QXE"/>
                     <constraint firstAttribute="bottom" secondItem="qcj-YC-HFA" secondAttribute="bottom" constant="8" id="cqg-Af-KfW"/>
                     <constraint firstItem="lca-Ig-27e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="eL1-fO-Fe7"/>
                     <constraint firstItem="xzq-tB-qfl" firstAttribute="leading" secondItem="PAr-GK-RTf" secondAttribute="trailing" constant="16" id="gVb-B3-JLL"/>
+                    <constraint firstItem="WUa-V6-WfQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mYd-GQ-EcM"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLabel" destination="qcj-YC-HFA" id="zvq-u4-AFL"/>
                 <outlet property="cityLabel" destination="xzq-tB-qfl" id="374-pN-Tbf"/>
+                <outlet property="isDefault" destination="WUa-V6-WfQ" id="KLk-7q-ivz"/>
                 <outlet property="nameLabel" destination="lca-Ig-27e" id="aqP-hW-R6a"/>
             </connections>
             <point key="canvasLocation" x="325.19083969465646" y="37.323943661971832"/>
@@ -64,5 +82,12 @@
     </objects>
     <resources>
         <image name="Addresses" width="512" height="512"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
