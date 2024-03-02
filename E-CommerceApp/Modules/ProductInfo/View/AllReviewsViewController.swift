@@ -7,14 +7,22 @@
 
 import UIKit
 
-class AllReviewsViewController: UIViewController {
-
+class AllReviewsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    var reviews : Reviews?
+    var Allreviews : [Reviews.Review]?
+    
+    @IBOutlet weak var reviewsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        reviews = Reviews()
+        Allreviews = reviews?.getAllReviews()
+        reviewsTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewCell")
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        reviewsTableView.reloadData()
+    }
     @IBAction func addReviewButton(_ sender: Any) {
     }
     
@@ -29,13 +37,27 @@ class AllReviewsViewController: UIViewController {
         // Get the new view controller using segue.destination.
         
         if segue.identifier == "addReview"{
-            let destination = storyboard?.instantiateViewController(withIdentifier: "addReview") as? AddReviewViewController
+            _ = storyboard?.instantiateViewController(withIdentifier: "addReview") as? AddReviewViewController
             // Pass the selected object to the new view controller.
         }
         
         
         
     }
-//prodInfo
-//allrReviews
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        Allreviews?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! ReviewTableViewCell
+        cell.customerName.text = Allreviews?[indexPath.row].customerName
+        cell.CreatedAt.text = Allreviews?[indexPath.row].createdAt
+        cell.rating.text = String(Allreviews?[indexPath.row].rating ?? 5.0)
+        cell.feedback.text = Allreviews?[indexPath.row].massage
+        cell.customerImage.image = UIImage(named: Allreviews?[indexPath.row].customerImage ?? "PlaceHolder")
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
+    }
 }
