@@ -22,11 +22,13 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     var indicator : UIActivityIndicatorView?
     var categoriesViewModel : CategoriesViewModel?
     var filteredResult : [Product]?
-    var searchFlag : Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndicator()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         registerCell()
         setupSegmentesControl()

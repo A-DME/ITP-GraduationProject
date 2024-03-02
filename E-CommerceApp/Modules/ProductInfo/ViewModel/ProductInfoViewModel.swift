@@ -17,15 +17,25 @@ class ProductInfoViewModel{
             bindResultToViewController()
         }
     }
-    
+    init(){
+        networkHandler = NetworkManager()
+    }
     func getProductDetails()-> Product?{
         return product
     }
-    
+    func getProductImages()-> [ProductImage]{
+        return product?.images ?? []
+    }
+    func getImagesCount()-> Int{
+        print(product?.images.count ?? 0)
+        return product?.images.count ?? 0
+    }
     func loadData(productId:Int){
         let apiUrl = APIHandler.urlForGetting(.ProductDetails(id: String(productId)))
-        networkHandler?.fetch(url: apiUrl, type: Product.self, complitionHandler: { data in
-            self.product = data
+        print(apiUrl)
+        networkHandler?.fetch(url: apiUrl, type: ProductContainer.self, complitionHandler: { data in
+            self.product = data?.product
+            print(self.product?.title ?? "default value")
       
         })
     }
