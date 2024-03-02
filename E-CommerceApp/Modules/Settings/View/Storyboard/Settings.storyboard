@@ -82,6 +82,7 @@
                         <outlet property="navItem" destination="xDH-0e-qzw" id="qr7-NZ-7oL"/>
                         <outlet property="settings" destination="5yD-Ie-jJW" id="ElK-Y4-nCe"/>
                         <segue destination="2SU-yU-etl" kind="show" identifier="addresses" id="Oee-zm-UjW"/>
+                        <segue destination="lY0-at-yBh" kind="show" identifier="signUp" id="cvi-az-xb4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -162,6 +163,16 @@
                 <exit id="Kui-Gp-26l" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="912" y="-27"/>
+        </scene>
+        <!--Authorization-->
+        <scene sceneID="2Xp-ZG-wBl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorization" id="lY0-at-yBh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mIH-tk-3vc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aoG-ug-Gr8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="698" y="396"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="X96-XF-MYw">

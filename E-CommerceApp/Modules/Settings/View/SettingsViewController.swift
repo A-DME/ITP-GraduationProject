@@ -17,6 +17,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var viewModel : SettingsViewModel?
     
+    var registeredUser: Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navItem.title = "Settings"
@@ -27,6 +29,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
         
         // TODO: - Logout button hide and show based on authorization status
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registeredUser = viewModel?.isRegistered()
+        logoutButton.isHidden = !registeredUser
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,7 +58,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            performSegue(withIdentifier: "addresses", sender: nil)
+            if registeredUser {
+                performSegue(withIdentifier: "addresses", sender: nil)
+            } else {
+                let alert = UIAlertController(title: "Not Authorized", message: "Addresses are only available for registered users!", preferredStyle: .alert)
+                let signUp = UIAlertAction(title: "Sign Up", style: .default) { UIAlertAction in
+                    self.performSegue(withIdentifier: "signUp", sender: nil)
+                }
+                let gotIt = UIAlertAction(title: "Got It", style: .cancel)
+                
+                alert.addAction(signUp)
+                alert.addAction(gotIt)
+                present(alert, animated: true)
+            }
         case 1:
             let currency = self.storyboard?.instantiateViewController(identifier: "currency") as! CurrencyViewController
             present(currency, animated: true)
