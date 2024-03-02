@@ -54,17 +54,12 @@ final class NetworkManagerTests: XCTestCase {
     func testPostFunction(){
         let expectation = self.expectation(description: "Network request expectation")
         let apiUrl = APIHandler.urlForGetting(.allAddressesOf(customer_id: dummyCustomerId))
-        let parameters = ["address":["name": name,"phone": "007", "address1": "No time to write", "city": "No way home"]]
+        let parameters = ["address":["name": "John wick","phone": "44521", "address1": "Parabuellum", "city": "No home"]]
         networkManager.PostToApi(url: apiUrl, parameters: parameters)
         Thread.sleep(forTimeInterval: 3)
         networkManager.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: dummyCustomerId)), type: Addresses.self) { addressesContainer in
-            for address in (addressesContainer?.addresses) ?? [] {
-                if address.name == self.dummyName {
-                    print(address.name)
+            XCTAssert(addressesContainer?.addresses.last?.name == "John wick", "Post function not working properly")
                     expectation.fulfill()
-                    break
-                }
-            }
         }
         waitForExpectations(timeout: 30, handler: nil)
         
