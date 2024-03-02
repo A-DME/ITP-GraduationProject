@@ -17,7 +17,8 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     var productId : Int?
     var productInfoViewModel : ProductInfoViewModel?
     var indicator : UIActivityIndicatorView?
-   // var sizeMenu: [UIMenuElement] = []
+    var reviews : Reviews?
+    var Allreviews : [Reviews.Review]?
     let actionClosure = { (action: UIAction) in
             print(action.title)
         }
@@ -88,7 +89,8 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        
+        reviews = Reviews()
+        Allreviews = reviews?.getReviews()
         // Do any additional setup after loading the view.
        
 
@@ -239,7 +241,11 @@ extension ProductInfoViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! ReviewTableViewCell
-        //cell.configureCell()
+        cell.customerName.text = Allreviews?[indexPath.row].customerName
+        cell.CreatedAt.text = Allreviews?[indexPath.row].createdAt
+        cell.rating.text = String(Allreviews?[indexPath.row].rating ?? 5.0)
+        cell.feedback.text = Allreviews?[indexPath.row].massage
+        cell.customerImage.image = UIImage(named: Allreviews?[indexPath.row].customerImage ?? "PlaceHolder")
         return cell
     }
     

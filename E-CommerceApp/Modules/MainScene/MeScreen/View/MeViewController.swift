@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource{
+class MeViewController: UIViewController{
     
     
     @IBOutlet weak var NotLoggedView: UIView!
@@ -135,7 +135,7 @@ extension MeViewController{
     
 }
 // MARK: - TableView
-extension MeViewController{
+extension MeViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         result?.orders.count ?? 0
     }
@@ -155,7 +155,7 @@ extension MeViewController{
     }
 }
 // MARK: - CollectionView
-extension MeViewController{
+extension MeViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         4
     }
