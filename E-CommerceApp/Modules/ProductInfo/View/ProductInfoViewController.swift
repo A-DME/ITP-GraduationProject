@@ -17,7 +17,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     var productId : Int?
     var productInfoViewModel : ProductInfoViewModel?
     var indicator : UIActivityIndicatorView?
-    var sizeMenu: [UIMenuElement] = []
+   // var sizeMenu: [UIMenuElement] = []
     let actionClosure = { (action: UIAction) in
             print(action.title)
         }
@@ -38,10 +38,44 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBOutlet weak var productCurrencyText: UILabel!
     
-    
-  
+    var sizes : [String]?{
+        didSet{
+            let actionClosure = { (action: UIAction) in
+                print(action.title)
+            }
+
+            var menuChildren: [UIMenuElement] = []
+            for fruit in sizes ?? [] {
+                menuChildren.append(UIAction(title: fruit, handler: actionClosure))
+            }
+            
+            size.menu = UIMenu(options: .displayInline, children: menuChildren)
+            
+        size.showsMenuAsPrimaryAction = true
+        size.changesSelectionAsPrimaryAction = true
+        }
+    }
+    var colors: [String]?{
+        didSet{
+            let actionClosure = { (action: UIAction) in
+                print(action.title)
+            }
+
+            var menuChildren: [UIMenuElement] = []
+            for fruit in colors ?? [] {
+                menuChildren.append(UIAction(title: fruit, handler: actionClosure))
+            }
+            
+            color.menu = UIMenu(options: .displayInline, children: menuChildren)
+            
+        color.showsMenuAsPrimaryAction = true
+        color.changesSelectionAsPrimaryAction = true
+        }
+    }
     
     @IBOutlet weak var descriptionText: UITextView!
+
+
     
     @IBAction func viewAllReviews(_ sender: Any) {
     }
@@ -56,6 +90,12 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         self.hideKeyboardWhenTappedAround()
         
         // Do any additional setup after loading the view.
+       
+
+            
+            
+        //color.frame = CGRect(x: 150, y: 200, width: 100, height: 40)
+           
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +103,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         configureReviewsTableView()
         configureCollectionView()
         configureLoadingData()
-        dropList()
+       // dropList()
     }
     @IBAction func addToCart(_ sender: Any) {
         
@@ -78,12 +118,12 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         dismiss(animated: true)
     }
     
-    func dropList() {
+    /*func dropList() {
         size.menu = UIMenu(options: .displayInline, children: sizeMenu)
         size.showsMenuAsPrimaryAction = true
         size.changesSelectionAsPrimaryAction = true
         
-    }
+    }*/
     //MARK: - Indicator initializing
     func setIndicator(){
         indicator = UIActivityIndicatorView(style: .large)
@@ -111,13 +151,17 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
                 self?.productPriceText.text = self?.productInfoViewModel?.getProductDetails()?.variants.first?.price
                 self?.descriptionText.text = self?.productInfoViewModel?.getProductDetails()?.bodyHTML
                 self?.pageControl.numberOfPages = self?.productInfoViewModel?.getImagesCount() ?? 0
-                for size in (self?.productInfoViewModel?.getProductDetails()?.options[0].values) ?? []{
-                    if size == ((self?.productInfoViewModel?.getProductDetails()?.options[0].values)!).first{
+                self?.sizes = self?.productInfoViewModel?.getProductDetails()?.options[0].values
+                self?.colors = self?.productInfoViewModel?.getProductDetails()?.options[1].values
+               /* for size in (self?.productInfoViewModel?.getProductDetails()?.options[0].values) ?? []{
+                    /*if size == ((self?.productInfoViewModel?.getProductDetails()?.options[0].values)!).first{
                         self?.sizeMenu.append(UIAction(title: size, state: .on, handler: self!.actionClosure  ))
-                    }
+                    }*/
                     
                     self?.sizeMenu.append(UIAction(title: size, handler: self!.actionClosure  ))
-                }
+                }*/
+                
+                
                 self?.myCollectionView.reloadData()
             }
         }
@@ -163,20 +207,19 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width=(( UIScreen.main.bounds.size.width))*0.8
-        let height=(( UIScreen.main.bounds.size.width))*0.8
-        return CGSize(width: width, height: height)
+        let widthPerItem = UIScreen.main.bounds.width
+        return CGSize(width:widthPerItem, height:myCollectionView.frame.height/3)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10.0, left: 9.0, bottom: 10.0, right: 9.0)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 15.0
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1.0
-//    }
+   /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15.0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+   }*/
    
    
 }
