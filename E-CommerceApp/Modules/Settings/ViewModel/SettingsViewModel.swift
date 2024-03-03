@@ -9,4 +9,9 @@ import Foundation
 
 class SettingsViewModel{
     let settingsList = ["Addresses", "Currency", "About Us"]
+    
+    func isRegistered() -> Bool {
+//        MARK: - TODO: registration check
+        return false
+    }
 }
