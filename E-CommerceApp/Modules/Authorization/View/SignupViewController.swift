@@ -23,14 +23,16 @@ class SignupViewController: UIViewController {
     
     var _firstName, _lastName, _email, _password: String!
     let userDefualt = Utilities()
-    var signUpViewModel = SignUpViewModel()
+    var signUpViewModel : SignUpViewModel?
     var isFromLogin: Bool = false
-    
+    var customers : [CustomerModel]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         lblValidation.isHidden = true
-        bindToViewModel()
+        configureLoadingData()
+        //bindToViewModel()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -49,8 +51,17 @@ class SignupViewController: UIViewController {
         if _firstName != "" && _lastName != ""{
             if userDefualt.isValidEmail(_email){
                 if _password.count >= 6{
-                    signUpViewModel.registerCustomer(firstName: _firstName , lastName: _lastName , email: _email, password: _password){ result in
-                        print("signUpViewModel.registerCustomer")
+                    
+//                    for item in self.signUpViewModel?.getAllCustomers() {
+//                        let comingMail = item.email ?? ""
+//                        if comingMail == self?._email{
+//                            self?.signUpViewModel?.flag=true
+//                        }
+//                    }
+                    
+                    signUpViewModel?.registerCustomer(firstName: _firstName , lastName: _lastName , email: _email, password: _password){ result in
+                        
+                        print("signUp View controller.registerCustomer")
                         switch result{
                         case true:
                             print("from view  \(String(describing: self._firstName ?? ""))")
@@ -76,8 +87,29 @@ class SignupViewController: UIViewController {
         }
     }
     
+    func configureLoadingData(){
+        print("configureLoadingData")
+        signUpViewModel = SignUpViewModel()
+        print("1")
+        signUpViewModel?.loadData()
+        print("2")
+        signUpViewModel?.bindResultToViewController = { [weak self] in
+            DispatchQueue.main.async {
+                self?.customers = self?.signUpViewModel?.getAllCustomers() ?? []
+                print("customers")
+                print(self?.customers?[0].email ?? "")
+                guard let customers = self?.signUpViewModel?.getAllCustomers() else {
+                    return
+                }
+                self?.customers = customers
+                
+                
+            }
+        }
+    }
+    
     func bindToViewModel(){
-        signUpViewModel.bindNavigate = { [weak self] in
+        signUpViewModel?.bindNavigate = { [weak self] in
             DispatchQueue.main.async {
                 
                 self?.navigate()
@@ -87,7 +119,7 @@ class SignupViewController: UIViewController {
     }
    
     func navigate(){
-            if self.signUpViewModel.navigate == true{
+        if self.signUpViewModel?.navigate == true{
                 if self.isFromLogin == true{
                 performSegue(withIdentifier: "toHome", sender: self)
                 }else{
