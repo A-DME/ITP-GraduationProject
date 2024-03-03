@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Alamofire
+
 
 class MainViewController: UIViewController {
     var mainViewModel : MainViewModel?

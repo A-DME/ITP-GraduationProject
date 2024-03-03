@@ -11,6 +11,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     static func nib()->UINib{
         return UINib(nibName: "ItemsCollectionViewCell", bundle: nil)
     }
+    @IBOutlet weak var currency: UILabel!
     @IBOutlet weak var vBackground: UIView!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productTitle: UILabel!

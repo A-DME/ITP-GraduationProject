@@ -98,8 +98,11 @@ extension CategoriesViewController: UICollectionViewDelegate,UICollectionViewDat
         cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
         cell.productTitle.text = (filteredResult?[indexPath.row].title ?? "").split(separator: "|").dropFirst().first.map(String.init)
         cell.productSubTitle.text = filteredResult?[indexPath.row].vendor
-        cell.productPrice.text = filteredResult?[indexPath.row].variants.first?.price
-        
+        let factor = UserDefaults.standard.value(forKey: "factor")as! Double
+        let price = Double(filteredResult?[indexPath.row].variants.first?.price ?? "0.0")
+        let currency = UserDefaults.standard.value(forKey: "currencyTitle") as! String
+        cell.productPrice.text = String(format: "%.2f" ,factor * (price ?? 0.0))
+        cell.currency.text = currency
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
