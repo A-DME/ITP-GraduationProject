@@ -25,6 +25,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         // Do any additional setup after loading the view.
         searchBar.delegate = self
+        hideKeyboardWhenTappedAround()
         result = Products(products: [])
         filteredItems = []
         setIndicator()
@@ -110,10 +111,18 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         cell.textLabel?.text = filteredItems?[indexPath.row].title.split(separator: "|").dropFirst().first.map(String.init)
         cell.detailTextLabel?.text = filteredItems?[indexPath.row].vendor
         let url = URL(string:filteredItems?[indexPath.row].image.src ?? "")
+        cell.imageView?.frame.size = CGSize(width: 20.0, height: 20.0)
         cell.imageView?.kf.setImage(with: url,placeholder: UIImage(named: "placeHolder"))
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "ProductInfo", bundle:nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier:"prodInfo" ) as! ProductInfoViewController
+        nextVC.productId = filteredItems?[indexPath.row].id
+        print( nextVC.productId ?? 0)
+        self.present(nextVC, animated: true)
     }
 }

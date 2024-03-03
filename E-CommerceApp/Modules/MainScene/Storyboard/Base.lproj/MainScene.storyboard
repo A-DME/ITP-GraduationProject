@@ -129,39 +129,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="agU-Sb-vhu">
-                                <rect key="frame" x="0.0" y="137" width="393" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="NQn-Uz-4Qt"/>
-                                </connections>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-5X-EQ4">
-                                <rect key="frame" x="16" y="193" width="361" height="560"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-5X-EQ4">
+                                <rect key="frame" x="16" y="159" width="361" height="594"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="ri6-w1-hLs">
-                                        <rect key="frame" x="0.0" y="50" width="361" height="47.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="searchCell" textLabel="oqB-ga-MjS" detailTextLabel="FeV-dZ-sTV" style="IBUITableViewCellStyleSubtitle" id="ri6-w1-hLs">
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="361" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ri6-w1-hLs" id="31T-Rd-doR">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="47.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oqB-ga-MjS">
+                                                    <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FeV-dZ-sTV">
+                                                    <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="wjH-dC-xX2" id="Dbd-1q-VmD"/>
                                     <outlet property="delegate" destination="wjH-dC-xX2" id="pmF-UV-ZhM"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="agU-Sb-vhu">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="NQn-Uz-4Qt"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="spT-Av-2g7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="agU-Sb-vhu" firstAttribute="top" secondItem="spT-Av-2g7" secondAttribute="top" constant="34" id="7Dl-fE-txc"/>
+                            <constraint firstItem="agU-Sb-vhu" firstAttribute="top" secondItem="spT-Av-2g7" secondAttribute="top" id="7Dl-fE-txc"/>
+                            <constraint firstItem="1eE-5X-EQ4" firstAttribute="leading" secondItem="spT-Av-2g7" secondAttribute="leading" constant="16" id="Fhx-P8-9lv"/>
                             <constraint firstItem="agU-Sb-vhu" firstAttribute="leading" secondItem="spT-Av-2g7" secondAttribute="leading" id="KOW-3q-5GI"/>
+                            <constraint firstItem="spT-Av-2g7" firstAttribute="bottom" secondItem="1eE-5X-EQ4" secondAttribute="bottom" constant="16" id="MJJ-iK-frc"/>
                             <constraint firstItem="agU-Sb-vhu" firstAttribute="trailing" secondItem="spT-Av-2g7" secondAttribute="trailing" id="WYd-tm-lXV"/>
+                            <constraint firstItem="1eE-5X-EQ4" firstAttribute="top" secondItem="agU-Sb-vhu" secondAttribute="bottom" id="ZfM-aZ-ags"/>
+                            <constraint firstItem="spT-Av-2g7" firstAttribute="trailing" secondItem="1eE-5X-EQ4" secondAttribute="trailing" constant="16" id="sEl-Ig-E0v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="StyleHub" id="eaR-LK-XN8"/>
@@ -472,7 +492,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
