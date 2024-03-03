@@ -8,7 +8,7 @@
 import UIKit
 
 
-class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class BrandsViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ItemsCollection: UICollectionView!
@@ -122,7 +122,7 @@ extension BrandsViewController{
 
 // MARK: - UICollectionView
 
-extension BrandsViewController{
+extension BrandsViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if flag == false{
             return result?.products.count ?? 0

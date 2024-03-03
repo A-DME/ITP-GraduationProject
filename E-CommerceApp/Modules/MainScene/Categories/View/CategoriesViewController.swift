@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
+class CategoriesViewController: UIViewController {
     
     
    
@@ -86,7 +86,7 @@ extension CategoriesViewController{
 }
 // MARK: - UIcollectionView
 
-extension CategoriesViewController{
+extension CategoriesViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         filteredResult?.count ?? 0

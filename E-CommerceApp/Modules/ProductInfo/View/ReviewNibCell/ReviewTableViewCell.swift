@@ -14,15 +14,19 @@ class ReviewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rating: UILabel!
     
+    @IBOutlet weak var CreatedAt: UILabel!
     @IBOutlet weak var feedback: UITextView!
     
     @IBOutlet weak var cellView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        customerImage.layer.cornerRadius = customerImage.bounds.width*2/3
-        cellView.layer.cornerRadius = 16
-        cellView.layer.masksToBounds = true
+        
+    
+        customerImage.layer.masksToBounds = false
+        customerImage.layer.cornerRadius = (customerImage.frame.height)/12
+        customerImage.clipsToBounds = true
+      
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
