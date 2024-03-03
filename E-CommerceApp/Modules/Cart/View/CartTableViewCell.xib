@@ -33,7 +33,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Js-QR-2SN">
-                                <rect key="frame" x="176" y="8.0000000000000018" width="43.666666666666657" height="21.666666666666671"/>
+                                <rect key="frame" x="176" y="8.0000000000000018" width="391" height="21.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -123,6 +123,7 @@
                             <constraint firstAttribute="trailing" secondItem="fbJ-5g-CTq" secondAttribute="trailing" constant="24" id="TFt-O9-yfz"/>
                             <constraint firstItem="scW-ud-91E" firstAttribute="leading" secondItem="HdV-Gf-C0g" secondAttribute="leading" constant="8" id="WYg-w3-0KV"/>
                             <constraint firstAttribute="bottom" secondItem="scW-ud-91E" secondAttribute="bottom" constant="8" id="d2X-zq-7Gt"/>
+                            <constraint firstAttribute="trailing" secondItem="3Js-QR-2SN" secondAttribute="trailing" id="d3A-ux-Ngo"/>
                             <constraint firstItem="uzJ-bC-nnb" firstAttribute="centerY" secondItem="7dd-9U-yop" secondAttribute="centerY" id="fzJ-SP-uQE"/>
                             <constraint firstItem="7dd-9U-yop" firstAttribute="leading" secondItem="scW-ud-91E" secondAttribute="trailing" id="le2-Tc-iN5"/>
                             <constraint firstItem="gYy-hh-8bC" firstAttribute="centerY" secondItem="OHf-xY-MqG" secondAttribute="centerY" id="nxF-zB-vWB"/>
