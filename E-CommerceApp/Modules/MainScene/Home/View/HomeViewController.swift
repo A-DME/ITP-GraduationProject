@@ -8,12 +8,12 @@
 import UIKit
 import Kingfisher
 
-class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-    var searchWord : String = ""
-    var searching : Bool = false
+   /* var searchWord : String = ""
+    var searching : Bool = false*/
     
-    @IBOutlet weak var searchBar: UISearchBar!
+  //  @IBOutlet weak var searchBar: UISearchBar!
     
    
     @IBOutlet weak var adsCollectionView: UICollectionView!
@@ -23,12 +23,16 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     var adsResult : PriceRules?
     var indicator : UIActivityIndicatorView?
     var homeViewModel : HomeViewModel?
-    
+   // private let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+        //searchBar.delegate = self
         setIndicator()
+       // searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        //tableView.tableHeaderView = searchController.searchBar
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.setupCollectionView()
@@ -54,7 +58,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue){
         
     }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    /*func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searching = true
     }
 
@@ -68,7 +72,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         searchingResult()
     }
     
-    
+  
     func searchingResult(){
         if searching == false{
             displayBrands()
@@ -84,7 +88,13 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         
         checkIfNoItems()
         brandsCollection.reloadData()
-    }
+    }*/
+   /* func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        if let destination = storyboard?.instantiateViewController(withIdentifier: ("search")){
+            navigationController?.pushViewController(destination, animated: true)
+        }
+        return false
+    }*/
     func checkIfNoItems(){
         if (brandsResult?.count  == 0) {
             brandsCollection.setEmptyMessage("No Items Found")
@@ -235,4 +245,5 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
 }
