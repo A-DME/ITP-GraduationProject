@@ -20,6 +20,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var cartProducts: [LineItem]?
     
+    var cartDidChange: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cartItems.delegate = self
@@ -89,12 +91,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         let point = sender.convert(CGPoint.zero, to: cartItems)
         guard let indexPath = cartItems.indexPathForRow(at: point) else {return}
         cartProducts?[indexPath.row].quantity += 1
+        cartDidChange = true
         calculateSubtotal()
     }
     @objc func decreaseAction(_ sender: UIButton){
         let point = sender.convert(CGPoint.zero, to: cartItems)
         guard let indexPath = cartItems.indexPathForRow(at: point) else {return}
         cartProducts?[indexPath.row].quantity -= 1
+        cartDidChange = true
         calculateSubtotal()
     }
     
@@ -105,6 +109,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.endUpdates()
+            self.cartDidChange = true
             self.calculateSubtotal()
         }
         let no = UIAlertAction(title: "No", style: .cancel)
@@ -120,20 +125,35 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         self.subtotal.text = String(format: "%.2f",totalPrice)
     }
-    @IBAction func purchaseButton(_ sender: Any) {
-    }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
+        if segue.identifier == "reviewOrder"{
+            let orderReview = segue.destination as! OrderReviewViewController
+            //        orderReview.cartItems = cartProducts
+        }
         // Pass the selected object to the new view controller.
     }
-    */
+    
+    
+    @IBAction func purchaseButton(_ sender: Any) {
+        if cartDidChange{
+            print("Cart Items changed. Updating...")
+            viewModel?.updateOrder(cartItems: cartProducts)
+        }
+        performSegue(withIdentifier: "reviewOrder", sender: nil)
+    }
+    
 
     @IBAction func backButton(_ sender: Any) {
+        if cartDidChange{
+            print("Cart Items changed. Updating...")
+            viewModel?.updateOrder(cartItems: cartProducts)
+        }
         dismiss(animated: true)
     }
 }
