@@ -14,6 +14,9 @@ class APIHandler{
     static let apiKey = "a73c5fc1c095fd186d957dd2093e9006"
     static let apiSecretKey = "dfd0e137695430eb82bc3bc3edbc3a30"
     
+    static let currencyApiKey = "dY9QLpBRjobREEQ1uh054fpWULwTak3A"
+    static let currencyApiURL = "api.apilayer.com/currency_data"
+    
     enum EndPoints {
         case priceRule
         case priceRules(id: String)
@@ -33,6 +36,8 @@ class APIHandler{
         case ProductReviews(id:String)
         case SmartCollections
         case shopConfiguration
+        case liveCurrencies(wantedCurrencies: String)
+        case listOfAllCurrencies
         var order:String{
             switch self{
             case .priceRule:
@@ -71,6 +76,10 @@ class APIHandler{
                 return "smart_collections.json"
             case .shopConfiguration:
                 return "shop.json"
+            case .liveCurrencies(wantedCurrencies: let wantedCurrencies):
+                return "live?source=usd&currencies=\(wantedCurrencies)"
+            case .listOfAllCurrencies:
+                return "list"
                 
             }
         }
@@ -85,4 +94,7 @@ class APIHandler{
         return "\(Completions.ssl.rawValue)\(apiKey):\(accessToken)@\(storeURL)/admin/api/\(Completions.api_version.rawValue)/\(endpoint.order)"
     }
     
+    class func currenciesUrl(_ endpoint: EndPoints) -> String {
+        return "\(Completions.ssl.rawValue)\(currencyApiURL)/\(endpoint.order)"
+    }
 }
