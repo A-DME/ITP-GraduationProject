@@ -11,7 +11,6 @@ class AddressBookViewModel{
     var networkManager:NetworkManager?
     var customerID = 7440718856437 // TODO: recieve customer id from current User (if found)
     var bindResultToViewController : (()->()) = {}
-    let model = ReachabilityManager()
     var defaultAddress : [Address]? {
         didSet{
             bindResultToViewController()
