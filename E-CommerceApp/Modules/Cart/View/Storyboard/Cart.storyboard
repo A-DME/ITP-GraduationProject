@@ -66,7 +66,6 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="purchaseButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yTS-m6-DJF"/>
-                                            <segue destination="T4s-SF-g8H" kind="show" id="3lX-cN-VYw"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rB6-lf-OFT">
@@ -122,6 +121,7 @@
                         <outlet property="cartItems" destination="0pQ-bN-9x8" id="pga-xd-EWw"/>
                         <outlet property="currency" destination="Wd8-I3-gSU" id="2le-cw-3cQ"/>
                         <outlet property="subtotal" destination="2mo-11-qFr" id="Bui-pc-t4m"/>
+                        <segue destination="T4s-SF-g8H" kind="show" identifier="reviewOrder" id="PjN-ve-axC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
