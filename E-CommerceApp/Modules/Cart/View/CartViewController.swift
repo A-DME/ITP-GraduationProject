@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,7 +18,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var viewModel: CartViewModel?
     
-    var cartProducts: [CartProduct]?
+    var cartProducts: [LineItem]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +26,17 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cartItems.dataSource = self
         cartItems.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "cartCell")
         viewModel = CartViewModel()
-        cartProducts = viewModel?.cart
-        calculateSubtotal()
+        currency.text = UserDefaults.standard.string(forKey: "currencyTitle")
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel?.loadData()
+        viewModel?.bindResultToViewController = {
+            self.cartProducts = self.viewModel?.getCart()
+            self.cartItems.reloadData()
+            self.calculateSubtotal()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,10 +49,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! CartTableViewCell
-        cell.productImage.image = UIImage(named: (cartProducts?[indexPath.row].img)!)
+        cell.productImage.kf.setImage(with: URL(string: (cartProducts?[indexPath.row].properties[0].value)!))
         cell.productTitle.text = (cartProducts?[indexPath.row].name)!
-        cell.price.text = "$" + String((cartProducts?[indexPath.row].price)!)
-        cell.availableQuantity.text = String((cartProducts?[indexPath.row].availableQuantity)!)
+        cell.price.text = "\(UserDefaults.standard.string(forKey: "currencyTitle") ?? "") \(String(format: "%.2f",(UserDefaults.standard.double(forKey: "factor") * Double(cartProducts?[indexPath.row].price ?? "0.0")!)))"
+        cell.availableQuantity.text = (cartProducts?[indexPath.row].properties[1].value)!
         cell.orderQuantity.text = String((cartProducts?[indexPath.row].quantity)!)
         if (cartProducts?[indexPath.row].quantity)! == 1{
             cell.decreaseButton.isEnabled = false
@@ -66,7 +75,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-// MARK: Todo: Edit deletion functionality
+// MARK: Todo: Edit deletion functionality api
             deleteAlert(tableView, indexPath: indexPath)
         }
     }
@@ -107,9 +116,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     func calculateSubtotal(){
         var totalPrice = 0.0
         for product in cartProducts ?? []{
-            totalPrice += product.price * Double(product.quantity)
+            totalPrice += (UserDefaults.standard.double(forKey: "factor") * (Double(product.price) ?? 0.0)) * Double(product.quantity)
         }
-        self.subtotal.text = String(totalPrice)
+        self.subtotal.text = String(format: "%.2f",totalPrice)
     }
     @IBAction func purchaseButton(_ sender: Any) {
     }

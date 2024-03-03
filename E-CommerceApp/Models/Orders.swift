@@ -46,15 +46,18 @@ struct Order: Codable {
     }
 }
 struct LineItem: Codable {
-    let id: Int
+    let id, variantID, productID: Int
     let name, price: String
-    let quantity: Int
+    var quantity: Int
+    let properties: [NoteAttribute]
 
 
     enum CodingKeys: String, CodingKey {
         case id
+        case variantID = "variant_id"
+        case productID = "product_id"
         case name, price
-        case quantity
+        case quantity, properties
         
     }
 }
