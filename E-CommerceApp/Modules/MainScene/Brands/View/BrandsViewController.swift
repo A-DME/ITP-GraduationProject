@@ -134,18 +134,24 @@ extension BrandsViewController : UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ItemsCollection.dequeueReusableCell(withReuseIdentifier: "ItemsCell", for: indexPath) as! ItemsCollectionViewCell
+        let factor = UserDefaults.standard.value(forKey: "factor")as! Double
+        let currency = UserDefaults.standard.value(forKey: "currencyTitle") as! String
         if flag == false{
             let url = URL(string:result?.products[indexPath.row].image.src ?? "")
             cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
             cell.productTitle.text = (result?.products[indexPath.row].title ?? "").split(separator: "|").dropFirst().first.map(String.init)
             cell.productSubTitle.text = result?.products[indexPath.row].vendor
-            cell.productPrice.text = result?.products[indexPath.row].variants.first?.price
+            let price = Double(result?.products[indexPath.row].variants.first?.price ?? "0.0")
+            cell.productPrice.text = String(format: "%.2f" ,factor * (price ?? 0.0))
+            cell.currency.text = currency
         } else {
             let url = URL(string:sortedProducts?[indexPath.row].image.src ?? "")
             cell.productImage.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
             cell.productTitle.text = (sortedProducts?[indexPath.row].title ?? "").split(separator: "|").dropFirst().first.map(String.init)
             cell.productSubTitle.text = sortedProducts?[indexPath.row].vendor
-            cell.productPrice.text = sortedProducts?[indexPath.row].variants.first?.price
+            let price = Double(sortedProducts?[indexPath.row].variants.first?.price ?? "0.0")
+            cell.productPrice.text = String(format: "%.2f" ,factor * (price ?? 0.0))
+            cell.currency.text = currency
         }
         
         

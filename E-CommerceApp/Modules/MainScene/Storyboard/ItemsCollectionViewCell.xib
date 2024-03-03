@@ -29,8 +29,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="150$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zo-nx-zni">
-                                <rect key="frame" x="8" y="285" width="230" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="150$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zo-nx-zni">
+                                <rect key="frame" x="8" y="285" width="188.66666666666666" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,18 +41,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1j-WA-RYH">
+                                <rect key="frame" x="196.66666666666666" y="285" width="41.333333333333343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AKv-MG-eOF" secondAttribute="trailing" constant="8" id="0BA-Kw-sdJ"/>
                             <constraint firstItem="1Zo-nx-zni" firstAttribute="top" secondItem="6IH-ln-seN" secondAttribute="bottom" constant="8" id="2UG-hh-2f2"/>
                             <constraint firstAttribute="bottom" secondItem="1Zo-nx-zni" secondAttribute="bottom" constant="8" id="7DU-PD-QyZ"/>
-                            <constraint firstAttribute="trailing" secondItem="1Zo-nx-zni" secondAttribute="trailing" constant="8" id="9n0-kL-YYz"/>
                             <constraint firstAttribute="bottom" secondItem="NYb-vS-2Gx" secondAttribute="bottom" constant="111" id="Gau-aq-bR6"/>
                             <constraint firstAttribute="trailing" secondItem="6IH-ln-seN" secondAttribute="trailing" constant="8" id="JYt-9x-HjE"/>
                             <constraint firstItem="1Zo-nx-zni" firstAttribute="top" secondItem="6IH-ln-seN" secondAttribute="bottom" constant="8" id="LWh-FD-yHW"/>
                             <constraint firstItem="6IH-ln-seN" firstAttribute="top" secondItem="AKv-MG-eOF" secondAttribute="bottom" constant="8" id="NsR-tC-6i7"/>
                             <constraint firstItem="NYb-vS-2Gx" firstAttribute="leading" secondItem="x6T-Lm-yey" secondAttribute="leading" constant="8" id="PH3-NR-yOI"/>
+                            <constraint firstAttribute="bottom" secondItem="h1j-WA-RYH" secondAttribute="bottom" constant="8" id="RWU-eF-ecv"/>
                             <constraint firstAttribute="trailing" secondItem="NYb-vS-2Gx" secondAttribute="trailing" constant="8" id="Zpo-I0-yS1"/>
+                            <constraint firstItem="h1j-WA-RYH" firstAttribute="leading" secondItem="1Zo-nx-zni" secondAttribute="trailing" id="a9W-H4-ZPh"/>
+                            <constraint firstAttribute="trailing" secondItem="h1j-WA-RYH" secondAttribute="trailing" constant="8" id="cu8-L5-Sph"/>
                             <constraint firstItem="6IH-ln-seN" firstAttribute="top" secondItem="AKv-MG-eOF" secondAttribute="bottom" constant="8" id="dsR-cs-3FP"/>
                             <constraint firstItem="NYb-vS-2Gx" firstAttribute="top" secondItem="x6T-Lm-yey" secondAttribute="top" constant="8" id="hfh-6Q-uvQ"/>
                             <constraint firstItem="6IH-ln-seN" firstAttribute="leading" secondItem="x6T-Lm-yey" secondAttribute="leading" constant="8" id="hm8-hu-KYz"/>
@@ -71,6 +79,7 @@
             </constraints>
             <size key="customSize" width="246" height="314"/>
             <connections>
+                <outlet property="currency" destination="h1j-WA-RYH" id="c3X-TS-3XI"/>
                 <outlet property="productImage" destination="NYb-vS-2Gx" id="R5I-wY-Ghn"/>
                 <outlet property="productPrice" destination="1Zo-nx-zni" id="Grq-9a-r4e"/>
                 <outlet property="productSubTitle" destination="6IH-ln-seN" id="8IC-og-9xw"/>

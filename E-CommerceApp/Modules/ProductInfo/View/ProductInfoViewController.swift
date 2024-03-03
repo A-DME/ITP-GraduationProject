@@ -19,9 +19,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     var indicator : UIActivityIndicatorView?
     var reviews : Reviews?
     var Allreviews : [Reviews.Review]?
-    let actionClosure = { (action: UIAction) in
-            print(action.title)
-        }
+    
     
     @IBOutlet weak var color: UIButton!
     @IBOutlet weak var size: UIButton!
@@ -139,18 +137,18 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
 
     func configureLoadingData(){
         productInfoViewModel = ProductInfoViewModel()
-        print("configureLoadingData")
-        print("productId: \(productId ?? 0)")
         productInfoViewModel?.loadData(productId: self.productId ?? 0 )
         //print("productId\(productId)")
         
         productInfoViewModel?.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
                 self?.indicator?.stopAnimating()
-                
-                print(self?.productInfoViewModel?.getProductDetails()?.title)
                 self?.productNameText.text = self?.productInfoViewModel?.getProductDetails()?.title ?? ""
-                self?.productPriceText.text = self?.productInfoViewModel?.getProductDetails()?.variants.first?.price
+                let factor = UserDefaults.standard.value(forKey: "factor")as! Double
+                let price = Double(self?.productInfoViewModel?.getProductDetails()?.variants.first?.price ?? "0.0")
+                let currency = UserDefaults.standard.value(forKey: "currencyTitle") as! String
+                self?.productPriceText.text = String(format: "%.2f" ,factor * (price ?? 0.0))
+                self?.productCurrencyText.text = currency
                 self?.descriptionText.text = self?.productInfoViewModel?.getProductDetails()?.bodyHTML
                 self?.pageControl.numberOfPages = self?.productInfoViewModel?.getImagesCount() ?? 0
                 self?.sizes = self?.productInfoViewModel?.getProductDetails()?.options[0].values
@@ -197,14 +195,12 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         self.pageControl.currentPage = indexPath.section
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("the number of images\(productInfoViewModel?.getProductImages().count ?? 0)")
         return productInfoViewModel?.getProductDetails()?.images.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myDetCell", for: indexPath) as! ProductPositionsCollectionViewCell
         let url = URL(string:productInfoViewModel?.getProductDetails()?.images[indexPath.row].src ?? "hey")
-        print("this the url \(String(describing: url))")
         cell.productPositions.kf.setImage(with: url)
         return cell
     }

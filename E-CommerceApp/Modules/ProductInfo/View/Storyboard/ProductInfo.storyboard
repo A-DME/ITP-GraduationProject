@@ -127,14 +127,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="118" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xo8-cW-GSc">
-                                                        <rect key="frame" x="315" y="52" width="27" height="22"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lq-48-JVW">
-                                                        <rect key="frame" x="296" y="52" width="11" height="22"/>
+                                                        <rect key="frame" x="329" y="49" width="11" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -177,23 +171,31 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="118" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xo8-cW-GSc">
+                                                        <rect key="frame" x="246" y="52" width="75" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="4iC-wb-EZc"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="tGQ-gz-uKK" firstAttribute="leading" secondItem="RXz-09-Iie" secondAttribute="leading" id="4A0-yV-Keh"/>
                                                     <constraint firstItem="Kza-40-4HQ" firstAttribute="top" secondItem="Dnm-FH-O3d" secondAttribute="bottom" constant="1" id="Dy3-e6-Tuf"/>
                                                     <constraint firstAttribute="bottom" secondItem="qk8-Lt-c9d" secondAttribute="bottom" constant="73" id="F1U-kK-IQF"/>
-                                                    <constraint firstItem="5Lq-48-JVW" firstAttribute="bottom" secondItem="1zD-CH-if5" secondAttribute="bottom" constant="-4" id="F8B-Em-Zaj"/>
+                                                    <constraint firstItem="5Lq-48-JVW" firstAttribute="bottom" secondItem="1zD-CH-if5" secondAttribute="bottom" constant="-7" id="F8B-Em-Zaj"/>
                                                     <constraint firstItem="qk8-Lt-c9d" firstAttribute="centerX" secondItem="Dnm-FH-O3d" secondAttribute="centerX" id="FYN-fh-UQZ"/>
                                                     <constraint firstItem="2i4-YD-z4y" firstAttribute="top" secondItem="Kza-40-4HQ" secondAttribute="top" constant="29" id="KkP-nV-rTe"/>
-                                                    <constraint firstItem="xo8-cW-GSc" firstAttribute="leading" secondItem="5Lq-48-JVW" secondAttribute="trailing" constant="8" id="MgO-uw-eIK"/>
                                                     <constraint firstItem="1zD-CH-if5" firstAttribute="bottom" secondItem="Dnm-FH-O3d" secondAttribute="bottom" constant="2.8421709430404007e-14" id="PPX-3a-Go3"/>
                                                     <constraint firstAttribute="height" constant="250" id="RZy-sW-oZ5"/>
                                                     <constraint firstItem="qk8-Lt-c9d" firstAttribute="leading" secondItem="RXz-09-Iie" secondAttribute="leading" id="SkF-7H-6v3"/>
                                                     <constraint firstItem="bXR-B4-vw2" firstAttribute="centerX" secondItem="tGQ-gz-uKK" secondAttribute="centerX" id="VKB-VX-f1u"/>
                                                     <constraint firstAttribute="trailing" secondItem="tGQ-gz-uKK" secondAttribute="trailing" id="YCH-La-OYq"/>
                                                     <constraint firstItem="xo8-cW-GSc" firstAttribute="bottom" secondItem="1zD-CH-if5" secondAttribute="bottom" constant="-4" id="dq5-17-mYg"/>
-                                                    <constraint firstItem="5Lq-48-JVW" firstAttribute="leading" secondItem="1zD-CH-if5" secondAttribute="trailing" constant="202" id="e3o-Gt-qTL"/>
+                                                    <constraint firstItem="5Lq-48-JVW" firstAttribute="leading" secondItem="1zD-CH-if5" secondAttribute="trailing" constant="235" id="e3o-Gt-qTL"/>
                                                     <constraint firstItem="bXR-B4-vw2" firstAttribute="leading" secondItem="2i4-YD-z4y" secondAttribute="leading" id="f79-ID-tsg"/>
                                                     <constraint firstAttribute="trailing" secondItem="Kza-40-4HQ" secondAttribute="trailing" constant="8" id="i8W-Ri-do3"/>
                                                     <constraint firstItem="Dnm-FH-O3d" firstAttribute="leading" secondItem="RXz-09-Iie" secondAttribute="leading" id="i90-du-MLN"/>
@@ -203,6 +205,7 @@
                                                     <constraint firstItem="bXR-B4-vw2" firstAttribute="leading" secondItem="RXz-09-Iie" secondAttribute="leadingMargin" id="qTD-Bw-sp7"/>
                                                     <constraint firstItem="tGQ-gz-uKK" firstAttribute="top" secondItem="RXz-09-Iie" secondAttribute="top" id="sIP-fD-Orr"/>
                                                     <constraint firstItem="1zD-CH-if5" firstAttribute="leading" secondItem="Dnm-FH-O3d" secondAttribute="trailing" constant="8" id="tT4-Gs-Ws8"/>
+                                                    <constraint firstItem="5Lq-48-JVW" firstAttribute="leading" secondItem="xo8-cW-GSc" secondAttribute="trailing" constant="8" symbolic="YES" id="uQG-2g-aB1"/>
                                                     <constraint firstItem="qk8-Lt-c9d" firstAttribute="top" secondItem="2i4-YD-z4y" secondAttribute="bottom" constant="8" id="v5e-rB-l51"/>
                                                     <constraint firstItem="bXR-B4-vw2" firstAttribute="top" secondItem="qk8-Lt-c9d" secondAttribute="bottom" constant="8" id="wpM-5W-Jdj"/>
                                                 </constraints>
@@ -382,7 +385,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RS2-N7-sjg">
-                                <rect key="frame" x="8" y="98" width="377" height="665"/>
+                                <rect key="frame" x="8" y="97.666666666666686" width="377" height="665.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewCell" id="Ayq-rt-PfW">
@@ -591,13 +594,13 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
