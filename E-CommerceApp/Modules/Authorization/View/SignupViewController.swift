@@ -29,61 +29,35 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblValidation.isHidden = true
+        
         configureLoadingData()
-        //bindToViewModel()
+        bindToViewModel()
         
 
         // Do any additional setup after loading the view.
     }
-    
-    
-
-    @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true)
-    }
-    
-    @IBAction func signUpButton(_ sender: Any) {
-        _firstName = firstName.text
-        _lastName = secondName.text
-        _email = emailAddress.text
-        _password = password.text
-        if _firstName != "" && _lastName != ""{
-            if userDefualt.isValidEmail(_email){
-                if _password.count >= 6{
-                    
-//                    for item in self.signUpViewModel?.getAllCustomers() {
-//                        let comingMail = item.email ?? ""
-//                        if comingMail == self?._email{
-//                            self?.signUpViewModel?.flag=true
-//                        }
-//                    }
-                    
-                    signUpViewModel?.registerCustomer(firstName: _firstName , lastName: _lastName , email: _email, password: _password){ result in
-                        
-                        print("signUp View controller.registerCustomer")
-                        switch result{
-                        case true:
-                            print("from view  \(String(describing: self._firstName ?? ""))")
-                        case false:
-                            DispatchQueue.main.async {
-                                self.lblValidation.isHidden = false
-                                self.lblValidation.text = "This user already exists"
-                            }
-                        }
-                    }
-                }else{
-                    lblValidation.isHidden = false
-                    lblValidation.text = "Password must be more than 5 digit "
+    func bindToViewModel(){
+        signUpViewModel?.bindNavigate = { [weak self] in
+            DispatchQueue.main.async {
+                if ((self?.signUpViewModel?.navigateToHome()) == true){
+                    self?.navigate()
                 }
-                
-            }else{
-                lblValidation.isHidden = false
-                lblValidation.text = "Please, enter valid email"
+                else{
+                    let alert = UIAlertController(title: "Not Authorized", message: "An Error Occured", preferredStyle: .alert)
+                    let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                    alert.addAction(gotIt)
+                    self?.present(alert, animated: true)
+                }
             }
-        }else{
-            lblValidation.isHidden = false
-            lblValidation.text = "Required full name "
+        }
+    }
+   
+    func navigate(){
+        if self.signUpViewModel?.navigate == true{
+            performSegue(withIdentifier: "toHome", sender: self)
+        }else {
+            print("failed")
+            
         }
     }
     
@@ -107,25 +81,84 @@ class SignupViewController: UIViewController {
             }
         }
     }
+
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
-    func bindToViewModel(){
-        signUpViewModel?.bindNavigate = { [weak self] in
-            DispatchQueue.main.async {
-                
-                self?.navigate()
-            }
-        }
-        
-    }
-   
-    func navigate(){
-        if self.signUpViewModel?.navigate == true{
-                if self.isFromLogin == true{
-                performSegue(withIdentifier: "toHome", sender: self)
+    @IBAction func signUpButton(_ sender: Any) {
+        _firstName = firstName.text
+        _lastName = secondName.text
+        _email = emailAddress.text
+        _password = password.text
+        if _firstName != "" && _lastName != ""{
+            if userDefualt.isValidEmail(_email){
+                if passwordConfirmation.text == _password{
+                    if _password.count >= 6{
+                        
+                        
+                        for item in (self.signUpViewModel?.getAllCustomers())! {
+                            let comingMail = item.email ?? ""
+                            if comingMail == _email{
+                                self.signUpViewModel?.flag=true
+                            }
+                        }
+                        if self.signUpViewModel?.flag == true{
+                            let alert = UIAlertController(title: "An Error Occured", message: "This user already exists", preferredStyle: .alert)
+                            let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                            alert.addAction(gotIt)
+                            self.present(alert, animated: true)
+                            
+                        }else{
+                            
+                            
+                            signUpViewModel?.registerCustomer(firstName: _firstName , lastName: _lastName , email: _email, password: _password){ result in
+                                
+                                print("signUp View controller.registerCustomer")
+                                switch result{
+                                case true:
+                                    print("from view  \(String(describing: self._firstName ?? ""))")
+                                case false:
+                                    DispatchQueue.main.async {
+                                        self.lblValidation.isHidden = false
+                                        self.lblValidation.text = "This user already exists"
+                                    }
+                                }
+                            }
+                        }
+                    }else{
+                        let alert = UIAlertController(title: "An Error Occured", message:"Password must be more than 5 digit" , preferredStyle: .alert)
+                        let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                        alert.addAction(gotIt)
+                        self.present(alert, animated: true)
+                    }
                 }else{
-                    print("failed")
+                    
+                    let alert = UIAlertController(title: "An Error Occured", message: "Password Confirmation Doesnt match", preferredStyle: .alert)
+                    let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                    alert.addAction(gotIt)
+                    self.present(alert, animated: true)
+                   
                 }
+                
+            }else{
+                let alert = UIAlertController(title: "An Error Occured", message: "Please, enter valid email", preferredStyle: .alert)
+                let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                alert.addAction(gotIt)
+                self.present(alert, animated: true)
+                
             }
+        }else{
+            let alert = UIAlertController(title: "An Error Occured", message: "Required full name", preferredStyle: .alert)
+            let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+            alert.addAction(gotIt)
+            self.present(alert, animated: true)
+            
+        }
     }
+    
+    
+    
+
     
 }
