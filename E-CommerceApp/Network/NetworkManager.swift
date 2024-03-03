@@ -59,10 +59,10 @@ class NetworkManager{
     }
     
 
-    func PostCustomerToApi(url:String,parameters: Parameters,completion: @escaping (Data?, URLResponse?, Error?)->()){
+    func PostCustomerToApi<T:Codable>(url:String,type: T.Type,parameters: Parameters,completion: @escaping ((T?)->Void)){
         let headers: HTTPHeaders = [
-           "Cookie":"",
-//            "Accept": "application/json",
+            "Cookie":"",
+            "Accept": "application/json",
             "Content-Type": "application/json"
         ]
         
@@ -75,18 +75,30 @@ class NetworkManager{
                 switch response.result {
                 case .success:
                     if let data = response.data {
-                       //
+                        //
                         print("Success:\(String(data: data, encoding: .utf8) ?? "") ")
+                        do{
+                            let result = try JSONDecoder().decode(T.self, from: data)
+                            completion(result)
+                        }catch let error{
+                            print("the error is in the decoding proccess")
+                            print(error)
+                            completion(nil)
+                        }
+                        
                     }
                 case .failure(let error):
                     print("Error: \(error)")
                     
+                    print(error)
+                    completion(nil)
                     if let data = response.data {
                         print("Response Data: \(String(data: data, encoding: .utf8) ?? "")")
                     }
                 }
             }
     }
+    
     func PostToApi(url:String,parameters: Parameters){
         let headers: HTTPHeaders = [
             "Cookie":""
