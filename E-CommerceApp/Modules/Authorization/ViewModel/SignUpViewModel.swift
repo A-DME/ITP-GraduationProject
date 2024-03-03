@@ -98,70 +98,124 @@ class SignUpViewModel{
 //            completion(false)
 //        }
     }
-    
-
     func registerNewCustomer(customer: CustomerModel, completion: @escaping (Bool)->Void ){
-        guard let newCustomer = HelperFunctions().convertToDictionary(object: customer, String: "customer") else { return }
-        print(newCustomer)
-        let apiUrl = String ("https://a73c5fc1c095fd186d957dd2093e9006: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@q2-24-team2.myshopify.com/admin/api/2024-01/customers.json?since_id=1 ")
-        
-        // APIHandler.urlForGetting(.customers)
-        networkHandler?.PostCustomerToApi(url: apiUrl, parameters: newCustomer) {
-            (data, response, error )in
-            print("calling PostCustomerToAPi")
-            DispatchQueue.main.async {
-                if let error = error {
-                    print(error)
-                    completion(false)
-                } else if let data = data {
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
-                        if let savedCustomer = json["customer"] as? [String: Any] {
-                            let id = savedCustomer["id"] as? Int ?? 0
-                            print("1:\(id)\n")
-                            
-                            let customerName = savedCustomer["first_name"] as? String ?? ""
-                            print("1:\(customerName)\n")
-                            
-                            let customerLastName = savedCustomer["last_name"] as? String ?? ""
-                            print("1:\(customerLastName)\n")
-                            
-                            let customerEmail = savedCustomer["email"] as? String ?? ""
-                            print("1:\(customerEmail)\n")
-                            
-                            let customerPassword = savedCustomer["tags"] as? String ?? ""
-                            print("1:\(customerPassword)\n")
-                            
-                            let customerNote = savedCustomer["note"] as? String ?? "0"
-                            print("1:\(customerPassword)\n")
-                            
-                            if id != 0 {
-                                self.userDefualt.login()
-                                self.userDefualt.addCustomerId(id: id)
-                                self.userDefualt.addCustomerEmail(customerEmail: customerEmail)
-                                self.userDefualt.addCustomerName(customerName: "\(customerName) \(customerLastName)")
-                                self.userDefualt.login()
-                                self.userDefualt.setUserPassword(password: customerPassword)
-                                self.userDefualt.setUserNote(note: customerNote)
-                                print("passwordUserrrr\(String(describing: self.userDefualt.getUserPassword()))")
-                                completion(true)
-                                print("add to userDefualt successfully!!!")
-                            } else {
-                                completion(false)
-                                print("error to register")
-                            }
-                        } else {
-                            completion(false)
-                            print("No 'customer' key found in the response.")
-                        }
-                    } catch {
-                        print("Error parsing JSON: \(error)")
+            guard let newCustomer = HelperFunctions().convertToDictionary(object: customer, String: "customer") else { return }
+            print(newCustomer)
+            let apiUrl = String ("https://a73c5fc1c095fd186d957dd2093e9006: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@q2-24-team2.myshopify.com/admin/api/2024-01/customers.json?since_id=1 ")
+            
+            // APIHandler.urlForGetting(.customers)
+            networkHandler?.PostCustomerToApi(url: apiUrl, type: Customer.self, parameters: newCustomer) {
+                customerContainer in
+                print("calling PostCustomerToAPi")
+                if let savedCustomer = customerContainer?.customer {
+                    let id = savedCustomer.id ?? 0
+                    print("1:\(id)\n")
+                    
+                    let customerName = savedCustomer.first_name ?? ""
+                    print("1:\(customerName)\n")
+                    
+                    let customerLastName = savedCustomer.last_name ?? ""
+                    print("1:\(customerLastName)\n")
+                    
+                    let customerEmail = savedCustomer.email ?? ""
+                    print("1:\(customerEmail)\n")
+                    
+                    let customerPassword = savedCustomer.tags ?? ""
+                    print("1:\(customerPassword)\n")
+                    
+                    let customerNote = savedCustomer.note ?? "0"
+                    print("1:\(customerPassword)\n")
+                    
+                    if id != 0 {
+                        
+                        self.userDefualt.login()
+                        self.userDefualt.addCustomerId(id: id)
+                        self.userDefualt.addCustomerEmail(customerEmail: customerEmail)
+                        self.userDefualt.addCustomerName(customerName: "\(customerName) \(customerLastName)")
+                        self.userDefualt.login()
+                        self.userDefualt.setUserPassword(password: customerPassword)
+                        self.userDefualt.setUserNote(note: customerNote)
+                        
+                        print("Password User:\(String(describing: self.userDefualt.getUserPassword()))")
+                        
+                        completion(true)
+                        print("add to userDefualt successfully!!!")
+                        
+                    } else {
                         completion(false)
+                        print("No customer found in the response.")
                     }
+                        
+                    
                 }
             }
         }
-    }
+    
+
+//    func registerNewCustomer(customer: CustomerModel, completion: @escaping (Bool)->Void ){
+//        guard let newCustomer = HelperFunctions().convertToDictionary(object: customer, String: "customer") else { return }
+//        print(newCustomer)
+//        let apiUrl = String ("https://a73c5fc1c095fd186d957dd2093e9006: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@q2-24-team2.myshopify.com/admin/api/2024-01/customers.json?since_id=1 ")
+//        
+//        // APIHandler.urlForGetting(.customers)
+//        networkHandler?.PostCustomerToApi(url: apiUrl,type: Customer.self, parameters: newCustomer) {_ in 
+//            ()
+//            print("calling PostCustomerToAPi")
+//            print("calling PostCustomerToAPi")
+//            print("calling PostCustomerToAPi")
+//            DispatchQueue.main.async {
+//                if let error = error {
+//                    print(error)
+//                    completion(false)
+//                } else if let data = data {
+//                    do {
+//                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
+//                        if let savedCustomer = json["customer"] as? [String: Any] {
+//                            let id = savedCustomer["id"] as? Int ?? 0
+//                            print("1:\(id)\n")
+//                            
+//                            let customerName = savedCustomer["first_name"] as? String ?? ""
+//                            print("1:\(customerName)\n")
+//                            
+//                            let customerLastName = savedCustomer["last_name"] as? String ?? ""
+//                            print("1:\(customerLastName)\n")
+//                            
+//                            let customerEmail = savedCustomer["email"] as? String ?? ""
+//                            print("1:\(customerEmail)\n")
+//                            
+//                            let customerPassword = savedCustomer["tags"] as? String ?? ""
+//                            print("1:\(customerPassword)\n")
+//                            
+//                            let customerNote = savedCustomer["note"] as? String ?? "0"
+//                            print("1:\(customerPassword)\n")
+//                            
+//                            if id != 0 {
+//                                self.userDefualt.login()
+//                                self.userDefualt.addCustomerId(id: id)
+//                                self.userDefualt.addCustomerEmail(customerEmail: customerEmail)
+//                                self.userDefualt.addCustomerName(customerName: "\(customerName) \(customerLastName)")
+//                                self.userDefualt.login()
+//                                self.userDefualt.setUserPassword(password: customerPassword)
+//                                self.userDefualt.setUserNote(note: customerNote)
+//                                print("passwordUserrrr\(String(describing: self.userDefualt.getUserPassword()))")
+//                                completion(true)
+//                                print("add to userDefualt successfully!!!")
+//                            } else {
+//                                completion(false)
+//                                print("error to register")
+//                            }
+//                        } else {
+//                            completion(false)
+//                            print("No 'customer' key found in the response.")
+//                        }
+//                    } catch {
+//                        print("Error parsing JSON: \(error)")
+//                        completion(false)
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     
 }
