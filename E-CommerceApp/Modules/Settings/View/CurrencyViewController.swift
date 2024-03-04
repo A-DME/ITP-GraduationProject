@@ -34,17 +34,40 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
         indicator?.startAnimating()
         self.view.addSubview(indicator!)
         viewModel = CurrencyViewModel()
-        viewModel?.loadCurrencies()
-        viewModel?.bindResultToViewController = {
-            self.currencyList = ["USDUSD": 1.0].merging(self.viewModel?.getCurrencyRates() ?? [:]){ (current, _) in current }
-            self.currenciesArray = (Array(self.currencyList!.keys) as! [String])
-            self.indicator?.stopAnimating()
-            self.currencies.reloadData()
-            self.rates = (Array(self.currencyList!.values) as! [Double])
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel?.checkNetworkReachability{ isReachable in
+            if isReachable {
+                self.viewModel?.loadCurrencies()
+                self.viewModel?.bindResultToViewController = {
+                    self.currencyList = ["USDUSD": 1.0].merging(self.viewModel?.getCurrencyRates() ?? [:]){ (current, _) in current }
+                    self.currenciesArray = (Array(self.currencyList!.keys) as! [String])
+                    self.indicator?.stopAnimating()
+                    self.currencies.reloadData()
+                    self.rates = (Array(self.currencyList!.values) as! [Double])
+                }
+                
+                self.currenciesNames = self.viewModel?.currenciesNames
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
+        }
+    }
+    
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
         }
         
-        currenciesNames = viewModel?.currenciesNames
-        // Do any additional setup after loading the view.
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

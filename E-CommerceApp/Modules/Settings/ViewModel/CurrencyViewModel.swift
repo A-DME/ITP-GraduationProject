@@ -9,6 +9,7 @@ import Foundation
 
 class CurrencyViewModel{
     var networkManager: NetworkManager?
+    let model = ReachabilityManager()
     var bindResultToViewController : (()->()) = {}
     var currencyRate: [String: Double]? {
         didSet{
@@ -197,6 +198,12 @@ class CurrencyViewModel{
 //                        "USDJPY": 150.09504]
         
     }
+
+  func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
+      model.checkNetworkReachability { isReachable in
+          completion(isReachable)
+      }
+  }
     
     func loadCurrencies() {
         networkManager?.fetch(url: APIHandler.currenciesUrl(.liveCurrencies(wantedCurrencies: "egp,aed,eur,kwd,qar,sar,jpy")), type: ExchangeRates.self, complitionHandler: { container in

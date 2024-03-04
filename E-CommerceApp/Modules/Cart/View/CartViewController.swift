@@ -42,15 +42,35 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel?.loadData()
-        viewModel?.bindResultToViewController = {
-            self.cartProducts = self.viewModel?.getFilteredCart()
-            if (self.cartProducts?.count)! > 0 {
-                self.proceedButton.isEnabled = true
+        viewModel?.checkNetworkReachability{ isReachable in
+            if isReachable {
+                self.viewModel?.loadData()
+                self.viewModel?.bindResultToViewController = {
+                    self.cartProducts = self.viewModel?.getFilteredCart()
+                    if (self.cartProducts?.count)! > 0 {
+                        self.proceedButton.isEnabled = true
+                    }
+                    self.cartItems.reloadData()
+                    self.calculateSubtotal()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
             }
-            self.cartItems.reloadData()
-            self.calculateSubtotal()
         }
+    }
+    
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

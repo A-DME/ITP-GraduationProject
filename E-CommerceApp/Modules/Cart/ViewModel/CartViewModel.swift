@@ -9,6 +9,7 @@ import Foundation
 class CartViewModel{
     var networkManager: NetworkManager?
     var bindResultToViewController: (()->()) = {}
+    let model = ReachabilityManager()
     var cart: [LineItem]? {
         didSet{
             bindResultToViewController()
@@ -20,6 +21,12 @@ class CartViewModel{
     
     init(){
         networkManager = NetworkManager()
+    }
+    
+    func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
+        model.checkNetworkReachability { isReachable in
+            completion(isReachable)
+        }
     }
 // MARK: - Awaiting customer's cart id
     func loadData(){

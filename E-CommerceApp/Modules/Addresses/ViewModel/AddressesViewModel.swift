@@ -9,6 +9,7 @@ import Foundation
  
 class AddressesViewModel{
     var networkManager:NetworkManager?
+    let model = ReachabilityManager()
     var customer_id: Int? // TODO: recieve customer id from previous screen
     var bindResultToViewController : (()->()) = {}
     var customerID = 7440718856437
@@ -23,6 +24,12 @@ class AddressesViewModel{
          addresses = []
          
      }
+
+  func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
+      model.checkNetworkReachability { isReachable in
+          completion(isReachable)
+      }
+  }
     
     func loadData(){
 // MARK: - Todo: Put current customer's id

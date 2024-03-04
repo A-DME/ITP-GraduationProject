@@ -35,8 +35,31 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
         itemsCollection.delegate = self
         itemsCollection.dataSource = self
         itemsCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "ItemCell")
-        viewModel = OrderReviewViewModel()
-        reloadView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel?.checkNetworkReachability{ isReachable in
+            if isReachable {
+                self.viewModel = OrderReviewViewModel()
+                self.reloadView()
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
+        }
+    }
+    
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func reloadView(){

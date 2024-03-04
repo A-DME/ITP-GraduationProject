@@ -33,12 +33,32 @@ class AddressBookViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         indicator?.startAnimating()
-        viewModel?.loadData()
-        viewModel?.bindResultToViewController = {
-            self.address = self.viewModel?.getDefaultAddress()
-            self.indicator?.stopAnimating()
-            self.defaultAddress.reloadData()
+        viewModel?.checkNetworkReachability{ isReachable in
+            if isReachable {
+                self.viewModel?.loadData()
+                self.viewModel?.bindResultToViewController = {
+                    self.address = self.viewModel?.getDefaultAddress()
+                    self.indicator?.stopAnimating()
+                    self.defaultAddress.reloadData()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
         }
+    }
+    
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
