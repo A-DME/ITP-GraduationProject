@@ -134,7 +134,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the new view controller using segue.destination.
         if segue.identifier == "reviewOrder"{
             let orderReview = segue.destination as! OrderReviewViewController
-            //        orderReview.cartItems = cartProducts
+//            orderReview.cartItems = cartProducts
+            orderReview.draftId = viewModel?.dummyDraftId
         }
         // Pass the selected object to the new view controller.
     }

@@ -34,11 +34,16 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
         addressesList = []
         addresses.reloadData()
         indicator.startAnimating()
+        refreshTable()
+    }
+    
+    func refreshTable(){
 //        MARK: - ADD CUSTOMER'S ID
+        Thread.sleep(forTimeInterval: 0.2)
         viewModel?.loadData()
         viewModel?.bindResultToViewController = { [weak self] in
             self?.addressesList = self?.viewModel?.addresses
-            print(self?.addressesList)
+//            print(self?.addressesList)
             self?.indicator.stopAnimating()
             self?.addresses.reloadData()
             
@@ -86,9 +91,7 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
                 //MARK: - TODO: save as default address (PUT)
                 self.indicator.startAnimating()
                 self.viewModel?.makeDefault(index: indexPath.row)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                    self.dismiss(animated: true)
-                }
+                self.refreshTable()
             }
             let no = UIAlertAction(title: "No", style: .default)
             

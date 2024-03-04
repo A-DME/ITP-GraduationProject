@@ -14,13 +14,14 @@ class CartViewModel{
             bindResultToViewController()
         }
     }
+    let dummyDraftId = 1148431433973
     
     init(){
         networkManager = NetworkManager()
     }
 // MARK: - Awaiting customer's cart id
     func loadData(){
-        networkManager?.fetch(url: APIHandler.urlForGetting(.draftOrder(id: "1148431433973")), type: DraftOrderContainer.self, complitionHandler: { container in
+        networkManager?.fetch(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId))")), type: DraftOrderContainer.self, complitionHandler: { container in
             self.cart = container?.draftOrder.lineItems
         })
     }
@@ -42,7 +43,7 @@ class CartViewModel{
         guard let cartItems = cartItems else { return }
         
 //        print(extractLineItemsPostData(lineItems: cartItems))
-        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "1148431433973")), parameters: ["draft_order": ["line_items": extractLineItemsPostData(lineItems: cartItems)]])
+        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId))")), parameters: ["draft_order": ["line_items": extractLineItemsPostData(lineItems: cartItems)]])
     }
     
     func getCart() -> [LineItem]{

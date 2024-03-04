@@ -33,9 +33,11 @@ class AddressBookViewModel{
         })
     }
     
-    func makeDefault(addressId: Int){
-//        networkManager.putInApi(url:, parameters)
-        
+    
+    func addShippingAddress(draftId: Int){
+//        print(HelperFunctions().convertToDictionary(object: (defaultAddress![0]), String: "shipping_address"))
+        print("updating address....")
+        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(draftId))")), parameters:["draft_order": ["customer": ["id": defaultAddress?[0].customerID]]])
     }
     
     func getDefaultAddress() -> [Address]{
