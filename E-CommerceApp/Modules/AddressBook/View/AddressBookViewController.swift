@@ -17,6 +17,8 @@ class AddressBookViewController: UIViewController, UITableViewDelegate, UITableV
     
     var indicator: UIActivityIndicatorView?
     
+    var draftId: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         defaultAddress.dataSource = self
@@ -58,20 +60,25 @@ class AddressBookViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "continueToPayment"{
+            // Pass the selected object to the new view controller.
+            let payment = segue.destination as! PaymentViewController
+            payment.draftId = draftId
+        }
     }
-    */
+    
 
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true)
     }
     @IBAction func proceedButton(_ sender: Any) {
+        viewModel?.addShippingAddress(draftId: draftId)
         performSegue(withIdentifier: "continueToPayment", sender: nil)
     }
 }

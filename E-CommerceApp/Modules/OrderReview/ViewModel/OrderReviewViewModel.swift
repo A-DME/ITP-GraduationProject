@@ -6,3 +6,35 @@
 //
 
 import Foundation
+
+class OrderReviewViewModel{
+    var networkManager: NetworkManager?
+    var bindResultToViewController: (()->()) = {}
+    var cart: [LineItem]? {
+        didSet{
+            bindResultToViewController()
+        }
+    }
+    
+    init(){
+        networkManager = NetworkManager()
+    }
+// MARK: - Awaiting customer's cart id
+    func loadData(draftId: Int){
+        networkManager?.fetch(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(draftId))")), type: DraftOrderContainer.self, complitionHandler: { container in
+            self.cart = container?.draftOrder.lineItems
+        })
+    }
+    
+    
+    func apply(discount: PriceRule){
+//        guard let cartItems = cartItems else { return }
+//        
+////        print(extractLineItemsPostData(lineItems: cartItems))
+//        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId))")), parameters: ["draft_order": ["line_items": extractLineItemsPostData(lineItems: cartItems)]])
+    }
+    
+    func getCart() -> [LineItem]{
+        return cart ?? []
+    }
+}

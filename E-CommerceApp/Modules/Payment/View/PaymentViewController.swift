@@ -15,6 +15,8 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var viewModel: PaymentViewModel?
     
+    var draftId : Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         methods.delegate = self
@@ -22,6 +24,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         methods.register(UINib(nibName: "PaymentTableViewCell", bundle: nil), forCellReuseIdentifier: "paymentCell")
         purchaseButton.isEnabled = false
         viewModel = PaymentViewModel()
+        viewModel?.loadData(draftId: draftId)
         // Do any additional setup after loading the view.
     }
     
@@ -74,6 +77,8 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func purchase(_ sender: Any) {
 // MARK: TODO: make sure that the payment is done(case apple pay)
+        viewModel?.postOrder()
+        viewModel?.resetOrder(draftId: draftId)
         performSegue(withIdentifier: "orderConfirmed", sender: nil)
     }
 }
