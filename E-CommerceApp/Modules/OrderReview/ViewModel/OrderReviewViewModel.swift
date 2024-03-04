@@ -9,7 +9,6 @@ import Foundation
 
 class OrderReviewViewModel{
     var networkManager: NetworkManager?
-    let model = ReachabilityManager()
     var bindResultToViewController: (()->()) = {}
     var cart: [LineItem]? {
         didSet{
@@ -20,12 +19,6 @@ class OrderReviewViewModel{
     init(){
         networkManager = NetworkManager()
     }
-
-  func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
-      model.checkNetworkReachability { isReachable in
-          completion(isReachable)
-      }
-  }
 // MARK: - Awaiting customer's cart id
     func loadData(draftId: Int){
         networkManager?.fetch(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(draftId))")), type: DraftOrderContainer.self, complitionHandler: { container in
