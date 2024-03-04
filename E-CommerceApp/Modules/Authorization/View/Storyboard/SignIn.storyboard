@@ -43,7 +43,8 @@
                                     <color key="baseBackgroundColor" red="0.1843137255" green="0.34509803919999998" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="IS7-r8-HCX" kind="presentation" modalPresentationStyle="fullScreen" id="VE7-c0-viH"/>
+                                    <action selector="signInButton:" destination="DTU-Ug-QoG" eventType="touchUpInside" id="Ssu-zH-3te"/>
+                                    <segue destination="IS7-r8-HCX" kind="presentation" identifier="logIn" modalPresentationStyle="fullScreen" id="VE7-c0-viH"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-pe-Oam">
@@ -134,6 +135,10 @@
                             <constraint firstItem="FXd-Rg-Ff4" firstAttribute="leading" secondItem="kAj-o7-rdF" secondAttribute="leading" constant="16" id="zSA-G2-8ZP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="nDp-Di-8P1" id="b0y-OT-OAd"/>
+                        <outlet property="password" destination="C8x-xA-Kly" id="5eV-E1-tZe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEL-gD-QVo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
