@@ -45,7 +45,7 @@ class APIHandler{
             case .priceRules(id: let id):
                 return "price_rules/\(id).json"
             case .customers:
-                return"customers.json "
+                return"customers.json?since_id=1"
             case .Customer(id: let id):
                 return "customers/\(id).json"
             case .allAddressesOf(customer_id: let customer_id):
