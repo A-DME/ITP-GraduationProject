@@ -38,6 +38,7 @@ struct DraftOrder: Codable {
     let paymentTerms: PaymentTerms?
     let appliedDiscount: AppliedDiscount?
     let subtotalPrice, totalPrice: String
+    let updatedAt :String
     let status: String
 
     enum CodingKeys: String, CodingKey {
@@ -54,6 +55,7 @@ struct DraftOrder: Codable {
         case subtotalPrice = "subtotal_price"
         case totalPrice = "total_price"
         case status
+        case updatedAt = "updated_at"
     }
 }
 
