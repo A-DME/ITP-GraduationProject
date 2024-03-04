@@ -78,7 +78,7 @@ class AddressBookViewController: UIViewController, UITableViewDelegate, UITableV
         dismiss(animated: true)
     }
     @IBAction func proceedButton(_ sender: Any) {
-        viewModel?.addShippingAddress(draftId: draftId)
+        viewModel?.addCustomerAddress(draftId: draftId)
         performSegue(withIdentifier: "continueToPayment", sender: nil)
     }
 }

@@ -43,7 +43,7 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
         Thread.sleep(forTimeInterval: 0.35)
         viewModel?.loadData(draftId: draftId)
         viewModel?.bindResultToViewController = {
-            self.cartItems = self.viewModel?.getCart()
+            self.cartItems = self.viewModel?.getFilteredCart()
             self.itemsCollection.reloadData()
             self.calculateLabels()
         }
@@ -55,7 +55,7 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = itemsCollection.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemsCollectionViewCell
-        cell.productTitle.text = String(cartItems?[indexPath.row].name.split(separator: "|")[1] ?? "")
+        cell.productTitle.text = String(cartItems?[indexPath.row].name?.split(separator: "|")[1] ?? "")
         cell.productSubTitle.text = "Quantity: \(String((cartItems?[indexPath.row].quantity) ?? 1))"
         cell.currency.text = UserDefaults.standard.string(forKey: "currencyTitle")
         cell.productImage.kf.setImage(with: URL(string: cartItems?[indexPath.row].properties[0].value ?? ""))

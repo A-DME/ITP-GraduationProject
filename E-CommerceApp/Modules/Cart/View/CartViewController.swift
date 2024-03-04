@@ -16,6 +16,11 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var currency: UILabel!
     
+    @IBOutlet weak var proceedButton: UIButton!
+    
+    
+    @IBOutlet weak var nonRegisteredView: UIView!
+    
     var viewModel: CartViewModel?
     
     var cartProducts: [LineItem]?
@@ -28,6 +33,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cartItems.dataSource = self
         cartItems.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "cartCell")
         viewModel = CartViewModel()
+        proceedButton.isEnabled = false
+//        if guestUser{
+//            nonRegisteredView.isHidden = false
+//        }
         currency.text = UserDefaults.standard.string(forKey: "currencyTitle")
         // Do any additional setup after loading the view.
     }
@@ -35,7 +44,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         viewModel?.loadData()
         viewModel?.bindResultToViewController = {
-            self.cartProducts = self.viewModel?.getCart()
+            self.cartProducts = self.viewModel?.getFilteredCart()
+            if (self.cartProducts?.count)! > 0 {
+                self.proceedButton.isEnabled = true
+            }
             self.cartItems.reloadData()
             self.calculateSubtotal()
         }
@@ -46,6 +58,12 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if cartProducts?.count == 0{
+            tableView.setEmptyView(title: "No products here yet", message: "Go ahead an add some products!")
+        }
+        else {
+            tableView.restore()
+        }
         return cartProducts?.count ?? 0
     }
     
@@ -110,6 +128,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.endUpdates()
             self.cartDidChange = true
+            if (self.cartProducts?.count)! == 0 {
+                self.proceedButton.isEnabled = false
+            }
             self.calculateSubtotal()
         }
         let no = UIAlertAction(title: "No", style: .cancel)

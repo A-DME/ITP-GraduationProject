@@ -48,8 +48,10 @@ struct Order: Codable {
     }
 }
 struct LineItem: Codable {
-    let id, variantID, productID: Int
-    let name, price: String
+    let id: Int
+    let variantID, productID: Int?
+    var price: String
+    let name, title: String?
     var quantity: Int
     let properties: [NoteAttribute]
 
@@ -58,7 +60,7 @@ struct LineItem: Codable {
         case id
         case variantID = "variant_id"
         case productID = "product_id"
-        case name, price
+        case name, price, title
         case quantity, properties
         
     }

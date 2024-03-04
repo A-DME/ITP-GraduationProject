@@ -34,7 +34,15 @@ class OrderReviewViewModel{
 //        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId))")), parameters: ["draft_order": ["line_items": extractLineItemsPostData(lineItems: cartItems)]])
     }
     
-    func getCart() -> [LineItem]{
-        return cart ?? []
+    
+    func getFilteredCart() -> [LineItem]{
+        var result: [LineItem] = []
+        guard let cart = cart else { return [] }
+        for item in cart {
+            if item.title ?? "" != "dummy" {
+                result.append(item)
+            }
+        }
+        return result
     }
 }

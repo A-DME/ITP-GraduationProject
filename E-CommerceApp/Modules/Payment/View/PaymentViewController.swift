@@ -78,7 +78,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func purchase(_ sender: Any) {
 // MARK: TODO: make sure that the payment is done(case apple pay)
         viewModel?.postOrder()
-        viewModel?.resetOrder(draftId: draftId)
+        viewModel?.completeOrder(draftId: draftId)
         performSegue(withIdentifier: "orderConfirmed", sender: nil)
     }
 }

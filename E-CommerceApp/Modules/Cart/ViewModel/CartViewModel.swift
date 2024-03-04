@@ -16,6 +16,8 @@ class CartViewModel{
     }
     let dummyDraftId = 1148431433973
     
+    let dummyLineItem: [String: Any] = ["title": "dummy", "quantity": 1, "price": "0.0", "properties":[]]
+    
     init(){
         networkManager = NetworkManager()
     }
@@ -33,7 +35,7 @@ class CartViewModel{
             for property in item.properties {
                 properties.append(["name":property.name, "value": property.value])
             }
-            result.append(["variant_id": item.variantID, "quantity": item.quantity, "properties": properties])
+            result.append(["variant_id": item.variantID ?? 0, "quantity": item.quantity, "properties": properties])
         }
                 
         return result
@@ -43,11 +45,20 @@ class CartViewModel{
         guard let cartItems = cartItems else { return }
         
 //        print(extractLineItemsPostData(lineItems: cartItems))
-        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId))")), parameters: ["draft_order": ["line_items": extractLineItemsPostData(lineItems: cartItems)]])
+        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId))")), parameters: ["draft_order": ["line_items": cartItems.count != 0 ? extractLineItemsPostData(lineItems: cartItems) : [dummyLineItem]]])
     }
     
-    func getCart() -> [LineItem]{
-        return cart ?? []
+    func getFilteredCart() -> [LineItem]{
+        var result: [LineItem] = []
+        guard let cart = cart else { return [] }
+        print(cart.count)
+        for item in cart {
+            if item.title ?? "" != "dummy" {
+                result.append(item)
+            }
+        }
+        print(result.count)
+        return result
     }
     
 }
