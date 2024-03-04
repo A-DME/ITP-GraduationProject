@@ -40,6 +40,7 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     func reloadView(){
+        Thread.sleep(forTimeInterval: 0.35)
         viewModel?.loadData(draftId: draftId)
         viewModel?.bindResultToViewController = {
             self.cartItems = self.viewModel?.getCart()
