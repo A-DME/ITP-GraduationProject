@@ -110,7 +110,7 @@ class SignUpViewModel{
             let apiUrl = String ("https://a73c5fc1c095fd186d957dd2093e9006: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@q2-24-team2.myshopify.com/admin/api/2024-01/customers.json?since_id=1 ")
             
      
-            networkHandler?.PostCustomerToApi(url: apiUrl, type: Customer.self, parameters: newCustomer) {
+            networkHandler?.postWithResponse(url: apiUrl, type: Customer.self, parameters: newCustomer) {
                 customerContainer in
                 
                 print("calling PostCustomerToAPi")
