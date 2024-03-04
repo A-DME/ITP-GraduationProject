@@ -18,6 +18,12 @@ class MeViewModel{
              bindResultToViewController()
          }
      }
+    var bindWishlistToViewController : (()->()) = {}
+    var wishlistResult : [LineItem]?{
+         didSet{
+             bindWishlistToViewController()
+         }
+     }
      
      init() {
          self.networkHandler = NetworkManager()
@@ -35,13 +41,25 @@ class MeViewModel{
          
          
      }
-    func getAllData(customerId : Int)->[Order]{
+    func loadWishlistData(){
+        let apiUrl = APIHandler.urlForGetting(.draftOrder(id: "1148537569525"))
+        networkHandler?.fetch(url: apiUrl, type: DraftOrderContainer.self, complitionHandler: { data in
+            self.wishlistResult = data?.draftOrder.lineItems
+      
+        })
+        
+        
+    }
+    func getOrderData(customerId : Int)->[Order]{
        
         self.customerItems = self.result?.orders.filter{
             $0.customer.id == customerId
          } ?? []
       
          return customerItems ?? []
+     }
+    func getWishlistData()->[LineItem]{
+        return wishlistResult ?? []
      }
     func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
         model.checkNetworkReachability { isReachable in

@@ -53,7 +53,7 @@ class OrdersTableViewController: UITableViewController {
   
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrdersTableViewCell
         cell.orderNum.text = "Order No\(result?.orders[indexPath.row].id ?? 0 )"
-        cell.totalAmount.text = "\(result?.orders[indexPath.row].totalPrice ?? "")\(result?.orders[indexPath.row].currency ?? "")"
+        cell.totalAmount.text = "\(result?.orders[indexPath.row].totalPrice ?? "") \(result?.orders[indexPath.row].currency ?? "")"
         cell.CreatedDate.text = result?.orders[indexPath.row].createdAt.split(separator: "T").first.map(String.init)
         return cell
     }
@@ -61,40 +61,7 @@ class OrdersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "All orders"
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "detailsSegue", sender: self)
     }
@@ -114,7 +81,7 @@ class OrdersTableViewController: UITableViewController {
 extension OrdersTableViewController{
     func IntializeProperties(){
         result = Orders(orders: [])
-        customerId = 7440718463221
+        customerId = ordersViewModel?.getCustomerId()
     }
     func registerCell(){
         tableView.register(OrdersTableViewCell.nib(),forCellReuseIdentifier: "orderCell")

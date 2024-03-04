@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MeViewController: UIViewController{
     
@@ -16,6 +17,7 @@ class MeViewController: UIViewController{
     @IBOutlet weak var ordersTable: UITableView!
     
     var result : Orders?
+    var wishListResult : [LineItem]?
     var indicator : UIActivityIndicatorView?
     var meViewModel : MeViewModel?
     var customerId : Int?
@@ -24,14 +26,13 @@ class MeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        meViewModel = MeViewModel()
+        registerCell()
+        IntializeProperties()
+      
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        registerCell()
-        meViewModel = MeViewModel()
-        IntializeProperties()
         meViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 if self.loggedIn == true{
@@ -39,6 +40,7 @@ class MeViewController: UIViewController{
                     self.NotLoggedView.isHidden = true
                     self.setIndicator()
                     self.loadData()
+                    self.loadWishlistData()
                 }else{
                     self.NotLoggedView.isHidden = false
                 }
@@ -70,18 +72,19 @@ class MeViewController: UIViewController{
 }
 // MARK: - UI setUp
 extension MeViewController{
-    func IntializeProperties(){
+  /* func IntializeProperties(){
         result = Orders(orders: [])
         customerId = 7440718856437
         customerName = "Basma"
         loggedIn = true
-    }
-    /* func IntializeProperties(){
+    }*/
+     func IntializeProperties(){
      result = Orders(orders: [])
+     wishListResult = []
      customerId = meViewModel?.getCustomerId()
      customerName = meViewModel?.getCustomerName()
      loggedIn = meViewModel?.isLoggedIn()
-     }*/
+     }
     func registerCell(){
         wishlistCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "favCell")
         ordersTable.register(OrdersTableViewCell.nib(),forCellReuseIdentifier: "orderCell")
@@ -110,20 +113,30 @@ extension MeViewController{
 // MARK: - GetData
 extension MeViewController{
     func loadData(){
-        meViewModel = MeViewModel()
         meViewModel?.loadData()
         meViewModel?.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
-                
                 self?.display()
                 self?.ordersTable.reloadData()
                 
             }
         }
     }
+    
+    func loadWishlistData(){
+        meViewModel?.loadWishlistData()
+        meViewModel?.bindWishlistToViewController = {[weak self] in
+            DispatchQueue.main.async {
+                self?.displayWishlist()
+                self?.wishlistCollection.reloadData()
+                
+            }
+            
+        }
+    }
     func display() {
         indicator?.stopAnimating()
-        result?.orders = meViewModel?.getAllData( customerId: customerId ?? 0) ?? []
+        result?.orders = meViewModel?.getOrderData( customerId: customerId ?? 0) ?? []
         if (result?.orders.count  == 0) {
             ordersTable.setEmptyMessage("No Orders Yet ")
         } else {
@@ -131,7 +144,15 @@ extension MeViewController{
         }
         
     }
-    
+    func displayWishlist() {
+        wishListResult = meViewModel?.getWishlistData()
+        if (wishListResult  == nil) {
+            wishlistCollection.setEmptyMessage("No items in Wish list ")
+        } else {
+            wishlistCollection.restore()
+        }
+        
+    }
     
 }
 // MARK: - TableView
@@ -157,25 +178,26 @@ extension MeViewController : UITableViewDelegate,UITableViewDataSource{
 // MARK: - CollectionView
 extension MeViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        min(4, wishListResult?.count ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = wishlistCollection.dequeueReusableCell(withReuseIdentifier: "favCell", for: indexPath) as! ItemsCollectionViewCell
+        let factor = UserDefaults.standard.value(forKey: "factor")as! Double
+        cell.productImage.kf.setImage(with:URL(string: (wishListResult?[indexPath.row].properties[0].value)!) ,placeholder: UIImage(named: "placeHolder"))
+        cell.productTitle.text = wishListResult?[indexPath.row].name
+        cell.productSubTitle.text = " "
+        let price = Double(wishListResult?[indexPath.row].price ?? "0.0")
+        cell.productPrice.text = String(format: "%.2f" ,factor * (price ?? 0.0))
+    
+        cell.currency.text = UserDefaults.standard.string(forKey: "currencyTitle")
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = wishlistCollection.frame.width / 3 - 1
-        return CGSize(width: width, height: width)
+        let width = wishlistCollection.frame.width / 2 - 20
+        return CGSize(width: width, height: wishlistCollection.frame.height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
-    }
     
 }
