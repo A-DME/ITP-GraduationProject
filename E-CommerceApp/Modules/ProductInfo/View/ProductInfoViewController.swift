@@ -9,22 +9,11 @@ import UIKit
 import Kingfisher
 
 class ProductInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-   
-
-
-    
-    var url:[URL] = []
-    var productId : Int?
-    var productInfoViewModel : ProductInfoViewModel?
-    var indicator : UIActivityIndicatorView?
-    var reviews : Reviews?
-    var Allreviews : [Reviews.Review]?
-    
     
     @IBOutlet weak var color: UIButton!
+    
     @IBOutlet weak var size: UIButton!
     
-    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var myCollectionView: UICollectionView!
     
     @IBOutlet weak var reviewsTableView: UITableView!
@@ -36,6 +25,34 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var productPriceText: UILabel!
     
     @IBOutlet weak var productCurrencyText: UILabel!
+    
+    @IBOutlet weak var addToCartButton: UIButton!
+    
+    @IBOutlet weak var addToFavButton: UIButton!
+    
+    @IBOutlet weak var star1: UIImageView!
+    
+    @IBOutlet weak var star2: UIImageView!
+    
+    @IBOutlet weak var star3: UIImageView!
+    
+    @IBOutlet weak var star4: UIImageView!
+    
+    @IBOutlet weak var star5: UIImageView!
+    
+    var url:[URL] = []
+    
+    var productId : Int?
+    
+    var productInfoViewModel : ProductInfoViewModel?
+    
+    var indicator : UIActivityIndicatorView?
+    
+    var reviews : Reviews?
+    
+    var Allreviews : [Reviews.Review]?
+    
+    var isLoggedIn : Bool! = false
     
     var sizes : [String]?{
         didSet{
@@ -74,27 +91,12 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBOutlet weak var descriptionText: UITextView!
 
-
-    
-    @IBAction func viewAllReviews(_ sender: Any) {
-    }
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         reviews = Reviews()
         Allreviews = reviews?.getReviews()
-        // Do any additional setup after loading the view.
-       
-
-            
-            
-        //color.frame = CGRect(x: 150, y: 200, width: 100, height: 40)
+        
            
     }
     
@@ -103,14 +105,52 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         configureReviewsTableView()
         configureCollectionView()
         configureLoadingData()
-       // dropList()
+      
     }
-    @IBAction func addToCart(_ sender: Any) {
+    
+    @IBAction func viewAllReviews(_ sender: Any) {
         
     }
     
-    @IBAction func addTowishList(_ sender: Any) {
+    //MARK: - Configuring Buttons
+    
+    @IBAction func addingToCart(_ sender: Any) {
+        if isLoggedIn==true{
+            print("added")
+            addToCartButton.setTitle("AddedToCart", for: .normal)
+            addToCartButton.isEnabled = false
+            addToCartButton.alpha = 0.5
+        }else{
+            let alert = UIAlertController(title: "Not Registered", message: "You need to register to be able to add to cart", preferredStyle: .alert)
+            let signUp = UIAlertAction(title: "Sign Up", style: .default) { UIAlertAction in
+                self.performSegue(withIdentifier: "toSignUp", sender: nil)
+            }
+            let gotIt = UIAlertAction(title: "Got It", style: .cancel)
+            
+            alert.addAction(signUp)
+            alert.addAction(gotIt)
+            present(alert, animated: true)
+        }
         
+    }
+    
+    
+    @IBAction func addingToWishlist(_ sender: Any) {
+        if isLoggedIn==true{
+            print("added")
+           // addToFavButton.
+//            image = UIImage(systemName: isFavourite ? "heart.fill" : "heart")
+        }else{
+            let alert = UIAlertController(title: "Not Registered", message: "You need to register to add to wishlist", preferredStyle: .alert)
+            let signUp = UIAlertAction(title: "Sign Up", style: .default) { UIAlertAction in
+                self.performSegue(withIdentifier: "toSignUp", sender: nil)
+            }
+            let gotIt = UIAlertAction(title: "Got It", style: .cancel)
+            
+            alert.addAction(signUp)
+            alert.addAction(gotIt)
+            present(alert, animated: true)
+        }
     }
     
     
@@ -118,12 +158,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         dismiss(animated: true)
     }
     
-    /*func dropList() {
-        size.menu = UIMenu(options: .displayInline, children: sizeMenu)
-        size.showsMenuAsPrimaryAction = true
-        size.changesSelectionAsPrimaryAction = true
-        
-    }*/
+
     //MARK: - Indicator initializing
     func setIndicator(){
         indicator = UIActivityIndicatorView(style: .large)
@@ -150,7 +185,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
                 self?.productPriceText.text = String(format: "%.2f" ,factor * (price ?? 0.0))
                 self?.productCurrencyText.text = currency
                 self?.descriptionText.text = self?.productInfoViewModel?.getProductDetails()?.bodyHTML
-                self?.pageControl.numberOfPages = self?.productInfoViewModel?.getImagesCount() ?? 0
+               
                 self?.sizes = self?.productInfoViewModel?.getProductDetails()?.options[0].values
                 self?.colors = self?.productInfoViewModel?.getProductDetails()?.options[1].values
                /* for size in (self?.productInfoViewModel?.getProductDetails()?.options[0].values) ?? []{
@@ -176,24 +211,20 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         reviewsTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewCell")
     }
     
-    //MARK: - Configure the CollectionView (source,delegate)
+    //MARK: - Configure the CollectionView (source,delegate,nib cell)
     func configureCollectionView(){
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
         myCollectionView.register(UINib(nibName: "ProductPositionsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myDetCell")
-        pageControl.hidesForSinglePage = true
+        
         if let layout = myCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
         }
-        
-        
     }
 
     
     // MARK: - Collection View
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.pageControl.currentPage = indexPath.section
-    }
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return productInfoViewModel?.getProductDetails()?.images.count ?? 0
     }
@@ -223,7 +254,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
 }
     
 
-    // MARK: -
+    // MARK: - Table View
 extension ProductInfoViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -255,35 +286,4 @@ extension ProductInfoViewController: UITableViewDelegate,UITableViewDataSource {
 
 
 
-    //    // MARK: -
-    //extension ProductInfoViewController: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate {
-    //
-    //    func numberOfSections(in collectionView: UICollectionView) -> Int {
-    //        return 1
-    //    }
-    //
-    //
-    //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    //        return productInfoViewModel?.getProductDetails()?.images.count ?? 0
-    //    }
-    //
-    //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myDetCell", for: indexPath) as! ProductPositionsCollectionViewCell
-    //        let url = URL(string:productInfoViewModel?.getProductDetails()?.images[indexPath.row].src ?? "")
-    //        print("this the url \(url)")
-    //        cell.productPositions.kf.setImage(with: url)
-    //
-    //
-    //        return cell
-    //    }
-    //
-    //    func collectionView(_ collectionView: UICollectionView,
-    //                            layout collectionViewLayout: UICollectionViewLayout,
-    //                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //        let width=(( UIScreen.main.bounds.size.width))*0.8
-    //        let height=(( UIScreen.main.bounds.size.width))*0.8
-    //        return CGSize(width: width, height: height)
-    //
-    //    }
-    //
-    //}
+    
