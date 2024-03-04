@@ -55,25 +55,17 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = itemsCollection.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemsCollectionViewCell
         cell.productTitle.text = String(cartItems?[indexPath.row].name.split(separator: "|")[1] ?? "")
-        cell.productSubTitle.text = String((cartItems?[indexPath.row].quantity) ?? 1)
+        cell.productSubTitle.text = "Quantity: \(String((cartItems?[indexPath.row].quantity) ?? 1))"
         cell.currency.text = UserDefaults.standard.string(forKey: "currencyTitle")
         cell.productImage.kf.setImage(with: URL(string: cartItems?[indexPath.row].properties[0].value ?? ""))
-        cell.productPrice.text = "\(UserDefaults.standard.string(forKey: "currencyTitle") ?? "") \(String(format: "%.2f",(UserDefaults.standard.double(forKey: "factor") * Double(cartItems?[indexPath.row].quantity ?? 1) * (Double(cartItems?[indexPath.row].price ?? "0.0") ?? 0.0))))"
+        cell.productPrice.text = "\(String(format: "%.2f",(UserDefaults.standard.double(forKey: "factor") * Double(cartItems?[indexPath.row].quantity ?? 1) * (Double(cartItems?[indexPath.row].price ?? "0.0") ?? 0.0))))"
        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = itemsCollection.frame.width / 3 - 1
-        return CGSize(width: width, height: itemsCollection.frame.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 3.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3.0
+        let width = itemsCollection.frame.width / 2 - 20
+        return CGSize(width: width, height: (itemsCollection.frame.height)-60)
     }
     
     func calculateLabels(){

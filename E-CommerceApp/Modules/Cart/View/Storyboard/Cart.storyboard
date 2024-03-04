@@ -42,10 +42,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartCell" id="Uqg-HL-fJG" customClass="CartTableViewCell" customModule="E_CommerceApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uqg-HL-fJG" id="h0s-wZ-xOp">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -100,6 +100,45 @@
                                     <constraint firstItem="JpA-x3-ouq" firstAttribute="leading" secondItem="9iB-XY-E6p" secondAttribute="leading" constant="24" id="qld-uE-ojx"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0M-CE-fkp">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooh-ik-o6P">
+                                        <rect key="frame" x="16" y="611" width="361" height="39"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Sign in">
+                                            <color key="baseBackgroundColor" red="0.1843137255" green="0.34509803919999998" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="vWE-wP-9B5" kind="show" id="4zI-w6-J2Y"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not signed in..yet      " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOE-JE-LRM">
+                                        <rect key="frame" x="16" y="278" width="361" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Sign in to View Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GW-dM-Dyv">
+                                        <rect key="frame" x="16" y="323" width="361" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="9GW-dM-Dyv" firstAttribute="top" secondItem="TOE-JE-LRM" secondAttribute="bottom" constant="24.666666666666686" id="5b0-r3-pgm"/>
+                                    <constraint firstAttribute="trailing" secondItem="TOE-JE-LRM" secondAttribute="trailing" constant="16" id="GNr-92-oIt"/>
+                                    <constraint firstAttribute="trailing" secondItem="ooh-ik-o6P" secondAttribute="trailing" constant="16" id="IuN-mt-jRw"/>
+                                    <constraint firstAttribute="trailing" secondItem="9GW-dM-Dyv" secondAttribute="trailing" constant="16" id="bea-6h-LA2"/>
+                                    <constraint firstItem="9GW-dM-Dyv" firstAttribute="leading" secondItem="r0M-CE-fkp" secondAttribute="leading" constant="16" id="iAo-xf-bTK"/>
+                                    <constraint firstItem="TOE-JE-LRM" firstAttribute="leading" secondItem="r0M-CE-fkp" secondAttribute="leading" constant="16" id="j3F-ok-Byj"/>
+                                    <constraint firstItem="ooh-ik-o6P" firstAttribute="leading" secondItem="r0M-CE-fkp" secondAttribute="leading" constant="16" id="rnp-xo-3Za"/>
+                                    <constraint firstAttribute="bottom" secondItem="9GW-dM-Dyv" secondAttribute="bottom" constant="405" id="uAa-Vh-40a"/>
+                                    <constraint firstAttribute="bottom" secondItem="ooh-ik-o6P" secondAttribute="bottom" constant="99" id="yF5-3b-Dxr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -108,11 +147,15 @@
                             <constraint firstItem="0pQ-bN-9x8" firstAttribute="top" secondItem="wzn-bW-rWU" secondAttribute="bottom" id="3ke-8U-91v"/>
                             <constraint firstItem="9iB-XY-E6p" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="1:5" id="4dW-CV-VDX"/>
                             <constraint firstItem="9iB-XY-E6p" firstAttribute="top" secondItem="0pQ-bN-9x8" secondAttribute="bottom" id="OQ7-Jt-h2q"/>
+                            <constraint firstAttribute="bottom" secondItem="r0M-CE-fkp" secondAttribute="bottom" id="R5i-0Y-p1x"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0pQ-bN-9x8" secondAttribute="trailing" id="RYs-ip-d9A"/>
+                            <constraint firstItem="r0M-CE-fkp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="44" id="Sc1-My-shU"/>
                             <constraint firstAttribute="bottom" secondItem="9iB-XY-E6p" secondAttribute="bottom" id="YVc-gs-d8r"/>
                             <constraint firstItem="9iB-XY-E6p" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bal-Be-Oii"/>
                             <constraint firstItem="0pQ-bN-9x8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fR1-29-j4j"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9iB-XY-E6p" secondAttribute="trailing" id="g8q-mJ-tJt"/>
+                            <constraint firstItem="r0M-CE-fkp" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="jOl-CD-v0X"/>
+                            <constraint firstItem="r0M-CE-fkp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="sN1-AF-rLt"/>
                             <constraint firstItem="wzn-bW-rWU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="sg9-kq-RcZ"/>
                             <constraint firstAttribute="trailing" secondItem="wzn-bW-rWU" secondAttribute="trailing" id="yRT-rq-3jt"/>
                         </constraints>
@@ -126,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-34"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-34.507042253521128"/>
         </scene>
         <!--OrderReview-->
         <scene sceneID="e0J-bP-lDm">
@@ -138,6 +181,16 @@
             </objects>
             <point key="canvasLocation" x="755" y="-53"/>
         </scene>
+        <!--SignIn-->
+        <scene sceneID="S1t-2d-Y0K">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignIn" id="vWE-wP-9B5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="k8g-tr-cRF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xry-jv-kZh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="914" y="152"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.left.circle.fill" catalog="system" width="128" height="123"/>
@@ -146,6 +199,9 @@
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
