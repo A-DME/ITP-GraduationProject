@@ -59,7 +59,7 @@ class NetworkManager{
     }
     
 
-    func PostCustomerToApi<T:Codable>(url:String,type: T.Type,parameters: Parameters,completion: @escaping ((T?)->Void)){
+    func postWithResponse<T:Codable>(url:String,type: T.Type,parameters: Parameters,completion: @escaping ((T?)->Void)){
         let headers: HTTPHeaders = [
             "Cookie":"",
             "Accept": "application/json",
