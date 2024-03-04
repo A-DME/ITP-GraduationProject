@@ -10,12 +10,12 @@ import Alamofire
 
 class NetworkManager{
     
-    func fetch<T: Codable>(url: String, type: T.Type, complitionHandler: @escaping (T?)->Void) {
+    func fetch<T: Codable>(url: String, type: T.Type, complitionHandler: @escaping (T?)->Void, headers: HTTPHeaders = [:]) {
         let url = URL(string:url)
         guard let newURL = url else {
             complitionHandler(nil)
             return  }
-        AF.request(newURL).response { data in
+        AF.request(newURL, method: .get, headers: headers).response { data in
             guard let data = data.data else {
                 complitionHandler(nil)
                 return  }

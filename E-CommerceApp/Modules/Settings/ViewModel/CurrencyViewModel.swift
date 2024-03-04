@@ -188,26 +188,26 @@ class CurrencyViewModel{
     
     init(){
         networkManager = NetworkManager()
-        currencyRate = ["USDEGP": 30.847114,
-                        "USDAED": 3.673042,
-                        "USDEUR": 0.921604,
-                        "USDKWD": 0.307804,
-                        "USDQAR": 3.64075,
-                        "USDSAR": 3.750254,
-                        "USDJPY": 150.09504]
+//        currencyRate = ["USDEGP": 30.847114,
+//                        "USDAED": 3.673042,
+//                        "USDEUR": 0.921604,
+//                        "USDKWD": 0.307804,
+//                        "USDQAR": 3.64075,
+//                        "USDSAR": 3.750254,
+//                        "USDJPY": 150.09504]
         
     }
     
-//    func loadCurrencies() {
-//        networkManager?.fetch(url: APIHandler.currenciesUrl(.currencies), type: ExchangeRates.self, complitionHandler: { container in
-//            currencyRate = container?.quotes
-//        }, headers: ["apiKey":APIHandler.currencyApiKey])
+    func loadCurrencies() {
+        networkManager?.fetch(url: APIHandler.currenciesUrl(.liveCurrencies(wantedCurrencies: "egp,aed,eur,kwd,qar,sar,jpy")), type: ExchangeRates.self, complitionHandler: { container in
+            self.currencyRate = container?.quotes
+        }, headers: ["apiKey":APIHandler.currencyApiKey])
     
-//    MARK: - NOT NECESSARY TO FETCH ALL NAMES FROM API
+//    MARK: - NOT NECESSARY TO FETCH ALL NAMES FROM API (wastes requests)
 //        networkManager?.fetch(url: APIHandler.currenciesUrl(.fullNames), type: CurrenciesNames.self, complitionHandler: { container in
 //            currencyRate = container?.currencies
 //        }, headers: ["apiKey":APIHandler.currencyApiKey])
-//    }
+    }
     
     func getCurrencyRates() -> [String: Double]{
         return currencyRate ?? [:]

@@ -23,14 +23,26 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
     
     var currenciesNames: [String: String]!
     
+    var indicator: UIActivityIndicatorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currencies.delegate = self
         currencies.dataSource = self
+        indicator = UIActivityIndicatorView(style: .large)
+        indicator?.center = self.view.center
+        indicator?.startAnimating()
+        self.view.addSubview(indicator!)
         viewModel = CurrencyViewModel()
-        currencyList = ["USDUSD": 1.0].merging(viewModel?.getCurrencyRates() ?? [:]){ (current, _) in current }
-        currenciesArray = (Array(currencyList!.keys) as! [String])
-        rates = (Array(currencyList!.values) as! [Double])
+        viewModel?.loadCurrencies()
+        viewModel?.bindResultToViewController = {
+            self.currencyList = ["USDUSD": 1.0].merging(self.viewModel?.getCurrencyRates() ?? [:]){ (current, _) in current }
+            self.currenciesArray = (Array(self.currencyList!.keys) as! [String])
+            self.indicator?.stopAnimating()
+            self.currencies.reloadData()
+            self.rates = (Array(self.currencyList!.values) as! [Double])
+        }
+        
         currenciesNames = viewModel?.currenciesNames
         // Do any additional setup after loading the view.
     }
