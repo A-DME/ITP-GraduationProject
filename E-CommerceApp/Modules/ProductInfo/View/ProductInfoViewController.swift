@@ -24,7 +24,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var color: UIButton!
     @IBOutlet weak var size: UIButton!
     
-    @IBOutlet weak var pageControl: UIPageControl!
+   
     @IBOutlet weak var myCollectionView: UICollectionView!
     
     @IBOutlet weak var reviewsTableView: UITableView!
@@ -150,7 +150,6 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
                 self?.productPriceText.text = String(format: "%.2f" ,factor * (price ?? 0.0))
                 self?.productCurrencyText.text = currency
                 self?.descriptionText.text = self?.productInfoViewModel?.getProductDetails()?.bodyHTML
-                self?.pageControl.numberOfPages = self?.productInfoViewModel?.getImagesCount() ?? 0
                 self?.sizes = self?.productInfoViewModel?.getProductDetails()?.options[0].values
                 self?.colors = self?.productInfoViewModel?.getProductDetails()?.options[1].values
                /* for size in (self?.productInfoViewModel?.getProductDetails()?.options[0].values) ?? []{
@@ -181,7 +180,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
         myCollectionView.register(UINib(nibName: "ProductPositionsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myDetCell")
-        pageControl.hidesForSinglePage = true
+        
         if let layout = myCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
         }
@@ -192,7 +191,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     
     // MARK: - Collection View
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.pageControl.currentPage = indexPath.section
+        
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return productInfoViewModel?.getProductDetails()?.images.count ?? 0
