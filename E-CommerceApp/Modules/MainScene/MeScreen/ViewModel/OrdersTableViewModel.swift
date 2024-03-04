@@ -8,6 +8,7 @@
 import Foundation
 class OrdersTableViewModel{
     var networkHandler:NetworkManager?
+    var userDefult : Utilities?
     var bindResultToViewController : (()->()) = {}
     var customerItems :[Order]?
     let model = ReachabilityManager()
@@ -19,6 +20,7 @@ class OrdersTableViewModel{
      
      init() {
          self.networkHandler = NetworkManager()
+         self.userDefult = Utilities()
          customerItems = []
          
      }
@@ -40,6 +42,10 @@ class OrdersTableViewModel{
       
          return customerItems ?? []
      }
+    func getCustomerId()-> Int{
+        return userDefult?.getCustomerId() ?? 0
+        
+    }
     func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
         model.checkNetworkReachability { isReachable in
             completion(isReachable)

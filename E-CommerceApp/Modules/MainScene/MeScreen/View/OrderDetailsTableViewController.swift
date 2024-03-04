@@ -36,7 +36,7 @@ class OrderDetailsTableViewController: UITableViewController {
              cell.QuantityLabel.text = "Quantity"
              cell.CreatedDate.text = String(result?.lineItems[indexPath.row].quantity ?? 0 )
              cell.totalAmountLabel.text = "Price"
-             cell.totalAmount.text = result?.lineItems[indexPath.row].price
+             cell.totalAmount.text = "\(result?.lineItems[indexPath.row].price ?? "") \(result?.currency ?? "")"
          
          return cell
          }
