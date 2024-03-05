@@ -23,6 +23,7 @@ class AddressesViewModel{
      init() {
          self.networkManager = NetworkManager()
          userDefault = Utilities()
+         customerID = userDefault?.getCustomerId()
          addresses = []
          
      }
