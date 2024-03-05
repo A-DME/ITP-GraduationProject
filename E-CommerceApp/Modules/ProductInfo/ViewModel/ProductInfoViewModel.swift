@@ -33,15 +33,16 @@ class ProductInfoViewModel{
         print(product?.images.count ?? 0)
         return product?.images.count ?? 0
     }
+    
     func loadData(productId:Int){
         let apiUrl = APIHandler.urlForGetting(.ProductDetails(id: String(productId)))
         print(apiUrl)
         networkHandler?.fetch(url: apiUrl, type: ProductContainer.self, complitionHandler: { data in
             self.product = data?.product
             print(self.product?.title ?? "default value")
-      
         })
     }
+    
     func extractLineItemsPostData(lineItems: [LineItem]) -> [[String: Any]]{
         var result: [[String: Any]] = []
         for item in lineItems{
@@ -51,9 +52,9 @@ class ProductInfoViewModel{
             }
             result.append(["variant_id": item.variantID ?? 0, "quantity": item.quantity, "properties": properties])
         }
-                
         return result
     }
+    
     //["draft_order": ["line_items": cartItems.count != 0 ? extractLineItemsPostData(lineItems: cartItems)
     
     
@@ -66,11 +67,10 @@ class ProductInfoViewModel{
         
     }
     
-//    func updateWishlist(wishItems: [LineItem]?){
-//        guard let wishItems = wishItems else { return }
-//
-//        print(extractLineItemsPostData(lineItems: wishItems))
-//        networkHandler?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: self.userDefaults?.getWishlistID() ?? "")), parameters: ["draft_order": ["line_items": wishItems.count != 0 ? extractLineItemsPostData(lineItems: wishItems) : [dummyLineItem]]])
-//    }
+    func updateWishlist(wishItems: [LineItem]?){
+        guard let wishItems = wishItems else { return }
+        print(extractLineItemsPostData(lineItems: wishItems))
+        networkHandler?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: self.userDefaults?.getWishlistID() ?? "")), parameters: ["draft_order": ["line_items": wishItems.count != 0 ? extractLineItemsPostData(lineItems: wishItems) : [dummyLineItem]]])
+    }
 
 }
