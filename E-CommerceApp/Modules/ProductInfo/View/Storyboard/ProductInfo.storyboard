@@ -29,7 +29,7 @@
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sp-HS-shs">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <items>
-                                    <navigationItem title="StyleSage" style="browser" id="hlf-06-Sbo">
+                                    <navigationItem title="StyleHub" style="browser" id="hlf-06-Sbo">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="gsb-j2-6fI">
                                             <imageReference key="image" image="chevron.left.circle.fill" catalog="system" renderingMode="hierarchical">
                                                 <hierarchicalColors>
@@ -287,7 +287,6 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="View all reviews"/>
                                                         <connections>
-                                                            <action selector="viewAllReviews:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lnJ-Ne-PrK"/>
                                                             <segue destination="OpN-Bo-UPt" kind="presentation" modalPresentationStyle="fullScreen" id="07g-Qu-w5K"/>
                                                         </connections>
                                                     </button>
