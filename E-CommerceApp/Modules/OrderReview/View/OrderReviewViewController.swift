@@ -38,6 +38,7 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
         itemsCollection.dataSource = self
         itemsCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "ItemCell")
         self.viewModel = OrderReviewViewModel()
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +120,8 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
             discountField.alpha = 0.5
         } else {
             viewModel?.clearRuleId()
+            discountValue = 0.0
+            calculateLabels()
             applyDiscountButton.setTitle("Apply", for: .normal)
             discountField.isUserInteractionEnabled = true
             discountField.alpha = 1.0
