@@ -32,9 +32,9 @@
                                     <constraint firstAttribute="width" constant="160" id="z6y-jn-6iC"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Js-QR-2SN">
-                                <rect key="frame" x="176" y="8.0000000000000018" width="391" height="21.666666666666671"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Js-QR-2SN">
+                                <rect key="frame" x="168" y="7.9999999999999982" width="399" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -76,9 +76,9 @@
                                     <action selector="decreaseQuantity:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SkK-lv-yNd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsI-6B-OrE">
-                                <rect key="frame" x="176" y="37.666666666666664" width="40" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsI-6B-OrE">
+                                <rect key="frame" x="168" y="35.333333333333336" width="37.333333333333343" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -96,14 +96,14 @@
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbJ-5g-CTq">
-                                <rect key="frame" x="501" y="55.333333333333343" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="523.66666666666663" y="53.333333333333336" width="35.333333333333371" height="17.000000000000007"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcI-ow-WL0">
-                                <rect key="frame" x="425" y="55.333333333333343" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="458.66666666666669" y="53.333333333333336" width="65.000000000000057" height="17.000000000000007"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -116,11 +116,11 @@
                             <constraint firstItem="7dd-9U-yop" firstAttribute="bottom" secondItem="scW-ud-91E" secondAttribute="bottom" id="9Cu-Cy-t9l"/>
                             <constraint firstItem="scW-ud-91E" firstAttribute="top" secondItem="HdV-Gf-C0g" secondAttribute="top" constant="8" id="C78-6n-DOS"/>
                             <constraint firstItem="xsI-6B-OrE" firstAttribute="top" secondItem="3Js-QR-2SN" secondAttribute="bottom" constant="8" id="Css-8N-pYL"/>
-                            <constraint firstItem="3Js-QR-2SN" firstAttribute="leading" secondItem="scW-ud-91E" secondAttribute="trailing" constant="8" id="DHd-by-qPR"/>
+                            <constraint firstItem="3Js-QR-2SN" firstAttribute="leading" secondItem="scW-ud-91E" secondAttribute="trailing" id="DHd-by-qPR"/>
                             <constraint firstItem="fbJ-5g-CTq" firstAttribute="leading" secondItem="qcI-ow-WL0" secondAttribute="trailing" id="EE2-oV-0Zq"/>
                             <constraint firstItem="xsI-6B-OrE" firstAttribute="leading" secondItem="3Js-QR-2SN" secondAttribute="leading" id="ITH-dI-q1f"/>
                             <constraint firstItem="3Js-QR-2SN" firstAttribute="top" secondItem="scW-ud-91E" secondAttribute="top" id="RHl-kd-PlF"/>
-                            <constraint firstAttribute="trailing" secondItem="fbJ-5g-CTq" secondAttribute="trailing" constant="24" id="TFt-O9-yfz"/>
+                            <constraint firstAttribute="trailing" secondItem="fbJ-5g-CTq" secondAttribute="trailing" constant="8" id="TFt-O9-yfz"/>
                             <constraint firstItem="scW-ud-91E" firstAttribute="leading" secondItem="HdV-Gf-C0g" secondAttribute="leading" constant="8" id="WYg-w3-0KV"/>
                             <constraint firstAttribute="bottom" secondItem="scW-ud-91E" secondAttribute="bottom" constant="8" id="d2X-zq-7Gt"/>
                             <constraint firstAttribute="trailing" secondItem="3Js-QR-2SN" secondAttribute="trailing" id="d3A-ux-Ngo"/>
@@ -129,7 +129,7 @@
                             <constraint firstItem="gYy-hh-8bC" firstAttribute="centerY" secondItem="OHf-xY-MqG" secondAttribute="centerY" id="nxF-zB-vWB"/>
                             <constraint firstItem="qcI-ow-WL0" firstAttribute="centerY" secondItem="fbJ-5g-CTq" secondAttribute="centerY" id="smh-oX-sZG"/>
                             <constraint firstAttribute="trailing" secondItem="gYy-hh-8bC" secondAttribute="trailing" constant="8" id="vDK-c4-w6g"/>
-                            <constraint firstItem="fbJ-5g-CTq" firstAttribute="centerY" secondItem="xsI-6B-OrE" secondAttribute="bottom" constant="8" id="yeq-c7-ShV"/>
+                            <constraint firstItem="fbJ-5g-CTq" firstAttribute="top" secondItem="xsI-6B-OrE" secondAttribute="bottom" id="yeq-c7-ShV"/>
                         </constraints>
                     </view>
                 </subviews>
