@@ -53,7 +53,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     var reviews : Reviews?
     
     var Allreviews : [Reviews.Review]?
-    var userDefaults : Utilities
+    var userDefaults = Utilities()
     
    
     
@@ -99,7 +99,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         self.hideKeyboardWhenTappedAround()
         reviews = Reviews()
         Allreviews = reviews?.getReviews()
-        userDefaults = Utilities()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -142,6 +142,11 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     @IBAction func addingToWishlist(_ sender: Any) {
         if self.userDefaults.isLoggedIn() == true{
             print("added")
+            let item = LineItem(id: 0, variantID: self.productInfoViewModel?.getProductDetails()?.variants.first?.id, productID: self.productId,price: "", name: "", title: "", quantity: 1, properties: [NoteAttribute(name: "image",value: self.productInfoViewModel?.getProductDetails()?.image.src ?? "") ,NoteAttribute(name: "inventoryQuantity",value: String(self.productInfoViewModel?.getProductDetails()?.variants.first?.inventoryQuantity ?? 0))])
+            let myitems = HelperFunctions().convertToDictionary(object: item, String: "line_item")
+            productInfoViewModel?.updateWishlist(wishItems: [item])
+            print("added")
+            
             
             
         }else{
