@@ -28,6 +28,8 @@ class SignInViewModel{
             completion(isReachable)
         }
     }
+    //https://a73c5fc1c095fd186d957dd2093e9006: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@q2-24-team2.myshopify.com/admin/api/2024-01/draft_orders.json
+    //draft_orders.json
     func loadData() {
         let apiUrl = "https://a73c5fc1c095fd186d957dd2093e9006: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@q2-24-team2.myshopify.com/admin/api/2024-01/customers.json?since_id=1"
         print(apiUrl)

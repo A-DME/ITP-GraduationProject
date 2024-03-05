@@ -100,6 +100,7 @@ class SignupViewController: UIViewController {
                         for item in (self.signUpViewModel?.getAllCustomers())! {
                             let comingMail = item.email ?? ""
                             if comingMail == _email{
+                                print("matched EMail:\(comingMail)")
                                 self.signUpViewModel?.flag=true
                             }
                         }
