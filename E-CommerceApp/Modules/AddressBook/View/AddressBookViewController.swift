@@ -66,6 +66,12 @@ class AddressBookViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if address?.count == 0{
+        tableView.setEmptyView(title: "No addresses exist", message: "Go ahead and add an address!")
+        }
+        else {
+        tableView.restore()
+        }
         return address?.count ?? 0
     }
     

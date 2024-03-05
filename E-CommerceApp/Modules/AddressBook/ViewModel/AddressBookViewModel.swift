@@ -34,7 +34,11 @@ class AddressBookViewModel{
     func loadData(){
 // MARK: - Todo: Put current customer's id
         networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: String(customerID ?? 0))), type: Addresses.self, complitionHandler: { result in
-            for address in result?.addresses ?? []{
+            guard let addresses = result?.addresses else {
+                self.defaultAddress = []
+                return }
+            if addresses.count == 0 { self.defaultAddress = []; return }
+            for address in addresses{
                 if address.addressDefault {
                     self.defaultAddress = [address]
                     break
