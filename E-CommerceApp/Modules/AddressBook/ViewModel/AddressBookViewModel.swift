@@ -9,8 +9,9 @@ import Foundation
 
 class AddressBookViewModel{
     var networkManager:NetworkManager?
+    var userDefault: Utilities?
     let model = ReachabilityManager()
-    var customerID = 7440718856437 // TODO: recieve customer id from current User (if found)
+    var customerID :Int? // TODO: recieve customer id from current User (if found)
     var bindResultToViewController : (()->()) = {}
     var defaultAddress : [Address]? {
         didSet{
@@ -20,6 +21,8 @@ class AddressBookViewModel{
 
      init() {
          self.networkManager = NetworkManager()
+         userDefault = Utilities()
+         customerID = userDefault?.getCustomerId()
      }
 
   func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
@@ -30,7 +33,7 @@ class AddressBookViewModel{
     
     func loadData(){
 // MARK: - Todo: Put current customer's id
-        networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: String(customerID))), type: Addresses.self, complitionHandler: { result in
+        networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: String(customerID ?? 0))), type: Addresses.self, complitionHandler: { result in
             for address in result?.addresses ?? []{
                 if address.addressDefault {
                     self.defaultAddress = [address]
