@@ -90,7 +90,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! CartTableViewCell
         cell.productImage.kf.setImage(with: URL(string: (cartProducts?[indexPath.row].properties[0].value)!))
-        cell.productTitle.text = String((cartProducts?[indexPath.row].name?.split(separator: "|",maxSplits: 1)[1])!)
+        cell.productTitle.text = String((cartProducts?[indexPath.row].name?.split(separator: "| ",maxSplits: 1)[1])!)
         cell.price.text = "\(UserDefaults.standard.string(forKey: "currencyTitle") ?? "") \(String(format: "%.2f",(UserDefaults.standard.double(forKey: "factor") * Double(cartProducts?[indexPath.row].price ?? "0.0")!)))"
         cell.availableQuantity.text = (cartProducts?[indexPath.row].properties[1].value)!
         cell.orderQuantity.text = String((cartProducts?[indexPath.row].quantity)!)

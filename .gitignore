@@ -2,3 +2,4 @@
 *.xcuserstate
 *.xcuserstate
 E-CommerceApp.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate
+.DS_Store
