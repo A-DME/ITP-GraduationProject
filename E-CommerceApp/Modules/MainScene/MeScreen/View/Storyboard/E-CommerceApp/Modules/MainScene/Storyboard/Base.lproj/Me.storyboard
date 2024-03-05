@@ -153,6 +153,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLQ-9f-EOg">
+                                <rect key="frame" x="257" y="556" width="120" height="38.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="View All">
+                                    <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="navigateToWishlist:" destination="LNh-wK-HOU" eventType="touchUpInside" id="kEW-od-6rz"/>
+                                </connections>
+                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="at3-iK-BPn">
                                 <rect key="frame" x="0.0" y="168" width="393" height="650"/>
                                 <subviews>
@@ -192,16 +202,6 @@
                                     <constraint firstAttribute="bottom" secondItem="m0X-ws-YVQ" secondAttribute="bottom" constant="385" id="pfI-pd-ofu"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLQ-9f-EOg">
-                                <rect key="frame" x="257" y="556" width="120" height="38.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="View All">
-                                    <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="navigateToWishlist:" destination="LNh-wK-HOU" eventType="touchUpInside" id="kEW-od-6rz"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zXq-fC-NSD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
