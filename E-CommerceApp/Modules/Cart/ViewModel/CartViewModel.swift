@@ -8,6 +8,7 @@
 import Foundation
 class CartViewModel{
     var networkManager: NetworkManager?
+    var userDefault: Utilities?
     var bindResultToViewController: (()->()) = {}
     let model = ReachabilityManager()
     var cart: [LineItem]? {
@@ -15,12 +16,17 @@ class CartViewModel{
             bindResultToViewController()
         }
     }
-    let dummyDraftId = 1148431433973
+    let dummyDraftId = 1148431433973 // Todo: get here current customer's cart id
     
     let dummyLineItem: [String: Any] = ["title": "dummy", "quantity": 1, "price": "0.0", "properties":[]]
     
     init(){
         networkManager = NetworkManager()
+        userDefault = Utilities()
+    }
+    
+    func isLoggedIn()->Bool{
+        return userDefault?.isLoggedIn() ?? false
     }
     
     func checkNetworkReachability(completion: @escaping (Bool) -> Void) {

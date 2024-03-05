@@ -34,9 +34,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cartItems.register(UINib(nibName: "CartTableViewCell", bundle: nil), forCellReuseIdentifier: "cartCell")
         viewModel = CartViewModel()
         proceedButton.isEnabled = false
-//        if guestUser{
-//            nonRegisteredView.isHidden = false
-//        }
+        if !viewModel!.isLoggedIn(){
+            nonRegisteredView.isHidden = false
+        }
         currency.text = UserDefaults.standard.string(forKey: "currencyTitle")
         // Do any additional setup after loading the view.
     }
