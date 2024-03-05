@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        registeredUser = viewModel?.isRegistered()
+        registeredUser = viewModel?.isLoggedIn()
         logoutButton.isHidden = !registeredUser
     }
     
@@ -98,6 +98,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func logoutButton(_ sender: Any) {
         // TODO: - Write here logout logic
+        viewModel?.logUserOut()
         dismiss(animated: true)
     }
 }

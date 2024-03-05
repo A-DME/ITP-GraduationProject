@@ -9,9 +9,17 @@ import Foundation
 
 class SettingsViewModel{
     let settingsList = ["Addresses", "Currency", "About Us"]
+    var userDefult : Utilities?
     
-    func isRegistered() -> Bool {
-//        MARK: - TODO: registration check
-        return false
+    init() {
+        self.userDefult = Utilities()
+    }
+
+    func isLoggedIn()->Bool{
+        return userDefult?.isLoggedIn() ?? false
+    }
+    
+    func logUserOut(){
+        userDefult?.logout()
     }
 }
