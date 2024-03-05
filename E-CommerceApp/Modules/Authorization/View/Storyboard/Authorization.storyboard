@@ -152,7 +152,7 @@
                                     <color key="baseForegroundColor" red="0.1843137255" green="0.34509803919999998" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="lpE-z0-6kr" kind="presentation" modalPresentationStyle="fullScreen" id="1f3-iU-RGz"/>
+                                    <segue destination="lpE-z0-6kr" kind="presentation" identifier="toSign" modalPresentationStyle="fullScreen" id="1f3-iU-RGz"/>
                                 </connections>
                             </button>
                         </subviews>
