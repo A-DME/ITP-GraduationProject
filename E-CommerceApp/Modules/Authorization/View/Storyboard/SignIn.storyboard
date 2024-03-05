@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="height" constant="45" id="pxe-tf-6gX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTj-73-Sjy">
                                 <rect key="frame" x="16" y="395" width="361" height="45"/>
@@ -44,7 +44,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="signInButton:" destination="DTU-Ug-QoG" eventType="touchUpInside" id="Ssu-zH-3te"/>
-                                    <segue destination="IS7-r8-HCX" kind="presentation" identifier="logIn" modalPresentationStyle="fullScreen" id="VE7-c0-viH"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-pe-Oam">
@@ -84,12 +83,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CET-EZ-biu">
-                                <rect key="frame" x="184.66666666666666" y="475" width="24" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="By connecting your account confirm that you agree with our Term and Condition" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-AC-jv2">
                                 <rect key="frame" x="16" y="755" width="361" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -98,11 +91,6 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zel-W3-h2j">
-                                <rect key="frame" x="154.66666666666666" y="531" width="84" height="74"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="google logo "/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kAj-o7-rdF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -110,11 +98,7 @@
                             <constraint firstItem="kAj-o7-rdF" firstAttribute="trailing" secondItem="C8x-xA-Kly" secondAttribute="trailing" constant="16" id="08Z-hf-nez"/>
                             <constraint firstItem="kAj-o7-rdF" firstAttribute="trailing" secondItem="MEr-pe-Oam" secondAttribute="trailing" constant="16" id="9QR-Wi-4QG"/>
                             <constraint firstItem="lRc-8Z-MnQ" firstAttribute="leading" secondItem="kAj-o7-rdF" secondAttribute="leading" id="9VB-g0-H3O"/>
-                            <constraint firstItem="zel-W3-h2j" firstAttribute="top" secondItem="CET-EZ-biu" secondAttribute="bottom" constant="35" id="9ae-cM-CTF"/>
-                            <constraint firstItem="CET-EZ-biu" firstAttribute="top" secondItem="ZTj-73-Sjy" secondAttribute="bottom" constant="35" id="Dlq-Bf-274"/>
                             <constraint firstItem="lRc-8Z-MnQ" firstAttribute="top" secondItem="kAj-o7-rdF" secondAttribute="top" id="Eg7-se-8NC"/>
-                            <constraint firstItem="zel-W3-h2j" firstAttribute="centerX" secondItem="kAj-o7-rdF" secondAttribute="centerX" id="Nbv-Tm-wWA"/>
-                            <constraint firstItem="CET-EZ-biu" firstAttribute="centerX" secondItem="kAj-o7-rdF" secondAttribute="centerX" id="OES-D0-dRX"/>
                             <constraint firstItem="lRc-8Z-MnQ" firstAttribute="trailing" secondItem="kAj-o7-rdF" secondAttribute="trailing" id="UZQ-Mh-MHc"/>
                             <constraint firstItem="kAj-o7-rdF" firstAttribute="trailing" secondItem="FXd-Rg-Ff4" secondAttribute="trailing" constant="16" id="WhC-Oy-HBC"/>
                             <constraint firstItem="kAj-o7-rdF" firstAttribute="trailing" secondItem="ZTj-73-Sjy" secondAttribute="trailing" constant="16" id="Zkd-RP-Zhs"/>
@@ -138,6 +122,7 @@
                     <connections>
                         <outlet property="email" destination="nDp-Di-8P1" id="b0y-OT-OAd"/>
                         <outlet property="password" destination="C8x-xA-Kly" id="5eV-E1-tZe"/>
+                        <segue destination="IS7-r8-HCX" kind="presentation" identifier="logIn" modalPresentationStyle="fullScreen" id="nPh-pV-PsQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEL-gD-QVo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -157,7 +142,6 @@
     </scenes>
     <resources>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
-        <image name="google logo " width="60" height="60"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

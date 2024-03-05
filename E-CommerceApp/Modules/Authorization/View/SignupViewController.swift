@@ -10,7 +10,7 @@ import UIKit
 
 class SignupViewController: UIViewController {
 
-    @IBOutlet weak var lblValidation: UILabel!
+    
     @IBOutlet weak var firstName: UITextField!
     
     @IBOutlet weak var secondName: UITextField!

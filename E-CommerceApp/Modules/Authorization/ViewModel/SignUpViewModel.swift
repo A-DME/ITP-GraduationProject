@@ -28,9 +28,11 @@ class SignUpViewModel{
             bindNavigate()
         }
     }
+    
     func navigateToHome()-> Bool{
         return navigate
     }
+    
     var result : CustomerModel?{
         didSet{
             bindResultToViewController()
@@ -40,6 +42,7 @@ class SignUpViewModel{
     init() {
         self.networkHandler = NetworkManager()
     }
+    
     var listOfCustomer : [CustomerModel]?{
         didSet{
             bindResultToViewController()

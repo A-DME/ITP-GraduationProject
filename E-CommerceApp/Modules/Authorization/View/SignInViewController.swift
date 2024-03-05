@@ -28,14 +28,20 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLoadingData()
+       userDefualt.logout()
         // Do any additional setup after loading the view.
     }
     
     func navigateToHome(){
-        if self.navigate == true{
+    
+        if userDefualt.isLoggedIn() {
             performSegue(withIdentifier: "logIn", sender: self)
         }else {
             print("failed")
+            let alert = UIAlertController(title: "Not Authorized", message: "user not exist, please check your email" , preferredStyle: .alert)
+            let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+            alert.addAction(gotIt)
+            self.present(alert, animated: true)
             
         }
     }
@@ -67,8 +73,12 @@ class SignInViewController: UIViewController {
         if userDefualt.isValidEmail(_email){
             if _password.count >= 6 {
                 for item in (self.signInViewModel?.getAllCustomers())! {
+                    
                     let comingMail = item.email ?? ""
+                    print(comingMail)
                     if comingMail == _email{
+                        print("matched EMail:\(comingMail)")
+                        
                         self.userDefualt.login()
                         self.userDefualt.addId(id: item.id ?? 0)
                         self.userDefualt.addCustomerName(customerName: "\(item.first_name!.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)[0]) \(item.last_name!)")
@@ -78,18 +88,11 @@ class SignInViewController: UIViewController {
                         print("Utilities.utilities.getUserNote()\(Utilities.utilities.getUserNote())")
                         
                         self.note = item.note
-                        self.navigate = true
-                        navigateToHome()
-                        break
-                    }else{
-                        let alert = UIAlertController(title: "Not Authorized", message: "user not exist, please check your email" , preferredStyle: .alert)
-                        let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
-                        alert.addAction(gotIt)
-                        self.present(alert, animated: true)
-                        self.navigate = false
                         
+                        break
                     }
                 }
+                self.navigateToHome()
             }else{
                 let alert = UIAlertController(title: "Not Authorized", message: "Password should be 6 characters at least" , preferredStyle: .alert)
                 let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
