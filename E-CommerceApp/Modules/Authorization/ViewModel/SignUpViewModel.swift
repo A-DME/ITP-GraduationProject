@@ -154,7 +154,10 @@ class SignUpViewModel{
                     
                     self.userDefualt.setUserNote(note: "\(self.cartDraftId ?? 0),\(self.wishlistDraftId ?? 0)")
                     print(self.userDefualt.getUserNote())
-                    
+                    self.userDefualt.setCartID(cartId: String(self.cartDraftId ?? 0))
+                    print(self.userDefualt.getCartID())
+                    self.userDefualt.setWishlistID(wishlistId: String(self.wishlistDraftId ?? 0))
+                    print(self.userDefualt.getWishlistID())
                     print("Password User:\(String(describing: self.userDefualt.getUserPassword()))")
                     
                     completion(true)

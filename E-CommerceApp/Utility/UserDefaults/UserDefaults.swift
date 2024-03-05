@@ -131,6 +131,18 @@ class Utilities{
     func getUserNote()->String{
         UserDefaults.standard.value(forKey: "note") as! String
     }
+    func setWishlistID(wishlistId:String){
+        UserDefaults.standard.set(wishlistId, forKey: "wishlistId")
+    }
+    func getWishlistID()->String{
+        UserDefaults.standard.value(forKey: "wishlistId") as! String
+    }
+    func setCartID(cartId:String){
+        UserDefaults.standard.set(cartId, forKey: "cartId")
+    }
+    func getCartID()->String{
+        UserDefaults.standard.value(forKey: "cartId") as! String
+    }
     func setTotalPrice(totalPrice:Double){
         UserDefaults.standard.set(totalPrice, forKey: "Total_Price")
     }

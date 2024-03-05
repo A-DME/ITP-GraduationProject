@@ -40,6 +40,8 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBOutlet weak var star5: UIImageView!
     
+    
+    
     var url:[URL] = []
     
     var productId : Int?
@@ -51,8 +53,9 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     var reviews : Reviews?
     
     var Allreviews : [Reviews.Review]?
+    var userDefaults : Utilities
     
-    var isLoggedIn : Bool! = false
+   
     
     var sizes : [String]?{
         didSet{
@@ -96,30 +99,30 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         self.hideKeyboardWhenTappedAround()
         reviews = Reviews()
         Allreviews = reviews?.getReviews()
-        
-           
+        userDefaults = Utilities()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         configureReviewsTableView()
         configureCollectionView()
         configureLoadingData()
-      
     }
     
-    @IBAction func viewAllReviews(_ sender: Any) {
-        
-    }
+   
     
-    //MARK: - Configuring Buttons
+    //MARK: - Configuring AddToCart Button
     
     @IBAction func addingToCart(_ sender: Any) {
-        if isLoggedIn==true{
+        if self.userDefaults.isLoggedIn() == true{
+            print("added")
+            let item = LineItem(id: 0, variantID: self.productInfoViewModel?.getProductDetails()?.variants.first?.id, productID: self.productId,price: "", name: "", title: "", quantity: 1, properties: [NoteAttribute(name: "image",value: self.productInfoViewModel?.getProductDetails()?.image.src ?? "") ,NoteAttribute(name: "inventoryQuantity",value: String(self.productInfoViewModel?.getProductDetails()?.variants.first?.inventoryQuantity ?? 0))])
+            let myitems = HelperFunctions().convertToDictionary(object: item, String: "line_item")
+            productInfoViewModel?.updateCartItems(cartItems: [item])
             print("added")
             addToCartButton.setTitle("AddedToCart", for: .normal)
             addToCartButton.isEnabled = false
             addToCartButton.alpha = 0.5
+            
         }else{
             let alert = UIAlertController(title: "Not Registered", message: "You need to register to be able to add to cart", preferredStyle: .alert)
             let signUp = UIAlertAction(title: "Sign Up", style: .default) { UIAlertAction in
@@ -134,20 +137,19 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     
+    //MARK: - Configuring AddToWishlist Button
     
     @IBAction func addingToWishlist(_ sender: Any) {
-        if isLoggedIn==true{
+        if self.userDefaults.isLoggedIn() == true{
             print("added")
-           // addToFavButton.
-//            image = UIImage(systemName: isFavourite ? "heart.fill" : "heart")
+            
+            
         }else{
             let alert = UIAlertController(title: "Not Registered", message: "You need to register to add to wishlist", preferredStyle: .alert)
             let gotIt = UIAlertAction(title: "Got It", style: .cancel)
             let signUp = UIAlertAction(title: "Sign Up", style: .default) { UIAlertAction in
                 self.performSegue(withIdentifier: "toSignUp", sender: nil)
             }
-            
-            
             alert.addAction(signUp)
             alert.addAction(gotIt)
             present(alert, animated: true)
@@ -189,13 +191,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
                
                 self?.sizes = self?.productInfoViewModel?.getProductDetails()?.options[0].values
                 self?.colors = self?.productInfoViewModel?.getProductDetails()?.options[1].values
-               /* for size in (self?.productInfoViewModel?.getProductDetails()?.options[0].values) ?? []{
-                    /*if size == ((self?.productInfoViewModel?.getProductDetails()?.options[0].values)!).first{
-                        self?.sizeMenu.append(UIAction(title: size, state: .on, handler: self!.actionClosure  ))
-                    }*/
-                    
-                    self?.sizeMenu.append(UIAction(title: size, handler: self!.actionClosure  ))
-                }*/
+                
                 
                 
                 self?.myCollectionView.reloadData()
@@ -205,6 +201,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     
 
     //MARK: - Configure the TableView (source,delegate,nib cell)
+    
     func configureReviewsTableView(){
         reviewsTableView.dataSource = self
         reviewsTableView.delegate = self
@@ -213,6 +210,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     //MARK: - Configure the CollectionView (source,delegate,nib cell)
+    
     func configureCollectionView(){
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
@@ -236,21 +234,15 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         cell.productPositions.kf.setImage(with: url)
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthPerItem = UIScreen.main.bounds.width
         return CGSize(width:widthPerItem, height:myCollectionView.frame.height/3)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10.0, left: 9.0, bottom: 10.0, right: 9.0)
     }
-    
-   /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15.0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
-   }*/
-   
    
 }
     
@@ -261,7 +253,6 @@ extension ProductInfoViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

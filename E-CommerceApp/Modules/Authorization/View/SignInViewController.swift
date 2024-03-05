@@ -85,6 +85,9 @@ class SignInViewController: UIViewController {
                         self.userDefualt.setUserPassword(password: item.tags ?? "")
                         self.userDefualt.addCustomerEmail(customerEmail: item.email ?? "")
                         self.userDefualt.setUserNote(note: item.note ?? "")
+                        let array = item.note?.components(separatedBy: ", ")
+                        self.userDefualt.setCartID(cartId: array?[0] ?? "0")
+                        self.userDefualt.setWishlistID(wishlistId: array?[1] ?? "0")
                         print("Utilities.utilities.getUserNote()\(Utilities.utilities.getUserNote())")
                         
                         self.note = item.note
