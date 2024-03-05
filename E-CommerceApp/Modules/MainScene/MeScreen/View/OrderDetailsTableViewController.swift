@@ -32,7 +32,7 @@ class OrderDetailsTableViewController: UITableViewController {
         
          override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
              let cell = tableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrdersTableViewCell
-             cell.orderNum.text = result?.lineItems[indexPath.row].name.split(separator: "|").dropFirst().first.map(String.init)
+             cell.orderNum.text = result?.lineItems[indexPath.row].name?.split(separator: "|").dropFirst().first.map(String.init)
              cell.QuantityLabel.text = "Quantity"
              cell.CreatedDate.text = String(result?.lineItems[indexPath.row].quantity ?? 0 )
              cell.totalAmountLabel.text = "Price"

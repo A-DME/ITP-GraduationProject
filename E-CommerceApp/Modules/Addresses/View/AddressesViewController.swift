@@ -32,9 +32,29 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         addressesList = []
-        addresses.reloadData()
-        indicator.startAnimating()
-        refreshTable()
+        viewModel?.checkNetworkReachability{ isReachable in
+            if isReachable {
+                self.addresses.reloadData()
+                self.indicator.startAnimating()
+                self.refreshTable()
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
+        }
+    }
+    
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func refreshTable(){
