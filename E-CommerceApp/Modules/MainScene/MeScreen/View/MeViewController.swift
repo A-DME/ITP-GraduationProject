@@ -74,12 +74,6 @@ class MeViewController: UIViewController{
 }
 // MARK: - UI setUp
 extension MeViewController{
-  /* func IntializeProperties(){
-        result = Orders(orders: [])
-        customerId = 7440718856437
-        customerName = "Basma"
-        loggedIn = true
-    }*/
      func IntializeProperties(){
      result = Orders(orders: [])
      wishListResult = []

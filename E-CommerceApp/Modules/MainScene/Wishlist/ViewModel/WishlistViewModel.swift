@@ -28,7 +28,7 @@ class WishlistViewModel{
     }
     
     func loadWishlistData(){
-        let apiUrl = APIHandler.urlForGetting(.draftOrder(id: "1148537569525"))
+        let apiUrl = APIHandler.urlForGetting(.draftOrder(id: userDefult?.getWishlistID() ?? ""))
         networkHandler?.fetch(url: apiUrl, type: DraftOrderContainer.self, complitionHandler: { data in
             self.wishlistResult = data?.draftOrder.lineItems
             
