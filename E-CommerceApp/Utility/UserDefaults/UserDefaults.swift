@@ -71,6 +71,11 @@ class Utilities{
     }
     func logout() {
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
+        UserDefaults.standard.set(0, forKey: "id")
+        UserDefaults.standard.set("", forKey: "name")
+        UserDefaults.standard.set("", forKey: "email")
+        UserDefaults.standard.set("", forKey: "wishlistId")
+        UserDefaults.standard.set("", forKey: "cartId")
     }
     
     func addId(id: Int) {
@@ -140,6 +145,7 @@ class Utilities{
     func setCartID(cartId:String){
         UserDefaults.standard.set(cartId, forKey: "cartId")
     }
+    
     func getCartID()->String{
         UserDefaults.standard.value(forKey: "cartId") as! String
     }
