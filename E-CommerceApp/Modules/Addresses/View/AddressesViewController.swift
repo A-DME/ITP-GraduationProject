@@ -31,7 +31,6 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        addressesList = []
         viewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 self.addresses.reloadData()
@@ -76,12 +75,12 @@ class AddressesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        if addressesList?.count == 0{
-//        tableView.setEmptyView(title: "No addresses added yet", message: "Go ahead an add an address!")
-//        }
-//        else {
-//        tableView.restore()
-//        }
+        if addressesList?.count == 0{
+        tableView.setEmptyView(title: "No addresses added yet", message: "Go ahead and add an address!")
+        }
+        else {
+        tableView.restore()
+        }
         
         return (addressesList?.count) ?? 0
     }
