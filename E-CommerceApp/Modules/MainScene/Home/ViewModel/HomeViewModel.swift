@@ -10,7 +10,7 @@ class HomeViewModel{
     
     var networkHandler:NetworkManager?
     let reachabilityHandler = ReachabilityManager()
-    
+    var userDefult : Utilities?
     var bindBrandsResultToViewController : (()->()) = {}
     var Brandsresult :Collections? {
         didSet{
@@ -26,6 +26,7 @@ class HomeViewModel{
     
     init() {
         self.networkHandler = NetworkManager()
+        self.userDefult = Utilities()
         
     }
    
@@ -53,4 +54,7 @@ class HomeViewModel{
           completion(isReachable)
       }
   }
+    func isLoggedIn()->Bool{
+        return userDefult?.isLoggedIn() ?? false
+    }
 }

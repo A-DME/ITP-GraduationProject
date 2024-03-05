@@ -29,6 +29,7 @@ class WishlistViewController: UIViewController,UICollectionViewDataSource,UIColl
     }
     override func viewWillAppear(_ animated: Bool) {
         IntializeProperties()
+        setupLongGestureRecognizerOnCollection()
         print(loggedIn)
         wishlistViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
@@ -72,7 +73,7 @@ class WishlistViewController: UIViewController,UICollectionViewDataSource,UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wish", for: indexPath) as! ItemsCollectionViewCell
         let factor = UserDefaults.standard.value(forKey: "factor")as! Double
-        cell.productImage.kf.setImage(with:URL(string: (wishListResult?[indexPath.row].properties[0].value)!) ,placeholder: UIImage(named: "placeHolder"))
+        cell.productImage.kf.setImage(with:URL(string: (wishListResult?[indexPath.row].properties[0].value) ?? "") ,placeholder: UIImage(named: "placeHolder"))
         cell.productTitle.text = wishListResult?[indexPath.row].name
         cell.productSubTitle.text = " "
         let price = Double(wishListResult?[indexPath.row].price ?? "0.0")
@@ -122,7 +123,7 @@ extension WishlistViewController{
     func showAlert(){
         let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
         
-        let doneAction = UIAlertAction(title: "Ok", style: .cancel) { _ in
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
             self.viewWillAppear(true)
         }
         
@@ -155,4 +156,40 @@ extension WishlistViewController{
         
     }
     
+}
+extension WishlistViewController: UIGestureRecognizerDelegate{
+    func setupLongGestureRecognizerOnCollection() {
+       let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+       longPressedGesture.minimumPressDuration = 0.5
+       longPressedGesture.delegate = self
+       longPressedGesture.delaysTouchesBegan = true
+       wishColletionView?.addGestureRecognizer(longPressedGesture)
+      }
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (gestureRecognizer.state != .began) {
+         return
+        }
+
+        let p = gestureRecognizer.location(in:wishColletionView)
+
+        if let indexPath = wishColletionView?.indexPathForItem(at: p) {
+         print("Long press at item: \(indexPath.row)")
+            showDeleteAlert(index: indexPath)
+        }
+       }
+    func showDeleteAlert(index: IndexPath){
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you Want to delete item from Wishlist", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Delete", style: .default) { _ in
+            self.wishListResult?.remove(at: index.row)
+            self.wishlistViewModel?.updateWishList(wishList: self.wishListResult)
+            Thread.sleep(forTimeInterval:0.5)
+            self.viewWillAppear(true)
+        }
+        let no = UIAlertAction(title: "No", style: .cancel)
+        alertController.addAction(no)
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

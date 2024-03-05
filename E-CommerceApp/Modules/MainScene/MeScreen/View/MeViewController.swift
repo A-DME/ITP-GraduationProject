@@ -34,6 +34,7 @@ class MeViewController: UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         IntializeProperties()
+        setupLongGestureRecognizerOnCollection()
         meViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 if self.loggedIn == true{
@@ -201,4 +202,40 @@ extension MeViewController : UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     
+}
+extension MeViewController: UIGestureRecognizerDelegate{
+    func setupLongGestureRecognizerOnCollection() {
+       let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+       longPressedGesture.minimumPressDuration = 0.5
+       longPressedGesture.delegate = self
+       longPressedGesture.delaysTouchesBegan = true
+       wishlistCollection?.addGestureRecognizer(longPressedGesture)
+      }
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (gestureRecognizer.state != .began) {
+         return
+        }
+
+        let p = gestureRecognizer.location(in:wishlistCollection)
+
+        if let indexPath = wishlistCollection?.indexPathForItem(at: p) {
+         print("Long press at item: \(indexPath.row)")
+            showDeleteAlert(index: indexPath)
+        }
+       }
+    func showDeleteAlert(index: IndexPath){
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you Want to delete item from Wishlist", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Delete", style: .default) { _ in
+            self.wishListResult?.remove(at: index.row)
+            self.meViewModel?.updateWishList(wishList: self.wishListResult)
+            Thread.sleep(forTimeInterval:0.5)
+            self.viewWillAppear(true)
+        }
+        let no = UIAlertAction(title: "No", style: .cancel)
+        alertController.addAction(no)
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
