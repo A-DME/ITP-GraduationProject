@@ -306,11 +306,20 @@
                     <connections>
                         <outlet property="adsCollectionView" destination="mLd-uW-A6C" id="Bzp-ir-VTx"/>
                         <outlet property="brandsCollection" destination="i9g-m4-ngU" id="xPI-Cv-Pm3"/>
+                        <segue destination="pf2-rG-Wae" kind="presentation" identifier="SignUp" modalPresentationStyle="fullScreen" id="DTN-Qw-Wu4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1910.6870229007632" y="-28.169014084507044"/>
+        </scene>
+        <!--Authorization-->
+        <scene sceneID="uag-W2-qgy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorization" id="pf2-rG-Wae" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBQ-wJ-oq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2766" y="-120"/>
         </scene>
         <!--Categories-->
         <scene sceneID="Ii0-Rb-t0h">
@@ -415,7 +424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzZ-1m-tXs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3136.6412213740455" y="-28.169014084507044"/>
+            <point key="canvasLocation" x="3630" y="-28"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fgk-hs-H9b">

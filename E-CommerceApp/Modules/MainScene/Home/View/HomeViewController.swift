@@ -10,12 +10,6 @@ import Kingfisher
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-   /* var searchWord : String = ""
-    var searching : Bool = false*/
-    
-  //  @IBOutlet weak var searchBar: UISearchBar!
-    
-   
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var brandsCollection: UICollectionView!
     
@@ -23,15 +17,12 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     var adsResult : PriceRules?
     var indicator : UIActivityIndicatorView?
     var homeViewModel : HomeViewModel?
-   // private let searchController = UISearchController(searchResultsController: nil)
+    var loggedIn :Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //searchBar.delegate = self
         setIndicator()
-       // searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        //tableView.tableHeaderView = searchController.searchBar
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +30,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         self.registerCells()
         self.hideKeyboardWhenTappedAround()
         homeViewModel = HomeViewModel()
+        loggedIn = homeViewModel?.isLoggedIn()
         homeViewModel?.checkNetworkReachability{ isReachable in
             print(isReachable)
             if isReachable {
@@ -58,43 +50,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue){
         
     }
-    /*func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searching = true
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searching = false
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchWord = searchBar.text ?? ""
-        print("Search text: \(searchWord)")
-        searchingResult()
-    }
     
-  
-    func searchingResult(){
-        if searching == false{
-            displayBrands()
-        }else{
-            if searchWord.isEmpty{
-               displayBrands()
-            }else{
-                brandsResult = brandsResult?.filter{
-                    $0.title.lowercased().contains(searchWord.lowercased())
-                } ?? []
-            }
-        }
-        
-        checkIfNoItems()
-        brandsCollection.reloadData()
-    }*/
-   /* func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        if let destination = storyboard?.instantiateViewController(withIdentifier: ("search")){
-            navigationController?.pushViewController(destination, animated: true)
-        }
-        return false
-    }*/
     func checkIfNoItems(){
         if (brandsResult?.count  == 0) {
             brandsCollection.setEmptyMessage("No Items Found")
@@ -138,7 +94,7 @@ extension HomeViewController{
         
         self.present(alertController, animated: true, completion: nil)
     }
-    func showCoponeAlert(code:String){
+    func showCouponAlert(code:String){
         let alertController = UIAlertController(title: "congratulations", message: "click Copy to get your copone", preferredStyle: .alert)
         
         let copyAction = UIAlertAction(title: "Copy", style: .cancel) { _ in
@@ -146,6 +102,21 @@ extension HomeViewController{
         }
         
         alertController.addAction(copyAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    func showNotLoggedInAlert(){
+        let alertController = UIAlertController(title: "Please", message: "Register To take Coupons", preferredStyle: .alert)
+        
+        let Register = UIAlertAction(title: "Register", style: .default) { _ in
+    
+            self.performSegue(withIdentifier: "SignUp", sender: self)
+        }
+        let cancel = UIAlertAction(title: "cancel", style: .cancel) { _ in
+            
+        }
+        alertController.addAction(cancel)
+        alertController.addAction(Register)
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -224,7 +195,12 @@ extension HomeViewController{
             brandsVC.brandImage = brandsResult?[indexPath.row].image.src
             navigationController?.pushViewController(brandsVC, animated: true)
         }else{
-            showCoponeAlert(code: adsResult?.priceRules[indexPath.row].title ?? "")
+            if loggedIn ?? false{
+                showCouponAlert(code: adsResult?.priceRules[indexPath.row].title ?? "")
+            }else{
+                showNotLoggedInAlert()
+            }
+           
         }
         
     }
