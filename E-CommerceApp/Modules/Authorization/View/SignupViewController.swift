@@ -24,7 +24,7 @@ class SignupViewController: UIViewController {
     var _firstName, _lastName, _email, _password: String!
     let userDefualt = Utilities()
     var signUpViewModel : SignUpViewModel?
-    var isFromLogin: Bool = false
+    
     var customers : [CustomerModel]? = []
     
     override func viewDidLoad() {

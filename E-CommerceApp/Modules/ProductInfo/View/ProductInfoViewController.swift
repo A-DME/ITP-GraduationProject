@@ -53,6 +53,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
     var reviews : Reviews?
     
     var Allreviews : [Reviews.Review]?
+    
     var userDefaults = Utilities()
     
    

@@ -21,7 +21,7 @@ class SignInViewController: UIViewController {
     
     var note: String! = "0"
     
-    var isFromLogin: Bool = false
+
     
     var navigate: Bool! = false
     
@@ -85,8 +85,10 @@ class SignInViewController: UIViewController {
                         self.userDefualt.setUserPassword(password: item.tags ?? "")
                         self.userDefualt.addCustomerEmail(customerEmail: item.email ?? "")
                         self.userDefualt.setUserNote(note: item.note ?? "")
-                        let array = item.note?.components(separatedBy: ", ")
+                        let array = item.note?.components(separatedBy: ",")
                         self.userDefualt.setCartID(cartId: array?[0] ?? "0")
+                        print("wishlist:\(self.userDefualt.getWishlistID())")
+                        print("cart\(self.userDefualt.getCartID())")
                         self.userDefualt.setWishlistID(wishlistId: array?[1] ?? "0")
                         print("Utilities.utilities.getUserNote()\(Utilities.utilities.getUserNote())")
                         

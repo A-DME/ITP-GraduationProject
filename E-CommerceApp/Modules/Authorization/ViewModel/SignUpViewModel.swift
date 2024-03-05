@@ -27,6 +27,8 @@ class SignUpViewModel{
     
     var cartDraftId : Int?
     
+    var note : String = ""
+    
     var navigate: Bool! {
         didSet{
             bindNavigate()
@@ -79,7 +81,8 @@ class SignUpViewModel{
     
     func registerCustomer(firstName: String, lastName: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
         self.createDraftOrder()
-        print("Flag in view Model is:\(flag)")
+        Thread.sleep(forTimeInterval: 1)
+       // self.note = "\(self.cartDraftId ?? 0),\(self.wishlistDraftId ?? 0)"
         if flag == false {
             
             let customer = CustomerModel(
@@ -90,13 +93,21 @@ class SignUpViewModel{
                 tags: password,
                 id: nil,
                 verified_email: true,
-                //addresses: nil,
-                note: "0"
+                note: ""
             )
             
             self.registerNewCustomer(customer: customer) { result in
                 switch result {
                 case true:
+                    
+                    var customerNote: [String: [String: String]] = [
+                        "customer": [
+                            "note":"\(self.cartDraftId ?? 0),\(self.wishlistDraftId ?? 0)"
+                        ]
+                    ]
+                    let apiUrl = APIHandler.urlForGetting(.Customer(id: String(self.userDefualt.getCustomerId())))
+                    
+                    self.networkHandler?.putInApi(url: apiUrl, parameters:customerNote)
                     self.navigate = true
                     completion(true)
                     
@@ -147,6 +158,7 @@ class SignUpViewModel{
                     
                     self.userDefualt.login()
                     self.userDefualt.addCustomerId(id: id)
+                    
                     self.userDefualt.addCustomerEmail(customerEmail: customerEmail)
                     self.userDefualt.addCustomerName(customerName: "\(customerName) \(customerLastName)")
                     self.userDefualt.login()
@@ -159,18 +171,18 @@ class SignUpViewModel{
                     self.userDefualt.setWishlistID(wishlistId: String(self.wishlistDraftId ?? 0))
                     print(self.userDefualt.getWishlistID())
                     print("Password User:\(String(describing: self.userDefualt.getUserPassword()))")
-                    
+                    print("url:\(apiUrl)")
+                    print("put in api : cartId:\(self.cartDraftId ?? 0) wishlist Id :\(self.wishlistDraftId ?? 0)")
+
                     completion(true)
                     self.navigate = true
-                    print("add to userDefualt successfully!!!")
                     
+                    print("add to userDefualt successfully!!!")
                 } else {
                     completion(false)
                     self.navigate = false
                     print("No customer found in the response.")
                 }
-                
-                
             }
         }
     }
@@ -196,9 +208,23 @@ class SignUpViewModel{
             self.wishlistDraftId = container?.draftOrder.id
         })
         Thread.sleep(forTimeInterval: 1)
+        self.note = "\(self.cartDraftId ?? 0),\(self.wishlistDraftId ?? 0)"
+        //Thread.sleep(forTimeInterval: 1)
 
     }
+    func addNoteToCustomer( id : Int) {
         
+        var customerNote: [String: [String: String]] = [
+            "customer": [
+                "note":"\(self.cartDraftId ?? 0),\(self.wishlistDraftId ?? 0)"
+            ]
+        ]
+        let apiUrl = APIHandler.urlForGetting(.Customer(id: String(id)))
+        print("url:\(apiUrl)")
+        print("put in api : cartId:\(self.cartDraftId ?? 0) wishlist Id :\(self.wishlistDraftId ?? 0)")
+        networkHandler?.putInApi(url: apiUrl, parameters:customerNote)
+        
+    }
         
         
     
