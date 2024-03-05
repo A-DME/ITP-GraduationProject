@@ -104,8 +104,13 @@ class SignupViewController: UIViewController {
                             }
                         }
                         if self.signUpViewModel?.flag == true{
-                            let alert = UIAlertController(title: "An Error Occured", message: "This user already exists", preferredStyle: .alert)
-                            let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                            let alert = UIAlertController(title: "Warning", message: "This user already exists", preferredStyle: .alert)
+                            let gotIt = UIAlertAction(title: "Ok", style: .cancel)
+                            let signUp = UIAlertAction(title: "Sign In", style: .default) { UIAlertAction in
+                                self.performSegue(withIdentifier: "toSign", sender: nil)
+                            }
+                            
+                            alert.addAction(signUp)
                             alert.addAction(gotIt)
                             self.present(alert, animated: true)
                             
@@ -120,21 +125,23 @@ class SignupViewController: UIViewController {
                                     print("from view  \(String(describing: self._firstName ?? ""))")
                                 case false:
                                     DispatchQueue.main.async {
-                                        self.lblValidation.isHidden = false
-                                        self.lblValidation.text = "This user already exists"
+                                        let alert = UIAlertController(title: "Warning", message:"Error in registering" , preferredStyle: .alert)
+                                        let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                                        alert.addAction(gotIt)
+                                        self.present(alert, animated: true)
                                     }
                                 }
                             }
                         }
                     }else{
-                        let alert = UIAlertController(title: "An Error Occured", message:"Password must be more than 5 digit" , preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Warning", message:"Password must be more than 5 digit" , preferredStyle: .alert)
                         let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
                         alert.addAction(gotIt)
                         self.present(alert, animated: true)
                     }
                 }else{
                     
-                    let alert = UIAlertController(title: "An Error Occured", message: "Password Confirmation Doesnt match", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Warning", message: "Password Confirmation Doesnt match", preferredStyle: .alert)
                     let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
                     alert.addAction(gotIt)
                     self.present(alert, animated: true)
@@ -142,14 +149,14 @@ class SignupViewController: UIViewController {
                 }
                 
             }else{
-                let alert = UIAlertController(title: "An Error Occured", message: "Please, enter valid email", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Warning", message: "Please, enter valid email", preferredStyle: .alert)
                 let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
                 alert.addAction(gotIt)
                 self.present(alert, animated: true)
                 
             }
         }else{
-            let alert = UIAlertController(title: "An Error Occured", message: "Required full name", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Warning", message: "Required full name", preferredStyle: .alert)
             let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
             alert.addAction(gotIt)
             self.present(alert, animated: true)

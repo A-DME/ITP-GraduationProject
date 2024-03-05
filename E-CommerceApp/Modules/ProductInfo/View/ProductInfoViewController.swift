@@ -142,10 +142,11 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
 //            image = UIImage(systemName: isFavourite ? "heart.fill" : "heart")
         }else{
             let alert = UIAlertController(title: "Not Registered", message: "You need to register to add to wishlist", preferredStyle: .alert)
+            let gotIt = UIAlertAction(title: "Got It", style: .cancel)
             let signUp = UIAlertAction(title: "Sign Up", style: .default) { UIAlertAction in
                 self.performSegue(withIdentifier: "toSignUp", sender: nil)
             }
-            let gotIt = UIAlertAction(title: "Got It", style: .cancel)
+            
             
             alert.addAction(signUp)
             alert.addAction(gotIt)
