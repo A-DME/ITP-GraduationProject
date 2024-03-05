@@ -28,11 +28,12 @@ class MeViewController: UIViewController{
         super.viewDidLoad()
         meViewModel = MeViewModel()
         registerCell()
-        IntializeProperties()
+        
       
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        IntializeProperties()
         meViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 if self.loggedIn == true{
