@@ -28,6 +28,8 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
     
     var viewModel: OrderReviewViewModel?
     
+    var discountValue = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,12 +37,12 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
         itemsCollection.delegate = self
         itemsCollection.dataSource = self
         itemsCollection.register(ItemsCollectionViewCell.nib(), forCellWithReuseIdentifier: "ItemCell")
+        self.viewModel = OrderReviewViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
-                self.viewModel = OrderReviewViewModel()
                 self.reloadView()
             } else {
                 DispatchQueue.main.async {
@@ -98,18 +100,25 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
             subtotalPrice += (UserDefaults.standard.double(forKey: "factor") * (Double(product.price) ?? 0.0)) * Double(product.quantity)
         }
         self.subTotal.text = "\(String(format: "%.2f",subtotalPrice)) \(UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD")"
-        let discountValue = 20.0
-        self.discount.text = "-\("\(String(discountValue))") \(UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD")"
-        self.totalPrice.text = "\(String(format: "%.2f",subtotalPrice - discountValue)) \(UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD")"
+        self.discount.text = "\("\(String(discountValue))") \(UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD")"
+        self.totalPrice.text = "\(String(format: "%.2f",subtotalPrice + discountValue)) \(UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD")"
     }
     
     @IBAction func applyDiscount(_ sender: Any) {
 // MARK: - Todo: applying discount logic
         if applyDiscountButton.titleLabel?.text == "Apply"{
+            let amount = viewModel!.check(discountCode: discountField.text ?? "")
+            print(amount)
+            if amount != 0.0 {
+                discountValue = amount
+                print(discountValue)
+                calculateLabels()
+            }
             applyDiscountButton.setTitle("Change", for: .normal)
             discountField.isUserInteractionEnabled = false
             discountField.alpha = 0.5
         } else {
+            viewModel?.clearRuleId()
             applyDiscountButton.setTitle("Apply", for: .normal)
             discountField.isUserInteractionEnabled = true
             discountField.alpha = 1.0
@@ -129,6 +138,7 @@ class OrderReviewViewController: UIViewController,UICollectionViewDelegate,UICol
         // Pass the selected object to the new view controller.
     }
     @IBAction func proceedToAddress(_ sender: Any) {
+        viewModel?.putDiscount(draftId: draftId)
         performSegue(withIdentifier: "proceed", sender: nil)
     }
 }
