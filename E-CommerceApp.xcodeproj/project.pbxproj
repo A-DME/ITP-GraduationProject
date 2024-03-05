@@ -191,6 +191,7 @@
 		1A67E4442B8E307E00492C7E /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		1A67E4452B8E307E00492C7E /* PaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTableViewCell.xib; sourceTree = "<group>"; };
 		1A7E5EBC2B923B2100C0EEC3 /* AddNewAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewModel.swift; sourceTree = "<group>"; };
+		1A85D2A82B9774BD00AA3AC5 /* E-CommerceApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "E-CommerceApp.entitlements"; sourceTree = "<group>"; };
 		1A954D952B8FBE3D00DE071F /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		1A9A3B042B88CCAA005CA8B4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		1A9A3B052B88CCAA005CA8B4 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
@@ -302,6 +303,7 @@
 		1A5165452B85E9F100DB8366 /* E-CommerceApp */ = {
 			isa = PBXGroup;
 			children = (
+				1A85D2A82B9774BD00AA3AC5 /* E-CommerceApp.entitlements */,
 				1A51657A2B85EAF400DB8366 /* Network */,
 				1A5165792B85EAE800DB8366 /* View */,
 				1A5165782B85EADC00DB8366 /* Models */,
@@ -1500,6 +1502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "E-CommerceApp/E-CommerceApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PZC4TWJNR6;
@@ -1530,6 +1533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "E-CommerceApp/E-CommerceApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PZC4TWJNR6;

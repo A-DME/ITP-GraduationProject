@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PassKit
 
 class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,6 +18,10 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var draftId : Int!
     
+    private var paymentRequest : PKPaymentRequest = PKPaymentRequest()
+    
+    var isApplePay: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         methods.delegate = self
@@ -25,6 +30,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         purchaseButton.isEnabled = false
         viewModel = PaymentViewModel()
         viewModel?.loadData(draftId: draftId)
+        viewModel?.configurePaymentRequest(request: paymentRequest)
         // Do any additional setup after loading the view.
     }
     
@@ -55,11 +61,33 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.cellForRow(at: indexPath) as! PaymentTableViewCell
         cell.selectedState.isHidden = false
         self.purchaseButton.isEnabled = true
+        if indexPath.row == 0 {
+            isApplePay = true
+        } else {
+            isApplePay = false
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! PaymentTableViewCell
         cell.selectedState.isHidden = true
+    }
+    
+    func tapForPay(){
+        let amount = String(viewModel?.getOrderTotalPrice() ?? 0.0)
+            paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "Cart Order", amount: NSDecimalNumber(string: amount))]
+            
+            let controller = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
+            if controller != nil {
+                controller!.delegate = self
+                present(controller!, animated: true, completion: nil)
+            }
+    }
+    
+    func purchaseOrder(){
+        viewModel?.postOrder()
+        viewModel?.completeOrder(draftId: draftId)
+        performSegue(withIdentifier: "orderConfirmed", sender: nil)
     }
     /*
     // MARK: - Navigation
@@ -77,8 +105,20 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func purchase(_ sender: Any) {
 // MARK: TODO: make sure that the payment is done(case apple pay)
-        viewModel?.postOrder()
-        viewModel?.completeOrder(draftId: draftId)
-        performSegue(withIdentifier: "orderConfirmed", sender: nil)
+        if isApplePay {tapForPay()}
+        else{
+            purchaseOrder()
+        }
+    }
+}
+
+extension PaymentViewController : PKPaymentAuthorizationViewControllerDelegate {
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true)
+    }
+    
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
+        self.purchaseOrder()
     }
 }
