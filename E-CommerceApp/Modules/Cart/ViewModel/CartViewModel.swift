@@ -16,13 +16,14 @@ class CartViewModel{
             bindResultToViewController()
         }
     }
-    let dummyDraftId = 1148431433973 // Todo: get here current customer's cart id
+    let dummyDraftId : Int? // Todo: get here current customer's cart id
     
     let dummyLineItem: [String: Any] = ["title": "dummy", "quantity": 1, "price": "0.0", "properties":[]]
     
     init(){
         networkManager = NetworkManager()
         userDefault = Utilities()
+        dummyDraftId = Int(String((userDefault?.getUserNote().split(separator: ",") ?? ["",""])[0]))
     }
     
     func isLoggedIn()->Bool{
@@ -36,7 +37,7 @@ class CartViewModel{
     }
 // MARK: - Awaiting customer's cart id
     func loadData(){
-        networkManager?.fetch(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId))")), type: DraftOrderContainer.self, complitionHandler: { container in
+        networkManager?.fetch(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId ?? 0))")), type: DraftOrderContainer.self, complitionHandler: { container in
             self.cart = container?.draftOrder.lineItems
         })
     }
@@ -58,7 +59,7 @@ class CartViewModel{
         guard let cartItems = cartItems else { return }
         
 //        print(extractLineItemsPostData(lineItems: cartItems))
-        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId))")), parameters: ["draft_order": ["line_items": cartItems.count != 0 ? extractLineItemsPostData(lineItems: cartItems) : [dummyLineItem]]])
+        networkManager?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(String(dummyDraftId ?? 0))")), parameters: ["draft_order": ["line_items": cartItems.count != 0 ? extractLineItemsPostData(lineItems: cartItems) : [dummyLineItem]]])
     }
     
     func getFilteredCart() -> [LineItem]{
