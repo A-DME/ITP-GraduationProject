@@ -23,11 +23,13 @@ class WishlistViewController: UIViewController,UICollectionViewDataSource,UIColl
         configureTableView()
        
         wishlistViewModel = WishlistViewModel()
-        IntializeProperties()
-        print(loggedIn)
+        
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        IntializeProperties()
+        print(loggedIn)
         wishlistViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 if self.loggedIn == true{
