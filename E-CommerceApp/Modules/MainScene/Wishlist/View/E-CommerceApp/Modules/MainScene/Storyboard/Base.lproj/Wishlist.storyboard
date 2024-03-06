@@ -66,6 +66,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Register">
                                             <color key="baseBackgroundColor" red="0.1843137255" green="0.34509803919999998" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="u9a-PU-sWh" kind="presentation" modalPresentationStyle="fullScreen" id="wt7-F1-jQL"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not signed in..yet      " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaG-li-mqD">
                                         <rect key="frame" x="16" y="345.66666666666669" width="329" height="24"/>
@@ -125,6 +128,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8be-e5-lN3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1139.6946564885495" y="388.73239436619718"/>
+        </scene>
+        <!--Authorization-->
+        <scene sceneID="AVs-Yt-jPv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorization" id="u9a-PU-sWh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ILR-wt-GI6"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DU7-cT-vQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1815" y="192"/>
         </scene>
         <!--Cart-->
         <scene sceneID="Ikb-f7-ruA">

@@ -42,20 +42,22 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel?.checkNetworkReachability{ isReachable in
-            if isReachable {
-                self.viewModel?.loadData()
-                self.viewModel?.bindResultToViewController = {
-                    self.cartProducts = self.viewModel?.getFilteredCart()
-                    if (self.cartProducts?.count)! > 0 {
-                        self.proceedButton.isEnabled = true
+        if viewModel!.isLoggedIn(){
+            viewModel?.checkNetworkReachability{ isReachable in
+                if isReachable {
+                    self.viewModel?.loadData()
+                    self.viewModel?.bindResultToViewController = {
+                        self.cartProducts = self.viewModel?.getFilteredCart()
+                        if (self.cartProducts?.count)! > 0 {
+                            self.proceedButton.isEnabled = true
+                        }
+                        self.cartItems.reloadData()
+                        self.calculateSubtotal()
                     }
-                    self.cartItems.reloadData()
-                    self.calculateSubtotal()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.showAlert()
+                } else {
+                    DispatchQueue.main.async {
+                        self.showAlert()
+                    }
                 }
             }
         }

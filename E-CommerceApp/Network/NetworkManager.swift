@@ -31,33 +31,6 @@ class NetworkManager{
         }
     }
     
-    func fetchCustomers<T: Codable>(url: String, type: T.Type, complitionHandler: @escaping (T?)->Void) {
-        let url = URL(string:url)
-        guard let newURL = url else {
-            complitionHandler(nil)
-            return  }
-        let headers: HTTPHeaders = [
-            "Cookie":"",
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        ]
-        
-        AF.request(newURL , method: .get, headers: headers).response { data in
-            guard let data = data.data else {
-                complitionHandler(nil)
-                return  }
-            print("fetching in background")
-            do{
-                let result = try JSONDecoder().decode(T.self, from: data)
-                complitionHandler(result)
-            }catch let error{
-                print("the error is in the decoding proccess")
-                print(error)
-                complitionHandler(nil)
-            }
-        }
-    }
-    
 
     func postWithResponse<T:Codable>(url:String,type: T.Type,parameters: Parameters,completion: @escaping ((T?)->Void)){
         let headers: HTTPHeaders = [

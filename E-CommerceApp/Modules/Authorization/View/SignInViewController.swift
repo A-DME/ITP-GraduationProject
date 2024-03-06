@@ -28,7 +28,6 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLoadingData()
-       userDefualt.logout()
         // Do any additional setup after loading the view.
     }
     
@@ -67,56 +66,75 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInButton(_ sender: Any) {
-        
-        _email = email.text
-        _password = password.text
-        if userDefualt.isValidEmail(_email){
-            if _password.count >= 6 {
-                for item in (self.signInViewModel?.getAllCustomers())! {
-                    
-                    let comingMail = item.email ?? ""
-                    print(comingMail)
-                    if comingMail == _email{
-                        print("matched EMail:\(comingMail)")
-                        
-                        self.userDefualt.login()
-                        self.userDefualt.addId(id: item.id ?? 0)
-                        self.userDefualt.addCustomerName(customerName: "\(item.first_name!.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)[0]) \(item.last_name!)")
-                        self.userDefualt.setUserPassword(password: item.tags ?? "")
-                        self.userDefualt.addCustomerEmail(customerEmail: item.email ?? "")
-                        self.userDefualt.setUserNote(note: item.note ?? "")
-                        let array = item.note?.components(separatedBy: ",")
-                        self.userDefualt.setCartID(cartId: array?[0] ?? "0")
-                        print("wishlist:\(self.userDefualt.getWishlistID())")
-                        print("cart\(self.userDefualt.getCartID())")
-                        self.userDefualt.setWishlistID(wishlistId: array?[1] ?? "0")
-                        print("Utilities.utilities.getUserNote()\(Utilities.utilities.getUserNote())")
-                        
-                        self.note = item.note
-                        
-                        break
+        signInViewModel?.checkNetworkReachability{ isReachable in
+            if isReachable {
+                self._email = self.email.text
+                self._password = self.password.text
+                if self.userDefualt.isValidEmail(self._email){
+                    if self._password.count >= 6 {
+                        for item in (self.signInViewModel?.getAllCustomers())! {
+                            
+                            let comingMail = item.email ?? ""
+                            print(comingMail)
+                            if comingMail == self._email{
+                                print("matched EMail:\(comingMail)")
+                                
+                                self.userDefualt.login()
+                                self.userDefualt.addId(id: item.id ?? 0)
+                                self.userDefualt.addCustomerName(customerName: "\(item.first_name!.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)[0]) \(item.last_name!)")
+                                self.userDefualt.setUserPassword(password: item.tags ?? "")
+                                self.userDefualt.addCustomerEmail(customerEmail: item.email ?? "")
+                                self.userDefualt.setUserNote(note: item.note ?? "")
+                                let array = item.note?.components(separatedBy: ",")
+                                self.userDefualt.setCartID(cartId: array?[0] ?? "0")
+                                print("wishlist:\(self.userDefualt.getWishlistID())")
+                                print("cart\(self.userDefualt.getCartID())")
+                                self.userDefualt.setWishlistID(wishlistId: array?[1] ?? "0")
+                                print("Utilities.utilities.getUserNote()\(Utilities.utilities.getUserNote())")
+                                
+                                self.note = item.note
+                                
+                                break
+                            }
+                        }
+                        self.navigateToHome()
+                    }else{
+                        let alert = UIAlertController(title: "Not Authorized", message: "Password should be 6 characters at least" , preferredStyle: .alert)
+                        let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                        alert.addAction(gotIt)
+                        self.present(alert, animated: true)
+                        self.navigate = false
                     }
+                }else{
+                    let alert = UIAlertController(title: "Not Authorized", message: "Please enter a valid email" , preferredStyle: .alert)
+                    let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                    alert.addAction(gotIt)
+                    self.present(alert, animated: true)
                 }
-                self.navigateToHome()
-            }else{
-                let alert = UIAlertController(title: "Not Authorized", message: "Password should be 6 characters at least" , preferredStyle: .alert)
-                let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
-                alert.addAction(gotIt)
-                self.present(alert, animated: true)
-                self.navigate = false
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
             }
-        }else{
-            let alert = UIAlertController(title: "Not Authorized", message: "Please enter a valid email" , preferredStyle: .alert)
-            let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
-            alert.addAction(gotIt)
-            self.present(alert, animated: true)
         }
+        
     }
     
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true)
     }
     
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel) { _ in
+            self.viewWillAppear(true)
+        }
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     
 }

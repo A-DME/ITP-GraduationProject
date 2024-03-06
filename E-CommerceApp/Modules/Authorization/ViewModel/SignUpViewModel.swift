@@ -61,7 +61,7 @@ class SignUpViewModel{
     func loadData() {
         let apiUrl = APIHandler.urlForGetting(.customers)  //"https://a73c5fc1c095fd186d957dd2093e9006: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@q2-24-team2.myshopify.com/admin/api/2024-01/customers.json?since_id=1"
         print(apiUrl)
-        networkHandler?.fetchCustomers(url: apiUrl, type: AllCustomers.self) { data in
+        networkHandler?.fetch(url: apiUrl, type: AllCustomers.self, complitionHandler: { data in
             //print("the data from fetching all customers\(data?.customers?.count ?? 0)")
             if let data = data{
                 self.listOfCustomer = data.customers
@@ -70,7 +70,11 @@ class SignUpViewModel{
                 print("error in getting all customers")
                 
             }
-        }
+        }, headers: [
+            "Cookie":"",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ])
     }
     
     func checkNetworkReachability(completion: @escaping (Bool) -> Void) {
@@ -108,6 +112,12 @@ class SignUpViewModel{
                     let apiUrl = APIHandler.urlForGetting(.Customer(id: String(self.userDefualt.getCustomerId())))
                     
                     self.networkHandler?.putInApi(url: apiUrl, parameters:customerNote)
+//                    //dummy order
+//                    let dummyLineItem: [String: Any] = ["title": "dummy", "quantity": 1, "price": "0.0", "properties":[]]
+//                    let order = Order(id: 0, lineItems: [LineItem(id: 0, variantID: nil, productID: nil, price: "12.25", name: "45", title: "title", quantity: 1, properties: [])], createdAt: "2024-03-05T14:14:42-05:00", currency: UserDefaults.standard.string(forKey: "currencyTitle") ?? "", currentSubtotalPrice: "", name: "", subtotalPrice: "", totalPrice: "", customer: CustomerModel(first_name: "", last_name: "", email: "", phone: "+13125551212", tags: "", id: self.userDefualt.getCustomerId(), verified_email: false, note: ""), currentTotalDiscounts: "", totalDiscounts: "",appliedDiscount: nil)
+//                    let parameters = HelperFunctions().convertToDictionary(object: order, String: "order") ?? [:]
+//                    self.networkHandler?.PostToApi(url: APIHandler.urlForGetting(.orders), parameters: parameters)
+                    
                     self.navigate = true
                     completion(true)
                     
@@ -209,7 +219,6 @@ class SignUpViewModel{
         })
         Thread.sleep(forTimeInterval: 1)
         self.note = "\(self.cartDraftId ?? 0),\(self.wishlistDraftId ?? 0)"
-        //Thread.sleep(forTimeInterval: 1)
 
     }
     func addNoteToCustomer( id : Int) {
