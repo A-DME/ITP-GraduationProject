@@ -61,7 +61,7 @@
                                 <rect key="frame" x="16" y="103" width="361" height="715"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCD-5M-AIl">
-                                        <rect key="frame" x="16" y="569" width="329" height="39"/>
+                                        <rect key="frame" x="16" y="573.66666666666663" width="329" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Register">
                                             <color key="baseBackgroundColor" red="0.1843137255" green="0.34509803919999998" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -119,6 +119,7 @@
                     <connections>
                         <outlet property="notLoggedInView" destination="UUf-lD-z8V" id="rvS-1D-vjs"/>
                         <outlet property="wishColletionView" destination="wE6-QH-z48" id="9UG-rI-BKd"/>
+                        <segue destination="bJ1-eL-BkA" kind="show" identifier="ProductInfoSegue" id="v9C-NF-aB0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8be-e5-lN3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -132,6 +133,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSX-NC-RJD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1996" y="252"/>
+        </scene>
+        <!--ProductInfo-->
+        <scene sceneID="qzX-rI-1x7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProductInfo" id="bJ1-eL-BkA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="JeY-6i-29T"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aGu-iM-xg6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1966" y="460"/>
         </scene>
     </scenes>
     <resources>
