@@ -40,7 +40,6 @@ class MeViewController: UIViewController{
                 if self.loggedIn == true{
                     self.greeting.text = "Welcome \(self.customerName ?? "At StyleHub")"
                     self.NotLoggedView.isHidden = true
-                    self.setIndicator()
                     self.loadData()
                     self.loadWishlistData()
                 }else{
@@ -116,6 +115,7 @@ extension MeViewController{
 extension MeViewController{
     func loadData(){
         meViewModel?.loadData()
+        self.setIndicator()
         meViewModel?.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
                 self?.display()
@@ -148,7 +148,7 @@ extension MeViewController{
     }
     func displayWishlist() {
         wishListResult = meViewModel?.getFilteredItems(items: meViewModel?.getWishlistData())
-        if (wishListResult  == nil) {
+        if (wishListResult?.isEmpty ?? false) {
             wishlistCollection.setEmptyMessage("No items in Wish list ")
         } else {
             wishlistCollection.restore()

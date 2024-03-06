@@ -157,7 +157,7 @@ extension WishlistViewController{
     func displayWishlist() {
         indicator?.stopAnimating()
         wishListResult = wishlistViewModel?.getFilteredItems(items: wishlistViewModel?.getWishlistData())
-        if (wishListResult  == nil) {
+        if (wishListResult?.isEmpty ?? false) {
             wishColletionView.setEmptyMessage("No items in Wish list ")
         } else {
             wishColletionView.restore()
