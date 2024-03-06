@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gWJ-wx-2zH" customClass="BrandsCollectionViewCell" customModule="E_CommerceApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="295"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qii-p3-Lg4">
+                <rect key="frame" x="0.0" y="0.0" width="325" height="295"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THe-xl-DZw">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="295"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2uA-0B-FVb">
+                                <rect key="frame" x="16" y="16" width="293" height="263"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2uA-0B-FVb" firstAttribute="leading" secondItem="THe-xl-DZw" secondAttribute="leading" constant="16" id="ACN-zc-gB9"/>
+                            <constraint firstItem="2uA-0B-FVb" firstAttribute="top" secondItem="THe-xl-DZw" secondAttribute="top" constant="16" id="PH1-J7-Cxw"/>
+                            <constraint firstAttribute="bottom" secondItem="2uA-0B-FVb" secondAttribute="bottom" constant="16" id="W5t-Kd-jPz"/>
+                            <constraint firstAttribute="trailing" secondItem="2uA-0B-FVb" secondAttribute="trailing" constant="16" id="Yle-37-dKa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="THe-xl-DZw" firstAttribute="top" secondItem="Qii-p3-Lg4" secondAttribute="top" id="9ip-wd-XkL"/>
+                    <constraint firstAttribute="bottom" secondItem="THe-xl-DZw" secondAttribute="bottom" id="UdG-ew-uV0"/>
+                    <constraint firstAttribute="trailing" secondItem="THe-xl-DZw" secondAttribute="trailing" id="h9j-jc-L1U"/>
+                    <constraint firstItem="THe-xl-DZw" firstAttribute="leading" secondItem="Qii-p3-Lg4" secondAttribute="leading" id="nPC-PY-XKb"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="325" height="295"/>
+            <connections>
+                <outlet property="brandImg" destination="2uA-0B-FVb" id="0iV-cT-ly8"/>
+                <outlet property="vBackground" destination="THe-xl-DZw" id="BKc-kt-Nnc"/>
+            </connections>
+            <point key="canvasLocation" x="-1423.6641221374045" y="449.64788732394368"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

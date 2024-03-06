@@ -8,5 +8,18 @@
 import Foundation
 
 class SettingsViewModel{
+    let settingsList = ["Addresses", "Currency", "About Us"]
+    var userDefult : Utilities?
     
+    init() {
+        self.userDefult = Utilities()
+    }
+
+    func isLoggedIn()->Bool{
+        return userDefult?.isLoggedIn() ?? false
+    }
+    
+    func logUserOut(){
+        userDefult?.logout()
+    }
 }

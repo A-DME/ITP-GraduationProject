@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Payment View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="PaymentViewController" customModule="E_CommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4h-2B-zGU">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Payment" id="8VO-bo-ivl">
+                                        <barButtonItem key="leftBarButtonItem" id="K7E-so-gdZ">
+                                            <imageReference key="image" image="arrow.left.circle.fill" catalog="system" renderingMode="hierarchical">
+                                                <hierarchicalColors>
+                                                    <color systemColor="labelColor"/>
+                                                    <color systemColor="secondaryLabelColor"/>
+                                                    <color systemColor="tertiaryLabelColor"/>
+                                                </hierarchicalColors>
+                                            </imageReference>
+                                            <connections>
+                                                <action selector="backButton:" destination="Y6W-OH-hqX" id="iXB-Cw-4a3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QE9-ra-ppT">
+                                <rect key="frame" x="0.0" y="103" width="393" height="665"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentCell" id="vY7-Vx-DNx" customClass="PaymentTableViewCell" customModule="E_CommerceApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vY7-Vx-DNx" id="A2u-Vc-iMr">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1C-b6-9oa">
+                                <rect key="frame" x="24" y="768" width="345" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PeF-lV-L5F"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="checkmark.circle.fill" catalog="system" title=" Purchase">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="24"/>
+                                    <color key="baseBackgroundColor" red="0.23529411759999999" green="0.41960784309999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="purchase:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="v1N-Kv-bWP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="H4h-2B-zGU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0dz-3K-GF9"/>
+                            <constraint firstItem="H4h-2B-zGU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="566-Qc-G6n"/>
+                            <constraint firstItem="QE9-ra-ppT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6HO-dc-igi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Y1C-b6-9oa" secondAttribute="trailing" constant="24" id="ARZ-8n-D4L"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Y1C-b6-9oa" secondAttribute="bottom" id="ZUa-yP-aPq"/>
+                            <constraint firstItem="Y1C-b6-9oa" firstAttribute="top" secondItem="QE9-ra-ppT" secondAttribute="bottom" id="bfn-68-Ns7"/>
+                            <constraint firstItem="H4h-2B-zGU" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="pQb-b2-H5S"/>
+                            <constraint firstItem="QE9-ra-ppT" firstAttribute="top" secondItem="H4h-2B-zGU" secondAttribute="bottom" id="riH-pB-j97"/>
+                            <constraint firstItem="Y1C-b6-9oa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="s5k-mg-Eyz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QE9-ra-ppT" secondAttribute="trailing" id="zKk-PL-FfP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="methods" destination="QE9-ra-ppT" id="ZW2-sh-2ib"/>
+                        <outlet property="purchaseButton" destination="Y1C-b6-9oa" id="Z8D-xf-BZp"/>
+                        <segue destination="CUH-D5-PeM" kind="show" identifier="orderConfirmed" id="Eq7-9k-icr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-114" y="-27"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gzr-6u-E0k">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="CUH-D5-PeM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="24L-XY-dXZ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-fN-VMM">
+                                <rect key="frame" x="24" y="760" width="345" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="J8X-0H-gZg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Continue Shopping">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="23"/>
+                                    <color key="baseBackgroundColor" red="0.23529411759999999" green="0.41960784309999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="tyk-6R-XUs" kind="unwind" unwindAction="unwindToHomeScreenWithUnwindSegue:" id="rux-Ih-hsm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Confirmed!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxL-kY-FYH">
+                                <rect key="frame" x="61.666666666666657" y="432" width="270" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your order has been confirmed successfully" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Eo-f3-ZO4">
+                                <rect key="frame" x="24" y="490.00000000000006" width="345" height="45.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" systemColor="underPageBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderConfirmed" translatesAutoresizingMaskIntoConstraints="NO" id="ZgZ-2D-g3H">
+                                <rect key="frame" x="46.666666666666657" y="100" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Ake-82-1GM"/>
+                                    <constraint firstAttribute="height" constant="300" id="nwo-Ir-8Jd"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CEe-td-NDV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BxL-kY-FYH" firstAttribute="centerX" secondItem="ZgZ-2D-g3H" secondAttribute="centerX" id="C7M-jz-9sU"/>
+                            <constraint firstItem="CEe-td-NDV" firstAttribute="bottom" secondItem="fGn-fN-VMM" secondAttribute="bottom" constant="32" id="GZO-dQ-UgG"/>
+                            <constraint firstItem="5Eo-f3-ZO4" firstAttribute="top" secondItem="BxL-kY-FYH" secondAttribute="bottom" constant="16" id="O7o-Ow-jic"/>
+                            <constraint firstItem="ZgZ-2D-g3H" firstAttribute="centerX" secondItem="CEe-td-NDV" secondAttribute="centerX" id="OGh-3e-0Mv"/>
+                            <constraint firstItem="CEe-td-NDV" firstAttribute="trailing" secondItem="fGn-fN-VMM" secondAttribute="trailing" constant="24" id="OSP-Sh-ITV"/>
+                            <constraint firstItem="CEe-td-NDV" firstAttribute="trailing" secondItem="5Eo-f3-ZO4" secondAttribute="trailing" constant="24" id="TMn-xf-qK1"/>
+                            <constraint firstItem="fGn-fN-VMM" firstAttribute="leading" secondItem="CEe-td-NDV" secondAttribute="leading" constant="24" id="VlL-ld-Tid"/>
+                            <constraint firstItem="BxL-kY-FYH" firstAttribute="top" secondItem="ZgZ-2D-g3H" secondAttribute="bottom" constant="32" id="bz7-e4-fW6"/>
+                            <constraint firstItem="ZgZ-2D-g3H" firstAttribute="top" secondItem="CEe-td-NDV" secondAttribute="top" constant="100" id="jWI-4M-EiH"/>
+                            <constraint firstItem="5Eo-f3-ZO4" firstAttribute="leading" secondItem="CEe-td-NDV" secondAttribute="leading" constant="24" id="o2y-wJ-XfB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="yAZ-JE-YyJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6cu-4l-r0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="tyk-6R-XUs" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="-27"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.left.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="orderConfirmed" width="279" height="232"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="underPageBackgroundColor">
+            <color red="0.70980392156862748" green="0.71764705882352942" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
