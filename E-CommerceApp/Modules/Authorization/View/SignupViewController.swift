@@ -87,85 +87,102 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
-        _firstName = firstName.text
-        _lastName = secondName.text
-        _email = emailAddress.text
-        _password = password.text
-        if _firstName != "" && _lastName != ""{
-            if userDefualt.isValidEmail(_email){
-                if passwordConfirmation.text == _password{
-                    if _password.count >= 6{
-                        
-                        
-                        for item in (self.signUpViewModel?.getAllCustomers())! {
-                            let comingMail = item.email ?? ""
-                            if comingMail == _email{
-                                print("matched EMail:\(comingMail)")
-                                self.signUpViewModel?.flag=true
-                            }
-                        }
-                        if self.signUpViewModel?.flag == true{
-                            let alert = UIAlertController(title: "Warning", message: "This user already exists", preferredStyle: .alert)
-                            let gotIt = UIAlertAction(title: "Ok", style: .cancel)
-                            let signUp = UIAlertAction(title: "Sign In", style: .default) { UIAlertAction in
-                                self.performSegue(withIdentifier: "toSign", sender: nil)
-                            }
-                            
-                            alert.addAction(signUp)
-                            alert.addAction(gotIt)
-                            self.present(alert, animated: true)
-                            
-                        }else{
-                            
-                            
-                            signUpViewModel?.registerCustomer(firstName: _firstName , lastName: _lastName , email: _email, password: _password){ result in
+        signUpViewModel?.checkNetworkReachability{ isReachable in
+            if isReachable {
+                self._firstName = self.firstName.text
+                self._lastName = self.secondName.text
+                self._email = self.emailAddress.text
+                self._password = self.password.text
+                if self._firstName != "" && self._lastName != ""{
+                    if self.userDefualt.isValidEmail(self._email){
+                        if self.passwordConfirmation.text == self._password{
+                            if self._password.count >= 6{
                                 
-                                print("signUp View controller.registerCustomer")
-                                switch result{
-                                case true:
-                                    print("from view  \(String(describing: self._firstName ?? ""))")
-                                case false:
-                                    DispatchQueue.main.async {
-                                        let alert = UIAlertController(title: "Warning", message:"Error in registering" , preferredStyle: .alert)
-                                        let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
-                                        alert.addAction(gotIt)
-                                        self.present(alert, animated: true)
+                                
+                                for item in (self.signUpViewModel?.getAllCustomers())! {
+                                    let comingMail = item.email ?? ""
+                                    if comingMail == self._email{
+                                        print("matched EMail:\(comingMail)")
+                                        self.signUpViewModel?.flag=true
                                     }
                                 }
+                                if self.signUpViewModel?.flag == true{
+                                    let alert = UIAlertController(title: "Warning", message: "This user already exists", preferredStyle: .alert)
+                                    let gotIt = UIAlertAction(title: "Ok", style: .cancel)
+                                    let signUp = UIAlertAction(title: "Sign In", style: .default) { UIAlertAction in
+                                        self.performSegue(withIdentifier: "toSign", sender: nil)
+                                    }
+                                    
+                                    alert.addAction(signUp)
+                                    alert.addAction(gotIt)
+                                    self.present(alert, animated: true)
+                                    
+                                }else{
+                                    
+                                    
+                                    self.signUpViewModel?.registerCustomer(firstName: self._firstName , lastName: self._lastName , email: self._email, password: self._password){ result in
+                                        
+                                        print("signUp View controller.registerCustomer")
+                                        switch result{
+                                        case true:
+                                            print("from view  \(String(describing: self._firstName ?? ""))")
+                                        case false:
+                                            DispatchQueue.main.async {
+                                                let alert = UIAlertController(title: "Warning", message:"Error in registering" , preferredStyle: .alert)
+                                                let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                                                alert.addAction(gotIt)
+                                                self.present(alert, animated: true)
+                                            }
+                                        }
+                                    }
+                                }
+                            }else{
+                                let alert = UIAlertController(title: "Warning", message:"Password must be more than 5 digit" , preferredStyle: .alert)
+                                let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                                alert.addAction(gotIt)
+                                self.present(alert, animated: true)
                             }
+                        }else{
+                            
+                            let alert = UIAlertController(title: "Warning", message: "Password Confirmation Doesnt match", preferredStyle: .alert)
+                            let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
+                            alert.addAction(gotIt)
+                            self.present(alert, animated: true)
+                           
                         }
+                        
                     }else{
-                        let alert = UIAlertController(title: "Warning", message:"Password must be more than 5 digit" , preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Warning", message: "Please, enter valid email", preferredStyle: .alert)
                         let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
                         alert.addAction(gotIt)
                         self.present(alert, animated: true)
+                        
                     }
                 }else{
-                    
-                    let alert = UIAlertController(title: "Warning", message: "Password Confirmation Doesnt match", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Warning", message: "Required full name", preferredStyle: .alert)
                     let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
                     alert.addAction(gotIt)
                     self.present(alert, animated: true)
-                   
+                    
                 }
-                
-            }else{
-                let alert = UIAlertController(title: "Warning", message: "Please, enter valid email", preferredStyle: .alert)
-                let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
-                alert.addAction(gotIt)
-                self.present(alert, animated: true)
-                
+            } else {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
             }
-        }else{
-            let alert = UIAlertController(title: "Warning", message: "Required full name", preferredStyle: .alert)
-            let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
-            alert.addAction(gotIt)
-            self.present(alert, animated: true)
-            
         }
+        
     }
     
-    
+    func showAlert(){
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
+        
+        let doneAction = UIAlertAction(title: "Retry", style: .cancel)
+        
+        alertController.addAction(doneAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
 
     

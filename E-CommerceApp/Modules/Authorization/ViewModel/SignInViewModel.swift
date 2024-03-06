@@ -33,7 +33,7 @@ class SignInViewModel{
     func loadData() {
         let apiUrl = "https://a73c5fc1c095fd186d957dd2093e9006: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@q2-24-team2.myshopify.com/admin/api/2024-01/customers.json?since_id=1"
         print(apiUrl)
-        networkHandler?.fetchCustomers(url: apiUrl, type: AllCustomers.self) { data in
+        networkHandler?.fetch(url: apiUrl, type: AllCustomers.self,complitionHandler:  { data in
             //print("the data from fetching all customers\(data?.customers?.count ?? 0)")
             if let data = data{
                 self.listOfCustomer = data.customers
@@ -42,7 +42,11 @@ class SignInViewModel{
                 print("error in getting all customers")
                 
             }
-        }
+        }, headers: [
+            "Cookie":"",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ])
     }
     
     func checkDraftOrderInUser(){}

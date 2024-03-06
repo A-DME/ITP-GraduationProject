@@ -31,5 +31,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
         vBackground.layer.borderWidth = 1
         vBackground.layer.borderColor = UIColor.black.cgColor
     }
+    
+    
 
 }
