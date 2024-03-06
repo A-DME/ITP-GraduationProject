@@ -76,7 +76,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
             }
             
             var menuChildren: [UIMenuElement] = []
-            for size in sizes ?? [] {
+            for size in sizes ?? ["0"] {
                 menuChildren.append(UIAction(title: size, handler: actionClosure))
             }
             
@@ -94,7 +94,7 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
             }
             
             var menuChildren: [UIMenuElement] = []
-            for color in colors ?? [] {
+            for color in colors ?? ["--"] {
                 menuChildren.append(UIAction(title: color, handler: actionClosure))
             }
             
@@ -200,24 +200,23 @@ class ProductInfoViewController: UIViewController, UICollectionViewDataSource, U
         productInfoViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 if self.userDefaults.isLoggedIn() == true{
+                    let item : [String: Any] = [
+                        "variant_id": (self.productInfoViewModel?.getProductDetails()?.variants.first?.id) ?? 0,
+                        "quantity" : 1,
+                        "properties":[["name":"image","value":self.productInfoViewModel?.getProductDetails()?.image.src ?? ""],["name":"inventoryQuantity","value":String(self.productInfoViewModel?.getProductDetails()?.variants.first?.inventoryQuantity ?? 0)]]
+                    ]
                     if self.productInfoViewModel?.isInLocalWishList(wishList: self.wishList ?? [], productId: self.productInfoViewModel?.getProductDetails()?.id ?? 0) == false {
-                        self.addToFavButton.imageView?.image = UIImage(systemName: "heart.fill")
-                        
-                        let item : [String: Any] = [
-                            "variant_id": (self.productInfoViewModel?.getProductDetails()?.variants.first?.id) ?? 0,
-                            "quantity" : 1,
-                            "properties":[["name":"image","value":self.productInfoViewModel?.getProductDetails()?.image.src ?? ""],["name":"inventoryQuantity","value":String(self.productInfoViewModel?.getProductDetails()?.variants.first?.inventoryQuantity ?? 0)]]
-                        ]
+                        self.addToFavButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                         self.wishList?.append(item)
                         print(self.wishList)
                         self.productInfoViewModel?.updateWishList(wishList: self.wishList)
                         
                         print("added")
                     } else {
-                        self.addToFavButton.imageView?.image = UIImage(systemName: "heart")
+                        self.addToFavButton.setImage(UIImage(systemName: "heart"), for: .normal)
                         // TODO: remove from wishlist
                         self.wishList?.removeAll(where: { product in
-                            product["variant_id"] as! Int == (self.productInfoViewModel?.getProductDetails()?.variants.first?.id) ?? 0
+                            product["product_id"] as! Int == (self.productInfoViewModel?.getProductDetails()?.id) ?? 0
                         })
                         self.productInfoViewModel?.updateWishList(wishList: self.wishList)
                         

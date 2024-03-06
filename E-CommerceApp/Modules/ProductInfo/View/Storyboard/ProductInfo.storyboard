@@ -31,14 +31,13 @@
                                 <items>
                                     <navigationItem title="StyleHub" style="browser" id="hlf-06-Sbo">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="gsb-j2-6fI">
-                                            <imageReference key="image" image="chevron.left.circle.fill" catalog="system" renderingMode="hierarchical">
+                                            <imageReference key="image" image="arrow.backward.circle.fill" catalog="system" renderingMode="hierarchical">
                                                 <hierarchicalColors>
                                                     <color systemColor="labelColor"/>
                                                     <color systemColor="secondaryLabelColor"/>
                                                     <color systemColor="tertiaryLabelColor"/>
                                                 </hierarchicalColors>
                                             </imageReference>
-                                            <color key="tintColor" red="0.066996686160564423" green="0.24146991968154907" blue="0.14529058337211609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="backButton:" destination="Y6W-OH-hqX" id="XUg-0a-ztx"/>
                                             </connections>
@@ -69,25 +68,25 @@
                                             <action selector="addingToCart:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="l07-6v-Bus"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kjc-o0-Agq">
-                                        <rect key="frame" x="40" y="16.000000000000004" width="51" height="34.333333333333343"/>
-                                        <color key="tintColor" red="0.066996686160564423" green="0.24146991968154907" blue="0.14529058337211609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05R-ky-IA6">
+                                        <rect key="frame" x="40" y="16.000000000000004" width="50.666666666666657" height="34.333333333333343"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="heart" catalog="system" renderingMode="original"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="addingToWishlist:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="72T-ez-VdH"/>
+                                            <action selector="addingToWishlist:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oGZ-6t-Bfz"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="05R-ky-IA6" firstAttribute="top" secondItem="QGc-yB-Kkk" secondAttribute="top" constant="16" id="Egd-X5-nxC"/>
+                                    <constraint firstItem="05R-ky-IA6" firstAttribute="leading" secondItem="QGc-yB-Kkk" secondAttribute="leading" constant="40" id="Fac-9Y-bbE"/>
                                     <constraint firstAttribute="height" constant="65" id="HWT-Ew-a49"/>
-                                    <constraint firstItem="Kjc-o0-Agq" firstAttribute="top" secondItem="QGc-yB-Kkk" secondAttribute="top" constant="16" id="nte-XB-3zL"/>
                                     <constraint firstItem="XBr-lP-udB" firstAttribute="top" secondItem="QGc-yB-Kkk" secondAttribute="top" constant="8" id="q3R-ks-ddW"/>
                                     <constraint firstAttribute="trailing" secondItem="XBr-lP-udB" secondAttribute="trailing" constant="24" id="xhm-oG-a1u"/>
-                                    <constraint firstItem="Kjc-o0-Agq" firstAttribute="leading" secondItem="QGc-yB-Kkk" secondAttribute="leading" constant="40" id="yO1-RO-n9a"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-f1-SsT">
@@ -380,7 +379,7 @@
                     <size key="freeformSize" width="393" height="1000"/>
                     <connections>
                         <outlet property="addToCartButton" destination="XBr-lP-udB" id="vQ3-Ug-VvT"/>
-                        <outlet property="addToFavButton" destination="Kjc-o0-Agq" id="XD8-2P-5r5"/>
+                        <outlet property="addToFavButton" destination="05R-ky-IA6" id="ASU-J6-IoD"/>
                         <outlet property="color" destination="bXR-B4-vw2" id="CWy-OO-par"/>
                         <outlet property="cover" destination="loP-Lu-Jot" id="mfi-Mo-GL6"/>
                         <outlet property="descriptionText" destination="V57-nH-Qwk" id="Chb-eh-435"/>
@@ -416,7 +415,7 @@
                                 <items>
                                     <navigationItem title="StyleSage" id="cTg-wQ-nZa">
                                         <barButtonItem key="leftBarButtonItem" title="Item" id="Dul-dq-zuB">
-                                            <imageReference key="image" image="chevron.left.circle.fill" catalog="system" renderingMode="hierarchical">
+                                            <imageReference key="image" image="arrow.backward.circle.fill" catalog="system" renderingMode="hierarchical">
                                                 <hierarchicalColors>
                                                     <color systemColor="labelColor"/>
                                                     <color systemColor="secondaryLabelColor"/>
@@ -552,7 +551,7 @@
                                 <items>
                                     <navigationItem title="StyleSage" id="89t-9N-9H4">
                                         <barButtonItem key="leftBarButtonItem" id="naY-nC-tHP">
-                                            <imageReference key="image" image="chevron.left.circle.fill" catalog="system" renderingMode="hierarchical">
+                                            <imageReference key="image" image="arrow.left.circle.fill" catalog="system" renderingMode="hierarchical">
                                                 <hierarchicalColors>
                                                     <color systemColor="labelColor"/>
                                                     <color systemColor="secondaryLabelColor"/>
@@ -639,8 +638,9 @@
         <segue reference="3D5-ZN-7hH"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.backward.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="arrow.left.circle.fill" catalog="system" width="128" height="123"/>
         <image name="cart" width="24" height="24"/>
-        <image name="chevron.left.circle.fill" catalog="system" width="128" height="123"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="star.fill.left" catalog="system" width="128" height="116"/>
@@ -652,6 +652,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
