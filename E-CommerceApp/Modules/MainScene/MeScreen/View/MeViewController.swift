@@ -67,6 +67,12 @@ class MeViewController: UIViewController{
         if segue.identifier == "detailsSegue"{
             let vc = segue.destination as! OrderDetailsTableViewController
             vc.result = result?.orders[ordersTable.indexPathForSelectedRow!.row]
+        }else if segue.identifier == "ProductInfoSegue"{
+            if let indexPath = sender as? IndexPath {
+                let destinationVC = segue.destination as? ProductInfoViewController
+                destinationVC?.productId = wishListResult?[indexPath.row].productID
+                
+            }
         }
     }
     
@@ -141,7 +147,7 @@ extension MeViewController{
         
     }
     func displayWishlist() {
-        wishListResult = meViewModel?.getWishlistData()
+        wishListResult = meViewModel?.getFilteredItems(items: meViewModel?.getWishlistData())
         if (wishListResult  == nil) {
             wishlistCollection.setEmptyMessage("No items in Wish list ")
         } else {
@@ -189,6 +195,11 @@ extension MeViewController : UICollectionViewDelegate,UICollectionViewDataSource
         cell.currency.text = UserDefaults.standard.string(forKey: "currencyTitle")
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ProductInfoSegue", sender: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = wishlistCollection.frame.width / 2 - 20

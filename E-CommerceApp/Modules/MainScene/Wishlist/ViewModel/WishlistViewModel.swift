@@ -67,7 +67,7 @@ class WishlistViewModel{
                guard let wishList = wishList else { return }
                
        //        print(extractLineItemsPostData(lineItems: cartItems))
-           networkHandler?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id:"1148537569525")), parameters: ["draft_order": ["line_items": getFilteredItems(items: wishlistResult).count != 0 ? extractLineItemsPostData(lineItems: wishList) : [dummyLineItem]]])
+           networkHandler?.putInApi(url: APIHandler.urlForGetting(.draftOrder(id:userDefult?.getWishlistID() ?? "")), parameters: ["draft_order": ["line_items": getFilteredItems(items: wishList).count != 0 ? extractLineItemsPostData(lineItems: wishList) : [dummyLineItem]]])
            }
            
        func getFilteredItems(items: [LineItem]?) -> [LineItem]{

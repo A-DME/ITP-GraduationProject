@@ -50,15 +50,20 @@ class WishlistViewController: UIViewController,UICollectionViewDataSource,UIColl
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ProductInfoSegue"{
+            if let indexPath = sender as? IndexPath {
+                let destinationVC = segue.destination as? ProductInfoViewController
+                destinationVC?.productId = wishListResult?[indexPath.row].productID
+                
+            }
+        }
     }
-    */
+    
     // MARK: - Collection View
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -81,6 +86,10 @@ class WishlistViewController: UIViewController,UICollectionViewDataSource,UIColl
     
         cell.currency.text = UserDefaults.standard.string(forKey: "currencyTitle")
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ProductInfoSegue", sender: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -135,19 +144,19 @@ extension WishlistViewController{
 extension WishlistViewController{
 
  func loadWishlistData(){
-        wishlistViewModel?.loadWishlistData()
+     wishlistViewModel?.loadWishlistData()
      wishlistViewModel?.bindWishlistToViewController = {[weak self] in
-            DispatchQueue.main.async {
-                self?.displayWishlist()
-                self?.wishColletionView.reloadData()
-                
-            }
-            
-        }
-    }
+         DispatchQueue.main.async {
+             self?.displayWishlist()
+             self?.wishColletionView.reloadData()
+             
+         }
+         
+     }
+ }
     func displayWishlist() {
         indicator?.stopAnimating()
-        wishListResult = wishlistViewModel?.getWishlistData()
+        wishListResult = wishlistViewModel?.getFilteredItems(items: wishlistViewModel?.getWishlistData())
         if (wishListResult  == nil) {
             wishColletionView.setEmptyMessage("No items in Wish list ")
         } else {
