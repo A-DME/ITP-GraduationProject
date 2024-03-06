@@ -9,7 +9,7 @@ import UIKit
 
 
 class SignupViewController: UIViewController {
-
+    
     
     @IBOutlet weak var firstName: UITextField!
     
@@ -33,7 +33,7 @@ class SignupViewController: UIViewController {
         configureLoadingData()
         bindToViewModel()
         
-
+        
         // Do any additional setup after loading the view.
     }
     func bindToViewModel(){
@@ -51,7 +51,7 @@ class SignupViewController: UIViewController {
             }
         }
     }
-   
+    
     func navigate(){
         if self.signUpViewModel?.navigate == true{
             performSegue(withIdentifier: "toHome", sender: self)
@@ -81,7 +81,7 @@ class SignupViewController: UIViewController {
             }
         }
     }
-
+    
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -148,7 +148,7 @@ class SignupViewController: UIViewController {
                             let gotIt = UIAlertAction(title: "Try Again", style: .cancel)
                             alert.addAction(gotIt)
                             self.present(alert, animated: true)
-                           
+                            
                         }
                         
                     }else{
@@ -184,6 +184,6 @@ class SignupViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-
+    
     
 }

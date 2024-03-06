@@ -59,7 +59,7 @@ class PaymentViewModel{
         if flag == false{
             postOrder()
         }else{
-            let order = Order(id: 0, lineItems: priceUpdatedCart(getFilteredCart()), createdAt: draftOrder?.updatedAt ?? "", currency: UserDefaults.standard.string(forKey: "currencyTitle") ?? "", currentSubtotalPrice: "", name: "", subtotalPrice: "", totalPrice: "", customer: draftOrder?.customer ?? CustomerModel(first_name: "", last_name: "", email: "", phone: "+\(Int.random(in: 0...10000000009))", tags: "", id: 0, verified_email: false, note: ""), currentTotalDiscounts: "", totalDiscounts: "",appliedDiscount: draftOrder?.appliedDiscount)
+            let order = Order(id: 0, lineItems: priceUpdatedCart(getFilteredCart()), createdAt: draftOrder?.updatedAt ?? "", currency: UserDefaults.standard.string(forKey: "currencyTitle") ?? "", currentSubtotalPrice: "", name: "", subtotalPrice: "", totalPrice: "", customer: draftOrder?.customer ?? CustomerModel(first_name: "", last_name: "", email: "", phone: "222", tags: "", id: 0, verified_email: false, note: ""), currentTotalDiscounts: "", totalDiscounts: "",appliedDiscount: draftOrder?.appliedDiscount)
             let parameters = HelperFunctions().convertToDictionary(object: order, String: "order") ?? [:]
             networkManager?.PostToApi(url: APIHandler.urlForGetting(.orders), parameters: parameters)
         }
