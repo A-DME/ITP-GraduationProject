@@ -17,9 +17,9 @@ class OrdersTableViewController: UITableViewController {
         super.viewDidLoad()
         
         registerCell()
+        ordersViewModel = OrdersTableViewModel()
         IntializeProperties()
         setIndicator()
-        ordersViewModel = OrdersTableViewModel()
         ordersViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 self.loadData()
