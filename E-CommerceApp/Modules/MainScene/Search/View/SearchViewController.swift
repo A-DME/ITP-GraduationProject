@@ -32,6 +32,11 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//        searchBar.text = ""
+        resultTable.reloadData()
+    }
+    
 
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -43,7 +48,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchWord = searchBar.text ?? ""
+        searchWord = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         print("Search text: \(searchWord)")
         searchingResult()
     }

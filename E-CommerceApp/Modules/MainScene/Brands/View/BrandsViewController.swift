@@ -29,8 +29,6 @@ class BrandsViewController: UIViewController {
         super.viewDidLoad()
         setIndicator()
         searchBar.delegate = self
-    }
-    override func viewWillAppear(_ animated: Bool) {
         registerCell()
         IntializeProperties()
         self.hideKeyboardWhenTappedAround()
@@ -45,6 +43,7 @@ class BrandsViewController: UIViewController {
             }
         }
     }
+    
    
     @IBAction func sortList(_ sender: Any) {
         sortedProducts = result?.products.sorted {Double($0.variants.first?.price ?? "0.0") ?? 0.0  < Double($1.variants.first?.price ?? "0.0")  ?? 0.0 }
@@ -216,7 +215,7 @@ extension BrandsViewController {
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchWord = searchBar.text ?? ""
+        searchWord = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         print("Search text: \(searchWord)")
         searchingResult()
     }
