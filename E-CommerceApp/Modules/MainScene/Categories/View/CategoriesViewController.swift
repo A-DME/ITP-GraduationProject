@@ -31,9 +31,6 @@ class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndicator()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         registerCell()
         setupSegmentesControl()
         self.hideKeyboardWhenTappedAround()
@@ -52,6 +49,7 @@ class CategoriesViewController: UIViewController {
             }
         }
     }
+    
    
 }
 // MARK: - UISetUp
@@ -199,24 +197,23 @@ extension CategoriesViewController{
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchWord = searchBar.text ?? ""
+        searchWord = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         print("Search text: \(searchWord)")
         searchingResult()
     }
     
     
     func searchingResult(){
-        if searching == false{
-            filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
-        }else{
-            if searchWord.isEmpty{
-                filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
+        filterResults(category: category ?? "All",subCategory: subCategory ?? "All")
+
+        if searching == false || searchWord.isEmpty{
                 
-            }else{
+            } else {
+
                 filteredResult = filteredResult?.filter{
                     $0.title.lowercased().contains(searchWord.lowercased())
                 } ?? []
-            }
+            
         }
         
         checkIfNoItems()
